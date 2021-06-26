@@ -1,0 +1,187 @@
+/* https://stackoverflow.com/questions/21346045/django-new-fonts */
+@font-face {
+    font-family: 'Mandhor';
+    src: url('../fonts/Mandhor.otf') format("opentype");
+}
+
+/* bengali */
+@font-face {
+    font-family: 'Hind Siliguri';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/hindsiliguri/v7/ijwTs5juQtsyLLR5jN4cxBEoTI7ax9k0.woff2) format('woff2');
+    unicode-range: U+0964-0965, U+0981-09FB, U+200C-200D, U+20B9, U+25CC;
+  }
+/* latin-ext */
+@font-face {
+    font-family: 'Hind Siliguri';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/hindsiliguri/v7/ijwTs5juQtsyLLR5jN4cxBEoTJLax9k0.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+/* latin */
+@font-face {
+    font-family: 'Hind Siliguri';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/hindsiliguri/v7/ijwTs5juQtsyLLR5jN4cxBEoTJzaxw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+/* Main Page */
+html {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1E1E24;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+/* Navbar */
+
+#mainNavbar {
+    min-height: 100%;
+    align-items: stretch;
+
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+.logo-font {
+    font-family: 'Mandhor', sans-serif;
+}
+
+.text-white {
+    color: #FFF8F0
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: #FFF8F0;
+}
+
+/* Evenly space list items  https://stackoverflow.com/questions/23226888/horizontal-list-items-fit-to-100-with-even-spacing/23226961*/
+
+ul {
+    display: flex;
+    align-items: stretch; /* Default */
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: block;
+    flex: 0 1 auto; /* Default */
+    list-style-type: none;
+}
+
+/* Animated Link Source: https://ui-snippets.dev/ */
+
+.dropdown-menu .animated-link, .animated-link {
+    padding-bottom: 1px;
+    color: #FFF8F0;
+    position: relative;
+}
+
+ .animated-link::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translateY(3px);
+    background: #FFF8F0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+ .animated-link:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-item.animated-link::after {
+    width: 30%;
+    left: 35%;
+} 
+
+.list-text {
+    font-size: 1.1rem;
+}
+
+.dropdown-menu {
+    background: transparent;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    min-width: 0rem;
+}
+
+.dropdown-menu-start[data-bs-popper] {
+    left: -98%;
+}
+
+.dropdown-item {
+    text-decoration: none;
+    color: #FFF8F0;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    background-color: transparent;
+}
+
+hr.dropdown-divider {
+    color: #FFF8F0
+}
+
+.status-container {
+    min-height: 100%;
+    border: 1px solid #FFF8F0;
+    border-radius: 30px;
+}
+
+.account-container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+/* MEDIA QUERIES */
+@media (max-width: 992px) {
+    /* Placeholder */
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 600px) {
+
+    .list-text {
+        font-size: 0.8rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .dropdown-menu-start[data-bs-popper] {
+        left: -116%;
+    }
+
+}
+
