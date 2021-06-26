@@ -17,6 +17,7 @@
         {% block corecss %}
             <!-- Css -->
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+            <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% endblock %}
 
         {% block extracss %}
@@ -28,8 +29,72 @@
         <title>CIRPG</title>
     </head>
     <body>
-        <header class="container-fluid fixed-top"></header>
+        
+      <header class="container-fluid">
+        <nav id="mainNavbar" class="row navbar navbar-expand-lg">
+          <div class="col-4 me-auto">
+            {% if request.user.is_authenticated %}
+            <!-- Status Container -->
+            <div class="status-container ms-2">
+            </div>
+            {% else %}
+            <!-- Account Container -->
+            <div class="account-container mb-0 mb-lg-2">
+              <ul class="list-inline list-unstyled text-center">
+                <li class="list-inline-item">
+                  <a class="animated-link list-text" href="">Register</a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="animated-link list-text" href="">Login</a>
+                </li>
+              </ul>  
+            </div>
+            {% endif %}
+          </div>
+          <!-- Logo -->
+          <div class="col-4 my-auto text-center">
+            <a href="{% url 'home' %}">
+              <h1 class="logo-font text-white mb-0" >CIRPG</h1>
+            </a>
+          </div>
+          <!-- Account Container -->
+          <div class="col-4 ms-auto">
+            <div class="account-container me-0 me-lg-2">
 
+              <!-- Inline -->
+              <ul class="list-inline list-unstyled text-center d-md-flex d-none">
+                <li class="list-inline-item">
+                  <a class="animated-link list-text" href="">Leaderboard</a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="animated-link list-text" href="">Codex</a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="animated-link list-text" href="">Premium</a>
+                </li>
+              </ul>  
+
+              <!-- Dropdown -->
+              <ul class="list-inline list-unstyled text-center d-md-none d-flex">
+                <li class="list-inline-item dropdown">
+                  <a href="#" id="right-nav-dropdown" class="animated-link list-text" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Menu
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-start text-center" aria-labelledby="right-nav-dropdown">
+                    <a class="animated-link list-text dropdown-item" href="">Leaderboard</a>
+                    <hr class="dropdown-divider">
+                    <a class="animated-link list-text dropdown-item" href="">Codex</a>
+                    <hr class="dropdown-divider">
+                    <a class="animated-link list-text dropdown-item" href="">Register</a>
+                    <a class="animated-link list-text dropdown-item" href="">Login</a>
+                    <a class="animated-link list-text dropdown-item" href="">Premium</a>                    
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>        
         {% if messages %}
         <div class="message-container"></div>
         {% endif %}
@@ -40,11 +105,9 @@
         {% block content %}
         {% endblock %}
  
-
         {% block postloadjs %}
             <!-- Scripts -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
         {% endblock %}
-
     </body>
 </html>
