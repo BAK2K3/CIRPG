@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # Custom Apps
     'home',
+    'codex'
 ]
 
 MIDDLEWARE = [
