@@ -38,7 +38,7 @@ class Codex(models.Model):
     image = models.ImageField()
     paid = models.BooleanField(default=False)
     min_level = models.IntegerField(choices=[(i, i) for i in range(6)],
-                                    default=1)
+                                    null=True, blank=True)
 
     def __str__(self):
         return self.name
