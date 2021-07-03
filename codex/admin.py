@@ -2,7 +2,11 @@ from django.contrib import admin
 from .models import Codex
 
 
+# Admin class for Codex
 class CodexAdmin(admin.ModelAdmin):
+    """
+    Codex Admin settiings for list display and ordering.
+    """
     list_display = (
         'pk',
         'name',
