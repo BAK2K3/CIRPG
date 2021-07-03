@@ -2,7 +2,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-
 class Codex(models.Model):
     """
     Codex Model
@@ -37,7 +36,7 @@ class Codex(models.Model):
     base_speed = models.IntegerField(default=5)
     image = models.ImageField()
     paid = models.BooleanField(default=False)
-    min_level = models.IntegerField(choices=[(i, i) for i in range(6)],
+    min_level = models.IntegerField(choices=[(i, i) for i in range(1, 6)],
                                     null=True, blank=True)
 
     def __str__(self):
