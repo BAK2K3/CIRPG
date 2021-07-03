@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Codex
 
-# Register your models here.
+
+# Register the Codex model
+admin.site.register(Codex)
