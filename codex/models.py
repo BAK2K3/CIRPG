@@ -21,14 +21,17 @@ class Codex(models.Model):
     min_level = User's minimum level threshold.
     """
 
+    class Meta:
+        verbose_name_plural = 'Codex'
+
     class TypeChoices(models.TextChoices):
-        ENEMY = 'EN', _('Enemy')
-        WEAPON = 'WE', _('Weapon')
-        HERO = 'HE', _('Hero')
+        ENEMY = 'Enemy', _('Enemy')
+        WEAPON = 'Weapon', _('Weapon')
+        HERO = 'Hero', _('Hero')
 
     name = models.CharField(max_length=100)
     alpha_name = models.CharField(max_length=100, null=True, blank=True)
-    type = models.CharField(max_length=2, choices=TypeChoices.choices,
+    type = models.CharField(max_length=10, choices=TypeChoices.choices,
                             default=TypeChoices.ENEMY)
     base_hp = models.IntegerField(default=5)
     base_attack = models.IntegerField(default=5)
