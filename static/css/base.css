@@ -242,6 +242,39 @@ hr.dropdown-divider {
     border-radius: 20px;
  }
 
+ .polymorphism {
+    border-radius: 25px;
+    background: #1e1e24;
+    box-shadow:  5px 5px 10px #0e0e11,
+                 -5px -5px 10px #2e2e37;
+ }
+
+/********************************** CODEX */
+
+.cornered-image {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.stats-table {
+    color: #FFF8F0;
+    margin-bottom: 2px;
+}
+.stats-table th, .stats-table td {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.stats-table td {
+    text-align: right;
+}
+
+.codex-card .card-footer {
+    background-color: none;
+    padding:0;
+    border-top: none;
+}
+
 /********************************** MEDIA QUERIES */
 @media (max-width: 992px) {
     h2 {
@@ -280,8 +313,21 @@ hr.dropdown-divider {
         font-size: 1.3rem;
     }
 
+    h5 {
+        margin-top: 2px;
+        font-size: 1rem;
+    }
+
     .dropdown-menu-start[data-bs-popper] {
         left: -102%;
+    }
+
+    .stats-table {
+        font-size: 0.8rem;
+    }
+
+    .card-body {
+        padding: 0 0 2px 0px;
     }
 
 }
