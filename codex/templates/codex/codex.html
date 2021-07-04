@@ -3,11 +3,67 @@
 
 {% block content %}
 <!-- Main Page Container -->
-<div class="container-fluid splash-container text-center py-3">
+<div class="container-fluid py-3">
+    <!-- Heading -->
     <div class="row">
-        
-        {{codex}}
-
+        <div class="col text-center mt-3">
+            <h2 class="logo-font">Codex</h2>
+            <hr class="w-25 mb-1 mx-auto">
+        </div>
+    </div>
+    <!-- Codex Entries -->
+    <div class="row">
+        <div class="col-10 offset-1">
+            <!--Filters-->
+            <div class="row mt-1 mb-2"></div>
+            <!-- Entries -->
+            <div class="row">
+                {% for entry in codex %}
+                    <div class="col-6 col-md-4 col-lg-3 col-xl-2 pt-3">
+                        <div class="card h100 border-0 polymorphism codex-card">
+                            <img src="{{ entry.image.url }}" class="card-img-top cornered-image" alt="{{ entry.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ entry.name }}</h5>
+                                <table class="table table-borderless stats-table">
+                                    <tbody>
+                                            <tr>
+                                                <th scope="row">Type:</th>
+                                                <td>{{ entry.type }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">HP:</th>
+                                                <td>{{ entry.base_hp }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Attack:</th>
+                                                <td>{{ entry.base_attack }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Defense:</th>
+                                                <td>{{ entry.base_defense }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Speed:</th>
+                                                <td>{{ entry.base_speed }}</td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                                <!-- https://stackoverflow.com/questions/1107737/numeric-for-loop-in-django-templates -->
+                                {% if entry.min_level %}
+                                    <div class="card-footer text-center">
+                                        {% with ''|center:entry.min_level as range %}
+                                            {% for _ in range %}
+                                                <span class="fa fa-star checked"></span>
+                                            {% endfor %}
+                                        {% endwith %}
+                                    </div>
+                              {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
