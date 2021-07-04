@@ -256,6 +256,11 @@ hr.dropdown-divider {
     border-top-right-radius: 25px;
 }
 
+.card-body {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
 .stats-table {
     color: #FFF8F0;
     margin-bottom: 2px;
@@ -273,6 +278,65 @@ hr.dropdown-divider {
     background-color: none;
     padding:0;
     border-top: none;
+}
+
+/* Styling to remove button  */
+.custom-dark-btn, .filter-container {
+    color: #FFF8F0;
+    background-color: #0f0f0f;
+    border: none;
+    border-radius: 25px;
+}
+
+.custom-dark-btn:hover {
+    background-color: transparent;
+    transition: 0.1s;
+}
+
+.custom-dark-btn:active, .custom-dark-btn:active:hover, .custom-dark-btn:focus:hover {
+    background-color: transparent;
+    transition: 0.1s;
+    box-shadow: none;
+}
+
+.custom-dark-btn:focus {
+    background-color: #0f0f0f;
+    transition: 0.1s;
+    box-shadow: none;
+}
+
+/* Animated Link Source: https://ui-snippets.dev/ */
+.button-effect {
+    padding-bottom: 1px;
+    color: white;
+    position: relative;
+}
+
+.button-effect::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translateY(3px);
+    background: white;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Allow button hover to produce text highlight effect */
+.custom-dark-btn:hover .button-effect::after, .button-effect:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.filter-button {
+    text-decoration: none;
+}
+
+.filter-button:active, .filter-button:focus {
+    box-shadow: none;
 }
 
 /********************************** MEDIA QUERIES */
