@@ -203,7 +203,7 @@ hr.dropdown-divider {
 
 /********************************** Index */
 
-.splash-container {
+.page-container {
     display: flex;
     height: calc(100% - 100px);
     flex-direction: column;
@@ -211,7 +211,7 @@ hr.dropdown-divider {
     justify-content: center;
 }
 
-.splash-container > .row {
+.page-container > .row {
     display: flex;
     flex: 1 0 auto;
     justify-content: center;
@@ -250,7 +250,7 @@ hr.dropdown-divider {
 }
 
 @media (max-width: 767px) {
-    .splash-container {
+    .page-container {
         justify-content: flex-start;
     }   
 
@@ -263,7 +263,7 @@ hr.dropdown-divider {
 
 @media (max-width: 576px) {
 
-    .splash-container {
+    .page-container {
         height: calc(100% - 54px);
         justify-content: flex-start;
     }
