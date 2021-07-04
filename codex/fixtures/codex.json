@@ -10,7 +10,7 @@
           "base_attack":7,
           "base_defense":5,
           "base_speed":2,
-          "image":"ape_king.jpg",
+          "image":"ape_king.png",
           "paid":true,
           "min_level":4
        }
@@ -26,7 +26,7 @@
           "base_attack":8,
           "base_defense":6,
           "base_speed":2,
-          "image":"ape_king_undead.jpg",
+          "image":"ape_king_undead.png",
           "paid":true,
           "min_level":5
        }
@@ -42,7 +42,7 @@
           "base_attack":5,
           "base_defense":6,
           "base_speed":3,
-          "image":"bear_armoured.jpg",
+          "image":"bear_armoured.png",
           "paid":false,
           "min_level":2
        }
@@ -58,7 +58,7 @@
           "base_attack":7,
           "base_defense":3,
           "base_speed":5,
-          "image":"black_mage.jpg",
+          "image":"black_mage.png",
           "paid":false,
           "min_level":2
        }
@@ -74,7 +74,7 @@
           "base_attack":6,
           "base_defense":5,
           "base_speed":4,
-          "image":"bone_imp.jpg",
+          "image":"bone_imp.png",
           "paid":true,
           "min_level":3
        }
@@ -90,7 +90,7 @@
           "base_attack":4,
           "base_defense":7,
           "base_speed":3,
-          "image":"bone_tomberry.jpg",
+          "image":"bone_tomberry.png",
           "paid":true,
           "min_level":3
        }
@@ -106,7 +106,7 @@
           "base_attack":5,
           "base_defense":4,
           "base_speed":4,
-          "image":"bugbear_lesser.jpg",
+          "image":"bugbear_lesser.png",
           "paid":true,
           "min_level":1
        }
@@ -122,7 +122,7 @@
           "base_attack":6,
           "base_defense":5,
           "base_speed":3,
-          "image":"bugbear_greater.jpg",
+          "image":"bugbear_greater.png",
           "paid":true,
           "min_level":3
        }
@@ -138,7 +138,7 @@
           "base_attack":4,
           "base_defense":6,
           "base_speed":4,
-          "image":"crab_curious.jpg",
+          "image":"crab_curious.png",
           "paid":false,
           "min_level":1
        }
@@ -154,7 +154,7 @@
           "base_attack":6,
           "base_defense":4,
           "base_speed":6,
-          "image":"cthulu_skeleton.jpg",
+          "image":"cthulu_skeleton.png",
           "paid":true,
           "min_level":4
        }
@@ -170,7 +170,7 @@
           "base_attack":6,
           "base_defense":5,
           "base_speed":4,
-          "image":"cthulu_warrior.jpg",
+          "image":"cthulu_warrior.png",
           "paid":true,
           "min_level":4
        }
@@ -186,7 +186,7 @@
           "base_attack":8,
           "base_defense":5,
           "base_speed":5,
-          "image":"cthulu_bezerker.jpg",
+          "image":"cthulu_bezerker.png",
           "paid":true,
           "min_level":5
        }
@@ -202,7 +202,7 @@
           "base_attack":6,
           "base_defense":5,
           "base_speed":5,
-          "image":"cthulu_emperor.jpg",
+          "image":"cthulu_emperor.png",
           "paid":true,
           "min_level":5
        }
@@ -211,14 +211,14 @@
        "pk":14,
        "model":"codex.codex",
        "fields":{
-          "alpha_name":"chtulu_enchanter",
+          "alpha_name":"cthulu_enchanter",
           "name":"Cthulu Enchanter",
           "type":"Enemy",
           "base_hp":50,
           "base_attack":6,
           "base_defense":5,
           "base_speed":7,
-          "image":"chtulu_enchanter.jpg",
+          "image":"cthulu_enchanter.png",
           "paid":true,
           "min_level":5
        }
@@ -234,7 +234,7 @@
           "base_attack":7,
           "base_defense":5,
           "base_speed":2,
-          "image":"cyclops_blind.jpg",
+          "image":"cyclops_blind.png",
           "paid":false,
           "min_level":3
        }
@@ -250,7 +250,7 @@
           "base_attack":6,
           "base_defense":6,
           "base_speed":5,
-          "image":"demon.jpg",
+          "image":"demon.png",
           "paid":true,
           "min_level":4
        }
@@ -266,7 +266,7 @@
           "base_attack":6,
           "base_defense":5,
           "base_speed":7,
-          "image":"demoness.jpg",
+          "image":"demoness.png",
           "paid":true,
           "min_level":4
        }
@@ -282,7 +282,7 @@
           "base_attack":6,
           "base_defense":5,
           "base_speed":4,
-          "image":"dragon_lesser.jpg",
+          "image":"dragon_lesser.png",
           "paid":true,
           "min_level":2
        }
@@ -298,7 +298,7 @@
           "base_attack":5,
           "base_defense":7,
           "base_speed":4,
-          "image":"dragon_greater.jpg",
+          "image":"dragon_greater.png",
           "paid":true,
           "min_level":4
        }
@@ -314,7 +314,7 @@
           "base_attack":6,
           "base_defense":6,
           "base_speed":4,
-          "image":"dragon_bone.jpg",
+          "image":"dragon_bone.png",
           "paid":true,
           "min_level":5
        }
@@ -330,7 +330,7 @@
           "base_attack":6,
           "base_defense":6,
           "base_speed":5,
-          "image":"elemental_air.jpg",
+          "image":"elemental_air.png",
           "paid":true,
           "min_level":3
        }
@@ -346,7 +346,7 @@
           "base_attack":7,
           "base_defense":5,
           "base_speed":4,
-          "image":"elemental_poison.jpg",
+          "image":"elemental_poison.png",
           "paid":true,
           "min_level":3
        }
@@ -362,7 +362,7 @@
           "base_attack":6,
           "base_defense":6,
           "base_speed":4,
-          "image":"elemental_water.jpg",
+          "image":"elemental_water.png",
           "paid":true,
           "min_level":3
        }
@@ -378,7 +378,7 @@
           "base_attack":3,
           "base_defense":6,
           "base_speed":5,
-          "image":"fish_folk.jpg",
+          "image":"fish_folk.png",
           "paid":false,
           "min_level":1
        }
@@ -394,7 +394,7 @@
           "base_attack":4,
           "base_defense":4,
           "base_speed":6,
-          "image":"frog_pond.jpg",
+          "image":"frog_pond.png",
           "paid":false,
           "min_level":1
        }
@@ -410,7 +410,7 @@
           "base_attack":5,
           "base_defense":4,
           "base_speed":5,
-          "image":"frog_guard.jpg",
+          "image":"frog_guard.png",
           "paid":false,
           "min_level":2
        }
@@ -426,7 +426,7 @@
           "base_attack":6,
           "base_defense":4,
           "base_speed":5,
-          "image":"frog_king.jpg",
+          "image":"frog_king.png",
           "paid":false,
           "min_level":3
        }
@@ -442,7 +442,7 @@
           "base_attack":6,
           "base_defense":3,
           "base_speed":6,
-          "image":"goblin_lesser.jpg",
+          "image":"goblin_lesser.png",
           "paid":false,
           "min_level":2
        }
@@ -458,7 +458,7 @@
           "base_attack":5,
           "base_defense":5,
           "base_speed":5,
-          "image":"goblin_greater.jpg",
+          "image":"goblin_greater.png",
           "paid":true,
           "min_level":3
        }
@@ -474,7 +474,7 @@
           "base_attack":7,
           "base_defense":4,
           "base_speed":7,
-          "image":"griffin_moon.jpg",
+          "image":"griffin_moon.png",
           "paid":true,
           "min_level":4
        }
@@ -490,7 +490,7 @@
           "base_attack":6,
           "base_defense":5,
           "base_speed":6,
-          "image":"griffin_sun.jpg",
+          "image":"griffin_sun.png",
           "paid":true,
           "min_level":4
        }
@@ -506,7 +506,7 @@
           "base_attack":7,
           "base_defense":4,
           "base_speed":4,
-          "image":"hobgoblin.jpg",
+          "image":"hobgoblin.png",
           "paid":true,
           "min_level":1
        }
@@ -522,7 +522,7 @@
           "base_attack":5,
           "base_defense":5,
           "base_speed":4,
-          "image":"hog_of_war.jpg",
+          "image":"hog_of_war.png",
           "paid":false,
           "min_level":1
        }
@@ -538,7 +538,7 @@
           "base_attack":4,
           "base_defense":10,
           "base_speed":3,
-          "image":"hypnoslug.jpg",
+          "image":"hypnoslug.png",
           "paid":true,
           "min_level":1
        }
@@ -554,7 +554,7 @@
           "base_attack":4,
           "base_defense":5,
           "base_speed":7,
-          "image":"imp_lesser.jpg",
+          "image":"imp_lesser.png",
           "paid":true,
           "min_level":1
        }
@@ -570,7 +570,7 @@
           "base_attack":7,
           "base_defense":4,
           "base_speed":5,
-          "image":"imp_greater.jpg",
+          "image":"imp_greater.png",
           "paid":true,
           "min_level":2
        }
@@ -586,7 +586,7 @@
           "base_attack":7,
           "base_defense":5,
           "base_speed":5,
-          "image":"imp_skeletal.jpg",
+          "image":"imp_skeletal.png",
           "paid":true,
           "min_level":3
        }
@@ -602,7 +602,7 @@
           "base_attack":6,
           "base_defense":4,
           "base_speed":4,
-          "image":"lizard_armoured.jpg",
+          "image":"lizard_armoured.png",
           "paid":true,
           "min_level":2
        }
@@ -618,7 +618,7 @@
           "base_attack":5,
           "base_defense":6,
           "base_speed":2,
-          "image":"macrosaur.jpg",
+          "image":"macrosaur.png",
           "paid":false,
           "min_level":1
        }
@@ -634,7 +634,7 @@
           "base_attack":7,
           "base_defense":7,
           "base_speed":2,
-          "image":"magma_bone_collector.jpg",
+          "image":"magma_bone_collector.png",
           "paid":true,
           "min_level":4
        }
@@ -643,14 +643,14 @@
        "pk":41,
        "model":"codex.codex",
        "fields":{
-          "alpha_name":"lesser_merfolk",
+          "alpha_name":"merfolk_lesser",
           "name":"Lesser Merfolk",
           "type":"Enemy",
           "base_hp":25,
           "base_attack":6,
           "base_defense":3,
           "base_speed":6,
-          "image":"lesser_merfolk.jpg",
+          "image":"merfolk_lesser.png",
           "paid":true,
           "min_level":1
        }
@@ -659,14 +659,14 @@
        "pk":42,
        "model":"codex.codex",
        "fields":{
-          "alpha_name":"greater_merfolk",
+          "alpha_name":"merfolk_greater",
           "name":"Greater Merfolk",
           "type":"Enemy",
           "base_hp":30,
           "base_attack":6,
           "base_defense":4,
           "base_speed":6,
-          "image":"greater_merfolk.jpg",
+          "image":"merfolk_greater.png",
           "paid":true,
           "min_level":2
        }
@@ -682,7 +682,7 @@
           "base_attack":6,
           "base_defense":6,
           "base_speed":2,
-          "image":"moloch.jpg",
+          "image":"moloch.png",
           "paid":true,
           "min_level":5
        }
@@ -698,7 +698,7 @@
           "base_attack":9,
           "base_defense":4,
           "base_speed":7,
-          "image":"nemesis_archer.jpg",
+          "image":"nemesis_archer.png",
           "paid":true,
           "min_level":5
        }
@@ -714,7 +714,7 @@
           "base_attack":8,
           "base_defense":4,
           "base_speed":7,
-          "image":"nemesis_assassin.jpg",
+          "image":"nemesis_assassin.png",
           "paid":true,
           "min_level":5
        }
@@ -730,7 +730,7 @@
           "base_attack":7,
           "base_defense":6,
           "base_speed":6,
-          "image":"nemesis_commander.jpg",
+          "image":"nemesis_commander.png",
           "paid":true,
           "min_level":5
        }
@@ -746,7 +746,7 @@
           "base_attack":7,
           "base_defense":6,
           "base_speed":5,
-          "image":"nemesis_soldier.jpg",
+          "image":"nemesis_soldier.png",
           "paid":true,
           "min_level":5
        }
@@ -762,7 +762,7 @@
           "base_attack":6,
           "base_defense":7,
           "base_speed":3,
-          "image":"nemesis_warlord.jpg",
+          "image":"nemesis_warlord.png",
           "paid":true,
           "min_level":5
        }
@@ -771,14 +771,14 @@
        "pk":49,
        "model":"codex.codex",
        "fields":{
-          "alpha_name":"nature_ogre",
+          "alpha_name":"ogre_nature",
           "name":"Nature Ogre",
           "type":"Enemy",
           "base_hp":40,
           "base_attack":5,
           "base_defense":5,
           "base_speed":4,
-          "image":"nature_ogre.jpg",
+          "image":"ogre_nature.png",
           "paid":true,
           "min_level":2
        }
@@ -787,14 +787,14 @@
        "pk":50,
        "model":"codex.codex",
        "fields":{
-          "alpha_name":"desert_ogre",
+          "alpha_name":"ogre_desert",
           "name":"Desert Ogre",
           "type":"Enemy",
           "base_hp":45,
           "base_attack":6,
           "base_defense":6,
           "base_speed":3,
-          "image":"desert_ogre.jpg",
+          "image":"ogre_desert.png",
           "paid":true,
           "min_level":3
        }
@@ -803,14 +803,14 @@
        "pk":51,
        "model":"codex.codex",
        "fields":{
-          "alpha_name":"war_ogre",
+          "alpha_name":"ogre_war",
           "name":"War Ogre",
           "type":"Enemy",
           "base_hp":50,
           "base_attack":7,
           "base_defense":6,
           "base_speed":3,
-          "image":"war_ogre.jpg",
+          "image":"ogre_war.png",
           "paid":true,
           "min_level":4
        }
@@ -819,14 +819,14 @@
        "pk":52,
        "model":"codex.codex",
        "fields":{
-          "alpha_name":"chaos_ogre",
+          "alpha_name":"ogre_chaos",
           "name":"Chaos Ogre",
           "type":"Enemy",
           "base_hp":50,
           "base_attack":8,
           "base_defense":6,
           "base_speed":4,
-          "image":"chaos_ogre.jpg",
+          "image":"ogre_chaos.png",
           "paid":true,
           "min_level":5
        }
@@ -835,14 +835,14 @@
        "pk":53,
        "model":"codex.codex",
        "fields":{
-          "alpha_name":"desert_orc",
+          "alpha_name":"orc_desert",
           "name":"Desert Orc",
           "type":"Enemy",
           "base_hp":40,
           "base_attack":6,
           "base_defense":6,
           "base_speed":2,
-          "image":"desert_orc.jpg",
+          "image":"orc_desert.png",
           "paid":true,
           "min_level":2
        }
@@ -851,14 +851,14 @@
        "pk":54,
        "model":"codex.codex",
        "fields":{
-          "alpha_name":"war_orc",
+          "alpha_name":"orc_war",
           "name":"War Orc",
           "type":"Enemy",
           "base_hp":40,
           "base_attack":8,
           "base_defense":4,
           "base_speed":4,
-          "image":"war_orc.jpg",
+          "image":"orc_war.png",
           "paid":true,
           "min_level":3
        }
@@ -867,14 +867,14 @@
        "pk":55,
        "model":"codex.codex",
        "fields":{
-          "alpha_name":"bone_orc",
+          "alpha_name":"orc_bone",
           "name":"Bone Orc",
           "type":"Enemy",
           "base_hp":50,
           "base_attack":6,
           "base_defense":6,
           "base_speed":4,
-          "image":"bone_orc.jpg",
+          "image":"orc_bone.png",
           "paid":true,
           "min_level":4
        }
@@ -890,7 +890,7 @@
           "base_attack":5,
           "base_defense":3,
           "base_speed":8,
-          "image":"pelican.jpg",
+          "image":"pelican.png",
           "paid":false,
           "min_level":1
        }
@@ -906,7 +906,7 @@
           "base_attack":6,
           "base_defense":7,
           "base_speed":3,
-          "image":"rock_monster_mineral.jpg",
+          "image":"rock_monster_mineral.png",
           "paid":false,
           "min_level":3
        }
@@ -922,7 +922,7 @@
           "base_attack":7,
           "base_defense":6,
           "base_speed":3,
-          "image":"rock_monster_poison.jpg",
+          "image":"rock_monster_poison.png",
           "paid":false,
           "min_level":3
        }
@@ -938,7 +938,7 @@
           "base_attack":7,
           "base_defense":2,
           "base_speed":6,
-          "image":"serpent_water.jpg",
+          "image":"serpent_water.png",
           "paid":true,
           "min_level":1
        }
@@ -954,7 +954,7 @@
           "base_attack":6,
           "base_defense":6,
           "base_speed":3,
-          "image":"serpent_nature.jpg",
+          "image":"serpent_nature.png",
           "paid":true,
           "min_level":2
        }
@@ -970,7 +970,7 @@
           "base_attack":6,
           "base_defense":3,
           "base_speed":7,
-          "image":"serpent_poison.jpg",
+          "image":"serpent_poison.png",
           "paid":true,
           "min_level":2
        }
@@ -986,7 +986,7 @@
           "base_attack":4,
           "base_defense":7,
           "base_speed":4,
-          "image":"serpent_rock.jpg",
+          "image":"serpent_rock.png",
           "paid":true,
           "min_level":2
        }
@@ -1002,7 +1002,7 @@
           "base_attack":6,
           "base_defense":2,
           "base_speed":8,
-          "image":"serpent_air.jpg",
+          "image":"serpent_air.png",
           "paid":true,
           "min_level":2
        }
@@ -1018,7 +1018,7 @@
           "base_attack":7,
           "base_defense":5,
           "base_speed":6,
-          "image":"serpent_fire.jpg",
+          "image":"serpent_fire.png",
           "paid":true,
           "min_level":3
        }
@@ -1034,7 +1034,7 @@
           "base_attack":8,
           "base_defense":5,
           "base_speed":5,
-          "image":"serpent_bone.jpg",
+          "image":"serpent_bone.png",
           "paid":true,
           "min_level":4
        }
@@ -1050,7 +1050,7 @@
           "base_attack":9,
           "base_defense":6,
           "base_speed":5,
-          "image":"serpent_chaos.jpg",
+          "image":"serpent_chaos.png",
           "paid":true,
           "min_level":5
        }
@@ -1066,7 +1066,7 @@
           "base_attack":5,
           "base_defense":5,
           "base_speed":6,
-          "image":"skeletal_archer.jpg",
+          "image":"skeletal_archer.png",
           "paid":true,
           "min_level":1
        }
@@ -1082,7 +1082,7 @@
           "base_attack":5,
           "base_defense":5,
           "base_speed":5,
-          "image":"skeletal_scavenger.jpg",
+          "image":"skeletal_scavenger.png",
           "paid":true,
           "min_level":1
        }
@@ -1098,7 +1098,7 @@
           "base_attack":5,
           "base_defense":6,
           "base_speed":4,
-          "image":"skeletal_soldier.jpg",
+          "image":"skeletal_soldier.png",
           "paid":true,
           "min_level":1
        }
@@ -1114,7 +1114,7 @@
           "base_attack":5,
           "base_defense":4,
           "base_speed":7,
-          "image":"skeletal_thief.jpg",
+          "image":"skeletal_thief.png",
           "paid":true,
           "min_level":1
        }
@@ -1130,7 +1130,7 @@
           "base_attack":5,
           "base_defense":7,
           "base_speed":5,
-          "image":"skeletal_commander.jpg",
+          "image":"skeletal_commander.png",
           "paid":true,
           "min_level":2
        }
@@ -1146,7 +1146,7 @@
           "base_attack":8,
           "base_defense":3,
           "base_speed":6,
-          "image":"skeletal_wizard.jpg",
+          "image":"skeletal_wizard.png",
           "paid":true,
           "min_level":2
        }
@@ -1162,7 +1162,7 @@
           "base_attack":4,
           "base_defense":6,
           "base_speed":6,
-          "image":"spider_earth.jpg",
+          "image":"spider_earth.png",
           "paid":true,
           "min_level":3
        }
@@ -1178,7 +1178,7 @@
           "base_attack":6,
           "base_defense":4,
           "base_speed":6,
-          "image":"spider_ice.jpg",
+          "image":"spider_ice.png",
           "paid":true,
           "min_level":3
        }
@@ -1194,7 +1194,7 @@
           "base_attack":8,
           "base_defense":6,
           "base_speed":4,
-          "image":"spider_armoured.jpg",
+          "image":"spider_armoured.png",
           "paid":true,
           "min_level":4
        }
@@ -1203,14 +1203,14 @@
        "pk":76,
        "model":"codex.codex",
        "fields":{
-          "alpha_name":"war_troll",
+          "alpha_name":"troll_war",
           "name":"War Troll",
           "type":"Enemy",
           "base_hp":55,
           "base_attack":4,
           "base_defense":5,
           "base_speed":2,
-          "image":"war_troll.jpg",
+          "image":"troll_war.png",
           "paid":true,
           "min_level":2
        }
@@ -1226,7 +1226,7 @@
           "base_attack":9,
           "base_defense":6,
           "base_speed":4,
-          "image":"undead_ogre.jpg",
+          "image":"undead_ogre.png",
           "paid":true,
           "min_level":4
        }
@@ -1242,7 +1242,7 @@
           "base_attack":8,
           "base_defense":8,
           "base_speed":3,
-          "image":"undead_orc.jpg",
+          "image":"undead_orc.png",
           "paid":true,
           "min_level":4
        }
@@ -1258,7 +1258,7 @@
           "base_attack":7,
           "base_defense":3,
           "base_speed":8,
-          "image":"undead_ravager.jpg",
+          "image":"undead_ravager.png",
           "paid":true,
           "min_level":4
        }
@@ -1274,7 +1274,7 @@
           "base_attack":6,
           "base_defense":4,
           "base_speed":6,
-          "image":"verdan_enchanter.jpg",
+          "image":"verdan_enchanter.png",
           "paid":true,
           "min_level":5
        }
@@ -1290,7 +1290,7 @@
           "base_attack":7,
           "base_defense":8,
           "base_speed":3,
-          "image":"verdan_paladin.jpg",
+          "image":"verdan_paladin.png",
           "paid":true,
           "min_level":5
        }
@@ -1299,14 +1299,14 @@
        "pk":82,
        "model":"codex.codex",
        "fields":{
-          "alpha_name":"vardan_rogue",
+          "alpha_name":"verdan_rogue",
           "name":"Verdan Rogue",
           "type":"Enemy",
           "base_hp":35,
           "base_attack":9,
           "base_defense":3,
           "base_speed":9,
-          "image":"vardan_rogue.jpg",
+          "image":"verdan_rogue.png",
           "paid":true,
           "min_level":5
        }
@@ -1322,7 +1322,7 @@
           "base_attack":7,
           "base_defense":5,
           "base_speed":6,
-          "image":"war_doctor.jpg",
+          "image":"war_doctor.png",
           "paid":true,
           "min_level":2
        }
@@ -1338,7 +1338,7 @@
           "base_attack":4,
           "base_defense":7,
           "base_speed":1,
-          "image":"war_turtle_lesser.jpg",
+          "image":"war_turtle_lesser.png",
           "paid":true,
           "min_level":1
        }
@@ -1354,7 +1354,7 @@
           "base_attack":5,
           "base_defense":7,
           "base_speed":2,
-          "image":"war_turtle_greater.jpg",
+          "image":"war_turtle_greater.png",
           "paid":true,
           "min_level":4
        }
@@ -1370,7 +1370,7 @@
           "base_attack":6,
           "base_defense":2,
           "base_speed":6,
-          "image":"wolf_dire.jpg",
+          "image":"wolf_dire.png",
           "paid":true,
           "min_level":1
        }
@@ -1386,7 +1386,7 @@
           "base_attack":8,
           "base_defense":4,
           "base_speed":5,
-          "image":"whale_killer.jpg",
+          "image":"whale_killer.png",
           "paid":false,
           "min_level":3
        }
