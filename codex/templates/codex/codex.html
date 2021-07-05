@@ -16,14 +16,10 @@
         <div class="col-12 col-sm-10 offset-sm-1">
             <!--Filters-->
             <div class="row mt-1 mb-2">
-
                 <!-- Filter Toggle -->
                 <button class="btn btn-dark custom-dark-btn w-25 mx-auto" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     <span class="button-effect">Filters</span> 
                 </button>
-
-                
-                
                 <!-- Filter Collapsable -->
                 <div class="collapse" id="collapseExample">
                     <div class="col-12 col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
@@ -36,9 +32,9 @@
                                     <div class="col-10 offset-1 col-xl-4 offset-xl-0 text-center">
                                         <label for="premiumFilter" class="text-secondary">Premium Content</label>
                                         <select class="form-select" id="premiumFilter" name='premium' aria-label="Premium Filter">
-                                            <option hidden disabled selected value>Both</option>
-                                            <option value="true">Premium</option>
-                                            <option value="false">Free</option>
+                                            <option value="both" {% if not premium %}selected{% endif %}>Both</option>
+                                            <option value="1" {% if premium == 1 %}selected{% endif %}>Premium</option>
+                                            <option value="0" {% if premium == 0 %}selected{% endif %}>Free</option>
                                         </select>
                                     </div>
                                     
@@ -46,39 +42,42 @@
                                     <div class="col-10 offset-1 col-xl-4 offset-xl-0 text-center">
                                     <label for="typeFilter" class="text-secondary">Type</label>
                                     <select class="form-select" id="typeFilter" name='type' aria-label="Premium Filter">
-                                        <option hidden disabled selected value>All</option>
-                                        <option value="Enemy">Enemy</option>
-                                        <option value="Weapon">Weapon</option>
-                                        <option value="Hero">Hero</option>
+                                        <option value="all" {% if not entry_type %}selected{% endif %}>All</option>
+                                        <option value="enemy" {% if entry_type == "enemy" %}selected{% endif %}>Enemy</option>
+                                        <option value="weapon"{% if entry_type == "weapon" %}selected{% endif %}>Weapon</option>
+                                        <option value="hero" {% if entry_type == "hero" %}selected{% endif %}>Hero</option>
                                     </select>
                                     </div>
-            
+                                                
                                     <!-- Availability -->
                                     <div class="col-10 offset-1 col-xl-4 offset-xl-0 text-center">
                                         <label for="typeFilter" class="text-secondary">Min Level <span class="fa fa-star checked"></span></label>
                                         <div class="checkbox-group" id="minLevelFilter">
                                             <div class="form-check form-check-inline text-center">
-                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel1" value="1" checked>
+                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel1" value="1" {% if not levels or 1 in levels %}checked{% endif %}>
                                                 <label class="form-check-label" for="minLevel1">1</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel2" value="2" checked>
+                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel2" value="2" {% if not levels or 2 in levels %}checked{% endif %}>
                                                 <label class="form-check-label" for="minLevel2">2</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel3" value="3" checked>
+                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel3" value="3" {% if not levels or 3 in levels %}checked{% endif %}>
                                                 <label class="form-check-label" for="minLevel3">3</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel4" value="4" checked>
+                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel4" value="4" {% if not levels or 4 in levels %}checked{% endif %}>
                                                 <label class="form-check-label" for="minLevel4">4</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel5" value="5" checked>
+                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel5" value="5" {% if not levels or 5 in levels %}checked{% endif %}>
                                                 <label class="form-check-label" for="minLevel5">5</label>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- Hidden Availability -->
+                                    <input type="hidden" name="levels" id="minLevelString">
 
                                     <!-- Submit -->
                                     <div class="col-12 text-center">
@@ -140,4 +139,9 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {% include 'codex/includes/filter_form_validation.html' %}
 {% endblock %}
