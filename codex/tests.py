@@ -81,3 +81,22 @@ class TestViews(TestCase):
         self.assertTrue(codex_entry.min_level == 1)
         self.assertTrue(not codex_entry.paid)
         self.assertTrue(codex_entry.type == "Weapon")
+
+    def test_codex_sort_dir(self):
+        """Test codex sorting direction params"""
+        response = self.client.get('/codex/?direction=desc')
+        sort_dir = response.context['sort_dir']
+        codex = response.context['codex']
+        codex_length = len(codex)
+        self.assertTrue(sort_dir == 'desc')
+        self.assertTrue(codex[0].pk == codex_length)
+
+    def test_codex_sort_by(self):
+        """Test codex sort by params"""
+        response = self.client.get('/codex/?sort=base_hp')
+        sort_by = response.context['sort_by']
+        codex = response.context['codex']
+        first_entry = codex[0]
+        last_entry = codex[len(codex)-1]
+        self.assertTrue(sort_by == 'base_hp')
+        self.assertTrue(first_entry.base_hp < last_entry.base_hp)
