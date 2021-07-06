@@ -11,7 +11,7 @@
             <div class="row align-items-center">
                 <div class="col-6">
                     <div class="picture-container p-1">
-                        <img class="img-fluid" src="{{ MEDIA_URL }}hero_knight.png" alt="Hero Knight">
+                        <a href="{% url 'codex' %}?type=hero"><img class="img-fluid" src="{{ MEDIA_URL }}hero_knight.png" alt="Hero Knight"></a>
                     </div>
                 </div>
                 <div class="col-6">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-6">
                     <div class="picture-container p-1">
-                        <img class="img-fluid" src="{{ MEDIA_URL }}axe_orc.png" alt="Axe">
+                        <a href="{% url 'codex' %}?type=weapon"><img class="img-fluid" src="{{ MEDIA_URL }}axe_orc.png" alt="Axe"></a>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
             <div class="row align-items-center">
                 <div class="col-6">
                     <div class="picture-container p-1">
-                        <img class="img-fluid" src="{{ MEDIA_URL }}magma_bone_collector.png" alt="Magma Bone Collector">
+                        <a href="{% url 'codex' %}?type=enemy"><img class="img-fluid" src="{{ MEDIA_URL }}magma_bone_collector.png" alt="Magma Bone Collector"></a>
                     </div>
                 </div>
                 <div class="col-6">
