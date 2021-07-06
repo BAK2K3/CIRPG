@@ -48,7 +48,7 @@
                                         <option value="hero" {% if entry_type == "hero" %}selected{% endif %}>Hero</option>
                                     </select>
                                     </div>
-                                                
+
                                     <!-- Availability -->
                                     <div class="col-10 offset-1 col-xl-4 offset-xl-0 text-center">
                                         <label for="typeFilter" class="text-secondary">Min Level <span class="fa fa-star checked"></span></label>
@@ -119,18 +119,31 @@
                                                 <th scope="row">Speed:</th>
                                                 <td>{{ entry.base_speed }}</td>
                                             </tr>
+                                            <tr>
+                                                <th scope="row">Premium:</th>
+                                                <td>
+                                                    {% if entry.paid %}
+                                                        <i class="fas fa-lock"></i>
+                                                    {% else %}
+                                                        <i class="fas fa-lock-open"></i>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
                                     </tbody>
                                 </table>
+                               
+                                <div class="card-footer text-center">
                                 <!-- https://stackoverflow.com/questions/1107737/numeric-for-loop-in-django-templates -->
                                 {% if entry.min_level %}
-                                    <div class="card-footer text-center">
-                                        {% with ''|center:entry.min_level as range %}
-                                            {% for _ in range %}
-                                                <span class="fa fa-star checked"></span>
-                                            {% endfor %}
-                                        {% endwith %}
-                                    </div>
-                              {% endif %}
+                                    {% with ''|center:entry.min_level as range %}
+                                        {% for _ in range %}
+                                            <span class="fa fa-star"></span>
+                                        {% endfor %}
+                                    {% endwith %}
+                                {% else %}
+                                    <span>N/A</span>
+                                {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>
