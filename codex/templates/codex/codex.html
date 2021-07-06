@@ -15,13 +15,16 @@
     <div class="row">
         <div class="col-12 col-sm-10 offset-sm-1">
             <!--Filters-->
-            <div class="row mt-1 mb-2">
-                <!-- Filter Toggle -->
-                <button class="btn btn-dark custom-dark-btn w-25 mx-auto" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    <span class="button-effect">Filters</span> 
-                </button>
+            <div class="row mt-1 mb-2 text-center">
+                <div class="button-container">
+                    <!-- Filter Toggle -->
+                    <button class="btn btn-dark custom-dark-btn w-25" data-bs-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse">
+                        <span class="button-effect">Filters</span> 
+                    </button>
+                </div>
+
                 <!-- Filter Collapsable -->
-                <div class="collapse" id="collapseExample">
+                <div class="collapse" id="filterCollapse">
                     <div class="col-12 col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
                         <div class="card card-body filter-container">
                             <!-- Get Form -->
@@ -79,9 +82,32 @@
                                     <!-- Hidden Availability -->
                                     <input type="hidden" name="levels" id="minLevelString">
 
+                                    <!-- Sort By -->
+                                    <div class="col-10 offset-1 col-xl-4 offset-xl-0 text-center">
+                                        <label for="sortBy" class="text-secondary">Sort By</label>
+                                        <select class="form-select" id="sortBy" name='sort' aria-label="Sort By">
+                                            <option value="default" {% if sort_by == 'pk' %}selected{% endif %}>Default</option>
+                                            <option value="name" {% if sort_by == "name" %}selected{% endif %}>Name</option>
+                                            <option value="type"{% if sort_by == "type" %}selected{% endif %}>Type</option>
+                                            <option value="base_hp" {% if sort_by == "base_hp" %}selected{% endif %}>HP</option>
+                                            <option value="base_attack" {% if sort_by == "base_attack" %}selected{% endif %}>Attack</option>
+                                            <option value="base_defense" {% if sort_by == "base_defense" %}selected{% endif %}>Defense</option>
+                                            <option value="base_speed" {% if sort_by == "base_speed" %}selected{% endif %}>Speed</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Sort Direction -->
+                                    <div class="col-10 offset-1 col-xl-4 offset-xl-0 text-center">
+                                        <label for="direction" class="text-secondary">Direction</label>
+                                        <select class="form-select" id="direction" name='direction' aria-label="Sort Direction">
+                                            <option value="asc" {% if not sort_dir %}selected{% endif %}>Ascending</option>
+                                            <option value="desc" {% if sort_dir == 'desc' %}selected{% endif %}>Descending</option>
+                                        </select>
+                                    </div>
+                                    
                                     <!-- Submit -->
-                                    <div class="col-12 text-center">
-                                            <button type="submit" class="btn btn-link filter-button"><span class="button-effect">Apply Filters</span></button>
+                                    <div class="col-12 col-xl-4 d-flex text-center">
+                                        <button type="submit" class="btn btn-link filter-button d-flex mx-auto my-auto"><span class="button-effect">Apply Filters</span></button>
                                     </div>
                                 </div>
                             </form>
@@ -91,63 +117,67 @@
             </div>
             <!-- Entries -->
             <div class="row">
-                {% for entry in codex %}
-                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2 pt-3">
-                        <div class="card h100 border-0 polymorphism codex-card">
-                            <img src="{{ entry.image.url }}" class="card-img-top cornered-image" alt="{{ entry.name }}">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">{{ entry.name }}</h5>
-                                <table class="table table-borderless table-responsive stats-table">
-                                    <tbody>
-                                            <tr>
-                                                <th scope="row">Type:</th>
-                                                <td>{{ entry.type }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">HP:</th>
-                                                <td>{{ entry.base_hp }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Attack:</th>
-                                                <td>{{ entry.base_attack }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Defense:</th>
-                                                <td>{{ entry.base_defense }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Speed:</th>
-                                                <td>{{ entry.base_speed }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Premium:</th>
-                                                <td>
-                                                    {% if entry.paid %}
-                                                        <i class="fas fa-lock"></i>
-                                                    {% else %}
-                                                        <i class="fas fa-lock-open"></i>
-                                                    {% endif %}
-                                                </td>
-                                            </tr>
-                                    </tbody>
-                                </table>
-                               
-                                <div class="card-footer text-center">
-                                <!-- https://stackoverflow.com/questions/1107737/numeric-for-loop-in-django-templates -->
-                                {% if entry.min_level %}
-                                    {% with ''|center:entry.min_level as range %}
-                                        {% for _ in range %}
-                                            <span class="fa fa-star"></span>
-                                        {% endfor %}
-                                    {% endwith %}
-                                {% else %}
-                                    <span>N/A</span>
-                                {% endif %}
+                {% if codex %}
+                    {% for entry in codex %}
+                        <div class="col-6 col-md-4 col-lg-3 col-xxl-2 pt-3">
+                            <div class="card h100 border-0 polymorphism codex-card">
+                                <img src="{{ entry.image.url }}" class="card-img-top cornered-image" alt="{{ entry.name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">{{ entry.name }}</h5>
+                                    <table class="table table-borderless table-responsive stats-table">
+                                        <tbody>
+                                                <tr>
+                                                    <th scope="row">Type:</th>
+                                                    <td>{{ entry.type }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">HP:</th>
+                                                    <td>{{ entry.base_hp }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Attack:</th>
+                                                    <td>{{ entry.base_attack }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Defense:</th>
+                                                    <td>{{ entry.base_defense }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Speed:</th>
+                                                    <td>{{ entry.base_speed }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Premium:</th>
+                                                    <td>
+                                                        {% if entry.paid %}
+                                                            <i class="fas fa-lock"></i>
+                                                        {% else %}
+                                                            <i class="fas fa-lock-open"></i>
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                                
+                                    <div class="card-footer text-center">
+                                    <!-- https://stackoverflow.com/questions/1107737/numeric-for-loop-in-django-templates -->
+                                    {% if entry.min_level %}
+                                        {% with ''|center:entry.min_level as range %}
+                                            {% for _ in range %}
+                                                <span class="fa fa-star"></span>
+                                            {% endfor %}
+                                        {% endwith %}
+                                    {% else %}
+                                        <span>N/A</span>
+                                    {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <h3 class="text-center pt-5">No codex entries found for these parameters!</h3>
+                {% endif %}
             </div>
         </div>
     </div>
