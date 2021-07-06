@@ -28,6 +28,16 @@ function filter_submission(event) {
         $('#premiumFilter').prop('disabled', true);
     }
 
+   // Disable Premium Filter if both selected
+   if ($('#direction').val() == "default") {
+        $('#direction').prop('disabled', true);
+    }
+
+    // Disable Premium Filter if both selected
+    if ($('#sortBy').val() == "default") {
+        $('#sortBy').prop('disabled', true);
+    }
+
     $('#filterForm')[0].submit();
 }
 
