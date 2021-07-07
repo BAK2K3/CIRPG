@@ -19,10 +19,10 @@
                 <div class="button-container">
                     <!-- Filter Toggle -->
                     <button class="btn btn-dark custom-dark-btn w-25" data-bs-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse">
-                        <span class="button-effect">Filters</span> 
-                    </button>
+                        <span class="button-effect">Filters</span>
+                    </button>    
                 </div>
-
+                
                 <!-- Filter Collapsable -->
                 <div class="collapse" id="filterCollapse">
                     <div class="col-12 col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
@@ -182,6 +182,14 @@
         </div>
     </div>
 </div>
+<div class="btt-negative">
+</div>
+<div class="btt-wrapper">
+    <a class="btt-link p-3" href="#mainNavbar" aria-label="Scroll to Top">
+        <i class="fas fa-arrow-up text-black me-2"> </i> Results: {{ codex|length }} 
+    </a>
+</div>
+
 {% endblock %}
 
 {% block postloadjs %}
