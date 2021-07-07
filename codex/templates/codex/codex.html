@@ -194,5 +194,5 @@
 
 {% block postloadjs %}
     {{ block.super }}
-    {% include 'codex/includes/filter_form_validation.html' %}
+    <script src="{% static 'codex/js/filter_form_validation.js' %}"></script>
 {% endblock %}
