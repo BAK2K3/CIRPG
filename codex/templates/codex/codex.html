@@ -104,10 +104,16 @@
                                             <option value="desc" {% if sort_dir == 'desc' %}selected{% endif %}>Descending</option>
                                         </select>
                                     </div>
-                                    
-                                    <!-- Submit -->
-                                    <div class="col-12 col-xl-4 d-flex text-center">
-                                        <button type="submit" class="btn btn-link filter-button d-flex mx-auto my-auto"><span class="button-effect">Apply Filters</span></button>
+                                    <!-- Action Container -->
+                                    <div class="col-10 offset-1 col-xl-4 offset-xl-0 d-flex">
+                                        <!-- Submit -->
+                                        <div class="col-6  d-flex text-center">
+                                            <button type="submit" class="btn btn-link filter-button d-flex my-auto mx-auto"><span class="button-effect">Apply Filters</span></button>
+                                        </div>
+                                        <!-- Clear -->
+                                        <div class="col-6 d-flex text-center">
+                                            <a href="{% url 'codex' %}" class="btn btn-link filter-button d-flex my-auto mx-auto"><span class="button-effect">Clear Filters</span></a>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
