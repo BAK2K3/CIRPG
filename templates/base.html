@@ -37,16 +37,17 @@
             {% if request.user.is_authenticated %}
             <!-- Status Container -->
             <div class="status-container ms-2">
+              <a class="animated-link list-text" href="{% url 'account_logout' %}">Logout</a>
             </div>
             {% else %}
             <!-- Account Container -->
             <div class="account-container mb-0 mb-lg-2">
               <ul class="list-inline list-unstyled text-center">
                 <li class="list-inline-item">
-                  <a class="animated-link list-text" href="">Register</a>
+                  <a class="animated-link list-text" href="{% url 'account_signup' %}">Register</a>
                 </li>
                 <li class="list-inline-item">
-                  <a class="animated-link list-text" href="">Login</a>
+                  <a class="animated-link list-text" href="{% url 'account_login' %}">Login</a>
                 </li>
               </ul>  
             </div>
@@ -84,8 +85,8 @@
                     <hr class="dropdown-divider">
                     <a class="animated-link list-text dropdown-item" href="{% url 'codex' %}">Codex</a>
                     <hr class="dropdown-divider">
-                    <a class="animated-link list-text dropdown-item" href="">Register</a>
-                    <a class="animated-link list-text dropdown-item" href="">Login</a>
+                    <a class="animated-link list-text dropdown-item" href="{% url 'account_signup' %}">Register</a>
+                    <a class="animated-link list-text dropdown-item" href="{% url 'account_login' %}">Login</a>
                     <a class="animated-link list-text dropdown-item" href="">Premium</a>                    
                   </div>
                 </li>
