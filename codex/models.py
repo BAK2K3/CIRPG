@@ -2,6 +2,39 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+class CodexQuerySet(models.QuerySet):
+    """
+    Codex Query Set
+    -----------
+
+    Codex Query Set for all variants
+    of queries and their associated business
+    logic
+    """
+
+    def custom_filter(self, search_params, sort_params):
+        print(search_params)
+        return self.filter(**search_params).order_by(sort_params)
+
+
+class CodexManager(models.Manager):
+    """
+    Codex Manager
+    -----------
+
+    Codex Manager for calling the custom
+    Codex Query Sets
+    """
+
+    def get_queryset(self):
+        return CodexQuerySet(self.model, using=self._db)
+
+    def filter_queryset(self, search_params, sort_params):
+        return (
+                self.get_queryset().custom_filter(search_params, sort_params)
+        )
+
+
 class Codex(models.Model):
     """
     Codex Model
@@ -41,6 +74,7 @@ class Codex(models.Model):
     paid = models.BooleanField(default=False)
     min_level = models.IntegerField(choices=[(i, i) for i in range(1, 6)],
                                     null=True, blank=True)
+    objects = CodexManager()
 
     def __str__(self):
         return self.name
