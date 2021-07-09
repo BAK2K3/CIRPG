@@ -13,7 +13,6 @@ class CodexQuerySet(models.QuerySet):
     """
 
     def custom_filter(self, search_params, sort_params):
-        print(search_params)
         return self.filter(**search_params).order_by(sort_params)
 
 
