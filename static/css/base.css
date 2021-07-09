@@ -201,6 +201,16 @@ hr.dropdown-divider {
     align-items: center;
 }
 
+/********************************** Allauth */
+
+.custom-allauth {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 /********************************** Index */
 
 .page-container {
