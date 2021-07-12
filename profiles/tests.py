@@ -8,9 +8,13 @@ Test cases for Profiles App Routing
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from profiles.models import Profile
+from codex.models import Codex
 
 
 class TestViews(TestCase):
+
+    # Load fixtures into test DB
+    fixtures = ['codex.json']
 
     def setUp(self):
         """ Create test login user and create Profile entry"""
@@ -32,3 +36,9 @@ class TestViews(TestCase):
         response = self.client.get('/profile/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['profile'][0].user, self.user)
+
+    def test_create_context(self):
+        """ Test Hero list Context being passed to Create page"""
+        response = self.client.get('/profile/create/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(isinstance(response.context['heroes'][0], Codex))
