@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Main Page Container -->
+<div class="container-fluid page-container text-center py-3">
+    <div class="row">
+        {% for user in profile %}
+            {% if user.active_char %}
+                {{ user.user.username }} has a character.
+            {% else %}
+                {{ user.user.username }} has no character.
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
