@@ -10,4 +10,5 @@ from . import views
 
 urlpatterns = [
     path('', views.ProfileDetailView.as_view(), name='profile'),
+    path('create/', views.CreateHeroDetailView.as_view(), name='create'),
 ]
