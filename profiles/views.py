@@ -29,8 +29,5 @@ class CreateHeroDetailView(LoginRequiredMixin, ListView):
                                                          **kwargs)
 
     def get_queryset(self):
-        # Look to refactor this into model manager/customer queryset
         current_profile = get_object_or_404(Profile, user=self.request.user)
-        allowed_content = {False}
-        allowed_content.add(current_profile.paid)
-        return Codex.objects.filter(type="Hero", paid__in=allowed_content)
+        return Codex.objects.hero_select(current_profile.paid)
