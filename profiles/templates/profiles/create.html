@@ -3,11 +3,73 @@
 
 {% block content %}
 <!-- Main Page Container -->
-<div class="container-fluid page-container text-center py-3">
+<div class="container-fluid py-3">
     <div class="row">
-        {% for hero in heroes %}
-            {{hero}}
-        {% endfor %}
+        <div class="col-12">
+            <div class="row hero-container p-3">
+            {% for hero in heroes %}
+            <div class="col-6 col-md-2 pt-3">
+                <div class="card h100 border-0 polymorphism codex-card" id="{{ hero.name }}Card">
+                    <img src="{{ hero.image.url }}" class="card-img-top cornered-image" alt="{{ hero.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ hero.name }}</h5>
+                        <table class="table table-borderless table-responsive stats-table">
+                            <tbody>
+                                    <tr>
+                                        <th scope="row">Type:</th>
+                                        <td>{{ hero.type }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">HP:</th>
+                                        <td>{{ hero.base_hp }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Attack:</th>
+                                        <td>{{ hero.base_attack }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Defense:</th>
+                                        <td>{{ hero.base_defense }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Speed:</th>
+                                        <td>{{ hero.base_speed }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Premium:</th>
+                                        <td>
+                                            {% if hero.paid %}
+                                                <i class="fas fa-lock"></i>
+                                            {% else %}
+                                                <i class="fas fa-lock-open"></i>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
     </div>
 </div>
+<div class="btt-negative">
+</div>
+<div class="btt-wrapper">
+    <form action="" id="HeroForm">
+        {% csrf_token %}
+        <input type="hidden" name="hero">
+        <button class="btn" type="submit" disabled>
+            <span class="animated-link">Select a Character</span>    
+        </button>
+    </form>
+
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'profiles/js/hero_select.js' %}"></script>
 {% endblock %}
