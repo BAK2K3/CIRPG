@@ -1,5 +1,8 @@
+from django.contrib.auth.models import User
+from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404
 from .models import Profile
 from codex.models import Codex
 
@@ -15,6 +18,16 @@ class ProfileDetailView(LoginRequiredMixin, ListView):
 class CreateHeroDetailView(LoginRequiredMixin, ListView):
     context_object_name = 'heroes'
     template_name = "profiles/create.html"
+
+    # Override dispatch for CBV/Redirect
+    def dispatch(self, request, *args, **kwargs):
+        current_profile = get_object_or_404(Profile, user=self.request.user)
+        if current_profile.active_char:
+            return redirect('profile')
+        else:
+            return super(CreateHeroDetailView, self).dispatch(request,
+                                                              *args,
+                                                              **kwargs)
 
     def get_queryset(self):
         return Codex.objects.filter(type="Hero")
