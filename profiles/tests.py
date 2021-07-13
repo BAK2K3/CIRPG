@@ -26,10 +26,8 @@ class TestViews(TestCase):
         logged_in = self.client.login(username=username, password=password)
 
         # Add User to Profile
-        # Needs hardcoding as signal uses email verification
+        # Needed to be hardcoded as Profile signal uses email verification
         self.profile = Profile.objects.create(user=self.user)
-
-        # Test Login
         self.assertTrue(logged_in)
 
     def test_profile_context(self):
@@ -50,3 +48,17 @@ class TestViews(TestCase):
         self.profile.save()
         response = self.client.get('/profile/create/')
         self.assertEqual(response.status_code, 302)
+
+    def test_create_premium(self):
+        """ Test Create route filtering paid from current profile """
+        self.profile.active_char = False
+        self.profile.paid = True
+        self.profile.save()
+        response = self.client.get('/profile/create/')
+        # Check for all content for paid user
+        self.assertTrue(len(response.context['heroes']) == 10)
+        self.profile.paid = False
+        self.profile.save()
+        response = self.client.get('/profile/create/')
+        # Check for free content
+        self.assertTrue(len(response.context['heroes']) == 3)
