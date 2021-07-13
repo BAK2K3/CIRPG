@@ -26,6 +26,7 @@ class TestViews(TestCase):
         logged_in = self.client.login(username=username, password=password)
 
         # Add User to Profile
+        # Needs hardcoding as signal uses email verification
         self.profile = Profile.objects.create(user=self.user)
 
         # Test Login
