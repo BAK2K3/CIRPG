@@ -26,7 +26,7 @@ class TestViews(TestCase):
         logged_in = self.client.login(username=username, password=password)
 
         # Add User to Profile
-        Profile.objects.create(user=self.user)
+        self.profile = Profile.objects.create(user=self.user)
 
         # Test Login
         self.assertTrue(logged_in)
@@ -42,3 +42,10 @@ class TestViews(TestCase):
         response = self.client.get('/profile/create/')
         self.assertEqual(response.status_code, 200)
         self.assertTrue(isinstance(response.context['heroes'][0], Codex))
+
+    def test_create_redirect(self):
+        """ Test Create page redirects if user has active character """
+        self.profile.active_char = True
+        self.profile.save()
+        response = self.client.get('/profile/create/')
+        self.assertEqual(response.status_code, 302)
