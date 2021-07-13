@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -25,9 +24,13 @@ class CreateHeroDetailView(LoginRequiredMixin, ListView):
         if current_profile.active_char:
             return redirect('profile')
         else:
-            return super(CreateHeroDetailView, self).dispatch(request,
-                                                              *args,
-                                                              **kwargs)
+            return super(CreateHeroDetailView, self).get(request,
+                                                         *args,
+                                                         **kwargs)
 
     def get_queryset(self):
-        return Codex.objects.filter(type="Hero")
+        # Look to refactor this into model manager/customer queryset
+        current_profile = get_object_or_404(Profile, user=self.request.user)
+        allowed_content = {False}
+        allowed_content.add(current_profile.paid)
+        return Codex.objects.filter(type="Hero", paid__in=allowed_content)
