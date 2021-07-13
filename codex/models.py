@@ -9,11 +9,27 @@ class CodexQuerySet(models.QuerySet):
 
     Codex Query Set for all variants
     of queries and their associated business
-    logic
+    logic.
+
+    custom_filter:
+        Used for filtering the full codex for any search
+        parameters or filters requested by the user.
+
+    hero_select:
+        Used for generating list of heroes for the user
+        to choose from. Creates default set of "False",
+        and adds the current user's paid state (True/False)
+        and allows the query to obtain any hero in the DB with
+        values in the set (allowed_content)
     """
 
     def custom_filter(self, search_params, sort_params):
         return self.filter(**search_params).order_by(sort_params)
+
+    def hero_select(self, paid):
+        allowed_content = {False}
+        allowed_content.add(paid)
+        return self.filter(type="Hero", paid__in=allowed_content)
 
 
 class CodexManager(models.Manager):
@@ -22,7 +38,7 @@ class CodexManager(models.Manager):
     -----------
 
     Codex Manager for calling the custom
-    Codex Query Sets
+    Codex Query Sets.
     """
 
     def get_queryset(self):
@@ -32,6 +48,9 @@ class CodexManager(models.Manager):
         return (
                 self.get_queryset().custom_filter(search_params, sort_params)
         )
+
+    def hero_select(self, paid):
+        return self.get_queryset().hero_select(paid)
 
 
 class Codex(models.Model):
