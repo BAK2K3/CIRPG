@@ -2,42 +2,40 @@
 {% load static %}
 
 {% block content %}
-    {% with user_profile=profile.0  %}
-        <!-- Main Page Container -->
-        <div class="container-fluid text-center p-5">
-            <!-- Profile Stats -->
-            <div class="row">
-                <div class="col-12 col-md-6 offset-md-3 col-xxl-4 offset-xxl-4 polymorphism">
-                    <div class="col-12">
-                        <h2 class="logo-font">
-                            {{ user_profile.user.username }}
-                        </h2>
-                    </div>
-                    <div class="row pb-3 stats-container">
-                        <div class="col-4">
-                            <span><strong>Total Runs:</strong> {{user_profile.total_runs}}</span>
-                        </div>
-                        <div class="col-4">
-                            <span><strong>Longest Run:</strong> {{user_profile.longest_run}}</span>
-                        </div>
-                        <div class="col-4">
-                            <span><strong>Account Type:</strong> {% if user_profile.paid %} Premium {% else %} Free {% endif %}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Current Character -->
-            <div class="row pt-5">
+    <!-- Main Page Container -->
+    <div class="container-fluid text-center p-5">
+        <!-- Profile Stats -->
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3 col-xxl-4 offset-xxl-4 polymorphism">
                 <div class="col-12">
-                {% if user_profile.active_char %}
-                    {{ user_profile.user.username }} has a character.
-                {% else %}
-                    <a class="animated-link list-text" href="{% url 'create' %}">Create a new character!</a>
-                {% endif %}
+                    <h2 class="logo-font">
+                        {{ current_profile.user.username }}
+                    </h2>
+                </div>
+                <div class="row pb-3 stats-container">
+                    <div class="col-4">
+                        <span><strong>Total Runs:</strong> {{current_profile.total_runs}}</span>
+                    </div>
+                    <div class="col-4">
+                        <span><strong>Longest Run:</strong> {{current_profile.longest_run}}</span>
+                    </div>
+                    <div class="col-4">
+                        <span><strong>Account Type:</strong> {% if current_profile.paid %} Premium {% else %} Free {% endif %}</span>
+                    </div>
                 </div>
             </div>
         </div>
-    {% endwith %}
+        
+        <!-- Current Character -->
+        <div class="row pt-5">
+            <div class="col-12">
+            {% if current_profile.active_char %}
+                {{ current_profile.user.username }} has a character.
+            {% else %}
+                <a class="animated-link list-text" href="{% url 'create' %}">Create a new character!</a>
+            {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
