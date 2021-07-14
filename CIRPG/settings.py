@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     # Custom Apps
     'home',
     'codex',
-    'profiles'
+    'profiles',
+    'battle'
 ]
 
 MIDDLEWARE = [
