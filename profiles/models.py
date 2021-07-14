@@ -31,7 +31,22 @@ class Profile(models.Model):
         return self.user.username
 
 
-class ActiveCharacters(models.Model):
+class ActiveCharacter(models.Model):
+
+    """
+    Active Characters Model
+    -----------
+
+    Model for all User Profiles:
+
+    user = Link to User model
+    paid = Bool to represent paid user
+    active_char = Bool to represent whether has an active char
+    active_battle = Bool to represent whether user is in a battle
+    total_runs = Int to represent total game attempts
+    longest_run = Int to represent single high score
+
+    """
 
     class Meta:
         verbose_name_plural = 'Active Characters'
