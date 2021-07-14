@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ActiveCharacters, Profile
+from .models import ActiveCharacter, Profile
 
 
 # Admin class for Profile
@@ -39,4 +39,4 @@ class CharacterAdmin(admin.ModelAdmin):
 
 # Register the models
 admin.site.register(Profile, ProfileAdmin)
-admin.site.register(ActiveCharacters, CharacterAdmin)
+admin.site.register(ActiveCharacter, CharacterAdmin)
