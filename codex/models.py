@@ -69,7 +69,7 @@ class CodexManager(models.Manager):
     def hero_select(self, paid):
         return self.get_queryset().hero_select(paid)
 
-    def get_random(self, type, paid, level):
+    def get_random(self, type, paid=False, level=1):
         return self.get_queryset().get_random(type, paid, level)
 
 
