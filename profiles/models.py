@@ -30,6 +30,12 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+    @classmethod
+    def remove_active_char(cls, user):
+        current_user = cls.objects.get(user=user)
+        current_user.active_char = False
+        current_user.save()
+
 
 class ActiveCharacter(models.Model):
 
@@ -38,7 +44,7 @@ class ActiveCharacter(models.Model):
     -----------
 
     Model for active characters.
-    These can be removed by the user, 
+    These can be removed by the user,
     or when a character dies.
 
     user:
@@ -97,6 +103,9 @@ class ActiveCharacter(models.Model):
     weapon_rarity = models.CharField(max_length=10, choices=Rarity.choices,
                                      default=Rarity.COMMON)
 
+    def __str__(self):
+        return f"{self.user.username} - Level {self.current_level}"
+
     @classmethod
     def create_character(cls, user, hero_name, paid):
         """
@@ -137,6 +146,8 @@ class ActiveCharacter(models.Model):
         user_profile = Profile.objects.get(user=user)
         user_profile.active_char = True
         user_profile.save()
+
+        return entry
 
     def update_character(self):
         pass
