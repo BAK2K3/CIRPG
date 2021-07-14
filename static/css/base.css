@@ -360,6 +360,23 @@ hr.dropdown-divider {
     height: 30px;
 }
 
+/********************************** PROFILE */
+
+.left-cornered-image {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.right-cornered-image {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.character-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /********************************** CREATE */
 
 .hero-container {
@@ -388,6 +405,13 @@ hr.dropdown-divider {
     h2 {
         font-size: 2rem;
     }
+    
+    .left-cornered-image, .right-cornered-image {
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    } 
 }
 
 @media (max-width: 767px) {
