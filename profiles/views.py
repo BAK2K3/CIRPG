@@ -1,20 +1,21 @@
 from django.shortcuts import redirect
 from django.views.generic.list import ListView
-from django.views.generic import FormView
+from django.views.generic import FormView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
-from .models import Profile
+from .models import Profile, ActiveCharacter
 from codex.models import Codex
 from .forms import HiddenForm
 
 
-class ProfileDetailView(LoginRequiredMixin, ListView):
+class ProfileDetailView(LoginRequiredMixin, DetailView):
     """ A View for presenting a user's profile """
-    context_object_name = 'profile'
+    context_object_name = 'character'
     template_name = "profiles/profile.html"
 
-    def get_queryset(self):
-        return Profile.objects.filter(user=self.request.user)
+    def get_object(self):
+        if Profile.objects.get(user=self.request.user).active_char:
+            return ActiveCharacter.objects.get(user=self.request.user)
 
 
 class CreateHeroDetailView(LoginRequiredMixin, ListView):
@@ -48,6 +49,11 @@ class CreateHeroFormView(LoginRequiredMixin, FormView):
     form_class = HiddenForm
 
     def form_valid(self, form):
-        print(form.cleaned_data['user_selection'])
-        # print(Codex.objects.get_random('Weapon', True, 4))
+        paid = self.request.session['paid']
+        new_weapon = Codex.objects.get_random('Weapon', paid, 1)
+        new_hero = Codex.objects.get(name=form.cleaned_data['user_selection'])
+        ActiveCharacter.create_character(user=self.request.user,
+                                         hero=new_hero,
+                                         weapon=new_weapon)
+
         return redirect('profile')
