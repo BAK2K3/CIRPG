@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from random import randint
 
 
 class CodexQuerySet(models.QuerySet):
@@ -21,6 +22,12 @@ class CodexQuerySet(models.QuerySet):
         and adds the current user's paid state (True/False)
         and allows the query to obtain any hero in the DB with
         values in the set (allowed_content)
+
+    get_random:
+        Used for obtaining a single random entry in the database.
+        This obtains a queryset, filters by the required parameters,
+        counts the length of the queryset, and extracts a random index
+        from the queryset. This is used for random items, and random enemies.
     """
 
     def custom_filter(self, search_params, sort_params):
@@ -30,6 +37,16 @@ class CodexQuerySet(models.QuerySet):
         allowed_content = {False}
         allowed_content.add(paid)
         return self.filter(type="Hero", paid__in=allowed_content)
+
+    def get_random(self, type, paid, level):
+        allowed_content = {False}
+        allowed_content.add(paid)
+        self = self.filter(type=type,
+                           paid__in=allowed_content,
+                           min_level__lte=level)
+        last = self.count() - 1
+        index = randint(0, last)
+        return self[index]
 
 
 class CodexManager(models.Manager):
@@ -51,6 +68,9 @@ class CodexManager(models.Manager):
 
     def hero_select(self, paid):
         return self.get_queryset().hero_select(paid)
+
+    def get_random(self, type, paid, level):
+        return self.get_queryset().get_random(type, paid, level)
 
 
 class Codex(models.Model):
