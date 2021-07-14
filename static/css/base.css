@@ -377,6 +377,12 @@ hr.dropdown-divider {
     flex-wrap: wrap;
 }
 
+.hero-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 /********************************** CREATE */
 
 .hero-container {
@@ -405,7 +411,7 @@ hr.dropdown-divider {
     h2 {
         font-size: 2rem;
     }
-    
+
     .left-cornered-image, .right-cornered-image {
         border-top-left-radius: 25px;
         border-top-right-radius: 25px;
@@ -417,7 +423,7 @@ hr.dropdown-divider {
 @media (max-width: 767px) {
     .page-container {
         justify-content: flex-start;
-    }   
+    }
 
     .picture-container img {
         max-width: 200px;
