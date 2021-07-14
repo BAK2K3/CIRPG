@@ -84,6 +84,8 @@ class ActiveCharacter(models.Model):
     current_level = models.IntegerField(choices=[(i, i) for i in range(1, 6)],
                                         default=1)
     current_xp = models.IntegerField(default=0)
+    min_xp = models.IntegerField(default=0)
+    max_xp = models.IntegerField(default=200)
     battle_count = models.IntegerField(default=0)
     character_id = models.ForeignKey(Codex, null=False, blank=False,
                                      on_delete=models.CASCADE,
