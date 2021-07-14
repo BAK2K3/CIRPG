@@ -37,14 +37,30 @@ class ActiveCharacter(models.Model):
     Active Characters Model
     -----------
 
-    Model for all User Profiles:
+    Model for active characters.
+    These can be removed by the user, 
+    or when a character dies.
 
-    user = Link to User model
-    paid = Bool to represent paid user
-    active_char = Bool to represent whether has an active char
-    active_battle = Bool to represent whether user is in a battle
-    total_runs = Int to represent total game attempts
-    longest_run = Int to represent single high score
+    user:
+        Associated User
+    current_level:
+        Level of current char
+    current_xp:
+        Experience determining Level
+    battle_count:
+        Amount of successful battles
+    character_id:
+        Foreign Key to Hero in DB
+    character_(various):
+        Modified stats associated with hero
+    weapon_id:
+        Foreign Key to Weapon in DB
+    weapon_(various):
+        Modified stats associated with Weapon
+    weapon_level:
+        Level of current weapon
+    weapon_rarity:
+        Rarity of current weapon
 
     """
 
@@ -126,4 +142,11 @@ class ActiveCharacter(models.Model):
         pass
 
     def update_weapon(self, weapon):
-        pass
+        self.weapon_id = weapon.pk
+        self.weapon_hp = weapon.base_hp
+        self.weapon_attack = weapon.base_attack
+        self.weapon_defense = weapon.base_defense
+        self.weapon_speed = weapon.base_speed
+        self.weapon_level = weapon.base_level
+        self.weapon_rarity = weapon.base_rarity
+        self.save()
