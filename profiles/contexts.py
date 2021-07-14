@@ -7,6 +7,7 @@ def active_user(request):
         request.session['user_paid'] = current_profile.paid
     else:
         current_profile = None
+        request.session['user_paid'] = False
 
     context = {
         'current_profile': current_profile
