@@ -76,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',  # for MEDIA_URL
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'profiles.contexts.active_user'
             ],
         },
     },
