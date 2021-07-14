@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Profile
+from .models import ActiveCharacters, Profile
 
 
-# Admin class for Codex
+# Admin class for Profile
 class ProfileAdmin(admin.ModelAdmin):
     """
     Profile Admin settiings for list display and ordering.
@@ -20,5 +20,23 @@ class ProfileAdmin(admin.ModelAdmin):
     ordering = ('pk',)
 
 
-# Register the Codex model
+# Admin class for Active Characters
+class CharacterAdmin(admin.ModelAdmin):
+    """
+    Profile Admin settiings for list display and ordering.
+    """
+    list_display = (
+        'user',
+        'current_level',
+        'current_xp',
+        'battle_count',
+        'character_id',
+        'weapon_id',
+    )
+
+    ordering = ('pk',)
+
+
+# Register the models
 admin.site.register(Profile, ProfileAdmin)
+admin.site.register(ActiveCharacters, CharacterAdmin)
