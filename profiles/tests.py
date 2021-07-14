@@ -7,7 +7,7 @@ Test cases for Profiles App Routing
 
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from profiles.models import Profile
+from profiles.models import Profile, ActiveCharacter
 from codex.models import Codex
 
 
@@ -31,10 +31,17 @@ class TestViews(TestCase):
         self.assertTrue(logged_in)
 
     def test_profile_context(self):
-        """ Test Profile Context being passed to Profile page"""
+        """ Test Current Profile Context being passed to any page"""
         response = self.client.get('/profile/')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context['profile'][0].user, self.user)
+        self.assertEqual(response.context['current_profile'].user, self.user)
+
+    def test_character_context(self):
+        """ Test Active Character is rendered to Profile page"""
+        ActiveCharacter.create_character(self.user, "Dwarf", self.profile.paid)
+        response = self.client.get('/profile/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('character' in response.context)
 
     def test_create_context(self):
         """ Test Hero list Context being passed to Create page"""
