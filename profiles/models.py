@@ -77,6 +77,53 @@ class ActiveCharacter(models.Model):
     weapon_attack = models.IntegerField(null=False, blank=False)
     weapon_defense = models.IntegerField(null=False, blank=False)
     weapon_speed = models.IntegerField(null=False, blank=False)
-    weapon_level = models.IntegerField(null=False, blank=False)
+    weapon_level = models.IntegerField(null=False, blank=False, default=1)
     weapon_rarity = models.CharField(max_length=10, choices=Rarity.choices,
                                      default=Rarity.COMMON)
+
+    @classmethod
+    def create_character(cls, user, hero_name, paid):
+        """
+        Class method for creating a new active character.
+
+        Takes in current user, chosen hero name, and paid status.
+
+        Queries DB for chosen hero, generates a weapon, and then
+        creates an Active Character object before saving it to
+        the database, and updating the current profile to confirm
+        user has an active character.
+        """
+        # Initialise dict and set user
+        new_character = {}
+        new_character["user"] = user
+
+        # Query DB for selected user and assign to dict
+        hero = Codex.objects.get(name=hero_name)
+        new_character["character_id"] = hero
+        new_character["char_hp"] = hero.base_hp
+        new_character["char_attack"] = hero.base_attack
+        new_character["char_defense"] = hero.base_defense
+        new_character["char_speed"] = hero.base_speed
+
+        # Obtain random starter weapon from DB and assign to dict
+        new_weapon = Codex.objects.get_random("Weapon", paid, 1)
+        new_character["weapon_id"] = new_weapon
+        new_character["weapon_hp"] = new_weapon.base_hp
+        new_character["weapon_attack"] = new_weapon.base_attack
+        new_character["weapon_defense"] = new_weapon.base_defense
+        new_character["weapon_speed"] = new_weapon.base_speed
+
+        # Create ActiveCharacter object and save
+        entry = cls(**new_character)
+        entry.save()
+
+        # Update user profile to reflect new character
+        user_profile = Profile.objects.get(user=user)
+        user_profile.active_char = True
+        user_profile.save()
+
+    def update_character(self):
+        pass
+
+    def update_weapon(self, weapon):
+        pass
