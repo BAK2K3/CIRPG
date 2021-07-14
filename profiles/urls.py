@@ -13,5 +13,6 @@ urlpatterns = [
     path('create/', views.CreateHeroDetailView.as_view(), name='create'),
     path('create_submit/',
          views.CreateHeroFormView.as_view(),
-         name='create_submit')
+         name='create_submit'),
+    path('delete_hero/', views.HeroDeleteView.as_view(), name='delete')
 ]
