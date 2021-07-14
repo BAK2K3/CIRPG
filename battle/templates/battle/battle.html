@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Main Page Container -->
+    <div class="container-fluid p-2 p-sm-3 p-lg-5">        
+        <!-- Current Character -->
+        <div class="row g-0 pt-3 pt-md-4">
+                <div class="character-wrapper">
+                    <!-- Character -->
+                    <div class="col-6 px-1 px-sm-3">
+                        <div class="card polymorphism">
+                            <div class="row g-0">
+                                <div class="col-12 col-lg-6">
+                                    <img class="card-img left-cornered-image" src="{{ character.character_id.image.url }}" alt="{{character.character_id.name}}">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="card-body p-2">
+                                        <h5 class="card-title text-center">{{ character.character_id.name }}</h5>
+                                        <div class="text-center">
+                                            <span>Level {{ character.current_level }}</span>
+                                        </div>
+                                        <table class="table table-borderless table-responsive stats-table">
+                                            <tbody>
+                                                    <tr>
+                                                        <th scope="row">HP:</th>
+                                                        <td>{{ character.char_hp }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Attack:</th>
+                                                        <td>{{ character.char_attack }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Defense:</th>
+                                                        <td>{{ character.char_defense }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Speed:</th>
+                                                        <td>{{ character.char_speed }}</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Weapon -->
+                    <div class="col-6 px-1 px-sm-3">
+                        <div class="card polymorphism">
+                            <div class="row g-0">
+                                <div class="col-12 col-lg-6 order-2 order-lg-1">
+                                    <div class="card-body p-2">
+                                        <h5 class="card-title text-center">{{ character.weapon_id.name }}</h5>
+                                        <div class="text-center">
+                                            <span>Level {{ character.weapon_level }} - {{ character.get_weapon_rarity_display }}</span>
+                                        </div>
+                                        <table class="table table-borderless table-responsive stats-table">
+                                            <tbody>
+                                                    <tr>
+                                                        <th scope="row">HP:</th>
+                                                        <td>{{ character.weapon_hp }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Attack:</th>
+                                                        <td>{{ character.weapon_attack }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Defense:</th>
+                                                        <td>{{ character.weapon_defense }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Speed:</th>
+                                                        <td>{{ character.weapon_speed }}</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 order-1 order-lg-2">
+                                    <img class="card-img right-cornered-image" src="{{ character.weapon_id.image.url }}" alt="{{character.weapon_id.name}}">
+                                </div>
+                            </div>
+                        </div>        
+                    </div>
+                </div>
+        </div>
+        <!-- Current Enemy -->
+        <div class="row g-0 pt-3 pt-md-4">
+            <div class="character-wrapper">
+                <!-- Character -->
+                <div class="col-6 px-1 px-sm-3">
+                    <div class="card polymorphism">
+                        <div class="row g-0">
+                            <div class="col-12 col-lg-6">
+                                <img class="card-img left-cornered-image" src="{{ enemy.enemy_id.image.url }}" alt="{{enemy.enemy_id.name}}">
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="card-body p-2">
+                                    <h5 class="card-title text-center">{{ enemy.enemy_id.name }}</h5>
+                                    <div class="text-center">
+                                        <span>Level {{ enemy.enemy_level }}</span>
+                                    </div>
+                                    <table class="table table-borderless table-responsive stats-table">
+                                        <tbody>
+                                                <tr>
+                                                    <th scope="row">HP:</th>
+                                                    <td>{{ enemy.enemy_hp }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Attack:</th>
+                                                    <td>{{ enemy.enemy_attack }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Defense:</th>
+                                                    <td>{{ enemy.enemy_defense }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Speed:</th>
+                                                    <td>{{ enemy.enemy_speed }}</td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Weapon -->
+                <div class="col-6 px-1 px-sm-3">
+                    <div class="card polymorphism">
+                        <div class="row g-0">
+                            <div class="col-12 col-lg-6 order-2 order-lg-1">
+                                <div class="card-body p-2">
+                                    <h5 class="card-title text-center">{{ enemy.weapon_id.name }}</h5>
+                                    <div class="text-center">
+                                        <span>Level {{ enemy.weapon_level }} - {{ enemy.get_weapon_rarity_display }}</span>
+                                    </div>
+                                    <table class="table table-borderless table-responsive stats-table">
+                                        <tbody>
+                                                <tr>
+                                                    <th scope="row">HP:</th>
+                                                    <td>{{ enemy.weapon_hp }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Attack:</th>
+                                                    <td>{{ enemy.weapon_attack }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Defense:</th>
+                                                    <td>{{ enemy.weapon_defense }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Speed:</th>
+                                                    <td>{{ enemy.weapon_speed }}</td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 order-1 order-lg-2">
+                                <img class="card-img right-cornered-image" src="{{ enemy.weapon_id.image.url }}" alt="{{enemy.weapon_id.name}}">
+                            </div>
+                        </div>
+                    </div>        
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
