@@ -19,11 +19,11 @@ class TestViews(TestCase):
     def setUp(self):
         """ Create test login user and create Profile entry"""
         username = "Ben"
-        password = "Kavanagh"
+        pswd = "Kavanagh" # noqa
         User = get_user_model()
         self.user = User.objects.create_user(username=username,
-                                             password=password)
-        logged_in = self.client.login(username=username, password=password)
+                                             password=pswd)
+        logged_in = self.client.login(username=username, password=pswd)
 
         # Add User to Profile
         # Needed to be hardcoded as Profile signal uses email verification
@@ -69,3 +69,48 @@ class TestViews(TestCase):
         response = self.client.get('/profile/create/')
         # Check for free content
         self.assertTrue(len(response.context['heroes']) == 3)
+
+    def test_create_character_post(self):
+        """Test Create Character post submission route"""
+        # Create required post_dict for POST
+        post_dict = {
+            "user_selection": "Dwarf"
+        }
+        # Navigate to the required view and submit the form
+        self.client.get('/profile/create/')
+        self.client.post('/profile/create_submit/', post_dict)
+
+        # Naviagte to profile view
+        response = self.client.get('/profile/')
+
+        # Test the returned context is an active_char entry
+        active_char = response.context['character']
+        self.assertTrue(active_char.user.username == "Ben")
+        self.assertTrue(active_char.character_id.name == "Dwarf")
+
+        # Re-assign self.profile to updated Profile to check active_char
+        self.profile = Profile.objects.get(user=self.user)
+        self.assertTrue(self.profile.active_char)
+
+    def test_delete_character(self):
+        """Test Delete Character route deletes active Char"""
+        # Create a Character
+        new_char = ActiveCharacter.create_character(self.user,
+                                                    "Dwarf",
+                                                    self.profile.paid)
+        self.profile.active_char = True
+        # Create required post dict
+        post_dict = {
+            "pk": new_char.pk
+        }
+        # Navigate to profile, and post to delete_hero
+        self.client.get('/profile/')
+        self.client.post('/profile/delete_hero/', post_dict)
+
+        # Navigate to profile and make sure no active_char in context
+        response = self.client.get('/profile/')
+        self.assertTrue('character' not in response.context)
+
+        # Re-assign self.profile to updated Profile to check active_char
+        self.profile = Profile.objects.get(user=self.user)
+        self.assertFalse(self.profile.active_char)
