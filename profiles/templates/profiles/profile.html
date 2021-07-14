@@ -28,8 +28,8 @@
         
         <!-- Current Character -->
         <div class="row g-0 pt-3 pt-md-4">
-            <div class="character-wrapper">
-                {% if current_profile.active_char %}
+            {% if current_profile.active_char %}
+                <div class="character-wrapper">
                     <!-- Character -->
                     <div class="col-6 px-1 px-sm-3">
                         <div class="card polymorphism">
@@ -112,11 +112,52 @@
                             </div>
                         </div>        
                     </div>
-                {% else %}
+                </div>
+                <!-- Character Buttons -->
+                <div class="col-12">
+                    <div class="hero-button-container pt-3">
+                        <!-- Modal Trigger -->
+                        <button class="btn btn-dark custom-dark-btn w-25" type="button" role="button" data-bs-toggle="modal" data-bs-target="#deleteConfirmation">
+                            <span class="button-effect">Delete</span>
+                        </button>  
+                        <a class="btn btn-dark custom-dark-btn w-25" type="button" role="button">
+                            <span class="button-effect">Battle</span>
+                        </a> 
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-12 text-center">
                     <a class="animated-link list-text" href="{% url 'create' %}">Create a new character!</a>
-            {% endif %}      
-            </div>
+                </div>
+            {% endif %} 
         </div>
     </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade text-body text-center" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center w-100" id="deleteConfirmationTitle">Warning!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete your Character?</p> 
+          <p>This is permanent, and cannot be undone!</p>
+        </div>
+        <div class="modal-footer text-center">
+            <form action="{% url 'delete' %}" method="POST" class="profile-form w-100 text-center">
+                {% csrf_token %}
+                <input type="hidden" name="pk" value="{{ character.pk }}">
+                <button class="btn btn-danger" type="submit" role="button">
+                    Delete
+                </button>  
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
