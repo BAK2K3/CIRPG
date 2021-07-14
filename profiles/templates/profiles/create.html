@@ -8,17 +8,13 @@
         <div class="col-12">
             <div class="row hero-container p-3">
             {% for hero in heroes %}
-            <div class="col-6 col-md-2 pt-3">
+            <div class="col-6 col-sm-3 col-xl-2 pt-3">
                 <div class="card h100 border-0 polymorphism codex-card" id="{{ hero.name }}Card">
                     <img src="{{ hero.image.url }}" class="card-img-top cornered-image" alt="{{ hero.name }}">
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ hero.name }}</h5>
-                        <table class="table table-borderless table-responsive stats-table">
+                        <table class="table table-borderless table-responsive stats-table px-2">
                             <tbody>
-                                    <tr>
-                                        <th scope="row">Type:</th>
-                                        <td>{{ hero.type }}</td>
-                                    </tr>
                                     <tr>
                                         <th scope="row">HP:</th>
                                         <td>{{ hero.base_hp }}</td>
@@ -58,9 +54,9 @@
 <div class="btt-negative">
 </div>
 <div class="btt-wrapper">
-    <form action="" id="HeroForm">
+    <form action="{% url 'create_submit' %}" method="POST" id="HeroForm">
         {% csrf_token %}
-        <input type="hidden" name="hero">
+        {{ form.user_selection.as_hidden }}
         <button class="btn" type="submit" disabled>
             <span class="animated-link">Select a Character</span>    
         </button>
