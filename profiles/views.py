@@ -1,7 +1,8 @@
 from django.shortcuts import redirect
 from django.views.generic.list import ListView
-from django.views.generic import FormView, DetailView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import FormView, DetailView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404
 from .models import Profile, ActiveCharacter
 from codex.models import Codex
@@ -45,15 +46,32 @@ class CreateHeroDetailView(LoginRequiredMixin, ListView):
 
 class CreateHeroFormView(LoginRequiredMixin, FormView):
     """A view for hero submission"""
-
     form_class = HiddenForm
 
+    # On valid form, create an Active Character
     def form_valid(self, form):
-        paid = self.request.session['paid']
-        new_weapon = Codex.objects.get_random('Weapon', paid, 1)
-        new_hero = Codex.objects.get(name=form.cleaned_data['user_selection'])
+        paid = self.request.session['user_paid']
+        hero_name = form.cleaned_data['user_selection']
         ActiveCharacter.create_character(user=self.request.user,
-                                         hero=new_hero,
-                                         weapon=new_weapon)
-
+                                         hero_name=hero_name,
+                                         paid=paid)
         return redirect('profile')
+
+
+class HeroDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """A view for deleting an Active Character"""
+    model = ActiveCharacter
+
+    # Obtain the user's active character
+    def get_object(self, queryset=None):
+        pk = self.request.POST['pk']
+        return self.get_queryset().filter(pk=pk).get()
+
+    # Ensure user is owner of object
+    def test_func(self):
+        return self.get_object().user == self.request.user
+
+    # Amend Active Char attribute before redirect
+    def get_success_url(self):
+        Profile.remove_active_char(user=self.request.user)
+        return reverse_lazy('profile')
