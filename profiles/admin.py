@@ -26,6 +26,7 @@ class CharacterAdmin(admin.ModelAdmin):
     Profile Admin settiings for list display and ordering.
     """
     list_display = (
+        'pk',
         'user',
         'current_level',
         'current_xp',
