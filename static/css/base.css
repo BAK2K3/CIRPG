@@ -424,6 +424,23 @@ hr.dropdown-divider {
     color: black;
 }
 
+.interaction-container, .interaction-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.interaction-wrapper {
+    padding-top: 2vh;
+}
+
+textarea {
+    resize: none;
+}
+
+textarea:disabled {
+    background: #FFF8F0;
+    color: black;
+  }
 
 /********************************** MEDIA QUERIES */
 @media (max-width: 992px) {
