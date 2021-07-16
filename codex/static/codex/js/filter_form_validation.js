@@ -1,20 +1,20 @@
 
 // Function for formatting filter form data
-function filter_submission(event) {
+function filterSubmission(event) {
     event.preventDefault();
     let boxes = $("input[name=min_level]:checked");
-    let box_values = [];
+    let boxValues = [];
     for (let i = 0; i < boxes.length; i++){
-        box_values.push(boxes[i].value);
+        boxValues.push(boxes[i].value);
         boxes[i].disabled = true;
     }
 
     // If all boxes are ticked, disable form
-    if (box_values == "1,2,3,4,5" || box_values == "" ){
+    if (boxValues == "1,2,3,4,5" || boxValues == "" ){
         $('#minLevelString').prop('disabled', true);
     } else {
         // Otherwise, add to hidden field as a string
-        $('#minLevelString').val(box_values.toString());
+        $('#minLevelString').val(boxValues.toString());
     }
 
     // Disable Type filter if all selected
@@ -40,4 +40,4 @@ function filter_submission(event) {
     $('#filterForm')[0].submit();
 }
 
-$('#filterForm').on('submit', filter_submission);
+$('#filterForm').on('submit', filterSubmission);
