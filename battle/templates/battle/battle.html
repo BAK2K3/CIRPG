@@ -8,7 +8,7 @@
         <div class="row g-0 pt-2 pt-md-4">
             <div class="character-wrapper">
                 <!-- Character -->
-                <div class="col-10 offset-1 col-md-6 offset-md-0 col-xxl-5 offset-xxl-1 px-1 px-sm-3">
+                <div class="col-10 offset-1 col-md-6 offset-md-0 col-xxl-5 offset-xxl-1 px-1 px-sm-3 character-container">
                     <div class="card polymorphism">
                         <div class="row g-0">
                             <div class="col-6">
@@ -27,10 +27,10 @@
                             <!-- Progress Bars -->
                             <div class="hero-progress-container">
                                 <div class="progress hp-progress">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-danger" id="heroHp" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <div class="progress turn-progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="heroTurn" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             
@@ -62,7 +62,7 @@
                 </div>
 
                 <!-- Enemy -->    
-                <div class="col-10 offset-1 col-md-6 offset-md-0 col-xxl-5 px-1 px-sm-3 pt-2 pt-md-0">
+                <div class="col-10 offset-1 col-md-6 offset-md-0 col-xxl-5 px-1 px-sm-3 pt-2 pt-md-0 enemy-container">
                     <div class="card polymorphism">
                         <div class="row g-0">
                             <div class="col-6">
@@ -81,10 +81,10 @@
                             <!-- Progress Bars -->
                             <div class="enemy-progress-container">
                                 <div class="progress hp-progress">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-danger" id="enemyHp" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <div class="progress turn-progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="enemyTurn" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <!-- Enemy Stats -->
@@ -124,11 +124,11 @@
                 </div>
                 <div class="col-12 interaction-container">
                     <!-- Start Battle Button -->
-                    <button class="btn btn-dark custom-dark-btn w-50 mx-auto" type="button">
+                    <button class="btn btn-dark custom-dark-btn w-50 mx-auto" id="startButton" type="button">
                         <span class="button-effect">Start Battle</span>
                     </button>  
                     <!-- Attack Button -->
-                    <button class="btn btn-dark custom-dark-btn w-50 d-none mx-auto" type="button">
+                    <button class="btn btn-dark custom-dark-btn w-50 d-none mx-auto" id='attackButton' type="button">
                         <span class="button-effect">Attack</span>
                     </button>
                 </div>  
