@@ -9,6 +9,8 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from profiles.models import Profile, ActiveCharacter
 from battle.models import ActiveEnemy
+from codex.models import Codex
+import json
 
 
 class TestViews(TestCase):
@@ -55,3 +57,32 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue('outcome' in response.context)
         self.assertTrue(response.context['outcome'])
+        self.assertTrue('new_weapon' in response.context)
+        self.new_weapon = response.context['new_weapon']
+
+    def test_loot_view(self):
+        """Tests Ajax Loot route"""
+        # Create Active Char
+        ActiveCharacter.create_character(self.user, "Dwarf",
+                                         self.profile.paid)
+
+        # Create Json file of new weapon
+        newWeapon = {
+            'id': 140,
+            "base_hp": 10,
+            'base_attack': 10,
+            'base_defense': 10,
+            'base_speed': 10,
+            'level': 2,
+            'rarity': 2,
+        }
+        data = json.dumps(newWeapon)
+        data = {'newWeapon':  data}
+        response = self.client.post(
+            '/battle/loot/',
+            data,
+            **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'}
+        )
+        self.assertEqual(response.status_code, 200)
+        character = ActiveCharacter.objects.get(user=self.user)
+        self.assertTrue(character.weapon_id.id == 140)
