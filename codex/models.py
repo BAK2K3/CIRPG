@@ -126,10 +126,13 @@ class Codex(models.Model):
 
         if level > 1:
             weapon.level = randint(1, level)
-            weapon.weapon_rarity = rarity_recursive(weapon.level)
+            weapon.rarity = rarity_recursive(weapon.level)
         else:
             weapon.level = 1
             weapon.rarity = 1
+
+        rarity_list = ["Common", "Uncommon", "Rare", "Legendary", "Mythical"]
+        weapon.rarity_text = rarity_list[weapon.rarity-1]
 
         # Modify stats based on level and rarity
         weapon.base_hp = stat_modifier(weapon.base_hp,
