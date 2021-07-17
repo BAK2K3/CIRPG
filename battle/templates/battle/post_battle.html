@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Main Page Container -->
+    <div class="container-fluid p-2 p-sm-3 p-lg-5">
+        
+        {% if outcome %}
+        <h2>WIN</h2>
+        {% else %}
+        <h2>LOSE</h2>
+        {%endif%}
+        
+    </div>
+
+    
+
+{% endblock %}
+
