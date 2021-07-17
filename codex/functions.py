@@ -1,3 +1,7 @@
+from random import randint, randrange
+import math
+
+
 # Function for processing GET kwargs
 def process_codex_url(get_params):
 
@@ -49,3 +53,54 @@ def process_codex_url(get_params):
             print(e)
 
     return context
+
+
+def rarity_recursive(n, t=1):
+    """
+    Recursive Function to determine the grade of weapon
+
+    1: Uncommon
+    2: Common
+    3: Rare
+    4: Legendary
+    5: Mythical
+
+    Highest grade of weapon is determined by item level (max 5)
+    Grade is determined by successive successful rolls
+    Threshold for grades varies depending on item level.
+    """
+
+    # Determines success rate for this roll
+    successroll = 100 - ((n - 1) * 20)
+
+    # If success rate is 100%, return the current grade
+    if successroll == 100 or t == 5:
+        return t
+
+    # Else, generate a random number between 1 and 100,
+    else:
+        outcome = randint(1, 100)  # nosec
+        # If this roll is successful, increase weapon grade,
+        # and recall function based on new thresholds
+        if outcome >= successroll:
+            return rarity_recursive((n - 1), t + 1)
+        # If this roll is unsuccessful, return current grade
+        else:
+            return t
+
+
+# Modifier Calculation
+def modifier_multiplier(item_level, item_rarity=1):
+
+    # Creates a minimum modifier
+    modi_min = round((1 + ((item_level - 1) / 5)) * 100)
+    # Creates a maximum modifier
+    modi_max = round((1 + ((item_level - 1) / 5) + (item_rarity / 5)) * 100)
+    # Creates a random number between min max
+    multiplier = randrange(modi_min, modi_max) / 100  # nosec
+
+    return multiplier
+
+
+def stat_modifier(stat, level, rarity=1):
+    return math.ceil(stat * modifier_multiplier(level, rarity))
