@@ -36,7 +36,7 @@ class TestViews(TestCase):
         # Create Active Char
         ActiveCharacter.create_character(self.user, "Dwarf", self.profile.paid)
         # Create Active Enemy
-        ActiveEnemy.create_enemy(self.profile)
+        ActiveEnemy.create_active_enemy(self.profile)
         # Navigate to route and test response/context
         response = self.client.get('/battle/')
         self.assertEqual(response.status_code, 200)
@@ -45,6 +45,11 @@ class TestViews(TestCase):
 
     def test_post_battle(self):
         """Tests post-battle route"""
+        # Create Active Char
+        ActiveCharacter.create_character(self.user, "Dwarf", self.profile.paid)
+        # Create Active Enemy
+        ActiveEnemy.create_active_enemy(self.profile)
+        # Navigate to route and test response/context
         data = {'result': 'true'}
         response = self.client.post('/battle/post_battle/', data)
         self.assertEqual(response.status_code, 200)
