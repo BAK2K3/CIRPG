@@ -442,6 +442,13 @@ textarea:disabled {
     color: black;
   }
 
+/********************************** POST-BATTLE */
+.loot-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 /********************************** MEDIA QUERIES */
 @media (max-width: 992px) {
     h2 {
