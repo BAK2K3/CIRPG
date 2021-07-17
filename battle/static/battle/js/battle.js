@@ -16,8 +16,8 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 // Global Declarations
 
 // Extract JSON dumps - Needed to double parse and index to work properly
-let characterJson = JSON.parse(JSON.parse(document.getElementById('id_character_json').textContent))[0];
-let enemyJson = JSON.parse(JSON.parse(document.getElementById('id_enemy_json').textContent))[0];
+const characterJson = JSON.parse(JSON.parse(document.getElementById('id_character_json').textContent))[0];
+const enemyJson = JSON.parse(JSON.parse(document.getElementById('id_enemy_json').textContent))[0];
 
 // Remove these elements from the DOM
 document.getElementById('id_character_json').remove();
@@ -125,9 +125,12 @@ class BattleObject {
     }
 
     // Function to be called when current object wins
-    declareWinner(){
+    async declareWinner(result){
         let logString = `\n${this.name} wins the fight!`;
         this.updateBattleLog(logString);
+        await new Promise(r => setTimeout(r, 1000));
+        $("#postBattleForm #hiddenResult").val(result);
+        $("#postBattleForm").submit();
     }
 
     // Function to update Progress Bar %
@@ -185,7 +188,7 @@ function engageBattle(){
                 characterObject.attackHitLog(enemyObject.name);
                 // If enemy HP is 0
                 if (enemyObject.hp == 0){
-                    characterObject.declareWinner();
+                    characterObject.declareWinner(true);
                     return true;
                 }
             // If the character misses
@@ -204,7 +207,6 @@ function engageBattle(){
                 document.getElementById('attackButton').disabled = false;
                 return true;
             }
-            console.log(characterObject.turnMeter);
             characterObject.updateBar(characterTurnBar, characterObject.turnMeter);
         }
 
@@ -224,7 +226,7 @@ function engageBattle(){
                 enemyObject.attackHitLog(characterObject.name);
                 // Determine if character is dead
                 if (characterObject.hp == 0){
-                    enemyObject.declareWinner();
+                    enemyObject.declareWinner(false);
                     return true;
                 } else {
                     // Update accurate turn meter display
