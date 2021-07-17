@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from random import randint
+from .functions import rarity_recursive, stat_modifier
 
 
 class CodexQuerySet(models.QuerySet):
@@ -116,3 +117,52 @@ class Codex(models.Model):
 
     def __str__(self):
         return self.name
+
+    @classmethod
+    def new_weapon(cls, paid, level):
+        # Obtain new weapon
+        weapon = cls.objects.get_random("Weapon", paid, level)
+        # Determine level and rarity
+
+        if level > 1:
+            weapon.level = randint(1, level)
+            weapon.weapon_rarity = rarity_recursive(weapon.level)
+        else:
+            weapon.level = 1
+            weapon.rarity = 1
+
+        # Modify stats based on level and rarity
+        weapon.base_hp = stat_modifier(weapon.base_hp,
+                                       weapon.level,
+                                       weapon.rarity)
+        weapon.base_attack = stat_modifier(weapon.base_attack,
+                                           weapon.level,
+                                           weapon.rarity)
+        weapon.base_speed = stat_modifier(weapon.base_speed,
+                                          weapon.level,
+                                          weapon.rarity)
+        weapon.base_defense = stat_modifier(weapon.base_defense,
+                                            weapon.level,
+                                            weapon.rarity)
+        return weapon
+
+    @classmethod
+    def new_enemy(cls, paid, level):
+        # Obtain new enemy
+        enemy = cls.objects.get_random("Enemy", paid, level)
+        # Determine level
+        if level > 1:
+            enemy.level = randint(1, level)
+            # Modify stats based on level (progressive)
+            for i in range(enemy.level):
+                enemy.base_hp = stat_modifier(enemy.base_hp,
+                                              enemy.level)
+                enemy.base_attack = stat_modifier(enemy.base_attack,
+                                                  enemy.level)
+                enemy.base_speed = stat_modifier(enemy.base_speed,
+                                                 enemy.level)
+                enemy.base_defense = stat_modifier(enemy.base_defense,
+                                                   enemy.level)
+        else:
+            enemy.level = 1
+        return enemy
