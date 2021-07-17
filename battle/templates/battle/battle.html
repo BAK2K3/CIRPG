@@ -135,6 +135,14 @@
             </div>
         </div>
     </div>
+
+    <!-- Post-game Form -->
+    <form action="{% url 'post_battle' %}" id="postBattleForm" method="POST" class="d-none">{% csrf_token %}
+        <input type="hidden" name="result" id="hiddenResult" value=""/>
+    </form>
+
+
+
 {% endblock %}
 
 {% block postloadjs %}
