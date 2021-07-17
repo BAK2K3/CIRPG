@@ -42,3 +42,11 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue('character' in response.context)
         self.assertTrue('enemy' in response.context)
+
+    def test_post_battle(self):
+        """Tests post-battle route"""
+        data = {'result': 'true'}
+        response = self.client.post('/battle/post_battle/', data)
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('outcome' in response.context)
+        self.assertTrue(response.context['outcome'])
