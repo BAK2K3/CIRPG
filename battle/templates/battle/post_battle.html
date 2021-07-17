@@ -4,16 +4,167 @@
 {% block content %}
     <!-- Main Page Container -->
     <div class="container-fluid p-2 p-sm-3 p-lg-5">
-        
+        <!-- Win -->
         {% if outcome %}
-        <h2>WIN</h2>
+            <!-- Level Up -->
+            {% if levelled_up %}
+                <div class="row g-0 hero-container p-3">
+                    <h2 class="logo-font">Level up!</h2>
+                    <div class="col-6 col-sm-3 col-xl-3 p-3">
+                        <!-- Old Character -->
+                        <div class="card h100 border-0 polymorphism codex-card">
+                            <img src="{{ active_character.character_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.character_id.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ active_character.character_id.name }} - Level {{ active_character.current_level|add:"-1"}}</h5>
+                                <table class="table table-borderless table-responsive stats-table px-2">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">HP:</th>
+                                            <td>{{ old_stats.hp }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Attack:</th>
+                                            <td>{{ old_stats.attack }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Defense:</th>
+                                            <td>{{ old_stats.defense }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Speed:</th>
+                                            <td>{{ old_stats.speed }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-3 col-xl-3 p-3">
+                        <!-- New Character -->
+                        <div class="card h100 border-0 polymorphism codex-card">
+                            <img src="{{ active_character.character_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.character_id.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ active_character.character_id.name }} - Level {{ active_character.current_level}}</h5>
+                                <table class="table table-borderless table-responsive stats-table px-2">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">HP:</th>
+                                            <td>{{ active_character.char_hp }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Attack:</th>
+                                            <td>{{ active_character.char_attack }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Defense:</th>
+                                            <td>{{ active_character.char_defense }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Speed:</th>
+                                            <td>{{ active_character.char_speed }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <!-- Loot -->
+            <div class="row g-0 hero-container p-3 text-center">
+                <h2 class="logo-font">New Loot!</h2>
+                <div class="col-6 col-sm-3 col-xl-3 p-3" id="oldWeapon">
+                    <!-- Old Weapon -->
+                    <div class="card h100 border-0 polymorphism codex-card">
+                        <img src="{{ active_character.weapon_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.weapon_id.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ active_character.weapon_id.name }} - Level {{ active_character.weapon_level}}</h5>
+                            <h5 class="card-title text-center">{{ active_character.get_weapon_rarity_display }}</h5>
+                            <table class="table table-borderless table-responsive stats-table px-2">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">HP:</th>
+                                        <td>{{ active_character.weapon_hp }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Attack:</th>
+                                        <td>{{ active_character.weapon_attack }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Defense:</th>
+                                        <td>{{ active_character.weapon_defense }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Speed:</th>
+                                        <td>{{ active_character.weapon_speed }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-3 col-xl-3 p-3">
+                    <!-- New Weapon -->
+                    <div class="card h100 border-0 polymorphism codex-card">
+                        <img src="{{ new_weapon.image.url }}" class="card-img-top cornered-image" alt="{{ new_weapon.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ new_weapon.name }} - Level {{ new_weapon.level}}</h5>
+                            <h5 class="card-title text-center">{{ new_weapon.rarity_text }}</h5>
+                            <table class="table table-borderless table-responsive stats-table px-2">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">HP:</th>
+                                        <td>{{ new_weapon.base_hp }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Attack:</th>
+                                        <td>{{ new_weapon.base_attack }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Defense:</th>
+                                        <td>{{ new_weapon.base_defense }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Speed:</th>
+                                        <td>{{ new_weapon.base_speed }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="loot-button-container pt-3">
+                        <a class="btn btn-dark custom-dark-btn w-25" id="keepButton" href="{% url 'profile' %}" type="button" role="button">
+                            <span class="button-effect">Keep Old</span>
+                        </a>  
+                        <button class="btn btn-dark custom-dark-btn w-25" id="newButton" href="{% url 'battle' %}" type="button" role="button">
+                            <span class="button-effect">Take New</span>
+                        </button> 
+                    </div>
+                    <div class="continue-button-container pt-3 d-none">
+                        <a class="btn btn-dark custom-dark-btn w-25" id="keepButton" href="{% url 'profile' %}" type="button" role="button">
+                            <span class="button-effect">Continue</span>
+                        </a>  
+                    </div>
+                </div>
+            </div>
+        <!-- Lose -->
         {% else %}
-        <h2>LOSE</h2>
+            <h2>LOSE</h2>
         {%endif%}
-        
     </div>
 
-    
-
+    {% csrf_token %}
 {% endblock %}
 
+{{levelled_up}}
+
+{% if levelled_up %}
+    {% block postloadjs %}
+        {{ block.super }}
+        {{ weapon_json|json_script:"id_new_weapon"}}
+        <script src="{% static 'battle/js/loot.js' %}"></script>
+    {% endblock %}
+{% endif %}
