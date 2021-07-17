@@ -10,4 +10,5 @@ from . import views
 
 urlpatterns = [
     path('', views.BattleView.as_view(), name='battle'),
+    path('post_battle/', views.PostBattleView.as_view(), name='post_battle')
 ]
