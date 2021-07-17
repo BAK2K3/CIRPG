@@ -133,7 +133,8 @@ class ActiveCharacter(models.Model):
         new_character["char_speed"] = hero.base_speed
 
         # Obtain random starter weapon from DB and assign to dict
-        new_weapon = Codex.objects.get_random("Weapon", paid, 1)
+        new_weapon = Codex.new_weapon(paid, 1)
+
         new_character["weapon_id"] = new_weapon
         new_character["weapon_hp"] = new_weapon.base_hp
         new_character["weapon_attack"] = new_weapon.base_attack
