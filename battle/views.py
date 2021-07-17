@@ -1,13 +1,15 @@
 from django.shortcuts import redirect
-from django.views.generic import TemplateView
-from profiles.models import ActiveCharacter
+from django.views.generic import TemplateView, UpdateView
+from profiles.models import ActiveCharacter, Profile
 from battle.models import ActiveEnemy
 from django.core import serializers
 from django.contrib.auth.mixins import LoginRequiredMixin
 import json
 from profiles.functions import calculate_xp
 from codex.models import Codex
-from profiles.models import Profile
+import copy
+from profiles.functions import add_weapon
+from django.http import HttpResponse
 
 
 class BattleView(LoginRequiredMixin, TemplateView):
@@ -21,14 +23,19 @@ class BattleView(LoginRequiredMixin, TemplateView):
     """
     template_name = "battle/battle.html"
 
+    # Redirect user if no active character
+    def get(self, *args, **kwargs):
+        # Obtain Current Profile
+        current_profile = Profile.objects.get(user=self.request.user)
+        # If no current character exists, redirect
+        if not current_profile.active_char:
+            return redirect('profile')
+        return super().get(*args, **kwargs)
+
     def get_context_data(self, **kwargs):
 
         # Obtain Current Profile
         current_profile = Profile.objects.get(user=self.request.user)
-
-        # If no current character exists, redirect
-        if not current_profile.active_char:
-            redirect('profile')
 
         # Default context
         data = super().get_context_data(**kwargs)
@@ -86,23 +93,34 @@ class PostBattleView(LoginRequiredMixin, TemplateView):
         # If the player won the battle
         if context['outcome']:
 
-            # Add active character to context
+            # Add character's current stats to context
+            # This is incase the user levels up and can be
+            # Used for comparrison on the loot screen
+            context['old_stats'] = {
+                "hp": character.char_hp,
+                "attack": character.char_attack,
+                "defense": character.char_defense,
+                "speed": character.char_speed
+            }
+
+            # Set Active Character Object location in context
             context['active_character'] = character
 
             # Calculate user XP and determine if level up
             if calculate_xp(character, enemy.enemy_level):
-
-                # Query DB for new levelled player to add to context
-                character = ActiveCharacter.objects.get(user=self.request.user)
-                context['levelled_character'] = character
+                context['levelled_up'] = True
 
             # Obtain a new weapon for the user
             context['new_weapon'] = Codex.new_weapon(current_profile.paid,
                                                      character.current_level)
 
-            # Update battle stats
-            character.battle_count += 1
-            character.save()
+            # Create a deepcopy, to remove and override unserializable
+            # fields so object can be passed to Javascript as JSON.
+            context['weapon_json'] = copy.deepcopy(
+                    context['new_weapon'].__dict__
+                    )
+            context['weapon_json'].pop('_state')
+            context['weapon_json']['image'] = str(context['new_weapon'].image)
 
             # Delete active enemy
             enemy.delete()
@@ -110,7 +128,7 @@ class PostBattleView(LoginRequiredMixin, TemplateView):
         # If the player has lost the battle
         else:
             # Update profile to reflect changes
-            current_profile.character = False
+            current_profile.active_char = False
             current_profile.total_runs += 1
 
             # Determine if user has beat own high score
@@ -127,9 +145,36 @@ class PostBattleView(LoginRequiredMixin, TemplateView):
         # Return context to post-battle template
         return context
 
+    # POST route, checks whether use is currently in battle
     def post(self, request, **kwargs):
-        context = self.get_context_data()
-        return super(PostBattleView, self).render_to_response(context)
+        current_profile = Profile.objects.get(user=self.request.user)
+        if current_profile.active_battle:
+            context = self.get_context_data()
+            return super(PostBattleView, self).render_to_response(context)
+        return redirect('profile')
 
+    # Prevent GET requests
     def get(self, request, **kwargs):
         return redirect('profile')
+
+
+class NewLootView(UpdateView):
+    """
+    View for user to store new weapon.
+
+    View takes AJAX Post request, including
+    a modified JSON version of a weapon Codex object.
+    This is passed to a custom function to override the
+    current user's weapon field, and saves the entry to the DB.
+    """
+    model = ActiveCharacter
+
+    def post(self, request):
+        if self.request.is_ajax():
+            # Obtain Active Character
+            character = ActiveCharacter.objects.get(user=self.request.user)
+            # Receive Ajax weapon_dict
+            weapon_dict = json.loads(self.request.POST['newWeapon'])
+            # Update Active Character
+            add_weapon(character, weapon_dict)
+            return HttpResponse(200)
