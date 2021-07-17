@@ -9,7 +9,6 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from profiles.models import Profile, ActiveCharacter
 from battle.models import ActiveEnemy
-from codex.models import Codex
 import json
 
 
