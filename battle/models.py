@@ -70,11 +70,11 @@ class ActiveEnemy(models.Model):
                 {self.active_character.user.username}'s Enemy'''
 
     @classmethod
-    def create_enemy(cls, user_profile):
+    def create_active_enemy(cls, user_profile):
         """
         Class method for creating a new active enemy.
 
-        Takes in current active_profile.
+        Takes in current user_profile.
 
         Queries DB for random enemy and weapon based on
         user's premium status and current char level.
@@ -90,31 +90,28 @@ class ActiveEnemy(models.Model):
         new_enemy["active_character"] = active_character
 
         # Query DB for selected user and assign to dict
-        enemy = Codex.objects.get_random(type="Enemy",
-                                         paid=user_profile.paid,
-                                         level=active_character.current_level)
+        enemy = Codex.new_enemy(paid=user_profile.paid,
+                                level=active_character.current_level)
 
         # Insert function here for stat modification
-
         new_enemy["enemy_id"] = enemy
         new_enemy["enemy_hp"] = enemy.base_hp
         new_enemy["enemy_attack"] = enemy.base_attack
         new_enemy["enemy_defense"] = enemy.base_defense
         new_enemy["enemy_speed"] = enemy.base_speed
+        new_enemy["enemy_level"] = enemy.level
 
         # Obtain random  weapon from DB and assign to dict
-        new_weapon = Codex.objects.get_random("Weapon",
-                                              user_profile.paid,
-                                              active_character.current_level)
-
-        # Insert function here for stat modification
+        new_weapon = Codex.new_weapon(user_profile.paid,
+                                      active_character.current_level)
 
         new_enemy["weapon_id"] = new_weapon
         new_enemy["weapon_hp"] = new_weapon.base_hp
         new_enemy["weapon_attack"] = new_weapon.base_attack
         new_enemy["weapon_defense"] = new_weapon.base_defense
         new_enemy["weapon_speed"] = new_weapon.base_speed
-        # Weapon Level/Rarity to go here
+        new_enemy["weapon_level"] = new_weapon.level
+        new_enemy["weapon_rarity"] = new_weapon.rarity
 
         # Create ActiveCharacter object and save
         entry = cls(**new_enemy)
