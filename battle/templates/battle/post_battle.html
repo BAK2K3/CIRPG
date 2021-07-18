@@ -152,22 +152,33 @@
             </div>
         <!-- Lose -->
         {% else %}
-        <div class="container-fluid page-container text-center py-3">
-            <div class="row">
-                <div class="col-12">
-                <h2 class="logo-font">YOU LOSE!</h2>
-                    <p>Unfortunately, you have not made it to the leaderboard.</p>
-                    <p>Why not try your luck again?</p>
-                    <a class="btn btn-dark custom-dark-btn w-33" id="keepButton" href="{% url 'create' %}" type="button" role="button">
-                        <span class="button-effect">Create New Character</span>
-                    </a>  
+            <div class="container-fluid page-container text-center py-3">
+                <div class="row">
+                    <div class="col-12">
+                    <h2 class="logo-font">YOU LOSE!</h2>
+                        {% if leaderboard %}
+                            <p>Congratulations! You made your way onto the leaderboard!</p>
+                            <p>Check out the leaderboard to view your position, or create a new character!</p>
+                            <a class="btn btn-dark custom-dark-btn w-33" id="keepButton" href="{% url 'leaderboard' %}" type="button" role="button">
+                                <span class="button-effect">Leaderboard</span>
+                            </a>  
+                            <a class="btn btn-dark custom-dark-btn w-33" id="keepButton" href="{% url 'create' %}" type="button" role="button">
+                                <span class="button-effect">New Character</span>
+                            </a>  
+                        {% else %}
+                            <p>Unfortunately, you have not made it to the leaderboard.</p>
+                            <p>Why not try your luck again?</p>
+                            <a class="btn btn-dark custom-dark-btn w-33" id="keepButton" href="{% url 'create' %}" type="button" role="button">
+                                <span class="button-effect">New Character</span>
+                            </a>  
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
         {%endif%}
     </div>
 
-    {% csrf_token %}
+{% csrf_token %}
 {% endblock %}
 
 {{levelled_up}}
