@@ -449,6 +449,64 @@ textarea:disabled {
     justify-content: space-evenly;
 }
 
+/* Rarity */
+.rarity {
+    border-radius: 25px;
+    outline: none;
+}
+
+.rarity-uncommon {
+    animation: uncommon 1s infinite alternate;
+}
+
+.rarity-rare {
+    animation: rare 1s infinite alternate;
+}
+
+.rarity-legendary {
+    animation: legendary 1s infinite alternate;
+}
+
+.rarity-mythical {
+    animation: mythical 1s infinite alternate;
+}
+
+@keyframes uncommon {
+    from {
+      box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #e9ecef;
+    }
+    to {
+      box-shadow: 0 0 20px #FFF8F0, 0 0 30px #f8f9fa, 0 0 40px #f8f9fa
+    }
+  }
+
+  @keyframes rare {
+    from {
+      box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #208b3a;
+    }
+    to {
+      box-shadow: 0 0 20px #FFF8F0, 0 0 30px #4ad66d, 0 0 40px #4ad66d
+    }
+  }
+
+  @keyframes legendary {
+    from {
+      box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #ffd100;
+    }
+    to {
+      box-shadow: 0 0 20px #FFF8F0, 0 0 30px #ffee32, 0 0 40px #ffee32
+    }
+  }
+
+  @keyframes mythical {
+    from {
+      box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #ba181b;
+    }
+    to {
+      box-shadow: 0 0 20px #FFF8F0, 0 0 30px #e5383b, 0 0 40px #e5383b
+    }
+  }
+
 /********************************** MEDIA QUERIES */
 @media (max-width: 992px) {
     h2 {
