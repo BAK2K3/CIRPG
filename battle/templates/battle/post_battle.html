@@ -129,13 +129,13 @@
                             </div>
                         </div>
                         <div class="loot-button-container text-center pt-3">
-                            <a class="btn btn-dark custom-dark-btn w-auto" id="keepButton" href="{% url 'profile' %}" type="button" role="button">
+                            <button class="btn btn-dark custom-dark-btn w-auto" id="keepButton" type="button" role="button">
                                 <span class="button-effect">Keep Old Weapon</span>
-                            </a>  
+                            </button>  
                         </div>
                     </div>
                     <!-- New Weapon -->
-                    <div class="col-6  p-3">
+                    <div class="col-6 p-3" id="newWeapon">
                         <div class="card h100 border-0 polymorphism codex-card rarity rarity-{{ new_weapon.rarity_text|lower }}">
                             <img src="{{ new_weapon.image.url }}" class="card-img-top cornered-image" alt="{{ new_weapon.name }}">
                             <div class="card-body">
