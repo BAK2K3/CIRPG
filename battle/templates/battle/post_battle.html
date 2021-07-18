@@ -156,19 +156,29 @@
                 <div class="row">
                     <div class="col-12">
                     <h2 class="logo-font">YOU LOSE!</h2>
-                        {% if leaderboard %}
-                            <p>Congratulations! You made your way onto the leaderboard!</p>
-                            <p>Check out the leaderboard to view your position, or create a new character!</p>
-                            <a class="btn btn-dark custom-dark-btn w-33" id="keepButton" href="{% url 'leaderboard' %}" type="button" role="button">
-                                <span class="button-effect">Leaderboard</span>
-                            </a>  
-                            <a class="btn btn-dark custom-dark-btn w-33" id="keepButton" href="{% url 'create' %}" type="button" role="button">
-                                <span class="button-effect">New Character</span>
-                            </a>  
+                        {% if paid %}
+                            {% if leaderboard %}
+                                <p>Congratulations! You made your way onto the leaderboard!</p>
+                                <p>Check out the leaderboard to view your position, or create a new character!</p>
+                                <a class="btn btn-dark custom-dark-btn w-33" href="{% url 'leaderboard' %}" type="button" role="button">
+                                    <span class="button-effect">Leaderboard</span>
+                                </a>  
+                                <a class="btn btn-dark custom-dark-btn w-33" href="{% url 'create' %}" type="button" role="button">
+                                    <span class="button-effect">New Character</span>
+                                </a>  
+                            {% else %}
+                                <p>Unfortunately, you have not made it to the leaderboard.</p>
+                                <p>Why not try your luck again?</p>
+                                <a class="btn btn-dark custom-dark-btn w-33" href="{% url 'create' %}" type="button" role="button">
+                                    <span class="button-effect">New Character</span>
+                                </a>  
+                            {% endif %}
                         {% else %}
-                            <p>Unfortunately, you have not made it to the leaderboard.</p>
-                            <p>Why not try your luck again?</p>
-                            <a class="btn btn-dark custom-dark-btn w-33" id="keepButton" href="{% url 'create' %}" type="button" role="button">
+                            <p>Upgrade to premium to get access to the Leaderboard or create a new character to keep playing for free!</p>
+                            <a class="btn btn-dark custom-dark-btn w-33" href="" type="button" role="button">
+                                <span class="button-effect">Premium</span>
+                            </a>  
+                            <a class="btn btn-dark custom-dark-btn w-33"href="{% url 'create' %}" type="button" role="button">
                                 <span class="button-effect">New Character</span>
                             </a>  
                         {% endif %}
@@ -181,12 +191,8 @@
 {% csrf_token %}
 {% endblock %}
 
-{{levelled_up}}
-
-{% if levelled_up %}
-    {% block postloadjs %}
+{% block postloadjs %}
         {{ block.super }}
         {{ weapon_json|json_script:"id_new_weapon"}}
         <script src="{% static 'battle/js/loot.js' %}"></script>
-    {% endblock %}
-{% endif %}
+{% endblock %}
