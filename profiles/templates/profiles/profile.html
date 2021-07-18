@@ -3,9 +3,9 @@
 
 {% block content %}
     <!-- Main Page Container -->
-    <div class="container-fluid p-2 p-sm-3 p-lg-5">
+    <div class="container-fluid p-2 p-sm-3 p-lg-5 pt-xxl-2">
         <!-- Profile Stats -->
-        <div class="row g-0 text-center p-4 p-md-3 p-lg-2">
+        <div class="row g-0 text-center p-4 p-md-3">
             <div class="col-12 col-md-6 offset-md-3 col-xxl-4 offset-xxl-4 polymorphism">
                 <div class="col-12">
                     <h2 class="logo-font">
@@ -31,100 +31,97 @@
             {% if current_profile.active_char %}
                 <div class="character-wrapper">
                     <!-- Character -->
-                    <div class="col-6 px-1 px-sm-3">
+                    <div class="col-6 col-xxl-3 px-1 px-sm-3 card-wrapper">
                         <div class="card polymorphism">
-                            <div class="row g-0">
-                                <div class="col-12 col-lg-6">
-                                    <img class="card-img left-cornered-image" src="{{ character.character_id.image.url }}" alt="{{character.character_id.name}}">
-                                </div>
-                                <div class="col-12 col-lg-6">
-                                    <div class="card-body p-2">
-                                        <h5 class="card-title text-center">{{ character.character_id.name }}</h5>
-                                        <div class="text-center">
-                                            <span>Level {{ character.current_level }}</span>
-                                        </div>
-                                        <div class="text-center">
-                                            <span>XP BAR</span>
-                                        </div>
-                                        <table class="table table-borderless table-responsive stats-table">
-                                            <tbody>
-                                                    <tr>
-                                                        <th scope="row">HP:</th>
-                                                        <td>{{ character.char_hp }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">Attack:</th>
-                                                        <td>{{ character.char_attack }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">Defense:</th>
-                                                        <td>{{ character.char_defense }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">Speed:</th>
-                                                        <td>{{ character.char_speed }}</td>
-                                                    </tr>
-                                            </tbody>
-                                        </table>
+                            <div class="col-12">
+                                <img class="card-img cornered-image" src="{{ character.character_id.image.url }}" alt="{{character.character_id.name}}">
+                            </div>
+                            <div class="col-12">
+                                <div class="card-body p-2">
+                                    <h5 class="card-title text-center">{{ character.character_id.name }}</h5>
+                                    <div class="text-center">
+                                        <span>Level {{ character.current_level }}</span>
                                     </div>
+                                    <div class="text-center">
+                                        <span>XP BAR</span>
+                                    </div>
+                                    <table class="table table-borderless table-responsive stats-table">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">HP:</th>
+                                                <td>{{ character.char_hp }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Attack:</th>
+                                                <td>{{ character.char_attack }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Defense:</th>
+                                                <td>{{ character.char_defense }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Speed:</th>
+                                                <td>{{ character.char_speed }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Weapon -->
-                    <div class="col-6 px-1 px-sm-3">
-                        <div class="card polymorphism rarity rarity-{{ character.get_weapon_rarity_display|lower }} ">
-                            <div class="row g-0">
-                                <div class="col-12 col-lg-6 order-2 order-lg-1">
-                                    <div class="card-body p-2">
-                                        <h5 class="card-title text-center">{{ character.weapon_id.name }}</h5>
-                                        <div class="text-center">
-                                            <span>Level {{ character.weapon_level }}</span>
-                                        </div>
-                                        <div class="text-center">
-                                            <span>{{ character.get_weapon_rarity_display }}</span>
-                                        </div>
-                                        <table class="table table-borderless table-responsive stats-table">
-                                            <tbody>
-                                                    <tr>
-                                                        <th scope="row">HP:</th>
-                                                        <td>{{ character.weapon_hp }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">Attack:</th>
-                                                        <td>{{ character.weapon_attack }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">Defense:</th>
-                                                        <td>{{ character.weapon_defense }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">Speed:</th>
-                                                        <td>{{ character.weapon_speed }}</td>
-                                                    </tr>
-                                            </tbody>
-                                        </table>
+                    <div class="col-6 col-xxl-3 px-1 px-sm-3 card-wrapper">
+                        <div class="card polymorphism rarity">
+                            <div class="col-12">
+                                <img class="card-img cornered-image" src="{{ character.weapon_id.image.url }}" alt="{{character.weapon_id.name}}">
+                            </div>
+                            <div class="col-12">
+                                <div class="card-body p-2">
+                                    <h5 class="card-title text-center">{{ character.weapon_id.name }}</h5>
+                                    <div class="text-center">
+                                        <span>Level {{ character.weapon_level }}</span>
                                     </div>
-                                </div>
-                                <div class="col-12 col-lg-6 order-1 order-lg-2">
-                                    <img class="card-img right-cornered-image" src="{{ character.weapon_id.image.url }}" alt="{{character.weapon_id.name}}">
+                                    <div class="text-center">
+                                        <span class="text-{{ character.get_weapon_rarity_display|lower }}">{{ character.get_weapon_rarity_display }}</span>
+                                    </div>
+                                    <table class="table table-borderless table-responsive stats-table">
+                                        <tbody>
+                                                <tr>
+                                                    <th scope="row">HP:</th>
+                                                    <td>{{ character.weapon_hp }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Attack:</th>
+                                                    <td>{{ character.weapon_attack }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Defense:</th>
+                                                    <td>{{ character.weapon_defense }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Speed:</th>
+                                                    <td>{{ character.weapon_speed }}</td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                        </div>        
+                        </div>    
                     </div>
                 </div>
-                <!-- Character Buttons -->
-                <div class="col-12">
-                    <div class="hero-button-container pt-3">
+                <div class="hero-button-container text-center col-12 pt-3">
+                    <div class="col-6">
                         <!-- Modal Trigger -->
-                        <button class="btn btn-dark custom-dark-btn w-25" type="button" role="button" data-bs-toggle="modal" data-bs-target="#deleteConfirmation">
-                            <span class="button-effect">Delete</span>
+                        <button class="btn btn-dark custom-dark-btn w-auto" type="button" role="button" data-bs-toggle="modal" data-bs-target="#deleteConfirmation">
+                            <span class="button-effect">Delete Hero</span>
                         </button>  
-                        <a class="btn btn-dark custom-dark-btn w-25" href="{% url 'battle' %}" type="button" role="button">
-                            <span class="button-effect">Battle</span>
+                    </div>
+                    <div class="col-6">
+                        <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'battle' %}" type="button" role="button">
+                            <span class="button-effect">New Battle</span>
                         </a> 
                     </div>
-                </div>
+                </div>    
             {% else %}
                 <div class="col-12 text-center">
                     <a class="animated-link list-text" href="{% url 'create' %}">Create a new character!</a>
@@ -132,7 +129,6 @@
             {% endif %} 
         </div>
     </div>
-
 
   <!-- Modal -->
   <div class="modal fade text-body text-center" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationTitle" aria-hidden="true">
