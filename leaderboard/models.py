@@ -4,6 +4,40 @@ from django.utils.translation import gettext_lazy as _
 from codex.models import Codex
 
 
+class LeaderboardQuerySet(models.QuerySet):
+    """
+    Leaderboard Query Set
+    -----------
+
+    Codex Query Set for all variants
+    of queries and their associated business
+    logic.
+
+    custom_filter:
+        Used for filtering the full codex for any search
+        parameters or filters requested by the user.
+    """
+
+    def sort_leaderboard(self):
+        return self.order_by("-score")
+
+
+class LeaderboardManager(models.Manager):
+    """
+    Leaderboard Manager
+    -----------
+
+    Leaderboard Manager for calling the custom
+    Leaderboard Query Sets.
+    """
+
+    def get_queryset(self):
+        return LeaderboardQuerySet(self.model, using=self._db)
+
+    def sort_leaderboard(self):
+        return self.get_queryset().sort_leaderboard()
+
+
 class Leaderboard(models.Model):
     """
     Leaderboard Model
@@ -74,7 +108,87 @@ class Leaderboard(models.Model):
     weapon_rarity = models.CharField(max_length=10, choices=Rarity.choices,
                                      default=Rarity.COMMON, null=False,
                                      blank=False)
+    objects = LeaderboardManager()
 
     def __str__(self):
         return (f'{self.user.username} | Score {self.score } ')
-        
+
+    @classmethod
+    def active_char_to_leaderboard(cls, active_char, score):
+        """
+        Class method for building the required structure of
+        the leaderboard model before saving it to the database.
+
+        Method takes in active character and their score.
+        """
+
+        entry = {}
+        entry['user'] = active_char.user
+        entry['current_level'] = active_char.current_level
+        entry['battle_count'] = active_char.battle_count
+        entry['character_id'] = active_char.character_id
+        entry['char_hp'] = active_char.char_hp
+        entry['char_attack'] = active_char.char_attack
+        entry['char_defense'] = active_char.char_defense
+        entry['char_speed'] = active_char.char_speed
+        entry['weapon_id'] = active_char.weapon_id
+        entry['weapon_hp'] = active_char.weapon_hp
+        entry['weapon_attack'] = active_char.weapon_attack
+        entry['weapon_defense'] = active_char.weapon_defense
+        entry['weapon_speed'] = active_char.weapon_speed
+        entry['weapon_level'] = active_char.weapon_level
+        entry['weapon_rarity'] = active_char.weapon_rarity
+        entry['score'] = score
+
+        new_leaderboard_entry = cls(**entry)
+        new_leaderboard_entry.save()
+
+    @staticmethod
+    def calculate_score(active_char):
+        """
+        Static method for calculating the score of an active
+        player. Used for comparing entries within the database,
+        and for saving new entry to the DB.
+        """
+        score = 0
+        score += active_char.current_level
+        score += active_char.battle_count
+        score += active_char.current_xp
+        score += active_char.char_hp
+        score += active_char.char_attack
+        score += active_char.char_speed
+        score += active_char.char_defense
+        score += active_char.weapon_hp
+        score += active_char.weapon_attack
+        score += active_char.weapon_speed
+        score += active_char.weapon_defense
+        score += active_char.weapon_level
+        return score
+
+    @classmethod
+    def leaderboard_check(cls, active_char):
+        """
+        Class method for checking whether active character
+        has earned a place on the scoreboard.
+
+        Method obtains all current entries in leaderboard
+        DB, calculates users score, and determines whether
+        the active characters score is higher than the lowest
+        entry in the DB. If so, or if there are less than 10
+        entries in the DB, the method calls the active_char_to_leaderboard
+        method to store the active character and their score to the DB.
+        """
+
+        current_leaderboard = cls.objects.sort_leaderboard()
+        score = cls.calculate_score(active_char)
+
+        if len(current_leaderboard) >= 10:
+            if current_leaderboard[9].score > score:
+                return False
+            else:
+                current_leaderboard[9].delete()
+                cls.active_char_to_leaderboard(active_char, score)
+                return True
+        else:
+            cls.active_char_to_leaderboard(active_char, score)
+            return True
