@@ -10,6 +10,7 @@ from codex.models import Codex
 import copy
 from profiles.functions import add_weapon
 from django.http import HttpResponse
+from leaderboard.models import Leaderboard
 
 
 class BattleView(LoginRequiredMixin, TemplateView):
@@ -134,6 +135,11 @@ class PostBattleView(LoginRequiredMixin, TemplateView):
             # Determine if user has beat own high score
             if current_profile.longest_run < character.battle_count:
                 current_profile.longest_run = character.battle_count
+
+            if current_profile.paid:
+                # Determine whether score should go in leaderboard
+                leaderboard_outcome = Leaderboard.leaderboard_check(character)
+                context['leaderboard'] = leaderboard_outcome
 
             # Delete Active Character
             character.delete()
