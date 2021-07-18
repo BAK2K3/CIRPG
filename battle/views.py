@@ -107,9 +107,13 @@ class PostBattleView(LoginRequiredMixin, TemplateView):
             # Set Active Character Object location in context
             context['active_character'] = character
 
-            # Calculate user XP and determine if level up
-            if calculate_xp(character, enemy.enemy_level):
-                context['levelled_up'] = True
+            # Checks to see whether free user has hit free limit
+            if character.current_level == 2 and not current_profile.paid:
+                context['free_limit'] = True
+            else:
+                # Calculate user XP and determine if level up
+                if calculate_xp(character, enemy.enemy_level):
+                    context['levelled_up'] = True
 
             # Obtain a new weapon for the user
             context['new_weapon'] = Codex.new_weapon(current_profile.paid,
