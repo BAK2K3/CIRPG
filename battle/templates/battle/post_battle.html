@@ -6,6 +6,14 @@
     <div class="container-fluid p-2 p-sm-3 p-lg-5">
         <!-- Win -->
         {% if outcome %}
+
+            {% if free_limit %}
+                <div class="free-alert text-center">
+                    <p><strong>Max Level Reached</strong></p>
+                    <p>Uprgrade to premium now to full access to CIPRG!</p>
+                </div>
+            {% endif %}
+
             <!-- Level Up -->
             {% if levelled_up %}
                 <div class="row g-0 hero-container p-3">
@@ -15,7 +23,10 @@
                         <div class="card h100 border-0 polymorphism codex-card">
                             <img src="{{ active_character.character_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.character_id.name }}">
                             <div class="card-body">
-                                <h5 class="card-title text-center">{{ active_character.character_id.name }} - Level {{ active_character.current_level|add:"-1"}}</h5>
+                                <h5 class="card-title text-center">{{ active_character.character_id.name }}</h5>
+                                <div class="text-center">
+                                    <span>Level {{ active_character.current_level|add:"-1"}}</span>
+                                </div>
                                 <table class="table table-borderless table-responsive stats-table px-2">
                                     <tbody>
                                         <tr>
@@ -44,7 +55,11 @@
                         <div class="card h100 border-0 polymorphism codex-card">
                             <img src="{{ active_character.character_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.character_id.name }}">
                             <div class="card-body">
-                                <h5 class="card-title text-center">{{ active_character.character_id.name }} - Level {{ active_character.current_level}}</h5>
+                                <h5 class="card-title text-center">{{ active_character.character_id.name }}</h5>
+                                <div class="text-center">
+                                    <span>Level {{ active_character.current_level|add:"-1"}}</span>
+                                </div>
+                                
                                 <table class="table table-borderless table-responsive stats-table px-2">
                                     <tbody>
                                         <tr>
@@ -79,8 +94,10 @@
                     <div class="card h100 border-0 polymorphism codex-card rarity rarity-{{ active_character.get_weapon_rarity_display|lower }}">
                         <img src="{{ active_character.weapon_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.weapon_id.name }}">
                         <div class="card-body">
-                            <h5 class="card-title text-center">{{ active_character.weapon_id.name }} - Level {{ active_character.weapon_level}}</h5>
-                            <h5 class="card-title text-center">{{ active_character.get_weapon_rarity_display }}</h5>
+                            <h5 class="card-title text-center">{{ active_character.weapon_id.name }}</h5>
+                            <div class="text-center">
+                                <span>Level {{ active_character.weapon_level}} - {{ active_character.get_weapon_rarity_display }}</span>
+                            </div>
                             <table class="table table-borderless table-responsive stats-table px-2">
                                 <tbody>
                                     <tr>
@@ -109,8 +126,10 @@
                     <div class="card h100 border-0 polymorphism codex-card rarity rarity-{{ new_weapon.rarity_text|lower }}">
                         <img src="{{ new_weapon.image.url }}" class="card-img-top cornered-image" alt="{{ new_weapon.name }}">
                         <div class="card-body">
-                            <h5 class="card-title text-center">{{ new_weapon.name }} - Level {{ new_weapon.level}}</h5>
-                            <h5 class="card-title text-center">{{ new_weapon.rarity_text }}</h5>
+                            <h5 class="card-title text-center">{{ new_weapon.name }}</h5>
+                            <div class="text-center">
+                                <span>Level {{ new_weapon.level}} - {{ new_weapon.rarity_text }}</span>
+                            </div>
                             <table class="table table-borderless table-responsive stats-table px-2">
                                 <tbody>
                                     <tr>
@@ -156,7 +175,7 @@
                 <div class="row">
                     <div class="col-12">
                     <h2 class="logo-font">YOU LOSE!</h2>
-                        {% if paid %}
+                        {% if current_profile.paid %}
                             {% if leaderboard %}
                                 <p>Congratulations! You made your way onto the leaderboard!</p>
                                 <p>Check out the leaderboard to view your position, or create a new character!</p>
