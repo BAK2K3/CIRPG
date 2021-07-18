@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load profile_tools %}
 {% block content %}
     <!-- Main Page Container -->
     <div class="container-fluid p-2 p-sm-3 p-lg-5 pt-xxl-2">
@@ -42,9 +42,12 @@
                                     <div class="text-center">
                                         <span>Level {{ character.current_level }}</span>
                                     </div>
-                                    <div class="text-center">
-                                        <span>XP BAR</span>
-                                    </div>
+                                        <div class="progress-container px-2">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="{{ character.current_xp }}" style="width: {% percent character.current_xp character.min_xp character.max_xp%}%" 
+                                                aria-valuemin="{{ character.min_xp }}" aria-valuemax="{{ character.max_xp }}"></div>
+                                            </div>
+                                        </div>
                                     <table class="table table-borderless table-responsive stats-table">
                                         <tbody>
                                             <tr>
