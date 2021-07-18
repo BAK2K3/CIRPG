@@ -25,4 +25,5 @@ urlpatterns = [
     path('codex/', include('codex.urls')),
     path('profile/', include('profiles.urls')),
     path('battle/', include('battle.urls')),
+    path('leaderboard/', include('leaderboard.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
