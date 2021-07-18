@@ -6,15 +6,108 @@
     <div class="container-fluid p-2 p-sm-3 p-lg-5">
         <!-- Leaderboard Container -->
         <div class="row g-0 pt-2 pt-md-4">
-            <div class="col-12 text-center">
-                <h2 class="logo-font">Leaderboard</h2>
-
-                {% if leaderboard is empty %}
-                    <h3 class=p-3>There are currently no entries in the leaderboard!</h3>
+            <div class="col-12">
+                <h2 class="logo-font text-center">Leaderboard</h2>
+                {% if leaderboard %}                  
+                    <div class="row g-0">
+                        <div class="col-12 col-md-10 col-lg-8 col-xxl-6 offset-md-1 offset-lg-2 offset-xxl-3">
+                            <div class="accordion accordion-flush" id="leaderboardAccordian">
+                                {% for entry in leaderboard %}
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-heading{{ forloop.counter }}">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="flush-collapse{{ forloop.counter }}">
+                                        {{ forloop.counter }} - User: {{entry.user}} | Score: {{entry.score}} 
+                                        </button>
+                                        </h2>
+                                        <div id="flush-collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ forloop.counter }}" data-bs-parent="#leaderboardAccordian">
+                                            <div class="accordion-body">
+                                                <div class="row g-">
+                                                    <div class="col-6">
+                                                        <img src="{{ entry.character_id.image.url }}" class="img-fluid" alt="{{ entry.character_id.name }}">
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <img src="{{ entry.weapon_id.image.url }}" class="img-fluid" alt="{{ entry.weapon_id.name }}">
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <table class="table table-borderless table-responsive stats-table text-body px-2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="2" class="text-center">{{ entry.character_id.name }} ({{ entry.current_level }})</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">HP:</th>
+                                                                    <td>{{ entry.char_hp }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Attack:</th>
+                                                                    <td>{{ entry.char_attack }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Defense:</th>
+                                                                    <td>{{ entry.char_defense }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Speed:</th>
+                                                                    <td>{{ entry.char_speed }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <table class="table table-borderless table-responsive stats-table text-body px-2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="2" class="text-center">{{ entry.weapon_id.name }} ({{ entry.weapon_level }})</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">HP:</th>
+                                                                    <td>{{ entry.weapon_hp }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Attack:</th>
+                                                                    <td>{{ entry.weapon_attack }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Defense:</th>
+                                                                    <td>{{ entry.weapon_defense }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Speed:</th>
+                                                                    <td>{{ entry.weapon_speed }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <hr class="text-body my-1">
+                                                    <div class="col-12">
+                                                        <table class="table table-borderless table-responsive stats-table text-body px-2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row">Date:</th>
+                                                                    <td>{{ entry.submission_date|date:'d-m-Y' }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Total Kills:</th>
+                                                                    <td>{{ entry.battle_count }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Weapon Rarity:</th>
+                                                                    <td>{{ entry.get_weapon_rarity_display }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                      </div>
+                    </div>
                 {% else %}
-
+                    <h3 class=p-3>There are currently no entries in the leaderboard!</h3>
                 {% endif %}
-
             </div>
         </div>
 {% endblock %}
