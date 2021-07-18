@@ -71,7 +71,7 @@
               <!-- Inline -->
               <ul class="list-inline list-unstyled text-center d-md-flex d-none">
                 <li class="list-inline-item">
-                  <a class="animated-link list-text" href="">Leaderboard</a>
+                  <a class="animated-link list-text" href="{% url 'leaderboard' %}">Leaderboard</a>
                 </li>
                 <li class="list-inline-item">
                   <a class="animated-link list-text" href="{% url 'codex' %}">Codex</a>
@@ -97,7 +97,7 @@
                       <hr class="dropdown-divider">
                     {% endif %}
                     <a class="animated-link list-text dropdown-item" href="">Premium</a>  
-                    <a class="animated-link list-text dropdown-item" href="">Leaderboard</a>
+                    <a class="animated-link list-text dropdown-item" href="{% url 'leaderboard' %}">Leaderboard</a>
                     <hr class="dropdown-divider">
                     <a class="animated-link list-text dropdown-item" href="{% url 'codex' %}">Codex</a>
                     <hr class="dropdown-divider">
