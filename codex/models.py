@@ -157,7 +157,7 @@ class Codex(models.Model):
         if level > 1:
             enemy.level = randint(1, level)
             # Modify stats based on level (progressive)
-            for i in range(enemy.level):
+            for i in range(enemy.level - 1):
                 enemy.base_hp = stat_modifier(enemy.base_hp,
                                               enemy.level)
                 enemy.base_attack = stat_modifier(enemy.base_attack,
