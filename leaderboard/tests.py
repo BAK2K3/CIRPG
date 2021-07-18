@@ -31,7 +31,7 @@ class TestViews(TestCase):
         self.profile = Profile.objects.create(user=self.user)
 
         self.assertTrue(logged_in)
-        
+
     def test_leaderboard_page(self):
         """ Test leaderboard view renders correct page """
         response = self.client.get('/leaderboard/')
