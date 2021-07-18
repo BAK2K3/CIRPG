@@ -3,201 +3,225 @@
 
 {% block content %}
     <!-- Main Page Container -->
-    <div class="container-fluid p-2 p-sm-3 p-lg-5">
+    <div class="container-fluid p-sm-3 p-lg-5">
         <!-- Win -->
         {% if outcome %}
 
             {% if free_limit %}
+                <!-- If free user has hit limit -->
                 <div class="free-alert text-center">
                     <p><strong>Max Level Reached</strong></p>
                     <p>Uprgrade to premium now to full access to CIPRG!</p>
                 </div>
             {% endif %}
-
-            <!-- Level Up -->
-            {% if levelled_up %}
-                <div class="row g-0 hero-container p-3">
-                    <h2 class="logo-font text-center">Level up!</h2>
-                    <div class="col-6 col-sm-3 col-xl-3 p-3">
-                        <!-- Old Character -->
-                        <div class="card h100 border-0 polymorphism codex-card">
-                            <img src="{{ active_character.character_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.character_id.name }}">
+            
+            <!-- Container for cards -->
+            <div class="row g-0 hero-container">
+                {% if levelled_up %}
+                    <!-- Level Up Container-->
+                    <div class="col-12 col-xxl-6 flex-container">
+                        <div class="col-12">
+                            <h2 class="logo-font text-center">Level up!</h2>
+                        </div>
+                        <!-- Old Character Stats -->
+                        <div class="col-6 p-3">
+                            <div class="card h100 border-0 polymorphism codex-card">
+                                <img src="{{ active_character.character_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.character_id.name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">{{ active_character.character_id.name }}</h5>
+                                    <div class="text-center">
+                                        <span>Level {{ active_character.current_level|add:"-1"}}</span>
+                                    </div>
+                                    <table class="table table-borderless table-responsive stats-table px-2">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">HP:</th>
+                                                <td>{{ old_stats.hp }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Attack:</th>
+                                                <td>{{ old_stats.attack }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Defense:</th>
+                                                <td>{{ old_stats.defense }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Speed:</th>
+                                                <td>{{ old_stats.speed }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Container to push up boxes on large display for alignment -->
+                            <div class="hidden-padding d-none d-xxl-flex"></div>
+                        </div>
+                        <!-- New Character Stats -->
+                        <div class="col-6 p-3">
+                            <div class="card h100 border-0 polymorphism codex-card">
+                                <img src="{{ active_character.character_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.character_id.name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">{{ active_character.character_id.name }}</h5>
+                                    <div class="text-center">
+                                        <span>Level {{ active_character.current_level }}</span>
+                                    </div>
+                                    <table class="table table-borderless table-responsive stats-table px-2">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">HP:</th>
+                                                <td>{{ active_character.char_hp }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Attack:</th>
+                                                <td>{{ active_character.char_attack }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Defense:</th>
+                                                <td>{{ active_character.char_defense }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Speed:</th>
+                                                <td>{{ active_character.char_speed }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                {% endif %}
+                <!-- Loot container -->
+                <div class="col-12 col-xxl-6 flex-container">
+                    <div class="col-12">
+                        <h2 class="logo-font text-center">New Loot!</h2>
+                    </div>
+                    <!-- Current Weapon -->
+                    <div class="col-6 p-3" id="oldWeapon">
+                        <div class="card h100 border-0 polymorphism codex-card rarity rarity-{{ active_character.get_weapon_rarity_display|lower }}">
+                            <img src="{{ active_character.weapon_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.weapon_id.name }}">
                             <div class="card-body">
-                                <h5 class="card-title text-center">{{ active_character.character_id.name }}</h5>
+                                <h5 class="card-title text-center">{{ active_character.weapon_id.name }}</h5>
                                 <div class="text-center">
-                                    <span>Level {{ active_character.current_level|add:"-1"}}</span>
+                                    <p class="m-0">Level {{ active_character.weapon_level}}<br>
+                                    {{ active_character.get_weapon_rarity_display }}</p>
                                 </div>
                                 <table class="table table-borderless table-responsive stats-table px-2">
                                     <tbody>
                                         <tr>
                                             <th scope="row">HP:</th>
-                                            <td>{{ old_stats.hp }}</td>
+                                            <td>{{ active_character.weapon_hp }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Attack:</th>
-                                            <td>{{ old_stats.attack }}</td>
+                                            <td>{{ active_character.weapon_attack }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Defense:</th>
-                                            <td>{{ old_stats.defense }}</td>
+                                            <td>{{ active_character.weapon_defense }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Speed:</th>
-                                            <td>{{ old_stats.speed }}</td>
+                                            <td>{{ active_character.weapon_speed }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-6 col-sm-3 col-xl-3 p-3">
-                        <!-- New Character -->
-                        <div class="card h100 border-0 polymorphism codex-card">
-                            <img src="{{ active_character.character_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.character_id.name }}">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">{{ active_character.character_id.name }}</h5>
-                                <div class="text-center">
-                                    <span>Level {{ active_character.current_level|add:"-1"}}</span>
-                                </div>
-                                
-                                <table class="table table-borderless table-responsive stats-table px-2">
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">HP:</th>
-                                            <td>{{ active_character.char_hp }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Attack:</th>
-                                            <td>{{ active_character.char_attack }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Defense:</th>
-                                            <td>{{ active_character.char_defense }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Speed:</th>
-                                            <td>{{ active_character.char_speed }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="loot-button-container text-center pt-3">
+                            <a class="btn btn-dark custom-dark-btn w-auto" id="keepButton" href="{% url 'profile' %}" type="button" role="button">
+                                <span class="button-effect">Keep Old Weapon</span>
+                            </a>  
                         </div>
                     </div>
-                </div>
-            {% endif %}
-
-            <!-- Loot -->
-            <div class="row g-0 hero-container p-3">
-                <h2 class="logo-font text-center">New Loot!</h2>
-                <div class="col-6 col-sm-3 col-xl-3 p-3" id="oldWeapon">
-                    <!-- Old Weapon -->
-                    <div class="card h100 border-0 polymorphism codex-card rarity rarity-{{ active_character.get_weapon_rarity_display|lower }}">
-                        <img src="{{ active_character.weapon_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.weapon_id.name }}">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">{{ active_character.weapon_id.name }}</h5>
-                            <div class="text-center">
-                                <span>Level {{ active_character.weapon_level}} - {{ active_character.get_weapon_rarity_display }}</span>
-                            </div>
-                            <table class="table table-borderless table-responsive stats-table px-2">
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">HP:</th>
-                                        <td>{{ active_character.weapon_hp }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Attack:</th>
-                                        <td>{{ active_character.weapon_attack }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Defense:</th>
-                                        <td>{{ active_character.weapon_defense }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Speed:</th>
-                                        <td>{{ active_character.weapon_speed }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-3 col-xl-3 p-3">
                     <!-- New Weapon -->
-                    <div class="card h100 border-0 polymorphism codex-card rarity rarity-{{ new_weapon.rarity_text|lower }}">
-                        <img src="{{ new_weapon.image.url }}" class="card-img-top cornered-image" alt="{{ new_weapon.name }}">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">{{ new_weapon.name }}</h5>
-                            <div class="text-center">
-                                <span>Level {{ new_weapon.level}} - {{ new_weapon.rarity_text }}</span>
+                    <div class="col-6  p-3">
+                        <div class="card h100 border-0 polymorphism codex-card rarity rarity-{{ new_weapon.rarity_text|lower }}">
+                            <img src="{{ new_weapon.image.url }}" class="card-img-top cornered-image" alt="{{ new_weapon.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ new_weapon.name }}</h5>
+                                <div class="text-center">
+                                    <p class="m-0">Level {{ new_weapon.level}}<br>
+                                    {{ new_weapon.rarity_text }}</p>
+                                </div>
+                                <table class="table table-borderless table-responsive stats-table px-2">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">HP:</th>
+                                            <td>{{ new_weapon.base_hp }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Attack:</th>
+                                            <td>{{ new_weapon.base_attack }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Defense:</th>
+                                            <td>{{ new_weapon.base_defense }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Speed:</th>
+                                            <td>{{ new_weapon.base_speed }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <table class="table table-borderless table-responsive stats-table px-2">
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">HP:</th>
-                                        <td>{{ new_weapon.base_hp }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Attack:</th>
-                                        <td>{{ new_weapon.base_attack }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Defense:</th>
-                                        <td>{{ new_weapon.base_defense }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Speed:</th>
-                                        <td>{{ new_weapon.base_speed }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        </div>
+                        <div class="loot-button-container text-center pt-3">
+                        <button class="btn btn-dark custom-dark-btn w-auto" id="newButton" type="button" role="button">
+                            <span class="button-effect">Take New Weapon</span>
+                        </button> 
                         </div>
                     </div>
-                </div>
-                <div class="col-12">
-                    <div class="loot-button-container text-center pt-3">
-                        <a class="btn btn-dark custom-dark-btn w-25" id="keepButton" href="{% url 'profile' %}" type="button" role="button">
-                            <span class="button-effect">Keep Old</span>
-                        </a>  
-                        <button class="btn btn-dark custom-dark-btn w-25" id="newButton" href="{% url 'battle' %}" type="button" role="button">
-                            <span class="button-effect">Take New</span>
-                        </button> 
-                    </div>
-                    <div class="continue-button-container text-center pt-3 d-none">
-                        <a class="btn btn-dark custom-dark-btn w-25" id="keepButton" href="{% url 'profile' %}" type="button" role="button">
-                            <span class="button-effect">Continue</span>
-                        </a>  
+                    <div class="col-12">
+                        <div class="continue-button-container text-center pt-3 d-none">
+                            <a class="btn btn-dark custom-dark-btn w-25" id="keepButton" href="{% url 'profile' %}" type="button" role="button">
+                                <span class="button-effect">Profile</span>
+                            </a>  
+                            <a class="btn btn-dark custom-dark-btn w-25" id="keepButton" href="{% url 'battle' %}" type="button" role="button">
+                                <span class="button-effect">Battle</span>
+                            </a>  
+                        </div>
                     </div>
                 </div>
             </div>
-        <!-- Lose -->
         {% else %}
+            <!-- Lose Container -->
             <div class="container-fluid page-container text-center py-3">
-                <div class="row">
+                <div class="row g-0">
                     <div class="col-12">
-                    <h2 class="logo-font">YOU LOSE!</h2>
+                        <h2 class="logo-font">YOU LOSE!</h2>
+                    </div>
                         {% if current_profile.paid %}
+                            <!-- Paid User -->
                             {% if leaderboard %}
-                                <p>Congratulations! You made your way onto the leaderboard!</p>
-                                <p>Check out the leaderboard to view your position, or create a new character!</p>
-                                <a class="btn btn-dark custom-dark-btn w-33" href="{% url 'leaderboard' %}" type="button" role="button">
-                                    <span class="button-effect">Leaderboard</span>
-                                </a>  
-                                <a class="btn btn-dark custom-dark-btn w-33" href="{% url 'create' %}" type="button" role="button">
-                                    <span class="button-effect">New Character</span>
-                                </a>  
+                                <!-- Successful Leaderboard -->
+                                <div class="col-12">
+                                    <p>Congratulations! You made your way onto the leaderboard!</p>
+                                    <p>Check out the leaderboard to view your position, or create a new character!</p>
+                                    <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'leaderboard' %}" type="button" role="button">
+                                        <span class="button-effect">Leaderboard</span>
+                                    </a>  
+                                    <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'create' %}" type="button" role="button">
+                                        <span class="button-effect">New Character</span>
+                                    </a>  
+                                </div>
                             {% else %}
-                                <p>Unfortunately, you have not made it to the leaderboard.</p>
-                                <p>Why not try your luck again?</p>
-                                <a class="btn btn-dark custom-dark-btn w-33" href="{% url 'create' %}" type="button" role="button">
-                                    <span class="button-effect">New Character</span>
-                                </a>  
+                                <!-- Unsuccessful Leaderboard -->
+                                <div class="col-12">
+                                    <p>Unfortunately, you have not made it to the leaderboard.</p>
+                                    <p>Why not try your luck again?</p>
+                                    <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'create' %}" type="button" role="button">
+                                        <span class="button-effect">New Character</span>
+                                    </a>  
+                                </div>
                             {% endif %}
                         {% else %}
+                            <!-- Free User -->
                             <p>Upgrade to premium to get access to the Leaderboard or create a new character to keep playing for free!</p>
-                            <a class="btn btn-dark custom-dark-btn w-33" href="" type="button" role="button">
+                            <a class="btn btn-dark custom-dark-btn w-auto" href="" type="button" role="button">
                                 <span class="button-effect">Premium</span>
                             </a>  
-                            <a class="btn btn-dark custom-dark-btn w-33"href="{% url 'create' %}" type="button" role="button">
+                            <a class="btn btn-dark custom-dark-btn w-auto"href="{% url 'create' %}" type="button" role="button">
                                 <span class="button-effect">New Character</span>
                             </a>  
                         {% endif %}
