@@ -507,6 +507,34 @@ textarea:disabled {
     }
   }
 
+/********************************** LEADERBOARD */
+
+.accordion-body, .accordion-button{ 
+    background-color: #0f0f0f;
+}
+
+.accordion-button{
+    color: #FFF8F0;
+    border-color: #1e1e24;
+}
+
+.accordion-button:active, .accordion-button:focus, .accordion-button:not(.collapsed) {
+    background-color: #1e1e24;
+    border-color: #1e1e24;
+    color: #FFF8F0;
+    box-shadow: 0 0 0 0.25rem #FFF8F0; 
+}
+
+.accordion-item:last-of-type .accordion-button.collapsed {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.accordion {
+    -webkit-box-shadow: 0px 11px 12px 4px rgba(0,0,0,0.66);
+    box-shadow: 0px 11px 12px 4px rgba(0,0,0,0.66);
+}
+
 /********************************** MEDIA QUERIES */
 @media (max-width: 992px) {
     h2 {
