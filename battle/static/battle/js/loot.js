@@ -25,3 +25,11 @@
             }
         });
     });
+
+    // Function to remove "new weapon" button, remove new weapon
+    // Container, and add "continue" button container
+    $("#keepButton").click(function() {
+        $(".loot-button-container").addClass("d-none");
+        $("#newWeapon").addClass("d-none");
+        $(".continue-button-container").removeClass("d-none");
+    });
