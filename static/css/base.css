@@ -362,25 +362,47 @@ hr.dropdown-divider {
 
 /********************************** PROFILE */
 
-.left-cornered-image {
+.cornered-image {
     border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-}
-
-.right-cornered-image {
     border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
 }
 
 .character-wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.character-wrapper .card-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card.polymorphism {
+    flex: 0 0 100%;
 }
 
 .hero-button-container {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+}
+
+.text-uncommon {
+    text-decoration: underline;
+}
+
+.text-rare {
+    color:#208b3a;
+}
+
+.text-legendary {
+    color:#ffd100;
+}
+
+.text-mythical {
+    color:#e5383b;
 }
 
 /********************************** CREATE */
@@ -507,6 +529,17 @@ textarea:disabled {
     }
   }
 
+.flex-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hidden-padding {
+    height: 52px;
+}
+
+
 /********************************** LEADERBOARD */
 
 .accordion-body, .accordion-button{ 
@@ -541,12 +574,6 @@ textarea:disabled {
         font-size: 2rem;
     }
 
-    .left-cornered-image, .right-cornered-image {
-        border-top-left-radius: 25px;
-        border-top-right-radius: 25px;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    } 
 }
 
 @media (max-width: 767px) {
