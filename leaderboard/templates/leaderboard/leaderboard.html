@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Main Page Container -->
+    <div class="container-fluid p-2 p-sm-3 p-lg-5">
+        <!-- Leaderboard Container -->
+        <div class="row g-0 pt-2 pt-md-4">
+            <div class="col-12 text-center">
+                <h2 class="logo-font">Leaderboard</h2>
+
+                {% if leaderboard is empty %}
+                    <h3 class=p-3>There are currently no entries in the leaderboard!</h3>
+                {% else %}
+
+                {% endif %}
+
+            </div>
+        </div>
+{% endblock %}
