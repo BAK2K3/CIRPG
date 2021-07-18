@@ -9,7 +9,7 @@
             <!-- Level Up -->
             {% if levelled_up %}
                 <div class="row g-0 hero-container p-3">
-                    <h2 class="logo-font">Level up!</h2>
+                    <h2 class="logo-font text-center">Level up!</h2>
                     <div class="col-6 col-sm-3 col-xl-3 p-3">
                         <!-- Old Character -->
                         <div class="card h100 border-0 polymorphism codex-card">
@@ -72,11 +72,11 @@
             {% endif %}
 
             <!-- Loot -->
-            <div class="row g-0 hero-container p-3 text-center">
-                <h2 class="logo-font">New Loot!</h2>
+            <div class="row g-0 hero-container p-3">
+                <h2 class="logo-font text-center">New Loot!</h2>
                 <div class="col-6 col-sm-3 col-xl-3 p-3" id="oldWeapon">
                     <!-- Old Weapon -->
-                    <div class="card h100 border-0 polymorphism codex-card">
+                    <div class="card h100 border-0 polymorphism codex-card rarity rarity-{{ active_character.get_weapon_rarity_display|lower }}">
                         <img src="{{ active_character.weapon_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.weapon_id.name }}">
                         <div class="card-body">
                             <h5 class="card-title text-center">{{ active_character.weapon_id.name }} - Level {{ active_character.weapon_level}}</h5>
@@ -106,7 +106,7 @@
                 </div>
                 <div class="col-6 col-sm-3 col-xl-3 p-3">
                     <!-- New Weapon -->
-                    <div class="card h100 border-0 polymorphism codex-card">
+                    <div class="card h100 border-0 polymorphism codex-card rarity rarity-{{ new_weapon.rarity_text|lower }}">
                         <img src="{{ new_weapon.image.url }}" class="card-img-top cornered-image" alt="{{ new_weapon.name }}">
                         <div class="card-body">
                             <h5 class="card-title text-center">{{ new_weapon.name }} - Level {{ new_weapon.level}}</h5>
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="loot-button-container pt-3">
+                    <div class="loot-button-container text-center pt-3">
                         <a class="btn btn-dark custom-dark-btn w-25" id="keepButton" href="{% url 'profile' %}" type="button" role="button">
                             <span class="button-effect">Keep Old</span>
                         </a>  
@@ -143,7 +143,7 @@
                             <span class="button-effect">Take New</span>
                         </button> 
                     </div>
-                    <div class="continue-button-container pt-3 d-none">
+                    <div class="continue-button-container text-center pt-3 d-none">
                         <a class="btn btn-dark custom-dark-btn w-25" id="keepButton" href="{% url 'profile' %}" type="button" role="button">
                             <span class="button-effect">Continue</span>
                         </a>  
@@ -152,7 +152,18 @@
             </div>
         <!-- Lose -->
         {% else %}
-            <h2>LOSE</h2>
+        <div class="container-fluid page-container text-center py-3">
+            <div class="row">
+                <div class="col-12">
+                <h2 class="logo-font">YOU LOSE!</h2>
+                    <p>Unfortunately, you have not made it to the leaderboard.</p>
+                    <p>Why not try your luck again?</p>
+                    <a class="btn btn-dark custom-dark-btn w-33" id="keepButton" href="{% url 'create' %}" type="button" role="button">
+                        <span class="button-effect">Create New Character</span>
+                    </a>  
+                </div>
+            </div>
+        </div>
         {%endif%}
     </div>
 
