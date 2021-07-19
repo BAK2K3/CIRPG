@@ -379,6 +379,10 @@ hr.dropdown-divider {
     flex-wrap: wrap;
 }
 
+.card {
+    justify-content: space-between;
+}
+
 .card.polymorphism {
     flex: 0 0 100%;
 }
@@ -639,7 +643,7 @@ textarea:disabled {
     }
 
     .card-body {
-        padding: 0 0 2px 0px;
+        padding: 0 4px 4px 4px;
     }
 
 }
