@@ -38,8 +38,8 @@
                             </div>
                             <div class="col-12">
                                 <div class="card-body p-2">
-                                    <h5 class="card-title text-center">{{ character.character_id.name }}</h5>
-                                    <div class="text-center">
+                                    <h5 class="card-title text-center mb-0">{{ character.character_id.name }}</h5>
+                                    <div class="text-center mb-2">
                                         <span>Level {{ character.current_level }}</span>
                                     </div>
                                         <div class="progress-container px-2">
@@ -80,11 +80,9 @@
                             </div>
                             <div class="col-12">
                                 <div class="card-body p-2">
-                                    <h5 class="card-title text-center">{{ character.weapon_id.name }}</h5>
+                                    <h5 class="card-title text-center mb-0">{{ character.weapon_id.name }}</h5>
                                     <div class="text-center">
-                                        <span>Level {{ character.weapon_level }}</span>
-                                    </div>
-                                    <div class="text-center">
+                                        <span>Level {{ character.weapon_level }}</span><br>
                                         <span class="text-{{ character.get_weapon_rarity_display|lower }}">{{ character.get_weapon_rarity_display }}</span>
                                     </div>
                                     <table class="table table-borderless table-responsive stats-table">
