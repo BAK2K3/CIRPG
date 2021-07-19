@@ -10,4 +10,5 @@ from . import views
 
 urlpatterns = [
     path('', views.PremiumView.as_view(), name="premium"),
+    path('config/', views.stripe_config),
 ]
