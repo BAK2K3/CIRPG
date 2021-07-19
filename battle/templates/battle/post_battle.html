@@ -92,15 +92,15 @@
                     </div>  
                 {% endif %}
                 <!-- Loot container -->
-                <div class="col-12 col-xxl-6 flex-container">
+                <div class="col-12 col-xxl-6 flex-container character-wrapper">
                     <div class="col-12">
                         <h2 class="logo-font text-center mt-2 mt-sm-3">New Loot!</h2>
                     </div>
                     <!-- Current Weapon -->
-                    <div class="col-6 p-3" id="oldWeapon">
+                    <div class="col-6 p-3 card-wrapper" id="oldWeapon">
                         <div class="card h100 border-0 polymorphism codex-card rarity rarity-{{ active_character.get_weapon_rarity_display|lower }}">
                             <img src="{{ active_character.weapon_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.weapon_id.name }}">
-                            <div class="card-body">
+                            <div class="card-body p-1">
                                 <h5 class="card-title text-center">{{ active_character.weapon_id.name }}</h5>
                                 <div class="text-center">
                                     <p class="m-0">Level {{ active_character.weapon_level}}<br>
@@ -135,10 +135,10 @@
                         </div>
                     </div>
                     <!-- New Weapon -->
-                    <div class="col-6 p-3" id="newWeapon">
+                    <div class="col-6 p-3 card-wrapper" id="newWeapon">
                         <div class="card h100 border-0 polymorphism codex-card rarity rarity-{{ new_weapon.rarity_text|lower }}">
                             <img src="{{ new_weapon.image.url }}" class="card-img-top cornered-image" alt="{{ new_weapon.name }}">
-                            <div class="card-body">
+                            <div class="card-body p-1">
                                 <h5 class="card-title text-center">{{ new_weapon.name }}</h5>
                                 <div class="text-center">
                                     <p class="m-0">Level {{ new_weapon.level}}<br>
