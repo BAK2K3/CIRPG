@@ -26,4 +26,5 @@ urlpatterns = [
     path('profile/', include('profiles.urls')),
     path('battle/', include('battle.urls')),
     path('leaderboard/', include('leaderboard.urls')),
+    path('premium/', include('premium.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
