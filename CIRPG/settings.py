@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     'codex',
     'profiles',
     'battle',
-    'leaderboard'
-
+    'leaderboard',
+    'premium'
 ]
 
 MIDDLEWARE = [
