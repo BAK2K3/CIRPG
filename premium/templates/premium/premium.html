@@ -9,11 +9,19 @@
             <h2 class="logo-font">Premium</h2>
         </div>
         <div class="col-12">
-            <div class="button-container">
-                <button class="btn btn-dark custom-dark-btn w-auto" type="button" role="button" >
-                    <span class="button-effect">Upgrade to Premium</span>
-                </button>  
-            </div>
+            {% if user.is_authenticated %}
+                {% if user_paid %}
+                    <h3>You are already a premium user!</h3>
+                {% else %}
+                    <div class="button-container">
+                        <button class="btn btn-dark custom-dark-btn w-auto" id="checkoutButton" type="button" role="button" >
+                            <span class="button-effect">Upgrade to Premium</span>
+                        </button>  
+                    </div>
+                {% endif %}
+            {% else %}
+                <h3>Please log in to purchase premium!</h3>
+            {% endif %}
         </div>
     </div>
 </div>
