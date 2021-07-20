@@ -175,3 +175,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 STRIPE_PRICE_ID = os.getenv("STRIPE_PRICE_ID")
+
+if 'DEVELOPMENT' in os.environ:
+    DOMAIN_URL = "http://localhost:8000/"
+else:
+    DOMAIN_URL = "https://CIRPG.heorkuapp.com/"
