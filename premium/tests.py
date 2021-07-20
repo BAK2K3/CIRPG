@@ -18,9 +18,11 @@ class TestViews(TestCase):
         """ Create test login user and create Profile entry"""
         username = "Ben"
         pswd = "Kavanagh" # noqa
+        email = "ben@ben.com"
         User = get_user_model()
         self.user = User.objects.create_user(username=username,
-                                             password=pswd)
+                                             password=pswd,
+                                             email=email)
         logged_in = self.client.login(username=username, password=pswd)
 
         # Add User to Profile
