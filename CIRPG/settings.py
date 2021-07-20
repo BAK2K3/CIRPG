@@ -177,6 +177,6 @@ STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 STRIPE_PRICE_ID = os.getenv("STRIPE_PRICE_ID")
 
 if 'DEVELOPMENT' in os.environ:
-    DOMAIN_URL = "http://localhost:8000/"
+    DOMAIN_URL = "http://127.0.0.1:8000/"
 else:
     DOMAIN_URL = "https://CIRPG.heorkuapp.com/"
