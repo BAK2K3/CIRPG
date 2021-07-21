@@ -13,5 +13,6 @@ urlpatterns = [
     path('config/', views.stripe_config),
     path('checkout/', views.create_checkout_session),
     path('success/', views.SuccessView.as_view(), name="success"),
-    path('abort/', views.AbortView.as_view(), name="abort")
+    path('abort/', views.AbortView.as_view(), name="abort"),
+    path('webhook/', views.stripe_webhook),
 ]
