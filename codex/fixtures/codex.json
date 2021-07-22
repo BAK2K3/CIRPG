@@ -546,8 +546,8 @@
     {
        "pk":35,
        "model":"codex.codex",
-       "alpha_name":"imp_lesser",
        "fields":{
+         "alpha_name":"imp_lesser",
           "name":"Lesser Imp",
           "type":"Enemy",
           "base_hp":20,
