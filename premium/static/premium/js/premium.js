@@ -13,23 +13,18 @@ $(function () {
         fetch("/premium/checkout/")
         .then((result) => { return result.json(); })
         .then((data) => {
-          console.log(data);
             // If route passed error, throw an Error. 
             if (data.error) {
-              throw Error("User is already premium");
+              throw Error("An error has occured!");
           } else {
             // Redirect to Stripe Checkout
             return stripe.redirectToCheckout({sessionId: data.sessionId});
           }
         })
-        // Log result to console
-        .then((res) => {
-          console.log(res);
-        })
         // Catch error, disable button, confirm user is already premium
         .catch(function(error) {
           document.querySelector("#checkoutButton").disabled = true;
-          document.querySelector("#checkoutButton span").innerHTML = "Already premium!";
+          document.querySelector("#checkoutButton span").innerHTML = "Error!";
         });
       });
     });
