@@ -1,0 +1,12 @@
+Greetings {{ user.username }}!
+
+This email is confirmation that you have upgraded to a CIRPG premium account.
+
+Thank you for supporting independent developers. I hope this game brings you as much joy as it brought me throughout development.
+
+This one time purchase grants you access to any future additional content. 
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Sincerely,
+CIRPG
