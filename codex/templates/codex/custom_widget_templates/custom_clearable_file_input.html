@@ -1,0 +1,11 @@
+
+<p>{{ widget.initial_text }}</p>
+<a href="{{ widget.value.url }}">
+    <img class="img-fluid" src="{{ widget.value.url }}">
+</a>
+<div class="col-12 d-flex justify-content-center pt-3 pb-3">
+    <div class="col-12 col-sm-6 text-center">
+        <label for="new-image" class="form-label">Choose file</label>
+        <input class="form-control" id="new-image" type="file" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+    </div>
+</div>
