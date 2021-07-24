@@ -109,7 +109,7 @@ class Codex(models.Model):
     base_attack = models.IntegerField(default=5)
     base_defense = models.IntegerField(default=5)
     base_speed = models.IntegerField(default=5)
-    image = models.ImageField()
+    image = models.ImageField(null=False, blank=False)
     paid = models.BooleanField(default=False)
     min_level = models.IntegerField(choices=[(i, i) for i in range(1, 6)],
                                     null=True, blank=True)
