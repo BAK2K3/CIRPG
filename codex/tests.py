@@ -8,12 +8,30 @@ Test cases for Codex App Routing
 from django.test import TestCase
 from codex.models import Codex
 from random import randint
+from django.contrib.auth import get_user_model
+from profiles.models import Profile
 
 
 class TestViews(TestCase):
 
     # Load fixtures into test DB
     fixtures = ['codex.json']
+
+    def setUp(self):
+        """ Create test login user and create Profile entry"""
+        username = "Ben"
+        pswd = "Kavanagh" # noqa
+        User = get_user_model()
+        self.user = User.objects.create_user(username=username,
+                                             password=pswd,
+                                             is_superuser=True)
+        logged_in = self.client.login(username=username, password=pswd)
+
+        # Add User to Profile
+        # Needed to be hardcoded as Profile signal uses email verification
+        self.profile = Profile.objects.create(user=self.user)
+
+        self.assertTrue(logged_in)
 
     def test_codex_page(self):
         """ Test codex route renders correct page """
@@ -100,3 +118,17 @@ class TestViews(TestCase):
         last_entry = codex[len(codex)-1]
         self.assertTrue(sort_by == 'base_hp')
         self.assertTrue(first_entry.base_hp < last_entry.base_hp)
+
+    def test_codex_edit_view(self):
+        """Test codex edit view"""
+        # Set user to superuser
+        self.user.is_superuser = True
+        self.user.save()
+        User = get_user_model()
+        self.user = User.objects.get(username=self.user.username)
+        # Navigate to the 1st Codex entry edit view
+        response = self.client.get('/codex/edit/1/')
+        # Verify response, template, and object
+        self.assertTrue(response.status_code, 200)
+        self.assertTemplateUsed(response, 'codex/edit.html')
+        self.assertTrue(response.context['object'].pk == 1)
