@@ -166,16 +166,25 @@
                                     </table>
                                 
                                     <div class="card-footer text-center">
-                                    <!-- https://stackoverflow.com/questions/1107737/numeric-for-loop-in-django-templates -->
-                                    {% if entry.min_level %}
-                                        {% with ''|center:entry.min_level as range %}
-                                            {% for _ in range %}
-                                                <span class="fa fa-star"></span>
-                                            {% endfor %}
-                                        {% endwith %}
-                                    {% else %}
-                                        <span>N/A</span>
-                                    {% endif %}
+                                        <div class="col-12">
+                                            <!-- https://stackoverflow.com/questions/1107737/numeric-for-loop-in-django-templates -->
+                                            {% if entry.min_level %}
+                                                {% with ''|center:entry.min_level as range %}
+                                                    {% for _ in range %}
+                                                        <span class="fa fa-star"></span>
+                                                    {% endfor %}
+                                                {% endwith %}
+                                            {% else %}
+                                                <span>N/A</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-12">
+                                            {% if user.is_superuser %}
+                                                <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'c_edit' entry.pk %}">
+                                                    <span class="button-effect">Edit</span>
+                                                </a>   
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
