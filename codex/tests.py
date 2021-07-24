@@ -132,3 +132,31 @@ class TestViews(TestCase):
         self.assertTrue(response.status_code, 200)
         self.assertTemplateUsed(response, 'codex/edit.html')
         self.assertTrue(response.context['object'].pk == 1)
+
+    def test_codex_create_view(self):
+        """Test codex Create view"""
+        # Set user to superuser
+        self.user.is_superuser = True
+        self.user.save()
+        User = get_user_model()
+        self.user = User.objects.get(username=self.user.username)
+        # Navigate to the 1st Codex entry edit view
+        response = self.client.get('/codex/create/')
+        # Verify response and template
+        self.assertTrue(response.status_code, 200)
+        self.assertTemplateUsed(response, 'codex/create.html')
+
+    def test_codex_delete_view(self):
+        """Test codex Delete view"""
+        # Set user to superuser
+        self.user.is_superuser = True
+        self.user.save()
+        User = get_user_model()
+        all_entries = len(Codex.objects.all())
+        self.user = User.objects.get(username=self.user.username)
+        # Navigate to the 1st Codex entry edit view
+        response = self.client.post('/codex/delete/1/')
+        # Verify response, template, and object
+        self.assertTrue(response.status_code, 200)
+        less_entries = len(Codex.objects.all())
+        self.assertTrue(all_entries > less_entries)
