@@ -64,14 +64,21 @@ class HeroDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     # Obtain the user's active character
     def get_object(self, queryset=None):
-        pk = self.request.POST['pk']
+        pk = self.request.POST.get('pk')
         return self.get_queryset().filter(pk=pk).get()
 
-    # Ensure user is owner of object
+    # Ensure user is owner of object on POST
     def test_func(self):
-        return self.get_object().user == self.request.user
+        if self.request.method == "POST":
+            return self.get_object().user == self.request.user
+        else:
+            return self.get(self.request)
 
     # Amend Active Char attribute before redirect
     def get_success_url(self):
         Profile.remove_active_char(user=self.request.user)
         return reverse_lazy('profile')
+
+    # Redirect User to profile regardless for get req
+    def get(self, request=None):
+        return redirect('profile')
