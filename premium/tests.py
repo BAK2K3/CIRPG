@@ -59,7 +59,14 @@ class TestViews(TestCase):
 
     def test_success_page(self):
         """ Test successful payment page renders correct page """
-        response = self.client.get('/premium/success/')
+        # Navigate to premium
+        self.client.get('/premium/')
+        # Request checkout token/session
+        self.client.get('/premium/checkout/')
+        # Set cross-site header
+        header = {'HTTP_SEC_FETCH_SITE': "cross-site"}
+        # Navigate to Success page with overridden header
+        response = self.client.get('/premium/success/', **header)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'premium/success.html')
 
