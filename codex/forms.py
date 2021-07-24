@@ -4,6 +4,13 @@ from .widgets import CustomClearableFileInput
 
 
 class CodexForm(forms.ModelForm):
+    """
+    Form for the Codex Model.
+
+    Uses custom clearable file input
+    due to the ability to extract the
+    image location via the widget.
+    """
 
     class Meta:
         model = Codex
@@ -11,6 +18,3 @@ class CodexForm(forms.ModelForm):
 
     image = forms.ImageField(label="Image", required=False,
                              widget=CustomClearableFileInput)
-
-    def __init__(self, *args, **kwargs):
-        super(CodexForm, self).__init__(*args, **kwargs)
