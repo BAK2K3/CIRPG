@@ -88,8 +88,8 @@ html, body {
     border-radius: 0px 0px 25px 25px;
     min-height: 100%;
     align-items: stretch;
-    -webkit-box-shadow: 0px 10px 13px -7px #000000, 2px 13px 11px 6px rgba(0,0,0,0); 
-    box-shadow: 0px 10px 13px -7px #000000, 2px 13px 11px 6px rgba(0,0,0,0);
+    -webkit-box-shadow: 0px 9px 10px 4px rgba(0,0,0,0.66);
+    box-shadow: 0px 9px 10px 4px rgba(0,0,0,0.66);
 }
 
 h1 {
@@ -246,6 +246,7 @@ hr.dropdown-divider {
  .polymorphism {
     border-radius: 25px;
     background: #0f0f0f;
+    background-image: linear-gradient(to right bottom, #0f0f0f, #141315, #17171a, #1b1a1f, #1e1e24);
     -webkit-box-shadow: 0px 11px 12px 4px rgba(0,0,0,0.66);
     box-shadow: 0px 11px 12px 4px rgba(0,0,0,0.66);
  }
@@ -288,6 +289,11 @@ hr.dropdown-divider {
     background-color: #0f0f0f;
     border: none;
     border-radius: 25px;
+}
+
+.custom-dark-btn {
+    -webkit-box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.66);
+    box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.66);
 }
 
 .custom-dark-btn:hover {
