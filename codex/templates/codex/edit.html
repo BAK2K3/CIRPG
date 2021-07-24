@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!-- Main Page Container -->
+<div class="container-fluid text-center py-3">
+    <div class="row g-0">
+        <!-- Header -->
+        <div class="col-12">
+            <h2 class="logo-font">Update</h2>
+        </div>
+        <!-- Form -->
+        <form method="POST" class="codex-form" enctype="multipart/form-data">
+            <!-- Image -->
+            <div class="col-12 col-md-6">
+                {{ form.image }}
+            </div>
+            <!-- Form Fields -->
+            <div class="col-12 col-md-6 text-center codex-form">
+                {%csrf_token%}
+                <div class="col-12">
+                    {{ form.non_field_errors }}
+                </div>
+                <div class="col-5">
+                    {{ form.name.errors }}
+                    {{ form.name | as_crispy_field }}
+                </div>
+                <div class="col-5">
+                    {{ form.alpha_name.errors }}
+                    {{ form.alpha_name | as_crispy_field }}
+                </div>
+                <div class="col-5">
+                    {{ form.type.errors }}
+                    {{ form.type | as_crispy_field }}
+                </div>
+                <div class="col-5">
+                    {{ form.base_hp.errors }}
+                    {{ form.base_hp | as_crispy_field }}
+                </div>
+                <div class="col-5">
+                    {{ form.base_defense.errors }}
+                    {{ form.base_defense | as_crispy_field }}
+                </div>
+                <div class="col-5">
+                    {{ form.base_attack.errors }}
+                    {{ form.base_attack | as_crispy_field }}
+                </div>
+                <div class="col-5">
+                    {{ form.base_speed.errors }}
+                    {{ form.base_speed | as_crispy_field }}
+                </div>
+                <div class="col-5">
+                    {{ form.min_level.errors }}
+                    {{ form.min_level | as_crispy_field }}
+                </div>
+                <div class="col-12 paid-box">
+                    <div class="col-2">
+                        {{ form.paid.errors }}
+                        {{ form.paid | as_crispy_field }}
+                    </div>
+                </div>
+                <!-- Submit -->
+                <div class="col-12">
+                    <button class="btn btn-dark custom-dark-btn" type="submit">
+                        <span class="button-effect">Update</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
