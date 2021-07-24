@@ -31,7 +31,7 @@
             {% if current_profile.active_char %}
                 <div class="character-wrapper">
                     <!-- Character -->
-                    <div class="col-6 col-xxl-3 px-1 px-sm-3 card-wrapper">
+                    <div class="col-6 col-lg-5 col-xl-4 col-xxl-3 px-1 px-sm-3 card-wrapper">
                         <div class="card polymorphism">
                             <div class="col-12">
                                 <img class="card-img cornered-image" src="{{ character.character_id.image.url }}" alt="{{character.character_id.name}}">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <!-- Weapon -->
-                    <div class="col-6 col-xxl-3 px-1 px-sm-3 card-wrapper">
+                    <div class="col-6 col-lg-5 col-xl-4 col-xxl-3 px-1 px-sm-3 card-wrapper">
                         <div class="card polymorphism rarity">
                             <div class="col-12">
                                 <img class="card-img cornered-image" src="{{ character.weapon_id.image.url }}" alt="{{character.weapon_id.name}}">
@@ -125,7 +125,9 @@
                 </div>    
             {% else %}
                 <div class="col-12 text-center">
-                    <a class="animated-link list-text" href="{% url 'create' %}">Create a new character!</a>
+                    <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'create' %}">
+                        <span class="button-effect">Create a new character!</span>
+                    </a> 
                 </div>
             {% endif %} 
         </div>
