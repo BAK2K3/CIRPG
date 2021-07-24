@@ -10,7 +10,7 @@
         </div>
         <div class="col-12">
             {% if user.is_authenticated %}
-                {% if user_paid %}
+                {% if current_profile.paid %}
                     <h3>You are already a premium user!</h3>
                 {% else %}
                     <div class="button-container">
