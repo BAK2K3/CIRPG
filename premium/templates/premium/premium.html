@@ -3,25 +3,103 @@
 
 {% block content %}
 <!-- Main Page Container -->
-<div class="container-fluid text-center py-3">
-    <div class="row">
-        <div class="col-12">
-            <h2 class="logo-font">Premium</h2>
-        </div>
-        <div class="col-12">
-            {% if user.is_authenticated %}
-                {% if current_profile.paid %}
-                    <h3>You are already a premium user!</h3>
-                {% else %}
-                    <div class="button-container">
-                        <button class="btn btn-dark custom-dark-btn w-auto" id="checkoutButton" type="button" role="button" >
-                            <span class="button-effect">Upgrade to Premium</span>
-                        </button>  
+<div class="container-fluid benefit-page-container text-center py-3">
+    <div class="row g-0">
+        <!-- Benefits -->
+        <div class="col-12 benefit-container">
+            <!-- Header -->
+            <div class="col-12">
+                <h2 class="logo-font mb-4">Premium</h2>
+            </div>
+            <!-- Free -->
+            <div class="col-10 col-md-5 col-xxl-3 polymorphism benefit-table order-1 ">
+                <table class="table table-dark table-hover mb-0">
+                    <thead>
+                        <tr>
+                        <th scope="col" colspan="2"><h3 class="logo-font">Free</h3></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Cost:</th>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Level Limit:</th>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Playable Characters:</th>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Enemy Characters:</th>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Lootable Items:</th>
+                        <td>12</td>
+                    </tr>
+                    <tr class="borderless">
+                        <th scope="row">Leaderboard Access:</th>
+                        <td>Limited</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- Premium -->
+            <div class="col-10 col-md-5 col-xxl-3 polymorphism benefit-table mt-2 mt-md-0 order-3 order-md-2 order-xxl-3">
+                <table class="table table-dark table-hover mb-0">
+                    <thead>
+                        <tr>
+                          <th class="logo-font" scope="col" colspan="2"><h3 class="logo-font">Premium</h3></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Cost:</th>
+                        <td>£4.99</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Level Limit:</th>
+                        <td>Unlimited</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Playable Characters:</th>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Enemy Characters:</th>
+                        <td>87</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Lootable Items:</th>
+                        <td>59</td>
+                    </tr>
+                    <tr class="borderless">
+                        <th scope="row">Leaderboard Access:</th>
+                        <td>Full</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- CTA -->
+            <div class="col-10 col-md-5 col-xxl-3 my-3 mt-md-5 order-2 order-md-3 order-xxl-2">
+                <div class="card polymorphism cta-container text-center p-3">
+                    <h3>Upgrade to Premium now for just £4.99!</h3>
+                    {% if user.is_authenticated %}
+                        {% if current_profile.paid %}
+                            <h4><i>You are already a premium user!</i></h4>
+                        {% else %}
+                            <div class="button-container">
+                                <button class="btn btn-dark custom-dark-btn w-auto pulsing-button" id="checkoutButton" type="button" role="button" >
+                                    <span class="button-effect">Upgrade Now!</span>
+                                </button>  
+                        {% endif %}
+                    {% else %}
+                        <h4><i>Please log in to purchase premium!</i></h4>
+                    {% endif %}
                     </div>
-                {% endif %}
-            {% else %}
-                <h3>Please log in to purchase premium!</h3>
-            {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 </div>
