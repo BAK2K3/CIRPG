@@ -23,40 +23,31 @@
                     {{ form.non_field_errors }}
                 </div>
                 <div class="col-5">
-                    {{ form.name.errors }}
                     {{ form.name | as_crispy_field }}
                 </div>
                 <div class="col-5">
-                    {{ form.alpha_name.errors }}
                     {{ form.alpha_name | as_crispy_field }}
                 </div>
                 <div class="col-5">
-                    {{ form.type.errors }}
                     {{ form.type | as_crispy_field }}
                 </div>
                 <div class="col-5">
-                    {{ form.base_hp.errors }}
                     {{ form.base_hp | as_crispy_field }}
                 </div>
                 <div class="col-5">
-                    {{ form.base_defense.errors }}
                     {{ form.base_defense | as_crispy_field }}
                 </div>
                 <div class="col-5">
-                    {{ form.base_attack.errors }}
                     {{ form.base_attack | as_crispy_field }}
                 </div>
                 <div class="col-5">
-                    {{ form.base_speed.errors }}
                     {{ form.base_speed | as_crispy_field }}
                 </div>
                 <div class="col-5">
-                    {{ form.min_level.errors }}
                     {{ form.min_level | as_crispy_field }}
                 </div>
                 <div class="col-12 paid-box">
                     <div class="col-2">
-                        {{ form.paid.errors }}
                         {{ form.paid | as_crispy_field }}
                     </div>
                 </div>
@@ -65,9 +56,38 @@
                     <button class="btn btn-dark custom-dark-btn" type="submit">
                         <span class="button-effect">Update</span>
                     </button>
+                    <!-- Modal Trigger -->
+                    <button class="btn btn-dark custom-dark-btn w-auto" type="button" role="button" data-bs-toggle="modal" data-bs-target="#deleteConfirmation">
+                        <span class="button-effect">Delete</span>
+                    </button>  
                 </div>
             </div>
         </form>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade text-body text-center" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center w-100" id="deleteConfirmationTitle">Warning!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this entry?</p> 
+                <p>This is permanent, and cannot be undone!</p>
+            </div>
+            <div class="modal-footer text-center">
+                <form action="{% url 'c_delete' object.pk %}" method="POST" class="profile-form w-100 text-center">
+                    {% csrf_token %}
+                    <button class="btn btn-danger" type="submit" role="button">
+                        Delete
+                    </button>  
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
