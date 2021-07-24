@@ -543,7 +543,84 @@ textarea:disabled {
     height: 52px;
 }
 
-/********************************** EDIT */
+/********************************** PREMIUM */
+
+.benefit-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.benefit-wrapper .card {
+    border-radius: 25px;
+}
+
+.benefit-table {
+    overflow: hidden;
+    color:#FFF8F0;
+
+}
+
+.benefit-table table.table>:not(caption)>*>*  {
+    background-color: #0f0f0f;
+}
+
+tr.borderless, tr.borderless td, tr.borderless th { 
+    border-color: transparent;
+    border-bottom: none;
+}
+
+
+tbody > tr:nth-last-child() {
+   border-color: transparent;
+   border-bottom: none;
+} 
+
+
+
+.benefit-table tbody tr th {
+    text-align: left;
+}
+
+.benefit-table tbody tr td {
+    text-align: right;
+}
+
+.cta-container{
+    background-color:#0f0f0f;
+}
+
+.pulsing-button {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+    animation: pulse-white 2s infinite;
+  }
+  
+  @keyframes pulse-white {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+    
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+  }
+
+.benefit-page-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 100px);
+    justify-content: center;
+}
+
+  
+/********************************** CODEX MODIFICATION */
 
 .btn-file {
     color: #FFF8F0;
@@ -647,7 +724,11 @@ input#newImage {
     }
 
     h2 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
     }
 
     h5 {
