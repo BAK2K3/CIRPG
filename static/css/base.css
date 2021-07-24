@@ -72,13 +72,14 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: #FFF8F0;
-    overflow: auto;
 }
 
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    min-height: -webkit-fill-available;
+    overflow: auto;
 }
 
 /********************************** Navbar */
@@ -714,7 +715,12 @@ input#newImage {
 @media (max-width: 576px) {
 
     .page-container {
-        height: calc(100% - 54px);
+        height: calc(100% - 60px);
+        justify-content: flex-start;
+    }
+
+    .benefit-page-container {
+        height: calc(100% - 60px);
         justify-content: flex-start;
     }
 
