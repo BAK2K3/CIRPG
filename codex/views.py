@@ -1,5 +1,6 @@
 from django.views.generic.list import ListView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import DeleteView, UpdateView, CreateView
+from django.shortcuts import redirect
 from .models import Codex
 from .functions import process_codex_url
 from .forms import CodexForm
@@ -41,12 +42,44 @@ class CodexListView(ListView):
 class CodexUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
     A view to provide a Form to the user
-    pre-filled with existing Form Data.
+    pre-filled with existing Codex Data.
     """
     form_class = CodexForm
     template_name = "codex/edit.html"
-    success_url = "codex/codex.html"
+    success_url = "/codex/"
     model = Codex
 
     def test_func(self):
         return self.request.user.is_superuser
+
+
+class CodexCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    """
+    A view to provide a Form to the user
+    to create a Codex entry.
+    """
+    form_class = CodexForm
+    template_name = "codex/create.html"
+    success_url = "/codex/"
+    model = Codex
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+class CodexDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """
+    A view to delete Codex entries.
+    """
+    success_url = "/codex/"
+    model = Codex
+
+    # Tests the method is post and user is superuser
+    def test_func(self):
+        if self.request.method == "POST":
+            return self.request.user.is_superuser
+        else:
+            return self.get(self.request)
+
+    def get(self, request, pk=None):
+        return redirect('codex')
