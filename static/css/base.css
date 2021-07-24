@@ -543,6 +543,31 @@ textarea:disabled {
     height: 52px;
 }
 
+/********************************** EDIT */
+
+.btn-file {
+    color: #FFF8F0;
+}
+
+.btn-file:hover {
+    color: #FFF8F0;
+}
+
+input#newImage {
+    justify-content: center;
+}
+
+.codex-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.paid-box {
+    display: flex;
+    justify-content: center;
+}
 
 /********************************** LEADERBOARD */
 
