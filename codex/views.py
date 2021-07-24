@@ -1,6 +1,9 @@
 from django.views.generic.list import ListView
+from django.views.generic.edit import UpdateView
 from .models import Codex
 from .functions import process_codex_url
+from .forms import CodexForm
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
 
 class CodexListView(ListView):
@@ -33,3 +36,17 @@ class CodexListView(ListView):
         # Merge default context with prepared context params
         context = super().get_context_data(**kwargs) | self.pre_context
         return context
+
+
+class CodexUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """
+    A view to provide a Form to the user
+    pre-filled with existing Form Data.
+    """
+    form_class = CodexForm
+    template_name = "codex/edit.html"
+    success_url = "codex/codex.html"
+    model = Codex
+
+    def test_func(self):
+        return self.request.user.is_superuser
