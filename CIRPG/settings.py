@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['192.168.1.33', '192.168.1.1', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.1.33', '192.168.1.1', 'localhost', '127.0.0.1', "cirpg.herokuapp.com"]
 
 
 # Application definition
