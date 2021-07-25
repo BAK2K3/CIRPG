@@ -1,13 +1,16 @@
-window.addEventListener('beforeunload', preventClosure);
 
-function preventClosure(event){
-    // Cancel the event as stated by the standard.
-    event.preventDefault();
-    // Chrome requires returnValue to be set.
-    event.returnValue = 'Are you sure you want to exit?';
+var winTrigger =  document.getElementById('winTrigger');
+if (typeof(winTrigger) != 'undefined' && winTrigger != null){
+    function preventClosure(event){
+        // Cancel the event as stated by the standard.
+        event.preventDefault();
+        // Chrome requires returnValue to be set.
+        event.returnValue = 'Are you sure you want to exit?';
+    }
+    window.addEventListener('beforeunload', preventClosure);
 }
 
-    
+
 // Extract csrf and newly generated weapon json
 const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
 const newWeapon = document.getElementById('id_new_weapon').textContent; 
@@ -43,6 +46,7 @@ $("#keepButton").click(function() {
     $(".loot-button-container").addClass("d-none");
     $("#newWeapon").addClass("d-none");
     $(".continue-button-container").removeClass("d-none");
+    window.removeEventListener("beforeunload", preventClosure);
 });
 
     
