@@ -397,19 +397,14 @@ hr.dropdown-divider {
     box-shadow: 0px 18px 28px 0px rgba(0,0,0,0.75);
 }
 
-.btt-negative {
-    width: 100%;
-    height: 30px;
+.btt-wrapper button:focus {
+    outline: none;
+    box-shadow: none;
 }
 
-/* Remove styling from button */
-#toTop {
-    background: none;
-	color: inherit;
-	border: none;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+.btt-negative {
+    width: 100%;
+    height: 40px;
 }
 
 /********************************** PROFILE */
