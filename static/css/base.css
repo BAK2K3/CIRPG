@@ -665,6 +665,11 @@ tbody > tr:nth-last-child() {
     justify-content: center;
 }
 
+.payment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
   
 /********************************** CODEX MODIFICATION */
 
