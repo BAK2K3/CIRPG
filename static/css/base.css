@@ -72,6 +72,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: #FFF8F0;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 html, body {
@@ -179,7 +180,7 @@ li {
 }
 
 .dropdown-menu-start[data-bs-popper] {
-    left: -64%;
+    left: -75%;
 }
 
 .dropdown-item {
@@ -203,6 +204,38 @@ hr.dropdown-divider {
     align-content: stretch;
     justify-content: space-around;
     align-items: center;
+}
+
+.list-inline-item.dropdown {
+    display: flex;
+}
+
+.nav-icon {
+    width: 40px;
+}
+
+.nav-icon:after, 
+.nav-icon:before, 
+.nav-icon div {
+    background-color: #fff;
+    border-radius: 3px;
+    content: '';
+    display: block;
+    height: 5px;
+    margin: 7px 0;
+    transition: all .2s ease-in-out;
+}
+
+#right-nav-dropdown.show .nav-icon:before {
+    transform: translateY(12px) rotate(135deg);
+}
+
+#right-nav-dropdown.show .nav-icon:after{
+    transform: translateY(-12px) rotate(-135deg);
+}
+
+#right-nav-dropdown.show .nav-icon div{
+    transform: scale(0);
 }
 
 /********************************** Allauth */
@@ -760,7 +793,7 @@ input#newImage {
     }
 
     .dropdown-menu-start[data-bs-popper] {
-        left: -46px;
+        left: -48px;
     }
 
     .stats-table {
