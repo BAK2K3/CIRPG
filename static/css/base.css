@@ -451,6 +451,10 @@ hr.dropdown-divider {
     color:#e5383b;
 }
 
+.stats-container {
+    display: flex;
+}
+
 /********************************** CREATE */
 
 .hero-container {
