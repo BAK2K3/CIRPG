@@ -25,8 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = 'DEVELOPMENT' in os.environ
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['192.168.1.33', '192.168.1.1', 'localhost', '127.0.0.1', "cirpg.herokuapp.com"]
 
@@ -199,7 +198,7 @@ if 'USE_AWS' in os.environ:
     # Static and Media Files
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     STATICFILES_LOCATION = 'static'
-    DEFAULT_FILE_STORAGE =  'custom_storages.MediaStorage'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'media'
 
     # Override Static and Media URLs in Production
