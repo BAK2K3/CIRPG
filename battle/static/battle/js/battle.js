@@ -87,8 +87,8 @@ class BattleObject {
     // And set isTurn bool to True
     calculateTurnMeter() {
         this.turnMeter += this.speed;
-        if (this.turnMeter >= 100) {
-            this.turnMeter -= 100;
+        if (this.turnMeter >= 1000) {
+            this.turnMeter -= 1000;
             this.isTurn = true;
         } 
     }
@@ -135,8 +135,8 @@ class BattleObject {
 
     // Function to update Progress Bar %
     // Takes in targetted bar and value 
-    updateBar(bar, value){
-        bar.style.width = `${value}%`;
+    updateBar(bar, percent, value){
+        bar.style.width = `${percent}%`;
         bar.setAttribute('aria-valuenow', value);
     }
 
@@ -146,6 +146,9 @@ class BattleObject {
         return Math.floor((this.hp / this.maxHP) * 100);
     }
 
+    calculateTurnPercent(){
+        return Math.floor((this.turnMeter / 1000) * 100)
+    }
 }
 
 
@@ -184,7 +187,7 @@ function engageBattle(){
             // If the character hits
             if (characterObject.attackOutcome(enemyObject.dodge)){
                 enemyObject.calculateDamage(characterObject.attack);
-                enemyObject.updateBar(enemyHPBar, enemyObject.calculateHPPercent());
+                enemyObject.updateBar(enemyHPBar, enemyObject.calculateHPPercent(), enemyObject.hp);
                 characterObject.attackHitLog(enemyObject.name);
                 // If enemy HP is 0
                 if (enemyObject.hp == 0){
@@ -197,17 +200,17 @@ function engageBattle(){
             }
             // De-active character's turn
             characterObject.isTurn = false;
-            characterObject.updateBar(characterTurnBar, characterObject.turnMeter);
+            characterObject.updateBar(characterTurnBar, characterObject.calculateTurnPercent(), characterObject.turnMeter);
         // If not turn
         } else {
             // Calculate Character turn meter
             characterObject.calculateTurnMeter();
             if (characterObject.isTurn){
-                characterObject.updateBar(characterTurnBar, 100);
+                characterObject.updateBar(characterTurnBar, 100, 1000);
                 document.getElementById('attackButton').disabled = false;
                 return true;
             }
-            characterObject.updateBar(characterTurnBar, characterObject.turnMeter);
+            characterObject.updateBar(characterTurnBar, characterObject.calculateTurnPercent(), characterObject.turnMeter);
         }
 
         // Calculate enemy turn 
@@ -222,7 +225,7 @@ function engageBattle(){
             // Calculate attack hit and update bars
             if (enemyObject.attackOutcome(characterObject.dodge)) {
                 characterObject.calculateDamage(enemyObject.attack);
-                characterObject.updateBar(characterHPBar, characterObject.calculateHPPercent());
+                characterObject.updateBar(characterHPBar, characterObject.calculateHPPercent(), characterObject.hp);
                 enemyObject.attackHitLog(characterObject.name);
                 // Determine if character is dead
                 if (characterObject.hp == 0){
@@ -230,7 +233,7 @@ function engageBattle(){
                     return true;
                 } else {
                     // Update accurate turn meter display
-                    enemyObject.updateBar(enemyTurnBar, this.turnMeter);
+                    enemyObject.updateBar(enemyTurnBar, enemyObject.calculateTurnPercent(), enemyObject.turnMeter);
                 }
             
             // If the attack misses
@@ -243,7 +246,7 @@ function engageBattle(){
 
         // If the turnmeter doesn't cause the turn to activate
         } else {
-            enemyObject.updateBar(enemyTurnBar, enemyObject.turnMeter);
+            enemyObject.updateBar(enemyTurnBar, enemyObject.calculateTurnPercent(), enemyObject.turnMeter);
         }
     }
 }
