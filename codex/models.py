@@ -131,7 +131,7 @@ class Codex(models.Model):
             weapon.level = 1
             weapon.rarity = 1
 
-        rarity_list = ["Common", "Uncommon", "Rare", "Legendary", "Mythical"]
+        rarity_list = ["Common", "Uncommon", "Rare", "Epic", "Mythic"]
         weapon.rarity_text = rarity_list[weapon.rarity-1]
 
         # Modify stats based on level and rarity
