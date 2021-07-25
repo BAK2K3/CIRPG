@@ -130,6 +130,7 @@ class BattleObject {
         this.updateBattleLog(logString);
         await new Promise(r => setTimeout(r, 1000));
         $("#postBattleForm #hiddenResult").val(result);
+        window.removeEventListener("beforeunload", preventClosure);
         $("#postBattleForm").submit();
     }
 
@@ -256,3 +257,11 @@ $('#startButton').click(startBattleTimer);
 $('#attackButton').click(engageBattle);
 
 
+window.addEventListener('beforeunload', preventClosure);
+
+function preventClosure(event){
+    // Cancel the event as stated by the standard.
+    event.preventDefault();
+    // Chrome requires returnValue to be set.
+    event.returnValue = 'Are you sure you want to exit?';
+}
