@@ -205,9 +205,9 @@
 <div class="btt-negative">
 </div>
 <div class="btt-wrapper">
-    <a class="p-3" href="#mainNavbar" aria-label="Scroll to Top">
+    <button type="button" id="toTop" class="px-2" aria-label="Scroll to Top">
         <i class="fas fa-arrow-up text-black me-2"> </i> Results: {{ codex|length }} 
-    </a>
+    </button>
 </div>
 
 {% endblock %}
@@ -215,4 +215,5 @@
 {% block postloadjs %}
     {{ block.super }}
     <script src="{% static 'codex/js/filter_form_validation.js' %}"></script>
+    <script src="{% static 'codex/js/to_top.js' %}"></script>
 {% endblock %}
