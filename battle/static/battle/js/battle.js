@@ -13,6 +13,16 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     });
 });
 
+// Prevent Window Closure
+window.addEventListener('beforeunload', preventClosure);
+
+function preventClosure(event){
+    // Cancel the event as stated by the standard.
+    event.preventDefault();
+    // Chrome requires returnValue to be set.
+    event.returnValue = 'Are you sure you want to exit?';
+}
+
 // Global Declarations
 
 // Extract JSON dumps - Needed to double parse and index to work properly
@@ -255,13 +265,3 @@ function engageBattle(){
 // Set event listeners to Start Button and Attack Button
 $('#startButton').click(startBattleTimer);
 $('#attackButton').click(engageBattle);
-
-
-window.addEventListener('beforeunload', preventClosure);
-
-function preventClosure(event){
-    // Cancel the event as stated by the standard.
-    event.preventDefault();
-    // Chrome requires returnValue to be set.
-    event.returnValue = 'Are you sure you want to exit?';
-}
