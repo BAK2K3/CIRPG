@@ -34,6 +34,7 @@ class Profile(models.Model):
     def remove_active_char(cls, user):
         current_user = cls.objects.get(user=user)
         current_user.active_char = False
+        current_user.active_battle = False
         current_user.save()
 
 
@@ -150,16 +151,3 @@ class ActiveCharacter(models.Model):
         user_profile.save()
 
         return entry
-
-    def update_character(self):
-        pass
-
-    def update_weapon(self, weapon):
-        self.weapon_id = weapon.pk
-        self.weapon_hp = weapon.base_hp
-        self.weapon_attack = weapon.base_attack
-        self.weapon_defense = weapon.base_defense
-        self.weapon_speed = weapon.base_speed
-        self.weapon_level = weapon.base_level
-        self.weapon_rarity = weapon.base_rarity
-        self.save()
