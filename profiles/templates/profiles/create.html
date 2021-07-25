@@ -57,7 +57,7 @@
     <form action="{% url 'create_submit' %}" method="POST" id="HeroForm">
         {% csrf_token %}
         {{ form.user_selection.as_hidden }}
-        <button class="btn" type="submit" disabled>
+        <button class="btn anti-double-click" type="submit" disabled>
             <span class="animated-link">Select a Character</span>    
         </button>
     </form>
