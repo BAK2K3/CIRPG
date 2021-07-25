@@ -82,9 +82,9 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',  # Allauth
-                'django.template.context_processors.media',  # for MEDIA_URL
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',  # for MEDIA_URL
                 'profiles.contexts.active_user'
             ],
         },
