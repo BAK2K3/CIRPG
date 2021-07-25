@@ -5,14 +5,14 @@
     <!-- Main Page Container -->
     <div class="container-fluid p-2 p-sm-3 p-lg-5 pt-xxl-2">
         <!-- Profile Stats -->
-        <div class="row g-0 text-center p-4 p-md-3">
+        <div class="row g-0 text-center px-2 py-4 p-md-3">
             <div class="col-12 col-md-6 offset-md-3 col-xxl-4 offset-xxl-4 polymorphism">
-                <div class="col-12">
+                <div class="col-12 pt-2">
                     <h2 class="logo-font">
                         {{ current_profile.user.username }}
                     </h2>
                 </div>
-                <div class="row pb-3 stats-container">
+                <div class="col-12 pb-3 px-2 stats-container">
                     <div class="col-4">
                         <span><strong>Total Runs:</strong> {{current_profile.total_runs}}</span>
                     </div>
