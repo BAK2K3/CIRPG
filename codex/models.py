@@ -46,7 +46,7 @@ class CodexQuerySet(models.QuerySet):
                            paid__in=allowed_content,
                            min_level__lte=level)
         last = self.count() - 1
-        index = randint(0, last)
+        index = randint(0, last)  # nosec
         return self[index]
 
 
@@ -120,12 +120,28 @@ class Codex(models.Model):
 
     @classmethod
     def new_weapon(cls, paid, level):
+        """
+        Method for generating a new weapon.
+
+        Method takes in Paid Status and User Level.
+
+        Level of the weapon is detemined at random,
+        along with the rarity of the weapon.
+
+        The base stats of the weapon generated are then
+        modified by a random amount, the limites of the
+        multiplier are effected by the weapon's current
+        level and rarity.
+
+        The stat modification happens a single time, 
+        regardless of level. 
+        """
         # Obtain new weapon
         weapon = cls.objects.get_random("Weapon", paid, level)
-        # Determine level and rarity
 
+        # Determine level and rarity
         if level > 1:
-            weapon.level = randint(1, level)
+            weapon.level = randint(1, level)  # nosec
             weapon.rarity = rarity_recursive(weapon.level)
         else:
             weapon.level = 1
@@ -151,11 +167,25 @@ class Codex(models.Model):
 
     @classmethod
     def new_enemy(cls, paid, level):
+        """
+        Method for generating a new enemy.
+
+        Method takes in Paid Status and User Level.
+
+        Level of the Enemy is detemined at random.
+
+        The base stats of the enemy generated are modified
+        n number of times, where n is the monster's level, based
+        on the current monster's level.
+
+        Enemy must be over level 1 for the modification to occur.
+        """
+
         # Obtain new enemy
         enemy = cls.objects.get_random("Enemy", paid, level)
         # Determine level
         if level > 1:
-            enemy.level = randint(1, level)
+            enemy.level = randint(1, level)  # nosec
             # Modify stats based on level (progressive)
             for i in range(enemy.level - 1):
                 enemy.base_hp = stat_modifier(enemy.base_hp,
