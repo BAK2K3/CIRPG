@@ -1,5 +1,6 @@
 from codex.functions import stat_modifier
 from codex.models import Codex
+from random import randint
 
 
 def calculate_xp(character, enemy_level):
@@ -25,7 +26,13 @@ def calculate_xp(character, enemy_level):
         character.min_xp = (100 * ((character.current_level - 1) ** 2)) + 100
         character.max_xp = (100 * (character.current_level ** 2)) + 100
 
-        # Upgrades users stats
+        # Randomly add up to 1 metric to each stat:
+        character.char_hp += 5 * randint(0, 1)  # nosec
+        character.char_attack += 1 * randint(0, 1)  # nosec
+        character.char_speed += 1 * randint(0, 1)  # nosec
+        character.char_defense += 1 * randint(0, 1)  # nosec
+
+        # Further upgrade users stats using stat modifier
         character.char_hp = stat_modifier(character.char_hp,
                                           character.current_level)
         character.char_attack = stat_modifier(character.char_attack,
