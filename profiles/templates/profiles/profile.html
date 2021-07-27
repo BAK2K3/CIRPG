@@ -13,13 +13,16 @@
                     </h2>
                 </div>
                 <div class="col-12 pb-3 px-2 stats-container">
-                    <div class="col-4">
+                    <div class="col-3">
                         <span><strong>Total Runs:</strong> {{current_profile.total_runs}}</span>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <span><strong>Longest Run:</strong> {{current_profile.longest_run}}</span>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
+                        <span><strong>Current Streak:</strong>{% if character.battle_count %} {{character.battle_count}} {% else %} N/A {% endif %}</span>
+                    </div>
+                    <div class="col-3">
                         <span><strong>Account Type:</strong> {% if current_profile.paid %} Premium {% else %} Free {% endif %}</span>
                     </div>
                 </div>
