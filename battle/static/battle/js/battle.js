@@ -70,9 +70,14 @@ class BattleObject {
         this.isTurn = false;
     }
 
-    // Calculates dodge chance (out of 100)
+    // Calculates dodge chance (capped at 75%)
     calculateDodge () {
-        return Math.floor((this.defense / this.hp) * 100);
+        let dodgeChance = Math.floor((this.defense / this.hp) * 100);
+        if (dodgeChance > 75){
+            return 75;
+        } else {
+            return dodgeChance;
+        }
     }
 
     // Randomly calculates whether an attack is successful
