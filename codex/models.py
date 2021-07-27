@@ -129,12 +129,12 @@ class Codex(models.Model):
         along with the rarity of the weapon.
 
         The base stats of the weapon generated are then
-        modified by a random amount, the limites of the
+        modified by a random amount, the limits of the
         multiplier are effected by the weapon's current
         level and rarity.
 
-        The stat modification happens a single time, 
-        regardless of level. 
+        The stat modifications are applied by a order of
+        magnitute equivalent to the weapon's rarity.
         """
         # Obtain new weapon
         weapon = cls.objects.get_random("Weapon", paid, level)
@@ -150,19 +150,22 @@ class Codex(models.Model):
         rarity_list = ["Common", "Uncommon", "Rare", "Epic", "Mythic"]
         weapon.rarity_text = rarity_list[weapon.rarity-1]
 
-        # Modify stats based on level and rarity
-        weapon.base_hp = stat_modifier(weapon.base_hp,
-                                       weapon.level,
-                                       weapon.rarity)
-        weapon.base_attack = stat_modifier(weapon.base_attack,
+        # Apply modification in order of magnitude (rarity)
+        for i in range(weapon.rarity):
+
+            # Modify stats based on level and rarity
+            weapon.base_hp = stat_modifier(weapon.base_hp,
                                            weapon.level,
                                            weapon.rarity)
-        weapon.base_speed = stat_modifier(weapon.base_speed,
-                                          weapon.level,
-                                          weapon.rarity)
-        weapon.base_defense = stat_modifier(weapon.base_defense,
-                                            weapon.level,
-                                            weapon.rarity)
+            weapon.base_attack = stat_modifier(weapon.base_attack,
+                                               weapon.level,
+                                               weapon.rarity)
+            weapon.base_speed = stat_modifier(weapon.base_speed,
+                                              weapon.level,
+                                              weapon.rarity)
+            weapon.base_defense = stat_modifier(weapon.base_defense,
+                                                weapon.level,
+                                                weapon.rarity)
         return weapon
 
     @classmethod
