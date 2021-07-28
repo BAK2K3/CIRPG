@@ -240,7 +240,7 @@ hr.dropdown-divider {
 
 /********************************** Allauth */
 
-.custom-allauth {
+.custom-allauth, .custom-error {
     margin-top: 30px;
     display: flex;
     flex-direction: column;
