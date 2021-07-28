@@ -6,11 +6,11 @@
 <div class="container-fluid page-container text-center py-3">
     <div class="row g-0">
         <!-- images and Descriptors -->
-        <div class="col-10 col-md-5 col-lg-4 polymorphism p-4">
+        <div class="col-9 col-md-5 col-lg-4 polymorphism p-2 p-md-4">
             <!-- Row 1 -->
-            <div class="row align-items-center">
+            <div class="col-12 align-items-center d-flex p-1">
                 <div class="col-6">
-                    <div class="picture-container p-1">
+                    <div class="picture-container p-2">
                         <a href="{% url 'codex' %}?type=hero"><img class="img-fluid" src="{{ MEDIA_URL }}hero_knight.png" alt="Hero Knight"></a>
                     </div>
                 </div>
@@ -21,22 +21,22 @@
                 </div>
             </div>
             <!-- Row 2 -->
-            <div class="row align-items-center">
+            <div class="col-12 align-items-center d-flex p-1">
                 <div class="col-6">
                     <div class="splash-descriptor">
                         <h2><span class="logo-font">59</span>  Weapon Variations</h2>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="picture-container p-1">
+                    <div class="picture-container p-2">
                         <a href="{% url 'codex' %}?type=weapon"><img class="img-fluid" src="{{ MEDIA_URL }}axe_orc.png" alt="Axe"></a>
                     </div>
                 </div>
             </div>
             <!-- Row 3 -->
-            <div class="row align-items-center">
+            <div class="col-12 align-items-center d-flex p-1">
                 <div class="col-6">
-                    <div class="picture-container p-1">
+                    <div class="picture-container p-2">
                         <a href="{% url 'codex' %}?type=enemy"><img class="img-fluid" src="{{ MEDIA_URL }}magma_bone_collector.png" alt="Magma Bone Collector"></a>
                     </div>
                 </div>
@@ -48,13 +48,11 @@
             </div>
         </div>
         <!-- Call to Action -->
-        <div class="col-10 col-md-5 col-lg-4">
-            <div class="row">
-                <div class="col-12">
-                    <div class="text-center">
-                        <h2><span class="logo-font">NEVER</span>  play the same game twice!</h2>
-                        <h2>Make an account for <span class="logo-font">FREE</span>  today!</h2>
-                    </div>
+        <div class="col-10 col-md-5 col-lg-4 d-flex pt-3 pt-md-0">
+            <div class="col-12">
+                <div class="text-center">
+                    <h2><span class="logo-font">NEVER</span>  play the same game twice!</h2>
+                    <h2>Make an account for <span class="logo-font">FREE</span>  today!</h2>
                 </div>
             </div>
         </div>
