@@ -2,25 +2,23 @@
 {% load static %}
 
 {% block content %}
-<!-- Main Page Container -->
-<div class="container-fluid text-center py-3">
-    <div class="row g-0">
-        <!-- 500 -->
-        <div class="col-10 col-md-5 col-lg-4">
-            <div class="col-12">
-                <div class="text-center">
-                    <h2><span class="logo-font">500</span></h2>
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-12">
+            <div class="custom-error">
+                <div class="polymorphism p-5 text-center">
+                    <h1><span class="logo-font">404!</span></h1>
+               
+                    <p>This is embarrasing. You've broken the dungeon.</p>
+                    <p>Or...maybe I have?</p>
+                    <p>Urmm.....Quick! Look behind you! It's a Verdan Commander!</p>
+          
+                    <div class="col-12">
+                        <a class="btn btn-dark custom-dark-btn" href="{% url 'home' %}">
+                            <span class="button-effect">Run away!</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 error-container">
-                <p>This is embarrasing. You've broken the dungeon.</p>
-                <p>OR maybe I have.</p>
-                <p>OUrmm.....Quick! Look behind you! It's a Verdan Commander!</p>
-            </div>
-            <div class="col-12 text-center">
-                <a class="btn btn-dark custom-dark-btn" href="{% url 'home' %}">
-                    <span class="button-effect">Chase the Commander</span>
-                </a>
             </div>
         </div>
     </div>
