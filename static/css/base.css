@@ -448,11 +448,11 @@ hr.dropdown-divider {
     color:#208b3a;
 }
 
-.text-legendary {
+.text-epic {
     color:#ffd100;
 }
 
-.text-mythical {
+.text-mythic {
     color:#e5383b;
 }
 
@@ -540,12 +540,12 @@ textarea:disabled {
     animation: rare 1s infinite alternate;
 }
 
-.rarity-legendary {
-    animation: legendary 1s infinite alternate;
+.rarity-epic {
+    animation: epic 1s infinite alternate;
 }
 
-.rarity-mythical {
-    animation: mythical 1s infinite alternate;
+.rarity-mythic {
+    animation: mythic 1s infinite alternate;
 }
 
 @keyframes uncommon {
@@ -566,7 +566,7 @@ textarea:disabled {
     }
   }
 
-  @keyframes legendary {
+  @keyframes epic {
     from {
       box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #ffd100;
     }
@@ -575,7 +575,7 @@ textarea:disabled {
     }
   }
 
-  @keyframes mythical {
+  @keyframes mythic {
     from {
       box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #ba181b;
     }
