@@ -519,6 +519,39 @@ textarea:disabled {
     color: black;
   }
 
+.image-overlay {
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 2%;
+    width: 100%;
+    text-align: center;
+
+}
+
+.enemy-overlay {
+    background: rgba(0,0,0,0.30);    
+}
+
+.layered-container {
+    display: inline-block;
+    position: relative;
+}
+
+.fa.fa-star.rarity-3 {
+    color:#208b3a;
+}
+
+.fa.fa-star.rarity-4 {
+    color:#ffd100;
+}
+
+.fa.fa-star.rarity-5 {
+    color:#e5383b;
+}
+
 /********************************** POST-BATTLE */
 .loot-button-container {
     width: 100%;
