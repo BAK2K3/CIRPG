@@ -84,7 +84,7 @@
                                     <div class="image-overlay">
                                         {% with ''|center:character.weapon_id.min_level as range %}
                                             {% for _ in range %}
-                                                {% if enemy.weapon_rarity == '1' %}
+                                                {% if character.weapon_rarity == '1' %}
                                                     <span class="far fa-star"></span>
                                                 {% else %}
                                                     <span class="fa fa-star rarity-{{character.weapon_rarity}}"></span>
