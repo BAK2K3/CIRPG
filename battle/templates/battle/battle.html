@@ -15,7 +15,20 @@
                                 <img class="card-img battle-image-left" src="{{ character.character_id.image.url }}" alt="{{character.character_id.name}}">
                             </div>
                             <div class="col-6">
-                                <img class="card-img battle-image-right" src="{{ character.weapon_id.image.url }}" alt="{{character.weapon_id.name}}">
+                                <div class="layered-container">
+                                    <img class="card-img battle-image-right" src="{{ character.weapon_id.image.url }}" alt="{{character.weapon_id.name}}">
+                                    <div class="image-overlay" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ character.weapon_id.name}} - Level {{ character.weapon_level }}">
+                                        {% with ''|center:character.weapon_id.min_level as range %}
+                                            {% for _ in range %}
+                                                {% if character.weapon_rarity == '1' %}
+                                                    <span class="far fa-star"></span>
+                                                {% else %}
+                                                    <span class="fa fa-star rarity-{{character.weapon_rarity}}"></span>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endwith %}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="card-body p-2">
@@ -66,10 +79,34 @@
                     <div class="card polymorphism">
                         <div class="row g-0">
                             <div class="col-6">
-                                <img class="card-img battle-image-left" src="{{ enemy.weapon_id.image.url }}" alt="{{enemy.weapon_id.name}}">
+                                <div class="layered-container">
+                                    <img class="card-img battle-image-left" src="{{ enemy.weapon_id.image.url }}" alt="{{enemy.weapon_id.name}}">
+                                    <div class="image-overlay" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ enemy.weapon_id.name}} - Level {{ enemy.weapon_level }}">
+                                        {% with ''|center:enemy.weapon_id.min_level as range %}
+                                            {% for _ in range %}
+                                                {% if enemy.weapon_rarity == '1' %}
+                                                    <span class="far fa-star"></span>
+                                                {% else %}
+                                                    <span class="fa fa-star rarity-{{enemy.weapon_rarity}}"></span>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endwith %}
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-6">
-                                <img class="card-img battle-image-right" src="{{ enemy.enemy_id.image.url }}" alt="{{enemy.enemy_id.name}}">
+                                <div class="layered-container">
+                                    <img class="card-img battle-image-right" src="{{ enemy.enemy_id.image.url }}" alt="{{enemy.enemy_id.name}}">
+                                    <div class="image-overlay">
+                                        <div class="enemy-overlay">
+                                            {% with ''|center:enemy.enemy_id.min_level as range %}
+                                                {% for _ in range %}
+                                                        <span class="fa fa-star"></span>
+                                                {% endfor %}
+                                            {% endwith %}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="card-body p-2">
