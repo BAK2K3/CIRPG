@@ -100,7 +100,6 @@
                     <!-- Current Weapon -->
                     <div class="col-6 p-3 card-wrapper" id="oldWeapon">
                         <div class="card h100 border-0 polymorphism codex-card rarity rarity-{{ active_character.get_weapon_rarity_display|lower }}">
-
                             <div class="layered-container">
                                 <img src="{{ active_character.weapon_id.image.url }}" class="card-img-top cornered-image" alt="{{ active_character.weapon_id.name }}">
                                 <div class="image-overlay">
@@ -115,7 +114,6 @@
                                     {% endwith %}
                                 </div>
                             </div>
-
                             <div class="card-body p-1">
                                 <h5 class="card-title text-center">{{ active_character.weapon_id.name }}</h5>
                                 <div class="text-center">
@@ -153,13 +151,12 @@
                     <!-- New Weapon -->
                     <div class="col-6 p-3 card-wrapper" id="newWeapon">
                         <div class="card h100 border-0 polymorphism codex-card rarity rarity-{{ new_weapon.rarity_text|lower }}">
-                            
                             <div class="layered-container">
                                 <img src="{{ new_weapon.image.url }}" class="card-img-top cornered-image" alt="{{ new_weapon.name }}">
                                 <div class="image-overlay">
                                     {% with ''|center:new_weapon.min_level as range %}
                                         {% for _ in range %}
-                                            {% if new_weapon.rarity == '1' %}
+                                            {% if new_weapon.rarity == 1 %}
                                                 <span class="far fa-star"></span>
                                             {% else %}
                                                 <span class="fa fa-star rarity-{{enemy.weapon_rarity}}"></span>
@@ -168,7 +165,6 @@
                                     {% endwith %}
                                 </div>
                             </div>
-
                             <div class="card-body p-1">
                                 <h5 class="card-title text-center">{{ new_weapon.name }}</h5>
                                 <div class="text-center">
