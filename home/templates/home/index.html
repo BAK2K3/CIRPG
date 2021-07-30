@@ -48,11 +48,25 @@
             </div>
         </div>
         <!-- Call to Action -->
-        <div class="col-10 col-md-5 col-lg-4 d-flex pt-3 pt-md-0">
+        <div class="col-10 col-md-5 col-lg-5 d-flex">
             <div class="col-12">
                 <div class="text-center">
-                    <h2><span class="logo-font">NEVER</span>  play the same game twice!</h2>
-                    <h2>Make an account for <span class="logo-font">FREE</span>  today!</h2>
+                    <h3><span class="logo-font">NEVER</span>  play the same game twice!</h3>
+                    <h3>Make an account for <span class="logo-font">FREE</span>  today!</h3>
+                    <div class="button-container">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'profile' %}" class="btn btn-dark custom-dark-btn w-auto pulsing-button anti-double-click mt-2">
+                            <span class="button-effect">Play now!</span>
+                        </a>  
+                        {% else %}
+                        <a href="{% url 'account_login' %}" class="btn btn-dark custom-dark-btn w-auto pulsing-button anti-double-click main-button me-5 mt-2">
+                            <span class="button-effect">Login!</span>
+                        </a>  
+                        <a href="{% url 'account_signup' %}" class="btn btn-dark custom-dark-btn w-auto pulsing-button anti-double-click main-button mt-2">
+                            <span class="button-effect">Register!</span>
+                        </a>  
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
