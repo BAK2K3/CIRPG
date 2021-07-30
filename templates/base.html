@@ -2,118 +2,135 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        {% block meta %}
-            <!-- Meta Tags -->
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% endblock %}
-        {% block corecss %}
-            <!-- Css -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-            <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        {% endblock %}
-        <title>CIRPG</title>
-    </head>
-    <body>
-        
-      <header class="container-fluid">
-        <nav id="mainNavbar" class="row navbar navbar-expand-lg">
-          <div class="col-4">
-            {% if request.user.is_authenticated %}
-            <!-- Status Container -->
-            <div class="status-container ms-2 d-md-flex d-none">
-              <a class="animated-link list-text" href="{% url 'profile' %}">Profile</a>
-              {% if current_profile.active_char %}
-                <a class="animated-link list-text" href="{% url 'battle' %}">Battle</a>
-              {% else %}
-                <a class="animated-link list-text" href="{% url 'create' %}">Create</a>
-              {% endif %}
-              <a class="animated-link list-text" href="{% url 'account_logout' %}">Logout</a>
-            </div>
+  <head>
+    {% block meta %}
+        <!-- Meta Tags -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="title" content="CIRPG - The Full Stack Role Playing Game">
+        <meta name="description" content="Sign up for a free account today!">
+    {% endblock %}
+    {% block corecss %}
+        <!-- Css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% endblock %}
+    <!-- Primary Tags -->
+    <title>CIRPG - The Full Stack Role Playing Game</title>
+    <!-- Socials -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cirpg.herokuapp.com/">
+    <meta property="og:title" content="CIRPG - The Full Stack Role Playing Game">
+    <meta property="og:description" content="Sign up for a free account today!">
+    <meta property="og:image" content="https://cirpg.s3.eu-west-2.amazonaws.com/media/LogoCol.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://cirpg.herokuapp.com/">
+    <meta property="twitter:title" content="CIRPG - The Full Stack Role Playing Game">
+    <meta property="twitter:description" content="Sign up for a free account today!">
+    <meta property="twitter:image" content="https://cirpg.s3.eu-west-2.amazonaws.com/media/LogoCol.png">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="container-fluid">
+      <nav id="mainNavbar" class="row navbar navbar-expand-lg">
+        <div class="col-4">
+          {% if request.user.is_authenticated %}
+          <!-- Status Container -->
+          <div class="status-container ms-2 d-md-flex d-none">
+            <a class="animated-link list-text" href="{% url 'profile' %}">Profile</a>
+            {% if current_profile.active_char %}
+              <a class="animated-link list-text" href="{% url 'battle' %}">Battle</a>
             {% else %}
-            <!-- Account Container -->
-            <div class="account-container mb-0 mb-lg-2 d-md-flex d-none">
-              <ul class="list-inline list-unstyled text-center">
-                <li class="list-inline-item">
-                  <a class="animated-link list-text" href="{% url 'account_signup' %}">Register</a>
-                </li>
-                <li class="list-inline-item">
-                  <a class="animated-link list-text" href="{% url 'account_login' %}">Login</a>
-                </li>
-              </ul>  
-            </div>
+              <a class="animated-link list-text" href="{% url 'create' %}">Create</a>
             {% endif %}
+            <a class="animated-link list-text" href="{% url 'account_logout' %}">Logout</a>
           </div>
-          <!-- Logo -->
-          <div class="col-3 text-center">
-            <a href="{% url 'home' %}">
-              <h1 class="logo-font text-white mb-0" >CIRPG</h1>
-            </a>
-          </div>
+          {% else %}
           <!-- Account Container -->
-          <div class="col-4 p-0">
-            <div class="account-container me-0 me-lg-2">
-              <!-- Inline -->
-              <ul class="list-inline list-unstyled text-center d-md-flex d-none">
-                <li class="list-inline-item">
-                  <a class="animated-link list-text" href="{% url 'leaderboard' %}">Leaderboard</a>
-                </li>
-                <li class="list-inline-item">
-                  <a class="animated-link list-text" href="{% url 'codex' %}">Codex</a>
-                </li>
-                <li class="list-inline-item">
-                  <a class="animated-link list-text" href="{% url 'premium' %}">Premium</a>
-                </li>
-                <li class="list-inline-item">
-                  <a class="animated-link list-text" href="{% url 'help' %}"><i class="far fa-question-circle"></i></a>
-                </li>
-              </ul>  
-              <!-- Dropdown -->
-              <ul class="list-inline list-unstyled text-center d-md-none d-flex">
-                <li class="list-inline-item dropdown">
-                  <a href="#" id="right-nav-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="nav-icon"><div></div></div>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-start text-center" aria-labelledby="right-nav-dropdown">
-                    {% if request.user.is_authenticated %}
-                      <a class="animated-link list-text dropdown-item" href="{% url 'profile' %}">Profile</a>
-                      {% if current_profile.active_char %}
-                        <a class="animated-link list-text" href="{% url 'battle' %}">Battle</a>
-                      {% else %}
-                        <a class="animated-link list-text" href="{% url 'create' %}">Create</a>
-                      {% endif %}
-                      <hr class="dropdown-divider">
-                    {% endif %}
-                    <a class="animated-link list-text dropdown-item" href="{% url 'premium' %}">Premium</a>  
-                    <a class="animated-link list-text dropdown-item" href="{% url 'leaderboard' %}">Leaderboard</a>
-                    <hr class="dropdown-divider">
-                    <a class="animated-link list-text dropdown-item" href="{% url 'codex' %}">Codex</a>
-                    <a class="animated-link list-text dropdown-item" href="{% url 'help' %}">How To</a>
-                    <hr class="dropdown-divider">
-                    {% if request.user.is_authenticated %}
-                      <a class="animated-link list-text dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-                    {% else %}
-                      <a class="animated-link list-text dropdown-item" href="{% url 'account_signup' %}">Register</a>
-                      <a class="animated-link list-text dropdown-item" href="{% url 'account_login' %}">Login</a>
-                    {% endif %}         
-                  </div>
-                </li>
-              </ul>
-            </div>
+          <div class="account-container mb-0 mb-lg-2 d-md-flex d-none">
+            <ul class="list-inline list-unstyled text-center">
+              <li class="list-inline-item">
+                <a class="animated-link list-text" href="{% url 'account_signup' %}">Register</a>
+              </li>
+              <li class="list-inline-item">
+                <a class="animated-link list-text" href="{% url 'account_login' %}">Login</a>
+              </li>
+            </ul>  
           </div>
-        </nav>
-      </header>       
-        {% block content %}
-        {% endblock %}
-        {% block postloadjs %}
-            <!-- Scripts -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-            <script src="{% static 'js/doublepress.js' %}"></script>
-            <script src="{% static 'js/tooltips.js' %}"></script>
-        {% endblock %}
-    </body>
+          {% endif %}
+        </div>
+        <!-- Logo -->
+        <div class="col-3 text-center">
+          <a href="{% url 'home' %}">
+            <h1 class="logo-font text-white mb-0" >CIRPG</h1>
+          </a>
+        </div>
+        <!-- Account Container -->
+        <div class="col-4 p-0">
+          <div class="account-container me-0 me-lg-2">
+            <!-- Inline -->
+            <ul class="list-inline list-unstyled text-center d-md-flex d-none">
+              <li class="list-inline-item">
+                <a class="animated-link list-text" href="{% url 'leaderboard' %}">Leaderboard</a>
+              </li>
+              <li class="list-inline-item">
+                <a class="animated-link list-text" href="{% url 'codex' %}">Codex</a>
+              </li>
+              <li class="list-inline-item">
+                <a class="animated-link list-text" href="{% url 'premium' %}">Premium</a>
+              </li>
+              <li class="list-inline-item">
+                <a class="animated-link list-text" href="{% url 'help' %}"><i class="far fa-question-circle"></i></a>
+              </li>
+            </ul>  
+            <!-- Dropdown -->
+            <ul class="list-inline list-unstyled text-center d-md-none d-flex">
+              <li class="list-inline-item dropdown">
+                <a href="#" id="right-nav-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="nav-icon"><div></div></div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-start text-center" aria-labelledby="right-nav-dropdown">
+                  {% if request.user.is_authenticated %}
+                    <a class="animated-link list-text dropdown-item" href="{% url 'profile' %}">Profile</a>
+                    {% if current_profile.active_char %}
+                      <a class="animated-link list-text" href="{% url 'battle' %}">Battle</a>
+                    {% else %}
+                      <a class="animated-link list-text" href="{% url 'create' %}">Create</a>
+                    {% endif %}
+                    <hr class="dropdown-divider">
+                  {% endif %}
+                  <a class="animated-link list-text dropdown-item" href="{% url 'premium' %}">Premium</a>  
+                  <a class="animated-link list-text dropdown-item" href="{% url 'leaderboard' %}">Leaderboard</a>
+                  <hr class="dropdown-divider">
+                  <a class="animated-link list-text dropdown-item" href="{% url 'codex' %}">Codex</a>
+                  <a class="animated-link list-text dropdown-item" href="{% url 'help' %}">How To</a>
+                  <hr class="dropdown-divider">
+                  {% if request.user.is_authenticated %}
+                    <a class="animated-link list-text dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                  {% else %}
+                    <a class="animated-link list-text dropdown-item" href="{% url 'account_signup' %}">Register</a>
+                    <a class="animated-link list-text dropdown-item" href="{% url 'account_login' %}">Login</a>
+                  {% endif %}         
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>       
+      {% block content %}
+      {% endblock %}
+      {% block postloadjs %}
+          <!-- Scripts -->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+          <script src="{% static 'js/doublepress.js' %}"></script>
+          <script src="{% static 'js/tooltips.js' %}"></script>
+      {% endblock %}
+  </body>
 </html>
