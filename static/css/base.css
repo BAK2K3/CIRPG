@@ -771,6 +771,16 @@ input#newImage {
     flex-wrap: wrap;
 }
 
+/********************************** HELP */
+
+.stats-table th {
+    vertical-align: middle;
+}
+
+table tr:last-child td, table tr:last-child th{
+    border:0
+  }
+
 /********************************** MEDIA QUERIES */
 @media (max-width: 992px) {
     h2 {
