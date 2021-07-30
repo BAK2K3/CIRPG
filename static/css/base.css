@@ -697,7 +697,7 @@ tbody > tr:nth-last-child() {
     display: flex;
     flex-direction: column;
     height: calc(100% - 100px);
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .payment-container {
@@ -823,7 +823,6 @@ input#newImage {
 
     .benefit-page-container {
         height: calc(100% - 60px);
-        justify-content: flex-start;
     }
 
     h1 {
