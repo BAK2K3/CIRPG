@@ -37,7 +37,8 @@ class CodexQuerySet(models.QuerySet):
     def hero_select(self, paid):
         allowed_content = {False}
         allowed_content.add(paid)
-        return self.filter(type="Hero", paid__in=allowed_content)
+        return self.filter(type="Hero",
+                           paid__in=allowed_content).order_by('pk')
 
     def get_random(self, type, paid, level):
         allowed_content = {False}
