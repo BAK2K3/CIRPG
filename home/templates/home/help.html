@@ -14,7 +14,7 @@
             <div class="col-12 col-md-6 polymorphism">
                 <!-- Accordion -->
                 <div class="accordion accordion-flush" id="howToAccordian">
-                    <!-- Item 1 -->
+                    <!-- Overview -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-heading-1">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-1" aria-expanded="false" aria-controls="#flush-collapse-1">
@@ -27,20 +27,32 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Item 2 -->
+                    <!-- How to play -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-heading-2">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-2" aria-expanded="false" aria-controls="#flush-collapse-2">
-                            How Do I Play?
+                            How do I play?
                         </button>
                         </h2>
                         <div id="flush-collapse-2" class="accordion-collapse collapse" aria-labelledby="#flush-heading-2" data-bs-parent="#howToAccordian">
                             <div class="accordion-body">
-                                <p class="mb-0"> </p>
+                                <h5>Overview</h5>
+                                <p >Make an account, create a character, and battle your way through an endless set of encounters with the hopes of finding the most powerful loot, and making your way to the top of the leaderboard.</p>
+                                <h5>Create a Character</h5>
+                                <p >From the Create screen, choose any of the available characters and confirm your selection. You will be allocated a random weapon.</p>
+                                <h5>Battle</h5>
+                                <p >When you enter a battle, your enemy and their weapon are generated at random, based on your current level. Once you commence the battle, you will be prompted when it is your turn, whereby you can attempt to attack your enemy. 
+                                    The first character to reduce their opponents hit points to 0 wins.</p>
+                                <h5>Lose</h5>
+                                <p >If you lose, your character is wiped and you start from the beginning. If you are a premium user, and you are within the top 10 scorers, you will earn a place on the leaderboard.</p>
+                                <h5>Win</h5>
+                                <p >If you win, a new weapon is generated at random based on your current level, and you can choose to keep your old weapon, or take the new one.</p>
+                                <h5>Level Up</h5>
+                                <p>For each win, you gain XP (Experience Points)relative to the level of the enemy you have beaten. If you level up following a battle, you are presented with your previous stats, and your new modified stats, in the loot screen.</p>
                             </div>  
                         </div>
                     </div>
-                    <!-- Item 3 -->
+                    <!-- Premium -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-heading-3">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-3" aria-expanded="false" aria-controls="#flush-collapse-3">
@@ -49,24 +61,72 @@
                         </h2>
                         <div id="flush-collapse-3" class="accordion-collapse collapse" aria-labelledby="#flush-heading-3" data-bs-parent="#howToAccordian">
                             <div class="accordion-body">
-                                <p class="mb-0"></p>  
+                                <p class="mb-0">You can make an account and play today for free, however:</p>
+                                    <br>
+                                    <ul class="list-group">
+                                        <li>
+                                            <i class="fas fa-times"></i> Your level is capped at 2 <i class="fas fa-times"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-times"></i> You only have access to 3 out of the 10 playable classes <i class="fas fa-times"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-times"></i> You can only obtain 2 out of 5 possible item rarities <i class="fas fa-times"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-times"></i> You can only fight 10 out of the 87 possible enemies <i class="fas fa-times"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-times"></i> You can only find 8 out of 59 lootable items <i class="fas fa-times"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-times"></i> You cannot earn a place on the leaderboard <i class="fas fa-times"></i>
+                                        </li>
+                                    </ul>
+                                    <br>
+                                <p class="mb-0">By upgrading to premium, you can infinitely progress through the game, have access to all of the game's content, compete with player's around the world to earn a place in the leaderboard, and have the chance to find Rare, Epic, or even Mythical loot.</p> 
+                                <br>
+                                <p class="mb-0">I know what you're thinking. <em>That's a whole lot of content for £4.99.</em> And you're right. So head over to the <a class="text-decoration-underline" href="{% url 'premium' %}">premium page</a> and upgrade today.</p>
+                                <br>
+                                <p class="mb-0">What are you waiting for?</p> 
                             </div>
                         </div>
                     </div>
-                    <!-- Item 4 -->
+                    <!-- Stats -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-heading-4">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-4" aria-expanded="false" aria-controls="#flush-collapse-4">
-                            How do battles work?
+                            What do the stats mean?
                         </button>
                         </h2>
                         <div id="flush-collapse-4" class="accordion-collapse collapse" aria-labelledby="#flush-heading-4" data-bs-parent="#howToAccordian">
                             <div class="accordion-body">
-                                <p class="mb-0"></p>  
+                                <div class="col-12">
+                                    <table class="table table-responsive stats-table px-2 mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">HP:</th>
+                                                <td class="text-center">These are Hit Points. They determine how much health you have.</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Attack:</th>
+                                                <td class="text-center">Attack determines how much damage you do on a successful attack.</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Defense:</th>
+                                                <td class="text-center">Defense contributes to evasion, which is calculated by Total Defense / Total HP (capped at 75%). For example, a character with a defense of 50 and HP of 100 would have a 50% chance of evading their opponents attack.</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Speed:</th>
+                                                <td class="text-center">Speed determines who acts first, and how frequently they attack. The turn meter is 1000 units long, and each 'tick' of a turn adds the total speed to your turn meter. When the meter hits 1000, it's your turn. Rinse and repeat.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Item 5 -->
+                    <!-- Level Up -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-heading-5">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-5" aria-expanded="false" aria-controls="#flush-collapse-5">
@@ -75,11 +135,21 @@
                         </h2>
                         <div id="flush-collapse-5" class="accordion-collapse collapse" aria-labelledby="#flush-heading-5" data-bs-parent="#howToAccordian">
                             <div class="accordion-body">
-                                <p class="mb-0"></p>  
+                                <p class="mb-0">When your active character earns enough XP to level up, your character's stats are increased.</p>  
+                                <br>
+                                <p class="mb-0">Firstly, each stat has a chance to increase by one relative value (i.e 5 for HP, or 1 for Attack, Defense, and Speed). 
+                                    Then, a modifier is applied to each stat. This modifier is random, and is within thresholds determined by your new level.</p>
+                                <br>
+                                <p class="mb-0">
+                                    For example, a character who has levelled up to Level 2, once the base stat increase above has occurred, has a random modifier generated and applied, from between 120% and 140%, for each individual stat. 
+                                    At level 3, these ranges increase to 140% to 160%, and so on.
+                                </p>
+                                <br>
+                                <p class="mb-0">Unfortunately, this means if you find yourself up against a Level 3 enemy, their base stats are calulated as if they have levelled up twice before facing you. And be warned. Some of those Tier 5 monsters are <em>savage.</em></p>
                             </div>
                         </div>
                     </div>
-                    <!-- Item 6 -->
+                    <!-- Tiers -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-heading-6">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-6" aria-expanded="false" aria-controls="#flush-collapse-6">
@@ -88,11 +158,32 @@
                         </h2>
                         <div id="flush-collapse-6" class="accordion-collapse collapse" aria-labelledby="#flush-heading-6" data-bs-parent="#howToAccordian">
                             <div class="accordion-body">
-                                <p class="mb-0"></p>  
+                                <p class="mb-0">
+                                    You might have noticed in the Codex there are Items and Enemies with different star ratings. Let's call these <em>Tiers.</em> Items and Enemies of different tiers are added to the pool of possible content whenever your current
+                                    character's level matches or exceeds that Tier.
+                                </p>  
+                                <br>
+                                <p class="mb-0">
+                                    This means that if you are Level 1, only Tier 1 Items and Enemies are available in the pool of possibility. However, when you are Level 3, all content from Tier 1, Tier 2, and Tier 3 is available within that pool.
+                                </p>
+                                <br>
+                                <p class="mb-0">
+                                    But what do the Tiers mean? As an Enemy's or Item's Tier increases, their <em>Base Stats</em> increase. I hear you...<em>"Surely a measly extra 2 attack damage isn't going to do much!"</em>  
+                                    And you might be right, if that Tier 5 <strong>Cthulu Enchanter</strong> was only level one. But At level 5, the effect the accumulative levelling has on these measly extra stats is exponential. Just you wait. 
+                                </p>
+                                <br>
+                                <p class="mb-0">
+                                    During a battle, you can see the Tier of an Item or an Enemy by the amount of stars <span class="fa fa-star"></span> on their avatar.
+                                </p>
+                                <br>
+                                <p class="mb-0">But why are the Enemy stars always solid white? <span class="fa fa-star"></span> </p>
+                                <p class="mb-0">And why are some of the Item stars sometimes colored? <span class="fa fa-star rarity-3"></span></p>
+                                <p class="mb-0">This color reflects an Items Rarity.</p>
+                                
                             </div>
                         </div>
                     </div>
-                    <!-- Item 7 -->
+                    <!-- Rarity -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-heading-7">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-7" aria-expanded="false" aria-controls="#flush-collapse-7">
@@ -101,20 +192,37 @@
                         </h2>
                         <div id="flush-collapse-7" class="accordion-collapse collapse" aria-labelledby="#flush-heading-7" data-bs-parent="#howToAccordian">
                             <div class="accordion-body">
-                                <p class="mb-0"></p>  
+                                <p class="mb-0">When items are generated, they always have a rarity tied to them. These rarities are as follows, and are depicted by the following stars within a Battle:</p>
+                                <br>
+                                <p class="mb-0"><span class="far fa-star"></span> Common</p>
+                                <p class="mb-0"><span class="fa fa-star"></span> Uncommon</p>
+                                <p class="mb-0"><span class="fa fa-star rarity-3"></span>  Rare</p>
+                                <p class="mb-0"><span class="fa fa-star rarity-4"></span>  Epic</p>
+                                <p class="mb-0"><span class="fa fa-star rarity-5"></span>  Mythical</p>
+                                <br>
+                                <p class="mb-0">You unlock each rarity sequentially as you level up, so at Level 1 you will only pull Uncommon items. At Level 3 you can pull Common, Uncommon, and Rare items.
+                                As you level up, the probability of you pulling a Rarity below your level increases. For example, at Level 2 there is a 20% chance of pulling an Uncommon item.</p>
+                                At level 3, you have a 40% chance of pulling an Uncommon item, and a 20% chance of pulling a Rare Item. However, in order for the item to be Rare, it must first have successively "rolled" as Uncommon. 
+                                    Which equates to about an 8% chance of you pulling an Rare item at Level 3.</p>
+                                <br>
+                                <p class="mb-0">The effect Rarity has on weapons is the same effect levelling up has on Characters and Enemies. A Rare item will have had all its stats multiplied 3 times. Mythical items will have had their stats multiplied 5 times.
+                                    The level of a weapon effects the possible range of multiplier generated per Tier of multiplication.
+                                </p>
+                                <br>
+                                <p class="mb-0">I know what you're thinking. Either: <em>That's too much information</em> or <em> I don't really care how it works.</em> And that's fine - so let's move onto the final and most important FAQ.</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Item 8 -->
+                    <!-- Leaderboard -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-heading-8">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-8" aria-expanded="false" aria-controls="#flush-collapse-8">
-                            Why can't I get on the Leaderboard?
+                           How do I get onto the Leaderboard?
                         </button>
                         </h2>
                         <div id="flush-collapse-8" class="accordion-collapse collapse" aria-labelledby="#flush-heading-8" data-bs-parent="#howToAccordian">
                             <div class="accordion-body">
-                                <p class="mb-0"></p>  
+                                <p class="mb-0">Git gud.</p>  
                             </div>
                         </div>
                     </div>
