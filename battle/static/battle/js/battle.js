@@ -198,8 +198,6 @@ async function engageBattle(){
     // While either char/enemy is alive
     while ((characterObject.hp > 0) || (enemyObject.hp > 0)) {
 
-        await new Promise(done => setTimeout(() => done(), 5));
-
         // Character Turn
         if (characterObject.isTurn){
             // If the character hits
@@ -219,6 +217,8 @@ async function engageBattle(){
             // De-active character's turn
             characterObject.isTurn = false;
             characterObject.updateBar(characterTurnBar, characterObject.calculateTurnPercent(), characterObject.turnMeter);
+            // Delay while status bar updates
+            await new Promise(done => setTimeout(() => done(), 400));
         // If not turn
         } else {
             // Calculate Character turn meter
@@ -238,9 +238,10 @@ async function engageBattle(){
         if (enemyObject.isTurn){
 
             // Set turn meter bar to 100%
-            enemyObject.updateBar(enemyTurnBar, 100);
+            enemyObject.updateBar(enemyTurnBar, 100, 1000);
 
-            await new Promise(done => setTimeout(() => done(), 500));
+            // Delay while status bar updates
+            await new Promise(done => setTimeout(() => done(), 400));
 
             // Calculate attack hit and update bars
             if (enemyObject.attackOutcome(characterObject.dodge)) {
@@ -251,15 +252,18 @@ async function engageBattle(){
                 if (characterObject.hp == 0){
                     enemyObject.declareWinner(false);
                     return true;
-                } else {
-                    // Update accurate turn meter display
-                    enemyObject.updateBar(enemyTurnBar, enemyObject.calculateTurnPercent(), enemyObject.turnMeter);
-                }
-            
+                }                    
             // If the attack misses
             } else {
                 enemyObject.attackMissLog();
             }
+
+
+            // Update accurate turn meter display
+            enemyObject.updateBar(enemyTurnBar, enemyObject.calculateTurnPercent(), enemyObject.turnMeter);
+
+            // Delay while status bar updates
+            await new Promise(done => setTimeout(() => done(), 400));
 
             // After turn reset turn bool
             enemyObject.isTurn = false;
