@@ -190,13 +190,15 @@ function startBattleTimer() {
 
 
 // Game Logic Battle Loop
-function engageBattle(){
+async function engageBattle(){
 
     // Disable attack button
     document.getElementById('attackButton').disabled = true;
 
     // While either char/enemy is alive
     while ((characterObject.hp > 0) || (enemyObject.hp > 0)) {
+
+        await new Promise(done => setTimeout(() => done(), 5));
 
         // Character Turn
         if (characterObject.isTurn){
@@ -237,6 +239,8 @@ function engageBattle(){
 
             // Set turn meter bar to 100%
             enemyObject.updateBar(enemyTurnBar, 100);
+
+            await new Promise(done => setTimeout(() => done(), 500));
 
             // Calculate attack hit and update bars
             if (enemyObject.attackOutcome(characterObject.dodge)) {
