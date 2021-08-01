@@ -176,10 +176,6 @@ li {
     min-width: 0rem;
 }
 
-.dropdown-menu-start[data-bs-popper] {
-    left: -122%;
-}
-
 .dropdown-item {
     text-decoration: none;
     color: #FFF8F0;
@@ -243,7 +239,6 @@ hr.dropdown-divider {
     flex-direction: column;
     align-items: center;
 }
-
 
 /********************************** Index */
 
@@ -472,7 +467,6 @@ hr.dropdown-divider {
     border-radius: 25px;
     outline: none;
     animation: selected-glow 1s infinite alternate;
-    
 }
 
 @keyframes selected-glow {
@@ -482,7 +476,7 @@ hr.dropdown-divider {
     to {
       box-shadow: 0 0 20px #FFF8F0, 0 0 30px #4ad66d, 0 0 40px #4ad66d
     }
-  }
+}
 
 /********************************** BATTLE */
 
@@ -518,7 +512,7 @@ textarea {
 textarea:disabled {
     background: #FFF8F0;
     color: black;
-  }
+}
 
 .image-overlay {
     position: absolute;
@@ -529,7 +523,6 @@ textarea:disabled {
     bottom: 2%;
     width: 100%;
     text-align: center;
-
 }
 
 .enemy-overlay {
@@ -584,39 +577,39 @@ textarea:disabled {
 
 @keyframes uncommon {
     from {
-      box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #e9ecef;
+        box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #e9ecef;
     }
     to {
-      box-shadow: 0 0 20px #FFF8F0, 0 0 30px #f8f9fa, 0 0 40px #f8f9fa
+        box-shadow: 0 0 20px #FFF8F0, 0 0 30px #f8f9fa, 0 0 40px #f8f9fa
     }
-  }
+}
 
-  @keyframes rare {
+@keyframes rare {
     from {
-      box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #208b3a;
+        box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #208b3a;
     }
     to {
-      box-shadow: 0 0 20px #FFF8F0, 0 0 30px #4ad66d, 0 0 40px #4ad66d
+        box-shadow: 0 0 20px #FFF8F0, 0 0 30px #4ad66d, 0 0 40px #4ad66d
     }
-  }
+}
 
-  @keyframes epic {
+@keyframes epic {
     from {
-      box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #ffd100;
+        box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #ffd100;
     }
     to {
-      box-shadow: 0 0 20px #FFF8F0, 0 0 30px #ffee32, 0 0 40px #ffee32
+        box-shadow: 0 0 20px #FFF8F0, 0 0 30px #ffee32, 0 0 40px #ffee32
     }
-  }
+}
 
-  @keyframes mythic {
+@keyframes mythic {
     from {
-      box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #ba181b;
+        box-shadow: 0 0 10px #FFF8F0, 0 0 20px #FFF8F0, 0 0 30px #ba181b;
     }
     to {
-      box-shadow: 0 0 20px #FFF8F0, 0 0 30px #e5383b, 0 0 40px #e5383b
+        box-shadow: 0 0 20px #FFF8F0, 0 0 30px #e5383b, 0 0 40px #e5383b
     }
-  }
+}
 
 .flex-container {
     display: flex;
@@ -643,7 +636,6 @@ textarea:disabled {
 .benefit-table {
     overflow: hidden;
     color:#FFF8F0;
-
 }
 
 .benefit-table table.table>:not(caption)>*>*  {
@@ -655,13 +647,10 @@ tr.borderless, tr.borderless td, tr.borderless th {
     border-bottom: none;
 }
 
-
 tbody > tr:nth-last-child() {
    border-color: transparent;
    border-bottom: none;
 } 
-
-
 
 .benefit-table tbody tr th {
     text-align: left;
@@ -678,24 +667,24 @@ tbody > tr:nth-last-child() {
 .pulsing-button {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
     animation: pulse-white 2s infinite;
-  }
+}
   
-  @keyframes pulse-white {
-    0% {
-      transform: scale(0.95);
-      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-    }
-    
-    70% {
-      transform: scale(1);
-      box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-    }
-    
-    100% {
-      transform: scale(0.95);
-      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-  }
+@keyframes pulse-white {
+0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+}
+
+70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+}
+
+100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+}
+}
 
 .benefit-page-container {
     display: flex;
@@ -783,7 +772,7 @@ input#newImage {
 
 table tr:last-child td, table tr:last-child th{
     border:0
-  }
+}
 
 /********************************** MEDIA QUERIES */
 @media (max-width: 992px) {
@@ -794,8 +783,6 @@ table tr:last-child td, table tr:last-child th{
     .list-text {
         font-size: 1.1rem;
     }
-
-
 }
 
 @media (max-width: 767px) {
@@ -826,6 +813,10 @@ table tr:last-child td, table tr:last-child th{
         font-size: 1.2rem;
     }
 
+    #mainNavbar {
+        justify-content: space-around;
+     }
+ 
 }
 
 @media (max-width: 576px) {
@@ -858,10 +849,6 @@ table tr:last-child td, table tr:last-child th{
 
     .stats-container {
         font-size: 0.8rem;
-    }
-
-    .dropdown-menu-start[data-bs-popper] {
-        left: -55px;
     }
 
     .stats-table {
