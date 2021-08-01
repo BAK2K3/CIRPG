@@ -391,6 +391,7 @@ hr.dropdown-divider {
     transform: translateX(-50%);
     bottom: 10px;
     box-shadow: 0px 18px 28px 0px rgba(0,0,0,0.75);
+    z-index: 10;
 }
 
 .btt-wrapper button:focus {
@@ -476,6 +477,16 @@ hr.dropdown-divider {
     to {
       box-shadow: 0 0 20px #FFF8F0, 0 0 30px #4ad66d, 0 0 40px #4ad66d
     }
+}
+
+.hero-container .codex-card {
+    cursor: pointer;
+    transition: all .2s ease-in-out; 
+}
+
+.hero-container .codex-card:hover {
+    transform: scale(1.1); 
+    z-index: 5;
 }
 
 /********************************** BATTLE */
