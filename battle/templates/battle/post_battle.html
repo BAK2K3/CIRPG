@@ -12,7 +12,7 @@
                 <!-- If free user has hit limit -->
                 <div class="free-alert text-center">
                     <p><strong>Max Level Reached</strong></p>
-                    <p>Uprgrade to premium now to full access to CIPRG!</p>
+                    <p class="mb-0">Uprgrade to premium now to full access to CIPRG!</p>
                 </div>
             {% endif %}
             
@@ -114,7 +114,7 @@
                                     {% endwith %}
                                 </div>
                             </div>
-                            <div class="card-body p-1">
+                            <div class="card-body p-2">
                                 <h5 class="card-title text-center">{{ active_character.weapon_id.name }}</h5>
                                 <div class="text-center">
                                     <p class="m-0">Level {{ active_character.weapon_level}}<br>
@@ -165,7 +165,7 @@
                                     {% endwith %}
                                 </div>
                             </div>
-                            <div class="card-body p-1">
+                            <div class="card-body p-2">
                                 <h5 class="card-title text-center">{{ new_weapon.name }}</h5>
                                 <div class="text-center">
                                     <p class="m-0">Level {{ new_weapon.level}}<br>
