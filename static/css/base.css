@@ -555,11 +555,11 @@ textarea:disabled {
 .bar-text {
     color: black;
     font-weight: 600;
-    width: 90%;
+    width: 100%;
 }
 
-.bar-text.battle {
-   width: 97%;
+.progress {
+    position: relative;
 }
 
 /********************************** POST-BATTLE */
