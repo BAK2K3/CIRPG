@@ -143,7 +143,7 @@ class PostBattleView(LoginRequiredMixin, TemplateView):
             if current_profile.paid:
                 # Determine whether score should go in leaderboard
                 leaderboard_outcome = Leaderboard.leaderboard_check(character)
-                context['leaderboard'] = leaderboard_outcome
+                context['leaderboard'], context['score'] = leaderboard_outcome
 
             # Delete Active Character
             character.delete()
