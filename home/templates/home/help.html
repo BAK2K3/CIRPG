@@ -37,18 +37,25 @@
                         <div id="flush-collapse-2" class="accordion-collapse collapse" aria-labelledby="#flush-heading-2" data-bs-parent="#howToAccordian">
                             <div class="accordion-body">
                                 <h5>Overview</h5>
-                                <p >Make an account, create a character, and battle your way through an endless set of encounters with the hopes of finding the most powerful loot, and making your way to the top of the leaderboard.</p>
+                                <p>Make an account, create a character, and battle your way through an endless set of encounters with the hopes of finding the most powerful loot, and making your way to the top of the leaderboard.</p>
                                 <h5>Create a Character</h5>
-                                <p >From the Create screen, choose any of the available characters and confirm your selection. You will be allocated a random weapon.</p>
+                                <p>From the Create screen, choose any of the available characters and confirm your selection. You will be allocated a random weapon.</p>
+                                <h5>Profile</h5>
+                                <p>Your profile displays your account's statistics, including Total Runs, Longest Run, Current Streak, and account type. If you have an active character, your character's stats will be displayed here, along with your 
+                                    XP progress to your character's next level, and the weapon your character currently yields.</p> 
+                                </p>
                                 <h5>Battle</h5>
-                                <p >When you enter a battle, your enemy and their weapon are generated at random, based on your current level. Once you commence the battle, you will be prompted when it is your turn, whereby you can attempt to attack your enemy. 
-                                    The first character to reduce their opponents hit points to 0 wins.</p>
+                                <p>When you enter a battle, your enemy and their weapon are generated at random, based on your current level. Once you commence the battle, you will be prompted when it is your turn, whereby you can attempt to attack your enemy.
+                                    Enemies will automatically attempt to attack you when it is their turn. The red bar represents Hit Points, and the green bar represents the Turn Meter. 
+                                    The first character to reduce their opponent's hit points to 0 wins.</p>
                                 <h5>Lose</h5>
-                                <p >If you lose, your character is wiped and you start from the beginning. If you are a premium user, and you are within the top 10 scorers, you will earn a place on the leaderboard.</p>
+                                <p>If you lose, your character is wiped and you start from the beginning. You will be directed to a post-battle screen which displays your score. 
+                                    If you are a premium user, and you are within the top 10 scorers, you will earn a place on the leaderboard.</p>
                                 <h5>Win</h5>
-                                <p >If you win, a new weapon is generated at random based on your current level, and you can choose to keep your old weapon, or take the new one.</p>
+                                <p>If you win, a new weapon is generated at random based on your current level, and you can choose to keep your old weapon, or take the new one.</p>
                                 <h5>Level Up</h5>
-                                <p>For each win, you gain XP (Experience Points)relative to the level of the enemy you have beaten. If you level up following a battle, you are presented with your previous stats, and your new modified stats, in the loot screen.</p>
+                                <p>For each win, you gain XP (Experience Points) relative to the level of the enemy you have beaten. If you level up following a successful battle, you are presented with your previous stats, 
+                                    and your new modified stats, in the loot screen.</p>
                             </div>  
                         </div>
                     </div>
@@ -118,7 +125,8 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">Speed:</th>
-                                                <td class="text-center">Speed determines who acts first, and how frequently they attack. The turn meter is 1000 units long, and each 'tick' of a turn adds the total speed to your turn meter. When the meter hits 1000, it's your turn. Rinse and repeat.</td>
+                                                <td class="text-center">Speed determines who acts first, and how frequently they attack. The turn meter is 1000 units long, and each 'tick' of a turn adds the total speed to your turn meter. 
+                                                    When the meter hits 1000, it's your turn. If your oponent has 2x your speed, they will attack you twice each round. Rinse and repeat.</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -137,7 +145,7 @@
                             <div class="accordion-body">
                                 <p class="mb-0">When your active character earns enough XP to level up, your character's stats are increased.</p>  
                                 <br>
-                                <p class="mb-0">Firstly, each stat has a chance to increase by one relative value (i.e 5 for HP, or 1 for Attack, Defense, and Speed). 
+                                <p class="mb-0">First, each stat has a chance to increase by one relative value (i.e 5 for HP, or 1 for Attack, Defense, and Speed). 
                                     Then, a modifier is applied to each stat. This modifier is random, and is within thresholds determined by your new level.</p>
                                 <br>
                                 <p class="mb-0">
@@ -176,8 +184,8 @@
                                     During a battle, you can see the Tier of an Item or an Enemy by the amount of stars <span class="fa fa-star"></span> on their avatar.
                                 </p>
                                 <br>
-                                <p class="mb-0">But why are the Enemy stars always solid white? <span class="fa fa-star"></span> </p>
-                                <p class="mb-0">And why are some of the Item stars sometimes colored? <span class="fa fa-star rarity-3"></span></p>
+                                <p class="mb-0">Enemies Tier will always be represented as solid white stars in the battle screen. <span class="fa fa-star"></span> </p>
+                                <p class="mb-0">But why are some of the Item stars sometimes colored? <span class="fa fa-star rarity-3"></span></p>
                                 <p class="mb-0">This color reflects an Items Rarity.</p>
                                 
                             </div>
@@ -201,7 +209,10 @@
                                 <p class="mb-0"><span class="fa fa-star rarity-5"></span>  Mythical</p>
                                 <br>
                                 <p class="mb-0">You unlock each rarity sequentially as you level up, so at Level 1 you will only pull Uncommon items. At Level 3 you can pull Common, Uncommon, and Rare items.
-                                As you level up, the probability of you pulling a Rarity below your level increases. For example, at Level 2 there is a 20% chance of pulling an Uncommon item.</p>
+                                As you level up, the probability of you pulling a Rarity below your level increases.</p> 
+                                <br>
+                                <p class="mb-0">
+                                For example, at Level 2 there is a 20% chance of pulling an Uncommon item.
                                 At level 3, you have a 40% chance of pulling an Uncommon item, and a 20% chance of pulling a Rare Item. However, in order for the item to be Rare, it must first have successively "rolled" as Uncommon. 
                                     Which equates to about an 8% chance of you pulling an Rare item at Level 3.</p>
                                 <br>
