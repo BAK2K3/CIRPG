@@ -184,11 +184,11 @@ class Leaderboard(models.Model):
 
         if len(current_leaderboard) >= 10:
             if current_leaderboard[9].score > score:
-                return False
+                return (False, score)
             else:
                 current_leaderboard[9].delete()
                 cls.active_char_to_leaderboard(active_char, score)
-                return True
+                return (True, score)
         else:
             cls.active_char_to_leaderboard(active_char, score)
-            return True
+            return (True, score)
