@@ -518,6 +518,10 @@ hr.dropdown-divider {
 
 /********************************** PROFILE */
 
+[type=button] {
+    -webkit-appearance: none;
+}
+
 .cornered-image {
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
