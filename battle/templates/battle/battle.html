@@ -180,35 +180,32 @@
     <form action="{% url 'post_battle' %}" id="postBattleForm" method="POST" class="d-none">{% csrf_token %}
         <input type="hidden" name="result" id="hiddenResult" value=""/>
     </form>
-
-
-
-      <!-- Modal -->
-  <div class="modal fade text-body text-center" id="retreatConfirmation" tabindex="-1" role="dialog" aria-labelledby="retreatConfirmationTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title text-center w-100" id="retreatConfirmationTitle">Retreat?</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>It's ok to admit defeat. Come back and try again.</p> 
-          <p>Let luck be your lady tonight.</p>
-        </div>
-        <div class="modal-footer justify-content-center">
-            <div class="button-container text-center">
-                <button class="btn btn-danger" id="profileRetreat" type="button" role="button">
-                    Profile
-                </button>  
-                <button class="btn btn-danger" id="retryRetreat" type="button" role="button">
-                    Retry
-                </button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
+    <!-- Modal -->
+    <div class="modal fade text-body text-center" id="retreatConfirmation" tabindex="-1" role="dialog" aria-labelledby="retreatConfirmationTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title text-center w-100" id="retreatConfirmationTitle">Retreat?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <p>It's ok to admit defeat. Come back and try again.</p> 
+            <p>Let luck be your lady tonight.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <div class="button-container text-center">
+                    <button class="btn btn-danger" id="profileRetreat" type="button" role="button">
+                        Profile
+                    </button>  
+                    <button class="btn btn-danger" id="retryRetreat" type="button" role="button">
+                        Retry
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
+                </div>
             </div>
         </div>
-      </div>
+        </div>
     </div>
-  </div>
 
 {% endblock %}
 
