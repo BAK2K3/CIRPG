@@ -599,6 +599,26 @@ hr.dropdown-divider {
     display: flex;
 }
 
+.modal-header, .modal-body, .modal-footer {
+    background-color: #1e1e24;
+    color: white;
+}
+
+.modal-content {
+    background-color: transparent;
+    border: none;
+}
+
+.modal-header{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.modal-footer {
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
 /********************************** CREATE */
 
 .hero-container {
