@@ -184,6 +184,9 @@ function startBattleTimer() {
     document.getElementById('startButton').remove();
     document.getElementById('attackButton').classList.remove('d-none');
     
+    // Add battle log entry
+    document.getElementById("battleLog").append("Battle Commenced!");
+    
     // Start Battle
     engageBattle();
 }
