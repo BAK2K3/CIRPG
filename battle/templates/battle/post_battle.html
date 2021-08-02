@@ -13,8 +13,11 @@
             {% if free_limit %}
                 <!-- If free user has hit limit -->
                 <div class="free-alert text-center">
-                    <p><strong>Max Level Reached</strong></p>
-                    <p class="mb-0">Uprgrade to premium now to full access to CIPRG!</p>
+                    <h3>Max Level Reached</h3>
+                    <p>Uprgrade to premium now to full access to CIPRG!</p>
+                    <a class="btn btn-dark custom-dark-btn w-auto mx-auto pulsing-button" type="button" role="button" href="{% url 'premium' %}">
+                        <span class="button-effect">Upgrade Now!</span>
+                    </a>  
                 </div>
             {% endif %}
             
@@ -220,13 +223,13 @@
                     <div class="col-12">
                         <h2 class="logo-font mb-3">YOU LOSE!</h2>
                     </div>
-                    <div class="col-12">
-                        <h3 class="mb-0">Score: {{ score }} <h3>
-                    </div>
                         {% if current_profile.paid %}
                             <!-- Paid User -->
                             {% if leaderboard %}
                                 <!-- Successful Leaderboard -->
+                                <div class="col-12">
+                                    <h3 class="mb-0">Score: {{ score }} <h3>
+                                </div>
                                 <div class="col-12">
                                     <h3 class="mb-3 mt-1">Congratulations! You made your way onto the leaderboard!</h3>
                                     <p>Check out the leaderboard to view your position, or create a new character!</p>
