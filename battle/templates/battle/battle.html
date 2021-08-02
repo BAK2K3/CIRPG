@@ -48,7 +48,6 @@
                                     <p class="justify-content-center d-flex position-absolute bar-text mb-0">Turn Meter</p>
                                 </div>
                             </div>
-                            
                             <!-- Character Stats -->
                             <div class="d-none d-md-flex" id="heroStats">       
                                 <table class="table table-borderless table-responsive stats-table">
@@ -75,7 +74,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Enemy -->    
                 <div class="col-10 col-md-6 col-xxl-5 px-1 px-sm-3 pt-2 pt-md-0 enemy-container">
                     <div class="card polymorphism">
@@ -156,34 +154,29 @@
                 </div>
             </div>
         </div>
-
         <!-- Battle interaction -->
         <div class="row g-0 interaction-wrapper">
             <div class="col-10 col-md-6 col-xxl-5 px-1 px-sm-3">
-                <div class="col-12 interaction-container">
+                <div class="col-12 interaction-container battle-log">
                     <textarea name="log" id="battleLog" class="w-100" disabled></textarea>
                 </div>
-                <div class="col-12 interaction-container">
+                <div class="col-12 interaction-container battle-buttons mt-1 mt-sm-2">
                     <!-- Start Battle Button -->
                     <button class="btn btn-dark custom-dark-btn w-50 mx-auto" id="startButton" type="button">
                         <span class="button-effect">Start Battle</span>
                     </button>  
                     <!-- Attack Button -->
-                    <button class="btn btn-dark custom-dark-btn w-50 d-none mx-auto" id='attackButton' type="button">
+                    <button class="btn btn-dark custom-dark-btn w-50 d-none mx-auto disable-hover" id='attackButton' type="button">
                         <span class="button-effect">Attack</span>
                     </button>
                 </div>  
             </div>
         </div>
     </div>
-
     <!-- Post-game Form -->
     <form action="{% url 'post_battle' %}" id="postBattleForm" method="POST" class="d-none">{% csrf_token %}
         <input type="hidden" name="result" id="hiddenResult" value=""/>
     </form>
-
-
-
 {% endblock %}
 
 {% block postloadjs %}
