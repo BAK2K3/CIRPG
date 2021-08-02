@@ -5,17 +5,17 @@
 <!-- Main Page Container -->
 <div class="container-fluid py-3">
     <!-- Heading -->
-    <div class="row">
+    <div class="row g-0">
         <div class="col text-center mt-3">
             <h2 class="logo-font">Codex</h2>
             <hr class="w-25 mb-1 mx-auto">
         </div>
     </div>
     <!-- Codex Entries -->
-    <div class="row">
+    <div class="row g-0">
         <div class="col-12 col-sm-10 offset-sm-1">
             <!--Filters-->
-            <div class="row mt-1 mb-2 text-center">
+            <div class="col-12 mt-1 mb-2 text-center">
                 <div class="button-container">
                     <!-- Filter Toggle -->
                     <button class="btn btn-dark custom-dark-btn w-25" data-bs-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse">
@@ -127,10 +127,10 @@
                 </div>
             </div>
             <!-- Entries -->
-            <div class="row">
+            <div class="col-12 codex-card-container">
                 {% if codex %}
                     {% for entry in codex %}
-                        <div class="col-6 col-md-4 col-lg-3 col-xxl-2 pt-3">
+                        <div class="col-6 col-md-4 col-lg-3 col-xxl-2 pt-3 px-2">
                             <div class="card h100 border-0 polymorphism codex-card">
                                 <img src="{{ entry.image.url }}" class="card-img-top cornered-image" alt="{{ entry.name }}">
                                 <div class="card-body">
@@ -185,7 +185,7 @@
                                         </div>
                                         <div class="col-12">
                                             {% if user.is_superuser %}
-                                                <a class="btn btn-dark custom-dark-btn w-100" href="{% url 'c_edit' entry.pk %}">
+                                                <a class="btn btn-dark custom-dark-btn w-100 mt-1" href="{% url 'c_edit' entry.pk %}">
                                                     <span class="button-effect">Edit</span>
                                                 </a>   
                                             {% endif %}
