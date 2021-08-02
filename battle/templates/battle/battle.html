@@ -35,7 +35,7 @@
                             <div class="w-100 title-container pb-2">
                                 <h5 class="card-title text-center battle-title mb-0">{{ character.character_id.name }} - Level {{ character.current_level }}</h5>
                                 <!-- Popover for Stats -->
-                                <a tabindex="0" class="btn btn-dark custom-dark-btn d-inline-block d-md-none" role="button" data-bs-toggle="popover" data-content-id="#heroStats" title="Hero Stats" data-bs-html="true"><span class="button-effect">Stats</span></a>
+                                <a tabindex="0" class="btn btn-dark mini-btn custom-dark-btn d-inline-block d-md-none" role="button" data-bs-toggle="popover" data-content-id="#heroStats" title="Hero Stats" data-bs-html="true"><span class="button-effect">Stats</span></a>
                             </div>
                             <!-- Progress Bars -->
                             <div class="hero-progress-container">
@@ -112,7 +112,7 @@
                         <div class="card-body p-2">
                             <div class="w-100 title-container pb-2">
                             <!-- Popover for Stats -->
-                                <a tabindex="0" class="btn btn-dark custom-dark-btn d-inline-block d-md-none" role="button" data-bs-toggle="popover" data-content-id="#enemyStats" title="Enemy Stats" data-bs-html="true"><span class="button-effect">Stats</span></a>
+                                <a tabindex="0" class="btn btn-dark mini-btn custom-dark-btn d-inline-block d-md-none" role="button" data-bs-toggle="popover" data-content-id="#enemyStats" title="Enemy Stats" data-bs-html="true"><span class="button-effect">Stats</span></a>
                                 <h5 class="card-title text-center battle-title mb-0">{{ enemy.enemy_id.name }} - Level {{ enemy.enemy_level }}</h5>
                             </div>
                             <!-- Progress Bars -->
@@ -162,12 +162,15 @@
                 </div>
                 <div class="col-12 interaction-container battle-buttons mt-1 mt-sm-2">
                     <!-- Start Battle Button -->
-                    <button class="btn btn-dark custom-dark-btn w-50 mx-auto" id="startButton" type="button">
+                    <button class="btn btn-dark mini-btn custom-dark-btn w-50 mx-auto" id="startButton" type="button">
                         <span class="button-effect">Start Battle</span>
                     </button>  
                     <!-- Attack Button -->
-                    <button class="btn btn-dark custom-dark-btn w-50 d-none mx-auto disable-hover" id='attackButton' type="button">
+                    <button class="btn btn-dark mini-btn custom-dark-btn w-50 d-none mx-auto disable-hover" id='attackButton' type="button">
                         <span class="button-effect">Attack</span>
+                    </button>
+                    <button class="btn btn-dark mini-btn custom-dark-btn w-50 d-none mx-auto disable-hover px-0" id='retreatButton' type="button" role="button" data-bs-toggle="modal" data-bs-target="#retreatConfirmation">
+                        <span class="button-effect">Retreat</span>
                     </button>
                 </div>  
             </div>
@@ -177,6 +180,36 @@
     <form action="{% url 'post_battle' %}" id="postBattleForm" method="POST" class="d-none">{% csrf_token %}
         <input type="hidden" name="result" id="hiddenResult" value=""/>
     </form>
+
+
+
+      <!-- Modal -->
+  <div class="modal fade text-body text-center" id="retreatConfirmation" tabindex="-1" role="dialog" aria-labelledby="retreatConfirmationTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center w-100" id="retreatConfirmationTitle">Retreat?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>It's ok to admit defeat. Come back and try again.</p> 
+          <p>Let luck be your lady tonight.</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+            <div class="button-container text-center">
+                <button class="btn btn-danger" id="profileRetreat" type="button" role="button">
+                    Profile
+                </button>  
+                <button class="btn btn-danger" id="retryRetreat" type="button" role="button">
+                    Retry
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}
 
 {% block postloadjs %}
