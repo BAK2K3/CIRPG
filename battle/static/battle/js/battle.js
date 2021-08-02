@@ -194,6 +194,7 @@ async function engageBattle(){
 
     // Disable attack button
     document.getElementById('attackButton').disabled = true;
+    document.getElementById('attackButton').classList.remove("pulsing-button");
 
     // While either char/enemy is alive
     while ((characterObject.hp > 0) || (enemyObject.hp > 0)) {
@@ -226,6 +227,8 @@ async function engageBattle(){
             if (characterObject.isTurn){
                 characterObject.updateBar(characterTurnBar, 100, 1000);
                 document.getElementById('attackButton').disabled = false;
+                document.getElementById('attackButton').blur();
+                document.getElementById('attackButton').classList.add("pulsing-button");
                 return true;
             }
             characterObject.updateBar(characterTurnBar, characterObject.calculateTurnPercent(), characterObject.turnMeter);
