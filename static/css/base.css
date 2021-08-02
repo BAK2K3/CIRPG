@@ -82,6 +82,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;
     color: #FFF8F0;
     font-family: 'Titillium Web', sans-serif;
 }
@@ -445,6 +446,11 @@ hr.dropdown-divider {
     background-color: #0f0f0f;
     border-radius: 25px;
     border: 1px solid white;
+}
+
+.custom-dark-btn.disable-hover:disabled {
+    border: 1px solid white;
+    background-color: transparent;
 }
 
 /* Animated Link Source: https://ui-snippets.dev/ */
@@ -1182,6 +1188,10 @@ table tr:last-child td, table tr:last-child th{
 
     .card-body {
         padding: 0 4px 4px 4px;
+    }
+
+    .mini-btn {
+        padding: .15rem 1rem;
     }
 
 }
