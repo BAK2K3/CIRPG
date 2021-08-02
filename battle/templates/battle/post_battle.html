@@ -7,7 +7,9 @@
         <!-- Win -->
         {% if outcome %}
         <input type="hidden" id="winTrigger">
-
+        <div class="col-12 text-center">
+            <h2 class="logo-font">YOU WIN!</h2>
+        </div>
             {% if free_limit %}
                 <!-- If free user has hit limit -->
                 <div class="free-alert text-center">
@@ -22,7 +24,7 @@
                     <!-- Level Up Container-->
                     <div class="col-12 col-lg-6 flex-container">
                         <div class="col-12">
-                            <h2 class="logo-font text-center mt-2 mt-sm-3">Level up!</h2>
+                            <h3 class="logo-font text-center mt-2 mt-sm-3">Level up!</h3>
                         </div>
                         <!-- Old Character Stats -->
                         <div class="col-6 p-3">
@@ -95,7 +97,7 @@
                 <!-- Loot container -->
                 <div class="col-12 col-lg-6 flex-container character-wrapper">
                     <div class="col-12">
-                        <h2 class="logo-font text-center mt-2 mt-sm-3">New Loot!</h2>
+                        <h3 class="logo-font text-center mt-2 mt-sm-3">New Loot!</h3>
                     </div>
                     <!-- Current Weapon -->
                     <div class="col-6 p-3 card-wrapper" id="oldWeapon">
@@ -216,7 +218,7 @@
             <div class="container-fluid page-container text-center py-3">
                 <div class="row g-0">
                     <div class="col-12">
-                        <h2 class="logo-font">YOU LOSE!</h2>
+                        <h2 class="logo-font mb-3">YOU LOSE!</h2>
                     </div>
                     <div class="col-12">
                         <h3 class="mb-0">Score: {{ score }} <h3>
@@ -226,7 +228,7 @@
                             {% if leaderboard %}
                                 <!-- Successful Leaderboard -->
                                 <div class="col-12">
-                                    <h3 class="my-3">Congratulations! You made your way onto the leaderboard!</h3>
+                                    <h3 class="mb-3 mt-1">Congratulations! You made your way onto the leaderboard!</h3>
                                     <p>Check out the leaderboard to view your position, or create a new character!</p>
                                     <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'leaderboard' %}" type="button" role="button">
                                         <span class="button-effect">Leaderboard</span>
@@ -238,7 +240,7 @@
                             {% else %}
                                 <!-- Unsuccessful Leaderboard -->
                                 <div class="col-12">
-                                    <h3 class="my-3">Unfortunately, you have not made it to the leaderboard.</h3>
+                                    <h3 class="mb-3 mt-1">Unfortunately, you have not made it to the leaderboard.</h3>
                                     <p>Why not try your luck again?</p>
                                     <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'create' %}" type="button" role="button">
                                         <span class="button-effect">New Character</span>
