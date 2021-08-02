@@ -183,6 +183,7 @@ function startBattleTimer() {
     // Swap button
     document.getElementById('startButton').remove();
     document.getElementById('attackButton').classList.remove('d-none');
+    document.getElementById('retreatButton').classList.remove('d-none');
     
     // Add battle log entry
     document.getElementById("battleLog").append("Battle Commenced!");
@@ -197,6 +198,7 @@ async function engageBattle(){
 
     // Disable attack button
     document.getElementById('attackButton').disabled = true;
+    document.getElementById('retreatButton').disabled = true;
     document.getElementById('attackButton').classList.remove("pulsing-button");
 
     // While either char/enemy is alive
@@ -231,6 +233,7 @@ async function engageBattle(){
                 characterObject.updateBar(characterTurnBar, 100, 1000);
                 document.getElementById('attackButton').disabled = false;
                 document.getElementById('attackButton').blur();
+                document.getElementById('retreatButton').disabled = false;
                 document.getElementById('attackButton').classList.add("pulsing-button");
                 return true;
             }
@@ -264,7 +267,6 @@ async function engageBattle(){
                 enemyObject.attackMissLog();
             }
 
-
             // Update accurate turn meter display
             enemyObject.updateBar(enemyTurnBar, enemyObject.calculateTurnPercent(), enemyObject.turnMeter);
 
@@ -284,3 +286,13 @@ async function engageBattle(){
 // Set event listeners to Start Button and Attack Button
 $('#startButton').click(startBattleTimer);
 $('#attackButton').click(engageBattle);
+
+$('#profileRetreat').click(function(){
+    window.removeEventListener("beforeunload", preventClosure);
+    window.location.href = "../profile/";
+});
+
+$('#retryRetreat').click(function(){
+    window.removeEventListener("beforeunload", preventClosure);
+    window.location.href = "../battle/";
+});
