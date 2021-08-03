@@ -224,12 +224,13 @@
                         <h2 class="logo-font mb-3">YOU LOSE!</h2>
                     </div>
                         {% if current_profile.paid %}
+                            <!-- Leaderboard Score -->
+                            <div class="col-12">
+                                <h3 class="mb-0">Score: {{ score }} <h3>
+                            </div>
                             <!-- Paid User -->
                             {% if leaderboard %}
                                 <!-- Successful Leaderboard -->
-                                <div class="col-12">
-                                    <h3 class="mb-0">Score: {{ score }} <h3>
-                                </div>
                                 <div class="col-12">
                                     <h3 class="mb-3 mt-1">Congratulations! You made your way onto the leaderboard!</h3>
                                     <p>Check out the leaderboard to view your position, or create a new character!</p>
