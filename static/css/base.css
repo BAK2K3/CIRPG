@@ -282,7 +282,7 @@ hr.dropdown-divider {
 
 /********************************** Allauth */
 
-.custom-allauth, .custom-error {
+.custom-allauth, .custom-error, .payment-container {
     margin-top: 30px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1001,7 +1001,7 @@ tbody > tr:nth-last-child() {
             justify-content: flex-start;
 }
 
-.payment-container {
+/* .payment-container {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1013,7 +1013,7 @@ tbody > tr:nth-last-child() {
         -ms-flex-align: center;
             align-items: center;
 }
-  
+   */
 /********************************** CODEX MODIFICATION */
 
 .btn-file {
