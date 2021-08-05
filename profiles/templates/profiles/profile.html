@@ -160,16 +160,18 @@
         </div>
         <div class="modal-body">
           <p>Are you sure you want to delete your Character?</p> 
-          <p>This is permanent, and cannot be undone!</p>
+          <p>This is permanent, and your score will not be calculated for the Leaderboard!</p>
         </div>
         <div class="modal-footer text-center">
             <form action="{% url 'delete' %}" method="POST" class="profile-form w-100 text-center">
                 {% csrf_token %}
                 <input type="hidden" name="pk" value="{{ character.pk }}">
-                <button class="btn btn-danger" type="submit" role="button">
-                    Delete
-                </button>  
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-dark custom-dark-btn custom-red-btn" type="submit" role="button">
+                    <span class="button-effect">Delete</span>
+                </button>
+                <button type="button" class="btn btn-dark custom-dark-btn" data-bs-dismiss="modal">
+                    <span class="button-effect">Close</span>
+                </button>
             </form>
         </div>
       </div>
