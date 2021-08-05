@@ -748,13 +748,18 @@ textarea:disabled {
 
 /********************************** POST-BATTLE */
 .loot-button-container {
-    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.card-stretch {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
 }
 
 /* Rarity */
