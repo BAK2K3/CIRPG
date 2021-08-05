@@ -63,10 +63,12 @@ class TestViews(TestCase):
         self.client.get('/premium/')
         # Request checkout token/session
         self.client.get('/premium/checkout/')
-        # Set cross-site header
-        header = {'HTTP_SEC_FETCH_SITE': "cross-site"}
+        # Set payment success Token
+        session = self.client.session
+        session["SUCCESS_TOKEN"] = True
+        session.save()
         # Navigate to Success page with overridden header
-        response = self.client.get('/premium/success/', **header)
+        response = self.client.get('/premium/success/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'premium/success.html')
 
