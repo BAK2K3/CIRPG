@@ -15,4 +15,5 @@ urlpatterns = [
     path('success/', views.SuccessView.as_view(), name="success"),
     path('abort/', views.AbortView.as_view(), name="abort"),
     path('webhook/', views.stripe_webhook),
+    path('process/', views.process_payment)
 ]
