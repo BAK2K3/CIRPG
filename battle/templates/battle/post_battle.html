@@ -204,15 +204,18 @@
                             <span class="button-effect">Take New Weapon</span>
                         </button> 
                     </div>
-
-                    <div class="col-12">
-                        <div class="continue-button-container text-center pt-sm-3 d-none">
-                            <a class="btn btn-dark custom-dark-btn w-25 anti-double-click" id="keepButton" href="{% url 'profile' %}" type="button" role="button">
-                                <span class="button-effect">Profile</span>
-                            </a>  
-                            <a class="btn btn-dark custom-dark-btn w-25 anti-double-click" id="keepButton" href="{% url 'battle' %}" type="button" role="button">
-                                <span class="button-effect">Battle</span>
-                            </a>  
+                    <div class="col-12 d-flex justify-content-center">
+                        <div class="col-6 continue-button-container d-flex justify-content-around d-none">
+                            <div class="col-6 text-center py-3">
+                                <a class="btn btn-dark custom-dark-btn anti-double-click" id="keepButton" href="{% url 'profile' %}" type="button" role="button">
+                                    <span class="button-effect mx-0 mx-sm-2 mx-md-3 mx-lg-4">Profile</span>
+                                </a>  
+                            </div>
+                            <div class="col-6 text-center py-3">
+                                <a class="btn btn-dark custom-dark-btn anti-double-click" id="keepButton" href="{% url 'battle' %}" type="button" role="button">
+                                    <span class="button-effect mx-0 mx-sm-2 mx-md-3 mx-lg-4">Battle</span>
+                                </a>  
+                            </div>
                         </div>
                     </div>
                 </div>
