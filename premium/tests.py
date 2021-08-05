@@ -72,6 +72,15 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'premium/success.html')
 
+    def test_process_route(self):
+        """ Test process empty/invalid session_id redirects to premium. """
+        # Test without param
+        response = self.client.get('/premium/process/')
+        self.assertEqual(response.status_code, 302)
+        # Test with invalid param
+        response = self.client.get('/premium/process/?session_id=1234')
+        self.assertEqual(response.status_code, 302)
+
     def test_abort_page(self):
         """ Test aborted payment page renders correct page """
         response = self.client.get('/premium/abort/')
