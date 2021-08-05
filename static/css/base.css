@@ -722,6 +722,7 @@ textarea:disabled {
 
 .layered-container {
     position: relative;
+    width: 100%;
 }
 
 .fa.fa-star.rarity-3 {
