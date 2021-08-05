@@ -3,24 +3,27 @@
 
 {% block content %}
 <!-- Main Page Container -->
-<div class="container-fluid text-center py-3">
-    <div class="row payment-container">
+<div class="container-fluid">
+    <div class="row">
         <div class="col-12">
-            <h2 class="logo-font">Payment Success</h2>
-        </div>
-        <div class="col-10 col-md-8 p-3">
-            Thank you for upgrading to CIRPG Premium. Once your payment has been processed, you will receive
-            and email confirmation, and your premium status will be subsequently activated. 
-        </div>
-        <div class="col-10 col-md-8 p-3">
-            View your account status on your Profile, and once upgraded, fight your way to the top of the leaderboard. 
-        </div>
-        <div class="col-10 col-md-8 p-3" >
-            <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'profile' %}">
-                <span class="button-effect">Profile</span>
-            </a> 
+            <div class="payment-container">
+                <div class="polymorphism p-5 text-center">
+                    <h2 class="logo-font">Payment Success</h2>
+                    <p>
+                        Thank you for upgrading to CIRPG Premium. Once your payment has been processed, you will receive
+                        and email confirmation, and your premium status will be subsequently activated. 
+                    </p>
+                    <p>
+                        View your account status on your Profile, and once upgraded, fight your way to the top of the leaderboard. 
+                    </p>
+                    <div class="col-12">
+                        <a class="btn btn-dark custom-dark-btn" href="{% url 'profile' %}">
+                            <span class="button-effect">Profile</span>
+                        </a> 
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 {% endblock %}
-
