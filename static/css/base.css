@@ -422,7 +422,7 @@ hr.dropdown-divider {
     border: 1px solid white;
 }
 
-.custom-dark-btn:active, .custom-dark-btn:not(.disable-hover):active:hover, .custom-dark-btn:not(.disable-hover):focus:hover, .custom-dark-btn:not(.disable-hover):hover {
+.custom-dark-btn:active, .custom-dark-btn:active:hover, .custom-dark-btn:focus:hover, .custom-dark-btn:hover {
     background-color: transparent;
     -webkit-transition: 0.1s;
     -o-transition: 0.1s;
@@ -441,17 +441,6 @@ hr.dropdown-divider {
             box-shadow: none;
 }
 
-.btn-dark.disable-hover:hover {
-    color: #FFF8F0;
-    background-color: #0f0f0f;
-    border-radius: 25px;
-    border: 1px solid white;
-}
-
-.custom-dark-btn.disable-hover:disabled {
-    border: 1px solid white;
-    background-color: transparent;
-}
 
 /* Animated Link Source: https://ui-snippets.dev/ */
 .button-effect {
@@ -480,7 +469,7 @@ hr.dropdown-divider {
 }
 
 /* Allow button hover to produce text highlight effect */
-.custom-dark-btn:not(.disable-hover):hover .button-effect::after, .button-effect:not(.disable-hover):hover::after {
+.custom-dark-btn:hover .button-effect::after, .button-effect:hover::after {
     opacity: 1;
     -webkit-transform: translateY(0);
         -ms-transform: translateY(0);
@@ -1217,6 +1206,35 @@ table tr:last-child td, table tr:last-child th{
 
     .mini-btn {
         padding: .15rem 1rem;
+    }
+
+    .custom-dark-btn:not(.disable-hover):active:hover, .custom-dark-btn:not(.disable-hover):focus:hover, .custom-dark-btn:not(.disable-hover):hover {
+        background-color: transparent;
+        -webkit-transition: 0.1s;
+        -o-transition: 0.1s;
+        transition: 0.1s;
+        -webkit-box-shadow: none;
+                box-shadow: none;
+        border: 1px solid transparent;
+    }
+
+    .btn-dark.disable-hover:hover {
+        color: #FFF8F0;
+        background-color: #0f0f0f;
+        border-radius: 25px;
+        border: 1px solid white;
+    }
+
+    .custom-dark-btn.disable-hover:disabled {
+        border: 1px solid white;
+        background-color: transparent;
+    }
+
+    .custom-dark-btn:not(.disable-hover):hover .button-effect::after, .button-effect:not(.disable-hover):hover::after {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+                transform: translateY(0);
     }
 
 }
