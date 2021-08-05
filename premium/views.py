@@ -47,11 +47,13 @@ def create_checkout_session(request):
                 # Create Stripe Checkout Session
                 # Return the session JSON if successful
                 domain_url = settings.DOMAIN_URL
+                success_url = domain_url + 'premium/process/?session_id='
+                cancel_url = domain_url + 'premium/abort/'
                 stripe.api_key = settings.STRIPE_SECRET_KEY
                 try:
                     checkout_session = stripe.checkout.Session.create(
-                        success_url=domain_url + 'premium/success/',
-                        cancel_url=domain_url + 'premium/abort/',
+                        success_url=success_url + '{CHECKOUT_SESSION_ID}',
+                        cancel_url=cancel_url,
                         payment_method_types=['card'],
                         mode='payment',
                         line_items=[
@@ -136,12 +138,11 @@ class SuccessView(TemplateView):
     # Checks to see whether checkout is in progress
     # Remove checkout token
     def get(self, *args, **kwargs):
-        if self.request.META.get('HTTP_SEC_FETCH_SITE') == "cross-site":
-            if self.request.session.get('CHECKOUT'):
-                self.request.session.pop('CHECKOUT')
-                return super().get(*args, **kwargs)
-            else:
-                return redirect('premium')
+        session = self.request.session
+        if session.get('CHECKOUT') and session.get('SUCCESS_TOKEN'):
+            self.request.session.pop('CHECKOUT')
+            self.request.session.pop('SUCCESS_TOKEN')
+            return super().get(*args, **kwargs)
         else:
             return redirect('premium')
 
@@ -151,3 +152,32 @@ class AbortView(TemplateView):
     Template View for Aborted/Unsuccessful payment
     """
     template_name = "premium/abort.html"
+
+
+@csrf_exempt
+def process_payment(request):
+    """
+    A function for processing the payment and
+    redirecting based on checkout outcome.
+    """
+    # Ensures session ID is in get param
+    if request.GET.get('session_id'):
+        # Try to build a checkout session from ID
+        try:
+            stripe.api_key = settings.STRIPE_SECRET_KEY
+            session = (
+                stripe.checkout.Session.retrieve(request.GET['session_id'])
+            )
+            # If the checkout session is paid, set token and success redirect
+            if session['payment_status'] == 'paid':
+                request.session['SUCCESS_TOKEN'] = True
+                return redirect('success')
+            # If the checkout session is unpaid, abort redirect
+            else:
+                return redirect('abort')
+        # Catch invalid request and redirect to abort page
+        except stripe.error.InvalidRequestError:
+            return redirect('abort')
+    # Redirect to Premium if no session_id
+    else:
+        return redirect('premium')
