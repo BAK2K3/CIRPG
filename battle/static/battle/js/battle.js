@@ -40,7 +40,7 @@ let characterStats = {
     'hp': characterJson.fields.char_hp + characterJson.fields.weapon_hp,
     'attack': characterJson.fields.char_attack + characterJson.fields.weapon_attack,
     'defense': characterJson.fields.char_defense + characterJson.fields.weapon_defense,
-    'speed': characterJson.fields.char_speed+ characterJson.fields.weapon_speed,
+    'speed': characterJson.fields.char_speed + characterJson.fields.weapon_speed,
 };
 
 // Combine the required enemy stats for object creation
@@ -68,6 +68,7 @@ class BattleObject {
         this.dodge = this.calculateDodge();
         this.turnMeter = 0;
         this.isTurn = false;
+        this.tickRate = 0;
     }
 
     // Calculates dodge chance (capped at 75%)
@@ -101,9 +102,9 @@ class BattleObject {
     // If turnmeter exceeds 100, substract 100
     // And set isTurn bool to True
     calculateTurnMeter() {
-        this.turnMeter += this.speed;
-        if (this.turnMeter >= 1000) {
-            this.turnMeter -= 1000;
+        this.turnMeter += this.tickRate;
+        if (this.turnMeter >= 100) {
+            this.turnMeter -= 100;
             this.isTurn = true;
         } 
     }
@@ -162,15 +163,28 @@ class BattleObject {
         return Math.floor((this.hp / this.maxHP) * 100);
     }
 
+    // Function to calculate Turn Meter %
+    // To be passed to updateBar
     calculateTurnPercent(){
-        return Math.floor((this.turnMeter / 1000) * 100)
+        return Math.floor((this.turnMeter / 100) * 100)
     }
+
+    // Function to calculate turn meter tick rate
+    // Overrides tickRate attribute for use in 
+    // Turn Meter calculation
+    calculateTickRate(enemySpeed){
+        this.tickRate = Math.round((this.speed / (this.speed + enemySpeed)) * 100)
+    }
+
 }
 
 
 // Declare user Character and Enemy objects
 let characterObject = new BattleObject(characterStats);
 let enemyObject = new BattleObject(enemyStats);
+
+characterObject.calculateTickRate(enemyObject.speed);
+enemyObject.calculateTickRate(characterObject.speed);
 
 // Obtain required progress bars
 let characterHPBar = document.getElementById("heroHp");
@@ -230,7 +244,7 @@ async function engageBattle(){
             // Calculate Character turn meter
             characterObject.calculateTurnMeter();
             if (characterObject.isTurn){
-                characterObject.updateBar(characterTurnBar, 100, 1000);
+                characterObject.updateBar(characterTurnBar, 100, 100);
                 document.getElementById('attackButton').disabled = false;
                 document.getElementById('attackButton').blur();
                 document.getElementById('retreatButton').disabled = false;
@@ -247,7 +261,7 @@ async function engageBattle(){
         if (enemyObject.isTurn){
 
             // Set turn meter bar to 100%
-            enemyObject.updateBar(enemyTurnBar, 100, 1000);
+            enemyObject.updateBar(enemyTurnBar, 100, 100);
 
             // Delay while status bar updates
             await new Promise(done => setTimeout(() => done(), 500));
