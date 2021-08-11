@@ -73,8 +73,10 @@ def rarity_recursive(n, t=1):
     # Determines success rate for this roll
     successroll = 100 - ((n - 1) * 20)
 
-    # If success rate is 100%, return the current grade
-    if successroll == 100 or t == 5:
+    # If success rate is equal to or over 100%
+    # Or if max weapon rarity reached
+    # Return the current grade
+    if successroll >= 100 or t == 5:
         return t
 
     # Else, generate a random number between 1 and 100,
