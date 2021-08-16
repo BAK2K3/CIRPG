@@ -57,7 +57,7 @@
                         <span class="button-effect">Update</span>
                     </button>
                     <!-- Modal Trigger -->
-                    <button class="btn btn-dark custom-dark-btn w-auto" type="button" role="button" data-bs-toggle="modal" data-bs-target="#deleteConfirmation">
+                    <button class="btn btn-dark custom-dark-btn w-auto" type="button" data-bs-toggle="modal" data-bs-target="#deleteConfirmation">
                         <span class="button-effect">Delete</span>
                     </button>  
                 </div>
@@ -81,7 +81,7 @@
             <div class="modal-footer text-center">
                 <form action="{% url 'c_delete' object.pk %}" method="POST" class="profile-form w-100 text-center">
                     {% csrf_token %}
-                    <button class="btn btn-danger" type="submit" role="button">
+                    <button class="btn btn-danger" type="submit">
                         Delete
                     </button>  
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
