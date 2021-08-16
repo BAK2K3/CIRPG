@@ -18,7 +18,7 @@
             <div class="col-12 mt-1 mb-2 text-center">
                 <div class="button-container">
                     <!-- Filter Toggle -->
-                    <button class="btn btn-dark custom-dark-btn w-25" data-bs-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse">
+                    <button class="btn btn-dark custom-dark-btn w-25" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
                         <span class="button-effect">Filters</span>
                     </button>    
                     {% if user.is_superuser %}
@@ -40,7 +40,7 @@
                                     <div class="col-10 offset-1 col-xl-4 offset-xl-0 text-center">
                                         <label for="premiumFilter" class="text-secondary">Premium Content</label>
                                         <select class="form-select" id="premiumFilter" name='premium' aria-label="Premium Filter">
-                                            <option value="both" {% if not premium %}selected{% endif %}>Both</option>
+                                            <option value="both" {% if premium is empty %}selected{% endif %}>Both</option>
                                             <option value="1" {% if premium == 1 %}selected{% endif %}>Premium</option>
                                             <option value="0" {% if premium == 0 %}selected{% endif %}>Free</option>
                                         </select>
