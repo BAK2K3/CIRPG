@@ -195,24 +195,24 @@
                         </div>
                     </div>
                     <div class="col-6 loot-button-container text-center py-3">
-                        <button class="btn btn-dark custom-dark-btn w-auto anti-double-click" id="keepButton" type="button" role="button">
+                        <button class="btn btn-dark custom-dark-btn w-auto anti-double-click" id="keepButton" type="button">
                             <span class="button-effect">Keep Old Weapon</span>
                         </button>  
                     </div>
                     <div class="col-6 loot-button-container text-center py-3">
-                        <button class="btn btn-dark custom-dark-btn w-auto anti-double-click" id="newButton" type="button" role="button">
+                        <button class="btn btn-dark custom-dark-btn w-auto anti-double-click" id="newButton" type="button">
                             <span class="button-effect">Take New Weapon</span>
                         </button> 
                     </div>
                     <div class="col-12 d-flex justify-content-center">
                         <div class="col-6 continue-button-container d-flex justify-content-around d-none">
                             <div class="col-6 text-center py-3">
-                                <a class="btn btn-dark custom-dark-btn anti-double-click" id="keepButton" href="{% url 'profile' %}" type="button" role="button">
+                                <a class="btn btn-dark custom-dark-btn anti-double-click" href="{% url 'profile' %}" role="button">
                                     <span class="button-effect mx-0 mx-sm-2 mx-md-3 mx-lg-4">Profile</span>
                                 </a>  
                             </div>
                             <div class="col-6 text-center py-3">
-                                <a class="btn btn-dark custom-dark-btn anti-double-click" id="keepButton" href="{% url 'battle' %}" type="button" role="button">
+                                <a class="btn btn-dark custom-dark-btn anti-double-click" href="{% url 'battle' %}" role="button">
                                     <span class="button-effect mx-0 mx-sm-2 mx-md-3 mx-lg-4">Battle</span>
                                 </a>  
                             </div>
@@ -227,48 +227,47 @@
                     <div class="col-12">
                         <h2 class="logo-font mb-3">YOU LOSE!</h2>
                     </div>
-                        {% if current_profile.paid %}
-                            <!-- Leaderboard Score -->
+                    {% if current_profile.paid %}
+                        <!-- Leaderboard Score -->
+                        <div class="col-12">
+                            <h3 class="mb-0">Score: {{ score }} </h3>
+                        </div>
+                        <!-- Paid User -->
+                        {% if leaderboard %}
+                            <!-- Successful Leaderboard -->
                             <div class="col-12">
-                                <h3 class="mb-0">Score: {{ score }} <h3>
-                            </div>
-                            <!-- Paid User -->
-                            {% if leaderboard %}
-                                <!-- Successful Leaderboard -->
-                                <div class="col-12">
-                                    <h3 class="mb-3 mt-1">Congratulations! You made your way onto the leaderboard!</h3>
-                                    <p>Check out the leaderboard to view your position, or create a new character!</p>
-                                    <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'leaderboard' %}" type="button" role="button">
-                                        <span class="button-effect">Leaderboard</span>
-                                    </a>  
-                                    <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'create' %}" type="button" role="button">
-                                        <span class="button-effect">New Character</span>
-                                    </a>  
-                                </div>
-                            {% else %}
-                                <!-- Unsuccessful Leaderboard -->
-                                <div class="col-12">
-                                    <h3 class="mb-3 mt-1">Unfortunately, you have not made it to the leaderboard.</h3>
-                                    <p>Why not try your luck again?</p>
-                                    <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'create' %}" type="button" role="button">
-                                        <span class="button-effect">New Character</span>
-                                    </a>  
-                                </div>
-                            {% endif %}
-                        {% else %}
-                            <!-- Free User -->
-                            <div class="col-12">
-                                <h3 class="my-3">Looks like you're a free user!</h3>
-                                <p>Upgrade to premium to get access to the Leaderboard or create a new character to keep playing for free!</p>
-                                <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'premium' %}" type="button" role="button">
-                                    <span class="button-effect">Premium</span>
+                                <h3 class="mb-3 mt-1">Congratulations! You made your way onto the leaderboard!</h3>
+                                <p>Check out the leaderboard to view your position, or create a new character!</p>
+                                <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'leaderboard' %}" role="button">
+                                    <span class="button-effect">Leaderboard</span>
                                 </a>  
-                                <a class="btn btn-dark custom-dark-btn w-auto"href="{% url 'create' %}" type="button" role="button">
+                                <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'create' %}" role="button">
+                                    <span class="button-effect">New Character</span>
+                                </a>  
+                            </div>
+                        {% else %}
+                            <!-- Unsuccessful Leaderboard -->
+                            <div class="col-12">
+                                <h3 class="mb-3 mt-1">Unfortunately, you have not made it to the leaderboard.</h3>
+                                <p>Why not try your luck again?</p>
+                                <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'create' %}" role="button">
                                     <span class="button-effect">New Character</span>
                                 </a>  
                             </div>
                         {% endif %}
-                    </div>
+                    {% else %}
+                        <!-- Free User -->
+                        <div class="col-12">
+                            <h3 class="my-3">Looks like you're a free user!</h3>
+                            <p>Upgrade to premium to get access to the Leaderboard or create a new character to keep playing for free!</p>
+                            <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'premium' %}" role="button">
+                                <span class="button-effect">Premium</span>
+                            </a>  
+                            <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'create' %}" role="button">
+                                <span class="button-effect">New Character</span>
+                            </a>  
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         {%endif%}
