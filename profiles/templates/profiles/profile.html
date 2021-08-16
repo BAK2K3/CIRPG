@@ -130,12 +130,12 @@
                 <div class="hero-button-container text-center col-12 pt-3">
                     <div class="col-6">
                         <!-- Modal Trigger -->
-                        <button class="btn btn-dark custom-dark-btn w-auto" type="button" role="button" data-bs-toggle="modal" data-bs-target="#deleteConfirmation">
+                        <button class="btn btn-dark custom-dark-btn w-auto" type="button" data-bs-toggle="modal" data-bs-target="#deleteConfirmation">
                             <span class="button-effect">Delete Hero</span>
                         </button>  
                     </div>
                     <div class="col-6">
-                        <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'battle' %}" type="button" role="button">
+                        <a class="btn btn-dark custom-dark-btn w-auto" href="{% url 'battle' %}" role="button">
                             <span class="button-effect">Start Battle</span>
                         </a> 
                     </div>
@@ -166,7 +166,7 @@
             <form action="{% url 'delete' %}" method="POST" class="profile-form w-100 text-center">
                 {% csrf_token %}
                 <input type="hidden" name="pk" value="{{ character.pk }}">
-                <button class="btn btn-dark custom-dark-btn custom-red-btn" type="submit" role="button">
+                <button class="btn btn-dark custom-dark-btn custom-red-btn" type="submit">
                     <span class="button-effect">Delete</span>
                 </button>
                 <button type="button" class="btn btn-dark custom-dark-btn" data-bs-dismiss="modal">
