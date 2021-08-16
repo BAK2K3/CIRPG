@@ -31,26 +31,26 @@ class TestViews(TestCase):
         self.assertTrue(logged_in)
 
     def test_premium_page(self):
-        """ Test premium page renders correct page """
+        """ UT16 - Test premium page renders correct page """
         response = self.client.get('/premium/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'premium/premium.html')
 
     def test_stripe_config(self):
-        """ Test AJAX config view returns stripe public key """
+        """ UT17 - Test AJAX config view returns stripe public key """
         response = self.client.get('/premium/config/')
         self.assertEqual(response.status_code, 200)
         self.assertJSONEqual(str(response.content, encoding='utf8'),
                              {'publicKey': settings.STRIPE_PUBLISHABLE_KEY})
 
     def test_premium_checkout(self):
-        """ Test AJAX checkout session view returns sessionId"""
+        """ UT18 - Test AJAX checkout session view returns sessionId """
         response = self.client.get('/premium/checkout/')
         json_response = json.loads(str(response.content, encoding='utf8'))
         self.assertTrue('sessionId' in json_response)
 
     def test_premium_checkout_error(self):
-        """ Test AJAX checkout session view returns sessionId"""
+        """ UT19 - Test AJAX checkout returns error for premium users"""
         self.profile.paid = True
         self.profile.save()
         response = self.client.get('/premium/checkout/')
@@ -58,7 +58,7 @@ class TestViews(TestCase):
         self.assertTrue('error' in json_response)
 
     def test_success_page(self):
-        """ Test successful payment page renders correct page """
+        """ UT20 - Test successful payment page renders correct page """
         # Navigate to premium
         self.client.get('/premium/')
         # Request checkout token/session
@@ -73,7 +73,7 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'premium/success.html')
 
     def test_process_route(self):
-        """ Test process empty/invalid session_id redirects to premium. """
+        """ UT21 - Test process invalid session_id redirects to premium """
         # Test without param
         response = self.client.get('/premium/process/')
         self.assertEqual(response.status_code, 302)
@@ -82,7 +82,7 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_abort_page(self):
-        """ Test aborted payment page renders correct page """
+        """ UT22 - Test aborted payment page renders correct page """
         response = self.client.get('/premium/abort/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'premium/abort.html')
