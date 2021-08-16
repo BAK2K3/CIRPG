@@ -3,3 +3,6 @@ env/
 *.sqlite3
 *.pyc
 __pycache__
+.coverage
+.coveragerc
+htmlcov/
