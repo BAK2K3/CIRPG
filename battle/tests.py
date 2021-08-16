@@ -33,7 +33,7 @@ class TestViews(TestCase):
         self.assertTrue(logged_in)
 
     def test_battle_view(self):
-        """Tests battle route is rendered with correct context"""
+        """ UT10 - Tests battle route is rendered with correct context"""
         # Create Active Char
         ActiveCharacter.create_character(self.user, "Dwarf", self.profile.paid)
         # Create Active Enemy
@@ -45,7 +45,7 @@ class TestViews(TestCase):
         self.assertTrue('enemy' in response.context)
 
     def test_post_battle(self):
-        """Tests post-battle route"""
+        """ UT11 - Tests context for successful post-battle route"""
         # Create Active Char
         ActiveCharacter.create_character(self.user, "Dwarf", self.profile.paid)
         # Create Active Enemy
@@ -60,7 +60,7 @@ class TestViews(TestCase):
         self.new_weapon = response.context['new_weapon']
 
     def test_loot_view(self):
-        """Tests Ajax Loot route"""
+        """ UT12 - Tests whether Ajax Loot route updates active character"""
         # Create Active Char
         ActiveCharacter.create_character(self.user, "Dwarf",
                                          self.profile.paid)
