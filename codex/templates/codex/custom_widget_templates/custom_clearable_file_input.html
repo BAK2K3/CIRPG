@@ -3,13 +3,13 @@
 
 <p>{{ widget.initial_text }}</p>
 <a href="{{ widget.value.url }}">
-    <img class="img-fluid" src="{{ widget.value.url }}">
+    <img class="img-fluid" src="{{ widget.value.url }}" alt="{{ widget.value }}">
 </a>
 
 {% endif %}
-<div class="col-12 d-flex justify-content-center pt-2 pb-3 pt-md-3">
-    <div class="col-12 {% if widget.value %}col-sm-6{% endif %} text-center">
-        <label for="new-image" class="form-label {% if not widget.value %}d-none{% endif %}">Choose file</label>
-        <input {% if not widget.value %}required{% endif %} class="form-control" id="new-image" type="file" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+<div class="col-12 d-flex justify-content-center pt-2 mb-3 pt-md-0">
+    <div class="col-12 {% if widget.value %}col-sm-6 pt-3{% endif %} text-center">
+        <div class="form-label">{% if widget.value %}Replace Image?{% else %}Image{% endif %}</div>
+        <input {% if not widget.value %}required{% endif %} class="form-control" id="new-image" type="file" name="{{ widget.name }}">
     </div>
 </div>
