@@ -31,33 +31,33 @@ class TestViews(TestCase):
         self.assertTrue(logged_in)
 
     def test_profile_context(self):
-        """ Test Current Profile Context being passed to any page"""
+        """ UT03 - Test Current Profile Context being passed to any page"""
         response = self.client.get('/profile/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['current_profile'].user, self.user)
 
     def test_character_context(self):
-        """ Test Active Character is rendered to Profile page"""
+        """ UT04 - Test Active Character is rendered to Profile page"""
         ActiveCharacter.create_character(self.user, "Dwarf", self.profile.paid)
         response = self.client.get('/profile/')
         self.assertEqual(response.status_code, 200)
         self.assertTrue('character' in response.context)
 
     def test_create_context(self):
-        """ Test Hero list Context being passed to Create page"""
+        """ UT05 - Test Hero list Context being passed to Create page"""
         response = self.client.get('/profile/create/')
         self.assertEqual(response.status_code, 200)
         self.assertTrue(isinstance(response.context['heroes'][0], Codex))
 
     def test_create_redirect(self):
-        """ Test Create page redirects if user has active character """
+        """ UT06 - Test Create page redirects if user has active character """
         self.profile.active_char = True
         self.profile.save()
         response = self.client.get('/profile/create/')
         self.assertEqual(response.status_code, 302)
 
     def test_create_premium(self):
-        """ Test Create route filtering paid from current profile """
+        """ UT07 - Test Create route filtering paid from current profile """
         self.profile.active_char = False
         self.profile.paid = True
         self.profile.save()
@@ -71,7 +71,7 @@ class TestViews(TestCase):
         self.assertTrue(len(response.context['heroes']) == 3)
 
     def test_create_character_post(self):
-        """Test Create Character post submission route"""
+        """ UT08 - Test Create Character post submission route"""
         # Create required post_dict for POST
         post_dict = {
             "user_selection": "Dwarf"
@@ -93,7 +93,7 @@ class TestViews(TestCase):
         self.assertTrue(self.profile.active_char)
 
     def test_delete_character(self):
-        """Test Delete Character route deletes active Char"""
+        """ UT09 - Test Delete Character route deletes active Char"""
         # Create a Character
         new_char = ActiveCharacter.create_character(self.user,
                                                     "Dwarf",
