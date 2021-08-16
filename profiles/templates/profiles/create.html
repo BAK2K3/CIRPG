@@ -9,7 +9,7 @@
             <div class="row hero-container p-3">
             {% for hero in heroes %}
             <div class="col-6 col-sm-3 col-xl-2 pt-3">
-                <div class="card h100 border-0 polymorphism codex-card char-select" id="{{ hero.alpha_name }}Card">
+                <div class="card h100 border-0 polymorphism codex-card char-select" id="{{ hero.alpha_name }}Card" title="{{ hero.name }}">
                     <img src="{{ hero.image.url }}" class="card-img-top cornered-image" alt="{{ hero.name }}">
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ hero.name }}</h5>
