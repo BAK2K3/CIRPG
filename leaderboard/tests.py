@@ -33,18 +33,18 @@ class TestViews(TestCase):
         self.assertTrue(logged_in)
 
     def test_leaderboard_page(self):
-        """ Test leaderboard view renders correct page """
+        """ UT13 - Test leaderboard view renders correct page """
         response = self.client.get('/leaderboard/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'leaderboard/leaderboard.html')
 
     def test_leaderboard_context(self):
-        """ Test empty leaderboard context in page rendering """
+        """ UT14 - Test empty leaderboard context in page rendering """
         response = self.client.get('/leaderboard/')
         self.assertTrue('leaderboard' in response.context)
 
     def test_leaderboard_context_contents(self):
-        """ Test single leaderboard context entry in page rendering """
+        """ UT15 -  Test single leaderboard context entry in page rendering """
         # Create Active Character
         active_char = ActiveCharacter.create_character(self.user,
                                                        "Dwarf",
