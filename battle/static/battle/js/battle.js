@@ -17,9 +17,9 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 window.addEventListener('beforeunload', preventClosure);
 
 function preventClosure(event){
-    // Cancel the event as stated by the standard.
+    // Cancel the window closing event
     event.preventDefault();
-    // Chrome requires returnValue to be set.
+    // Chrome dependent returnValue.
     event.returnValue = 'Are you sure you want to exit?';
 }
 
