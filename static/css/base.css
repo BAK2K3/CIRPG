@@ -76,8 +76,8 @@ html {
 
 body {
     background-color: #1e1e24;
-    background-image: -webkit-gradient(linear, left top, right bottom, from(#1e1e24), color-stop(#1b1a1f), color-stop(#17171a), color-stop(#141315), to(#0f0f0f));
     background-image: -o-linear-gradient(left top, #1e1e24, #1b1a1f, #17171a, #141315, #0f0f0f);
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#1e1e24), color-stop(#1b1a1f), color-stop(#17171a), color-stop(#141315), to(#0f0f0f));
     background-image: linear-gradient(to right bottom, #1e1e24, #1b1a1f, #17171a, #141315, #0f0f0f);
     background-position: center;
     background-repeat: no-repeat;
@@ -355,8 +355,8 @@ hr.dropdown-divider {
  .polymorphism {
     border-radius: 25px;
     background: #0f0f0f;
-    background-image: -webkit-gradient(linear, left top, right bottom, from(#0f0f0f), color-stop(#141315), color-stop(#17171a), color-stop(#1b1a1f), to(#1e1e24));
     background-image: -o-linear-gradient(left top, #0f0f0f, #141315, #17171a, #1b1a1f, #1e1e24);
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#0f0f0f), color-stop(#141315), color-stop(#17171a), color-stop(#1b1a1f), to(#1e1e24));
     background-image: linear-gradient(to right bottom, #0f0f0f, #141315, #17171a, #1b1a1f, #1e1e24);
     -webkit-box-shadow: 0px 11px 12px 4px rgba(0,0,0,0.66);
     box-shadow: 0px 11px 12px 4px rgba(0,0,0,0.66);
@@ -761,9 +761,14 @@ textarea:disabled {
 }
 
 .card-stretch {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-line-pack: justify;
+        align-content: space-between;
 }
 
 /* Rarity */
