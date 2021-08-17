@@ -7,7 +7,7 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
         sanitize: false,
         placement: "auto",
         content: function() {
-            contentId = $(this).attr("data-content-id");
+            let contentId = $(this).attr("data-content-id");
             return $(contentId).html();
         }
     });
@@ -166,14 +166,14 @@ class BattleObject {
     // Function to calculate Turn Meter %
     // To be passed to updateBar
     calculateTurnPercent(){
-        return Math.floor((this.turnMeter / 100) * 100)
+        return Math.floor((this.turnMeter / 100) * 100);
     }
 
     // Function to calculate turn meter tick rate
     // Overrides tickRate attribute for use in 
     // Turn Meter calculation
     calculateTickRate(enemySpeed){
-        this.tickRate = Math.round((this.speed / (this.speed + enemySpeed)) * 100)
+        this.tickRate = Math.round((this.speed / (this.speed + enemySpeed)) * 100);
     }
 
 }
