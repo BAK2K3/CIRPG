@@ -5,14 +5,23 @@ Battle App - Tests
 Test cases for Battle App Routing
 """
 
+
+import json
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from profiles.models import Profile, ActiveCharacter
 from battle.models import ActiveEnemy
-import json
 
 
 class TestViews(TestCase):
+    """
+    Unit Tests for Battle App Views
+
+    UT10 - Tests battle route is rendered with correct context
+    UT11 - Tests context for successful post-battle route
+    UT12 - Tests whether Ajax Loot route updates active character
+
+    """
 
     # Load fixtures into test DB
     fixtures = ['codex.json']
@@ -21,9 +30,9 @@ class TestViews(TestCase):
         """ Create test login user and create Profile entry"""
         username = "Ben"
         pswd = "Kavanagh" # noqa
-        User = get_user_model()
-        self.user = User.objects.create_user(username=username,
-                                             password=pswd)
+        user_model = get_user_model()
+        self.user = user_model.objects.create_user(username=username,
+                                                   password=pswd)
         logged_in = self.client.login(username=username, password=pswd)
 
         # Add User to Profile
@@ -57,7 +66,6 @@ class TestViews(TestCase):
         self.assertTrue('outcome' in response.context)
         self.assertTrue(response.context['outcome'])
         self.assertTrue('new_weapon' in response.context)
-        self.new_weapon = response.context['new_weapon']
 
     def test_loot_view(self):
         """ UT12 - Tests whether Ajax Loot route updates active character"""
@@ -66,7 +74,7 @@ class TestViews(TestCase):
                                          self.profile.paid)
 
         # Create Json file of new weapon
-        newWeapon = {
+        new_weapon = {
             'id': 140,
             "base_hp": 10,
             'base_attack': 10,
@@ -75,7 +83,7 @@ class TestViews(TestCase):
             'level': 2,
             'rarity': 2,
         }
-        data = json.dumps(newWeapon)
+        data = json.dumps(new_weapon)
         data = {'newWeapon':  data}
         response = self.client.post(
             '/battle/loot/',
