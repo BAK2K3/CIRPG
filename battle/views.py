@@ -1,15 +1,26 @@
+"""
+Battle App - Views
+----------------
+
+Views for Battle App.
+    - BattleView
+    - PostBattleView
+    - NewLootView
+
+"""
+
+
+import json
+import copy
+from django.http import HttpResponse
 from django.shortcuts import redirect
-from django.views.generic import TemplateView, UpdateView
-from profiles.models import ActiveCharacter, Profile
-from battle.models import ActiveEnemy
 from django.core import serializers
 from django.contrib.auth.mixins import LoginRequiredMixin
-import json
-from profiles.functions import calculate_xp
+from django.views.generic import TemplateView, UpdateView
+from battle.models import ActiveEnemy
 from codex.models import Codex
-import copy
-from profiles.functions import add_weapon
-from django.http import HttpResponse
+from profiles.functions import calculate_xp, add_weapon
+from profiles.models import ActiveCharacter, Profile
 from leaderboard.models import Leaderboard
 
 
@@ -155,16 +166,18 @@ class PostBattleView(LoginRequiredMixin, TemplateView):
         # Return context to post-battle template
         return context
 
-    # POST route, checks whether use is currently in battle
-    def post(self, request, **kwargs):
+    # POST route, checks whether user is currently in battle
+    def post(self, *args, **kwargs):
+        """Ensure user is in battle at time of Post method """
         current_profile = Profile.objects.get(user=self.request.user)
         if current_profile.active_battle:
             context = self.get_context_data()
-            return super(PostBattleView, self).render_to_response(context)
+            return super().render_to_response(context)
         return redirect('profile')
 
     # Prevent GET requests
-    def get(self, request, **kwargs):
+    def get(self, *args, **kwargs):
+        """Override GET request to redirect to profile"""
         return redirect('profile')
 
 
@@ -179,7 +192,7 @@ class NewLootView(UpdateView):
     """
     model = ActiveCharacter
 
-    def post(self, request):
+    def post(self, *args, **kwargs):
         if self.request.is_ajax():
             # Obtain Active Character
             character = ActiveCharacter.objects.get(user=self.request.user)
@@ -188,3 +201,4 @@ class NewLootView(UpdateView):
             # Update Active Character
             add_weapon(character, weapon_dict)
             return HttpResponse(200)
+        return HttpResponse(400)
