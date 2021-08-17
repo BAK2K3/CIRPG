@@ -302,7 +302,7 @@ hr.dropdown-divider {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: calc(100% - 100px);
+    min-height: calc(100% - 100px);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -312,7 +312,7 @@ hr.dropdown-divider {
             align-items: center;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
-            justify-content: center;
+            justify-content: flex-start;
 }
 
 .page-container > .row {
@@ -330,7 +330,6 @@ hr.dropdown-divider {
             align-items: center;
     -ms-flex-pack: distribute;
         justify-content: space-around;
-    max-height: 100%;
 }
 
 .picture-container img {
@@ -949,6 +948,7 @@ tr.borderless, tr.borderless td, tr.borderless th {
 .table-header {
     font-size: 2rem;
     font-weight: 400;
+    color: #FFF8F0;
 }
   
 @-webkit-keyframes pulse-white {
@@ -1005,7 +1005,7 @@ tr.borderless, tr.borderless td, tr.borderless th {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    height: calc(100% - 100px);
+    min-height: calc(100% - 100px);
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
@@ -1102,13 +1102,20 @@ input#newImage {
 }
 
 table tr:last-child td, table tr:last-child th{
-    border:0
+    border: 0;
 }
 
 /********************************** MEDIA QUERIES */
-@media (max-width: 992px) {
+
+@media (max-width: 	1200px) {
     h2 {
         font-size: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    h2 {
+        font-size: 1.7rem;
     }
 
     .list-text {
@@ -1162,14 +1169,14 @@ table tr:last-child td, table tr:last-child th{
 @media (max-width: 576px) {
 
     .page-container {
-        height: calc(100% - 60px);
+        min-height: calc(100% - 60px);
         -webkit-box-pack: start;
             -ms-flex-pack: start;
                 justify-content: flex-start;
     }
 
     .benefit-page-container {
-        height: calc(100% - 60px);
+        min-height: calc(100% - 60px);
     }
 
     h1 {
@@ -1182,6 +1189,10 @@ table tr:last-child td, table tr:last-child th{
     
     h3, .table-header {
         font-size: 1.2rem;
+    }
+
+    h4 {
+        font-size: 1rem;
     }
 
     h5 {
