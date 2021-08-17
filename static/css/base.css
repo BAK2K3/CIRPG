@@ -927,11 +927,6 @@ tr.borderless, tr.borderless td, tr.borderless th {
     border-bottom: none;
 }
 
-tbody > tr:nth-last-child() {
-   border-color: transparent;
-   border-bottom: none;
-} 
-
 .benefit-table tbody tr th {
     text-align: left;
 }
