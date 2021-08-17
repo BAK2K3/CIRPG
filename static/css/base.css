@@ -950,6 +950,11 @@ tbody > tr:nth-last-child() {
     -webkit-animation: pulse-white 2s infinite;
             animation: pulse-white 2s infinite;
 }
+
+.table-header {
+    font-size: 2rem;
+    font-weight: 400;
+}
   
 @-webkit-keyframes pulse-white {
 0% {
@@ -1180,7 +1185,7 @@ table tr:last-child td, table tr:last-child th{
         font-size: 1.5rem;
     }
     
-    h3 {
+    h3, .table-header {
         font-size: 1.2rem;
     }
 
