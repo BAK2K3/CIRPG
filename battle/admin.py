@@ -1,3 +1,11 @@
+"""
+Battle App - Admin
+----------------
+
+Admin Configuration for Battle App.
+"""
+
+
 from django.contrib import admin
 from .models import ActiveEnemy
 
@@ -5,7 +13,7 @@ from .models import ActiveEnemy
 # Admin class for Active Enemy
 class EnemyAdmin(admin.ModelAdmin):
     """
-    Profile Admin settiings for list display and ordering.
+    Profile Admin settings for list display and ordering.
     """
     list_display = (
         'pk',
