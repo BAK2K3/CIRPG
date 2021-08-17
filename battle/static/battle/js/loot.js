@@ -1,12 +1,14 @@
 
+// HTML trigger for whether the window can be closed or not
 var winTrigger =  document.getElementById('winTrigger');
+function preventClosure(event){
+    // Cancel the window closing event
+    event.preventDefault();
+    // Chrome dependent returnValue.
+    event.returnValue = 'Are you sure you want to exit?';
+}
 if (typeof(winTrigger) != 'undefined' && winTrigger != null){
-    function preventClosure(event){
-        // Cancel the event as stated by the standard.
-        event.preventDefault();
-        // Chrome requires returnValue to be set.
-        event.returnValue = 'Are you sure you want to exit?';
-    }
+    // If the trigger has not been set, prevent window closure.
     window.addEventListener('beforeunload', preventClosure);
 }
 
