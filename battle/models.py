@@ -1,13 +1,20 @@
+"""
+Battle App - Models
+----------------
+
+Models for Battle App.
+    - ActiveEnemy
+
+"""
+
+
+from django.utils.translation import gettext_lazy as _
 from django.db import models
 from codex.models import Codex
 from profiles.models import ActiveCharacter, Profile
-from django.utils.translation import gettext_lazy as _
 
-
-# Create your models here.
 
 class ActiveEnemy(models.Model):
-
     """
     Active Enemy Model
     -----------
@@ -16,6 +23,9 @@ class ActiveEnemy(models.Model):
     These are created and stored when
     a user engages in battle. The entry
     is removed when a battle is finished.
+
+    Attributes:
+    -----------
 
     active_character:
         Associated Active Character
@@ -32,12 +42,18 @@ class ActiveEnemy(models.Model):
     weapon_rarity:
         Rarity of current weapon
 
+    Methods:
+    -------
+    create_active_enemy:
+        Creates a new active enemy based on user profile.
+
     """
 
     class Meta:
         verbose_name_plural = 'Active Enemies'
 
     class Rarity(models.TextChoices):
+        """Verbose Rarity to integer Text Choices for model"""
         COMMON = 1, _('Common')
         UNCOMMON = 2, _('Uncommon')
         RARE = 3, _('Rare')
