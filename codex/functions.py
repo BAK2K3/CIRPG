@@ -11,6 +11,8 @@ Functions:
     - stat_modifier
 """
 
+# pylint: disable=c0103
+
 from random import randint, randrange
 import math
 
