@@ -1,3 +1,11 @@
+"""
+Codex App - Admin
+----------------
+
+Admin Configuration for Codex App.
+"""
+
+
 from django.contrib import admin
 from .models import Codex
 
