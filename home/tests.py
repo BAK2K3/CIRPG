@@ -9,6 +9,13 @@ from django.test import TestCase
 
 
 class TestViews(TestCase):
+    """
+    Unit Tests for Home App Views
+
+    UT1 - Test home page renders correct page
+    UT2 - Test help page renders correct page
+    """
+
     def test_home_page(self):
         """ UT01 - Test home page renders correct page """
         response = self.client.get('/')
