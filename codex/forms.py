@@ -1,3 +1,13 @@
+"""
+Codex App - Forms
+----------------
+
+Forms for Codex App:
+
+- CodexForm
+"""
+
+
 from django import forms
 from .models import Codex
 from .widgets import CustomClearableFileInput
