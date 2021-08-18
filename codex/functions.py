@@ -1,9 +1,32 @@
+"""
+Codex App - Functions
+----------------
+
+Service layer functions for the  Codex App.
+
+Functions:
+    - process_codex_url
+    - rarity_recursive
+    - modifier_multiplier
+    - stat_modifier
+"""
+
 from random import randint, randrange
 import math
 
 
 # Function for processing GET kwargs
 def process_codex_url(get_params):
+    """
+    Function for processing GET Kwargs.
+
+    Arguments:
+        GET kwargs (self.request.GET)
+        eg. <QueryDict: {'premium': ['1'], 'type': ['hero']}>
+
+    Returns:
+        Prepared Context dictionary.
+    """
 
     # Set default context dict
     context = {
@@ -57,7 +80,7 @@ def process_codex_url(get_params):
 
 def rarity_recursive(n, t=1):
     """
-    Recursive Function to determine the grade of weapon
+    Recursive Function to determine the Rarity of weapon
 
     1: Uncommon
     2: Common
@@ -65,9 +88,16 @@ def rarity_recursive(n, t=1):
     4: Legendary
     5: Mythical
 
-    Highest grade of weapon is determined by item level (max 5)
-    Grade is determined by successive successful rolls
-    Threshold for grades varies depending on item level.
+    Maximum Rarity of weapon is determined by Character level (max 5/mythical)
+    Rarity is determined by successive successful rolls.
+    Threshold for Rarity varies depending on Character level.
+
+    Arguments
+        - n (Character Level)
+        - t (Progressive Rarity/Optional)
+
+    Returns
+        - t (Outcome Rarity)
     """
 
     # Determines success rate for this roll
@@ -92,12 +122,27 @@ def rarity_recursive(n, t=1):
 
 
 # Modifier Calculation
-def modifier_multiplier(item_level, item_rarity=1):
+def modifier_multiplier(level, rarity=1):
+    """
+    Function for calculating multiplier.
+
+    Function takes in level (and optionally rarity).
+    Determines maximum and minimum values based on these values.
+    Generates random number between these two values.
+    Returns the calculated multiplier.
+
+    Arguments:
+        - level
+        - rarity (optional)
+
+    returns:
+        - multiplier
+    """
 
     # Creates a minimum modifier
-    modi_min = round((1 + ((item_level - 1) / 5)) * 100)
+    modi_min = round((1 + ((level - 1) / 5)) * 100)
     # Creates a maximum modifier
-    modi_max = round((1 + ((item_level - 1) / 5) + (item_rarity / 5)) * 100)
+    modi_max = round((1 + ((level - 1) / 5) + (rarity / 5)) * 100)
     # Creates a random number between min max
     multiplier = randrange(modi_min, modi_max) / 100  # nosec
 
@@ -105,4 +150,19 @@ def modifier_multiplier(item_level, item_rarity=1):
 
 
 def stat_modifier(stat, level, rarity=1):
+    """
+    Function for applying multiplier to stat.
+
+    Function calls the modifier_multiplier function,
+    and applies this multiplier to the given stat.
+    The stat value is rounded up before being returned.
+
+    Arguments:
+        - stat
+        - level
+        - rarity (optional)
+
+    returns:
+        - modified stat
+    """
     return math.ceil(stat * modifier_multiplier(level, rarity))
