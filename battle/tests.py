@@ -17,6 +17,8 @@ class TestViews(TestCase):
     """
     Unit Tests for Battle App Views
 
+    setUp - Create test login user and create Profile entry
+
     UT10 - Tests battle route is rendered with correct context
     UT11 - Tests context for successful post-battle route
     UT12 - Tests whether Ajax Loot route updates active character
