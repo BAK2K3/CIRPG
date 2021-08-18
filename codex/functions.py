@@ -110,15 +110,13 @@ def rarity_recursive(n, t=1):
         return t
 
     # Else, generate a random number between 1 and 100,
-    else:
-        outcome = randint(1, 100)  # nosec
-        # If this roll is successful, increase weapon grade,
-        # and recall function based on new thresholds
-        if outcome >= successroll:
-            return rarity_recursive((n - 1), t + 1)
-        # If this roll is unsuccessful, return current grade
-        else:
-            return t
+    outcome = randint(1, 100)  # nosec
+    # If this roll is successful, increase weapon grade,
+    # and recall function based on new thresholds
+    if outcome >= successroll:
+        return rarity_recursive((n - 1), t + 1)
+    # If this roll is unsuccessful, return current grade
+    return t
 
 
 # Modifier Calculation
