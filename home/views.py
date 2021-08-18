@@ -1,3 +1,12 @@
+"""
+Home App - Views
+----------------
+
+Views for Home App.
+    - IndexView
+    - HelpView
+"""
+
 from django.views.generic import TemplateView
 
 
