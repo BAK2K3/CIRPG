@@ -77,7 +77,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'CIRPG.urls'
+ROOT_URLCONF = 'cirpg.urls'
 
 TEMPLATES = [
     {
@@ -134,7 +134,7 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
 
-WSGI_APPLICATION = 'CIRPG.wsgi.application'
+WSGI_APPLICATION = 'cirpg.wsgi.application'
 
 # Crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
