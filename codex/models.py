@@ -1,6 +1,17 @@
+"""
+Battle App - Codex
+----------------
+
+Models for Codex App.
+
+    - CodexQuerySet
+    - CodexManager
+    - Codex
+"""
+
+from random import randint
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from random import randint
 from .functions import rarity_recursive, stat_modifier
 
 
@@ -14,33 +25,44 @@ class CodexQuerySet(models.QuerySet):
     logic.
 
     custom_filter:
-        Used for filtering the full codex for any search
-        parameters or filters requested by the user.
+        Queries full Codex based on search and sort params.
 
     hero_select:
-        Used for generating list of heroes for the user
-        to choose from. Creates default set of "False",
-        and adds the current user's paid state (True/False)
-        and allows the query to obtain any hero in the DB with
-        values in the set (allowed_content)
+        Queries DB for heroes available to current user.
 
     get_random:
-        Used for obtaining a single random entry in the database.
-        This obtains a queryset, filters by the required parameters,
-        counts the length of the queryset, and extracts a random index
-        from the queryset. This is used for random items, and random enemies.
+        Obtains a random entry from the DB based on user's
+        level and premium status.
     """
 
     def custom_filter(self, search_params, sort_params):
+        """
+        Used for filtering the full codex for any search
+        parameters or filters requested by the user.
+        """
         return self.filter(**search_params).order_by(sort_params)
 
     def hero_select(self, paid):
+        """
+        Used for obtaining list of heroes available to given
+        user. Creates default set of "False", and adds the current
+        user's paid state (True/False). This allows the query to
+        obtain any hero in the DB with values in the set (allowed_content).
+        """
         allowed_content = {False}
         allowed_content.add(paid)
         return self.filter(type="Hero",
                            paid__in=allowed_content).order_by('pk')
 
     def get_random(self, type, paid, level):
+        """
+        Used for obtaining a single random entry in the database.
+        This obtains a queryset, filters by the required parameters,
+        counts the length of the queryset, and chooses a random index
+        from the queryset.
+
+        This is used for random items and enemies.
+        """
         allowed_content = {False}
         allowed_content.add(paid)
         self = self.filter(type=type,
@@ -58,20 +80,46 @@ class CodexManager(models.Manager):
 
     Codex Manager for calling the custom
     Codex Query Sets.
+
+    get_queryset:
+        Overrides the default Mode Manager Get Queryset
+        to utilise the CodexQueryset.
+
+    filter_queryset:
+        Calls the custom_filter Queryset.
+
+    hero_select:
+        Calls the hero_select Queryset.
+
+    get_random:
+        Calls the get_random Queryset.
     """
 
     def get_queryset(self):
+        """
+        Overrides the default Mode Manager Get Queryset
+        to utilise the CodexQueryset.
+        """
         return CodexQuerySet(self.model, using=self._db)
 
     def filter_queryset(self, search_params, sort_params):
+        """
+        Calls the custom_filter Queryset.
+        """
         return (
                 self.get_queryset().custom_filter(search_params, sort_params)
         )
 
     def hero_select(self, paid):
+        """
+        Calls the hero_select Queryset.
+        """
         return self.get_queryset().hero_select(paid)
 
     def get_random(self, type, paid=False, level=1):
+        """
+        Calls the get_random Queryset.
+        """
         return self.get_queryset().get_random(type, paid, level)
 
 
@@ -80,24 +128,51 @@ class Codex(models.Model):
     Codex Model
     -----------
 
-    Model for all entries within the Codex:
+    Model for all entries within the Codex.
 
-    name = Entry Name
-    alpha_name = Organised Name
-    type = Choice of Enemy, Weapon, or Hero
-    base_hp = Base Hit Points of entry
-    base_attack = Base Speed of entry
-    base_defense = Base Defense of entry
-    base_speed = Base Speed of entry
-    image = Image name of entry
-    paid = Bool to confirm whether premium entry
-    min_level = User's minimum level threshold.
+    A model which is immutable to the user; each
+    entry is designed to be generated and modified
+    before being inserted into other relative databases.
+    Admins have the capability of manipulating this database.
+
+    Attributes:
+    -----------
+    name:
+        Entry Name
+    alpha_name:
+        Organised Name
+    type:
+        Choice of Enemy, Weapon, or Hero
+    base_hp:
+        Base Hit Points of entry
+    base_attack:
+        Base Speed of entry
+    base_defense:
+        Base Defense of entry
+    base_speed:
+        Base Speed of entry
+    image:
+        Image name of entry
+    paid:
+        Bool to confirm whether premium entry
+    min_level:
+        User's minimum level threshold.
+
+    Methods:
+    --------
+
+    new_weapon:
+        Method for generating a new weapon.
+
+    new_enemy:
+        Method for generating a new enemy.
     """
 
     class Meta:
         verbose_name_plural = 'Codex'
 
     class TypeChoices(models.TextChoices):
+        """Type Text Choices for model Type field"""
         ENEMY = 'Enemy', _('Enemy')
         WEAPON = 'Weapon', _('Weapon')
         HERO = 'Hero', _('Hero')
