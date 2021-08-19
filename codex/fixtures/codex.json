@@ -235,7 +235,7 @@
           "base_defense":5,
           "base_speed":2,
           "image":"cyclops_blind.png",
-          "paid":false,
+          "paid":true,
           "min_level":3
        }
     },
@@ -427,7 +427,7 @@
           "base_defense":4,
           "base_speed":5,
           "image":"frog_king.png",
-          "paid":false,
+          "paid":true,
           "min_level":3
        }
     },
@@ -907,7 +907,7 @@
           "base_defense":7,
           "base_speed":3,
           "image":"rock_monster_mineral.png",
-          "paid":false,
+          "paid":true,
           "min_level":3
        }
     },
@@ -923,7 +923,7 @@
           "base_defense":6,
           "base_speed":3,
           "image":"rock_monster_poison.png",
-          "paid":false,
+          "paid":true,
           "min_level":3
        }
     },
@@ -1387,7 +1387,7 @@
           "base_defense":4,
           "base_speed":5,
           "image":"whale_killer.png",
-          "paid":false,
+          "paid":true,
           "min_level":3
        }
     },
@@ -1435,7 +1435,7 @@
           "base_defense":2,
           "base_speed":5,
           "image":"arrows_elven.png",
-          "paid":false,
+          "paid":true,
           "min_level":3
        }
     },
@@ -1579,7 +1579,7 @@
           "base_defense":5,
           "base_speed":2,
           "image":"club_greater.png",
-          "paid":false,
+          "paid":true,
           "min_level":3
        }
     },
@@ -1611,7 +1611,7 @@
           "base_defense":3,
           "base_speed":5,
           "image":"crossbow_mechanical.png",
-          "paid":false,
+          "paid":true,
           "min_level":3
        }
     },
@@ -1675,7 +1675,7 @@
           "base_defense":1,
           "base_speed":6,
           "image":"dagger_emperors.png",
-          "paid":false,
+          "paid":true,
           "min_level":3
        }
     },
