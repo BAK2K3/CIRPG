@@ -1796,7 +1796,7 @@
        "model":"codex.codex",
        "fields":{
           "alpha_name":"halberd_of_piercing",
-          "name":"Halbert of Piercing",
+          "name":"Halberd of Piercing",
           "type":"Weapon",
           "base_hp":1,
           "base_attack":5,
