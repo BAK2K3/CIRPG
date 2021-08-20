@@ -13,6 +13,28 @@ from profiles.models import Profile
 
 
 class TestViews(TestCase):
+    """
+    Unit Tests for Codex App Views
+
+    setUp - Create test login user and create Profile entry
+
+    UT23 - Test codex route renders correct page
+    UT24 - Test codex route queries DB
+    UT25 - Test codex db entry structure
+    UT26 - Test codex filtering for premium products
+    UT27 - Test codex filtering for free products
+    UT28 - Test codex filtering for weapons
+    UT29 - Test codex filtering for enemies
+    UT30 - Test codex filtering for heroes
+    UT31 - Test codex filtering for rating
+    UT32 - Test codex filtering for multiple ratings
+    UT33 - Test codex filtering for multiple parameters
+    UT34 - Test codex sorting direction parameters
+    UT35 - Test codex sort by parameters
+    UT36 - Test codex Edit view
+    UT37 - Test codex Create view
+    UT38 - Test codex Delete view
+    """
 
     # Load fixtures into test DB
     fixtures = ['codex.json']
