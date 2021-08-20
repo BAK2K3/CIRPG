@@ -38,19 +38,28 @@ class CodexListView(ListView):
         super().__init__(*args, **kwargs)
         self.pre_context = None
 
-    # Override get_queryset
     def get_queryset(self):
+        """
+        Override get_queryset to extract GET Params
+        and apply the subsequent search and sort parameters
+        to the query.
+        """
 
         # Extract context parameters from request
         self.pre_context = process_codex_url(self.request.GET)
 
         # Apply search and sort params to queryset
-        q = Codex.objects.filter_queryset(self.pre_context['search_params'],
-                                          self.pre_context['sort_params'])
-        return q
+        query = Codex.objects.filter_queryset(
+            search_params=self.pre_context['search_params'],
+            sort_params=self.pre_context['sort_params']
+            )
+        return query
 
-    # Override get_queryset
     def get_context_data(self, **kwargs):
+        """
+        Override get_context_data to merge default
+        context data with prepared context.
+        """
 
         # Merge default context with prepared context params
         context = super().get_context_data(**kwargs) | self.pre_context
