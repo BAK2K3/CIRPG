@@ -35,8 +35,10 @@ class BattleView(LoginRequiredMixin, TemplateView):
     """
     template_name = "battle/battle.html"
 
-    # Redirect user if no active character
     def get(self, *args, **kwargs):
+        """
+        Override Get function to redirect user if no active character
+        """
         # Obtain Current Profile
         current_profile = Profile.objects.get(user=self.request.user)
         # If no current character exists, redirect
@@ -45,6 +47,11 @@ class BattleView(LoginRequiredMixin, TemplateView):
         return super().get(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
+        """
+        Override Get_context_data to get user and enemy
+        data (generating new enemy if one does not exist),
+        and combining this data via queryset and json to the context.
+        """
 
         # Obtain Current Profile
         current_profile = Profile.objects.get(user=self.request.user)
@@ -92,6 +99,12 @@ class PostBattleView(LoginRequiredMixin, TemplateView):
     template_name = 'battle/post_battle.html'
 
     def get_context_data(self, **kwargs):
+        """
+        Overrides get_context_data to perform the
+        relevant functions depending on whether the user
+        wins or loses the battle and subsequently pass the
+        appropriate data to the template via the context.
+        """
         context = super().get_context_data(**kwargs)
 
         # Obtain battle outcome from battle page
@@ -166,16 +179,17 @@ class PostBattleView(LoginRequiredMixin, TemplateView):
         # Return context to post-battle template
         return context
 
-    # POST route, checks whether user is currently in battle
     def post(self, *args, **kwargs):
-        """Ensure user is in battle at time of Post method """
+        """
+        Over-ride POST method to ensure user is in battle
+        at time of POST, otherwise redirect to Profile.
+        """
         current_profile = Profile.objects.get(user=self.request.user)
         if current_profile.active_battle:
             context = self.get_context_data()
             return super().render_to_response(context)
         return redirect('profile')
 
-    # Prevent GET requests
     def get(self, *args, **kwargs):
         """Override GET request to redirect to profile"""
         return redirect('profile')
@@ -193,6 +207,12 @@ class NewLootView(UpdateView):
     model = ActiveCharacter
 
     def post(self, *args, **kwargs):
+        """
+        Overrides POST method to ensure the request is AJAX,
+        Updates the user's active character profile with the
+        information received via AJAX, and returns the appropriate HTTP
+        responses accoringly.
+        """
         if self.request.is_ajax():
             # Obtain Active Character
             character = ActiveCharacter.objects.get(user=self.request.user)
