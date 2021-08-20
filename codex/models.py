@@ -65,12 +65,12 @@ class CodexQuerySet(models.QuerySet):
         """
         allowed_content = {False}
         allowed_content.add(paid)
-        self = self.filter(type=codex_type,
-                           paid__in=allowed_content,
-                           min_level__lte=level)
-        last = self.count() - 1
+        query = self.filter(type=codex_type,
+                            paid__in=allowed_content,
+                            min_level__lte=level)
+        last = query.count() - 1
         index = randint(0, last)  # nosec
-        return self[index]
+        return query[index]
 
 
 class CodexManager(models.Manager):
@@ -227,7 +227,8 @@ class Codex(models.Model):
         weapon.rarity_text = rarity_list[weapon.rarity-1]
 
         # Apply modification in order of magnitude (rarity)
-        for i in range(weapon.rarity):
+        # Double underscore used in for loop to avoid unused variable
+        for __ in range(weapon.rarity):
 
             # Modify stats based on level and rarity
             weapon.base_hp = stat_modifier(weapon.base_hp,
@@ -266,7 +267,8 @@ class Codex(models.Model):
         if level > 1:
             enemy.level = randint(1, level)  # nosec
             # Modify stats based on level (progressive)
-            for i in range(enemy.level - 1):
+            # Double underscore used in for loop to avoid unused variable
+            for __ in range(enemy.level - 1):
                 enemy.base_hp = stat_modifier(enemy.base_hp,
                                               enemy.level)
                 enemy.base_attack = stat_modifier(enemy.base_attack,
