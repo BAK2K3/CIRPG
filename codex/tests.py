@@ -5,10 +5,10 @@ Codex App - Tests
 Test cases for Codex App Routing
 """
 
-from django.test import TestCase
-from codex.models import Codex
 from random import randint
+from django.test import TestCase
 from django.contrib.auth import get_user_model
+from codex.models import Codex
 from profiles.models import Profile
 
 
@@ -45,8 +45,8 @@ class TestViews(TestCase):
         pswd = "Kavanagh" # noqa
         user_model = get_user_model()
         self.user = user_model.objects.create_user(username=username,
-                                             password=pswd,
-                                             is_superuser=True)
+                                                   password=pswd,
+                                                   is_superuser=True)
         logged_in = self.client.login(username=username, password=pswd)
 
         # Add User to Profile
