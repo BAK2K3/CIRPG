@@ -1,10 +1,22 @@
+"""
+Codex App - Views
+----------------
+
+Views for Codex App.
+    - CodexListView
+    - CodexUpdateView
+    - CodexCreateView
+    - CodexDeleteView
+
+"""
+
 from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.shortcuts import redirect
-from .models import Codex
-from .functions import process_codex_url
-from .forms import CodexForm
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from .models import Codex
+from .forms import CodexForm
+from .functions import process_codex_url
 
 
 class CodexListView(ListView):
