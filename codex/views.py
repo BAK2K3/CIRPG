@@ -10,6 +10,8 @@ Views for Codex App.
 
 """
 
+# pylint: disable=r0901
+
 from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.shortcuts import redirect
@@ -31,6 +33,10 @@ class CodexListView(ListView):
     model = Codex
     template_name = 'codex/codex.html'
     context_object_name = 'codex'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.pre_context = None
 
     # Override get_queryset
     def get_queryset(self):
@@ -86,12 +92,16 @@ class CodexDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     success_url = "/codex/"
     model = Codex
 
-    # Tests the method is post and user is superuser
     def test_func(self):
+        """
+        Tests the method is post and user is superuser.
+        """
         if self.request.method == "POST":
             return self.request.user.is_superuser
-        else:
-            return self.get(self.request)
+        return self.get(self.request)
 
-    def get(self, request, pk=None):
+    def get(self, *args, **kwargs):
+        """
+        Redirects get requests to the Codex view.
+        """
         return redirect('codex')
