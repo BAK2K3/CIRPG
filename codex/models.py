@@ -54,7 +54,7 @@ class CodexQuerySet(models.QuerySet):
         return self.filter(type="Hero",
                            paid__in=allowed_content).order_by('pk')
 
-    def get_random(self, type, paid, level):
+    def get_random(self, codex_type, paid, level):
         """
         Used for obtaining a single random entry in the database.
         This obtains a queryset, filters by the required parameters,
@@ -65,7 +65,7 @@ class CodexQuerySet(models.QuerySet):
         """
         allowed_content = {False}
         allowed_content.add(paid)
-        self = self.filter(type=type,
+        self = self.filter(type=codex_type,
                            paid__in=allowed_content,
                            min_level__lte=level)
         last = self.count() - 1
@@ -116,11 +116,11 @@ class CodexManager(models.Manager):
         """
         return self.get_queryset().hero_select(paid)
 
-    def get_random(self, type, paid=False, level=1):
+    def get_random(self, codex_type, paid=False, level=1):
         """
         Calls the get_random Queryset.
         """
-        return self.get_queryset().get_random(type, paid, level)
+        return self.get_queryset().get_random(codex_type, paid, level)
 
 
 class Codex(models.Model):
