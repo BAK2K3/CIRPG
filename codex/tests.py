@@ -43,8 +43,8 @@ class TestViews(TestCase):
         """ Create test login user and create Profile entry"""
         username = "Ben"
         pswd = "Kavanagh" # noqa
-        User = get_user_model()
-        self.user = User.objects.create_user(username=username,
+        user_model = get_user_model()
+        self.user = user_model.objects.create_user(username=username,
                                              password=pswd,
                                              is_superuser=True)
         logged_in = self.client.login(username=username, password=pswd)
@@ -146,8 +146,8 @@ class TestViews(TestCase):
         # Set user to superuser
         self.user.is_superuser = True
         self.user.save()
-        User = get_user_model()
-        self.user = User.objects.get(username=self.user.username)
+        user_model = get_user_model()
+        self.user = user_model.objects.get(username=self.user.username)
         # Navigate to the 1st Codex entry edit view
         response = self.client.get('/codex/edit/1/')
         # Verify response, template, and object
@@ -160,8 +160,8 @@ class TestViews(TestCase):
         # Set user to superuser
         self.user.is_superuser = True
         self.user.save()
-        User = get_user_model()
-        self.user = User.objects.get(username=self.user.username)
+        user_model = get_user_model()
+        self.user = user_model.objects.get(username=self.user.username)
         # Navigate to the 1st Codex entry edit view
         response = self.client.get('/codex/create/')
         # Verify response and template
@@ -173,9 +173,9 @@ class TestViews(TestCase):
         # Set user to superuser
         self.user.is_superuser = True
         self.user.save()
-        User = get_user_model()
+        user_model = get_user_model()
         all_entries = len(Codex.objects.all())
-        self.user = User.objects.get(username=self.user.username)
+        self.user = user_model.objects.get(username=self.user.username)
         # Navigate to the 1st Codex entry edit view
         response = self.client.post('/codex/delete/1/')
         # Verify response, template, and object
