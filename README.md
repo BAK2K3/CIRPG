@@ -613,3 +613,74 @@ excited by the content.
     strongly counteracted by the excitement of progressing through the game,
     complimented by the combined interaction design discussed above, designed to
     invoke engagement and excitement.
+
+## Skeleton
+
+### Wireframes
+
+**Due to the resolution of the wireframe documents, it is recommended that these PDFs 
+are downloaded to be viewed in the browser, rather than using GitHub’s native PDF viewer.**
+
+-   All Wireframes: [Link](.documentation/all-wireframes.pdf)
+-   Navbar Wireframe: [Link](.documentation/navbar-wireframes.pdf)
+-   Home Wireframe: [Link](.documentation/home-wireframes.pdf)
+-   How To Wireframe: [Link](.documentation/how-to-wireframes.pdf)
+-   Login/Register Wireframe: [Link](.documentation/login-register-wireframes.pdf)
+-   Codex Wireframe: [Link](.documentation/codex-wireframes.pdf)
+-   Upgrade Wireframe: [Link](.documentation/upgrade-wireframes.pdf)
+-   Create Wireframe: [Link](.documentation/create-wireframes.pdf)
+-   Profile Wireframe: [Link](.documentation/profile-wireframes.pdf)
+-   Battle Wireframe: [Link](.documentation/battle-wireframes.pdf)
+-   Post-Battle Wireframe: [Link](.documentation/post-battle-wireframes.pdf)
+-   Leaderboard Wireframe: [Link](.documentation/leaderboard-wireframes.pdf)
+
+### Database
+
+This project utilises a Relational Database via PostgreSQL for storing User
+Credentials, User Profiles, Codex entries, Active Characters, Active Enemies,
+and Leaderboard entries. The Database went through 3 major iterations throughout
+the planning phase of the project. This was as a result of the following:
+
+-   A reduction in scope:
+    -   The removal of the “Magic” stat from Codex Entries.
+    -   The removal of Leaderboard Messages.
+-   Refinement and Refactoring of DB:
+    -   The removal of Orders model.
+    -   Splitting “User” model into “User” and “Profiles”.
+-   Developing a better understand of relational databases.
+    -   Splitting “Active Characters” into “Active Characters” and “Active
+        Enemies”
+    -   Replacing the Leaderboard Foreign Key with required fields.
+
+The first three DB concepts were completed manually, while the final DB Schema
+is an actual representation of the deployed database.
+
+**Schema**
+
+<details>
+  <summary>Iteration 1</summary>
+
+![First DB Iteration](https://res.cloudinary.com/bak2k3/image/upload/v1628878126/CIRPG/DB_Version_1_kilnnx.jpg)
+
+</details>
+
+<details>
+  <summary>Iteration 2</summary>
+
+![Second DB Iteration](https://res.cloudinary.com/bak2k3/image/upload/v1628878126/CIRPG/DB_Version_2_mezz57.jpg)
+
+</details>
+
+<details>
+  <summary>Iteration 3</summary>
+
+![Third DB Iteration](https://res.cloudinary.com/bak2k3/image/upload/v1628878126/CIRPG/DB_Version_3_yfrcab.jpg)
+
+</details>
+
+<details>
+  <summary>Final DB Schema</summary>
+
+![Final DB Schema](https://res.cloudinary.com/bak2k3/image/upload/v1628878124/CIRPG/DB_Version_Final_rxptcv.jpg)
+
+</details>
