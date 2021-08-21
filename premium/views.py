@@ -55,6 +55,7 @@ def stripe_config(request):
     if request.method == 'GET':
         stripe_config_data = {'publicKey': settings.STRIPE_PUBLISHABLE_KEY}
         return JsonResponse(stripe_config_data, safe=False)
+    return HttpResponse(status=400)
 
 
 @csrf_exempt
@@ -93,12 +94,13 @@ def create_checkout_session(request):
                     # Places checkout token in session cookie for verification
                     request.session['CHECKOUT'] = True
                     return JsonResponse({'sessionId': checkout_session['id']})
-                except Exception as error:
+                except stripe.error.StripeError as error:
                     return JsonResponse({'error': str(error)})
             else:
                 return JsonResponse({'error': "Profile is already premium."})
         else:
             return JsonResponse({'error': "User is not logged in."})
+    return HttpResponse(status=400)
 
 
 @csrf_exempt
@@ -132,9 +134,9 @@ def stripe_webhook(request):
     if event['type'] == 'checkout.session.completed':
         # Extract Stripe Session Data
         session = event['data']['object']
-        User = get_user_model()
+        user_model = get_user_model()
         # Query DB for relevant user
-        current_user = User.objects.get(email=session['customer_email'])
+        current_user = user_model.objects.get(email=session['customer_email'])
         # Query DB for user's profile
         current_profile = Profile.objects.get(user=current_user)
         # Activate Premium status on profile and save
@@ -182,8 +184,7 @@ class SuccessView(TemplateView):
             self.request.session.pop('CHECKOUT')
             self.request.session.pop('SUCCESS_TOKEN')
             return super().get(*args, **kwargs)
-        else:
-            return redirect('premium')
+        return redirect('premium')
 
 
 class AbortView(TemplateView):
@@ -213,11 +214,9 @@ def process_payment(request):
                 request.session['SUCCESS_TOKEN'] = True
                 return redirect('success')
             # If the checkout session is unpaid, abort redirect
-            else:
-                return redirect('abort')
+            return redirect('abort')
         # Catch invalid request and redirect to abort page
         except stripe.error.InvalidRequestError:
             return redirect('abort')
     # Redirect to Premium if no session_id
-    else:
-        return redirect('premium')
+    return redirect('premium')
