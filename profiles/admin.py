@@ -1,8 +1,14 @@
+"""
+Profiles App - Admin
+----------------
+
+Admin Configuration for Profiles App.
+"""
+
 from django.contrib import admin
 from .models import ActiveCharacter, Profile
 
 
-# Admin class for Profile
 class ProfileAdmin(admin.ModelAdmin):
     """
     Profile Admin settiings for list display and ordering.
@@ -23,7 +29,7 @@ class ProfileAdmin(admin.ModelAdmin):
 # Admin class for Active Characters
 class CharacterAdmin(admin.ModelAdmin):
     """
-    Profile Admin settiings for list display and ordering.
+    Active Character Admin settiings for list display and ordering.
     """
     list_display = (
         'pk',
