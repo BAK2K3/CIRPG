@@ -1191,7 +1191,7 @@ rarity is based on a multitude of factors, and is determined through a recursive
 algorithm which is demonstrated below:
 
 <details>
-  <summary>View Rarity Generator Flowchard</summary>
+  <summary>View Rarity Generator Flow Chart</summary>
 
 ![Features – Rarity Generator](https://res.cloudinary.com/bak2k3/image/upload/v1628878124/CIRPG/Features_-_Rarity_Generator_taxqb8.jpg)
 
