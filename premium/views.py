@@ -1,24 +1,47 @@
+"""
+Premium App - Views
+----------------
+
+Views for Premium App:
+
+    - PremiumView (CBV)
+    - SuccessView (CBV)
+    - AbortView (CBV)
+
+    - stripe_config (Ajax)
+    - create_checkout_session (Ajax)
+
+    - stripe_webhook (Webhook)
+
+    - process_payment (FBV)
+"""
+
+import stripe
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-import stripe
-from profiles.models import Profile
 from django.shortcuts import redirect
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.contrib.auth import get_user_model
+from profiles.models import Profile
 
 
 class PremiumView(TemplateView):
     """
     Template View for Premium Page
+
+    Removes Checkout token from context (if applicable)
+    before handling the request.
     """
     template_name = "premium/premium.html"
 
-    # Checks to see whether previous checkout token exists
-    # Removes the Checkout bool from session if so
     def get(self, *args, **kwargs):
+        """
+        Checks to see whether previous checkout token exists,
+        and removes it, before handling usual get request.
+        """
         if self.request.session.get('CHECKOUT'):
             self.request.session.pop('CHECKOUT')
         return super().get(*args, **kwargs)
@@ -27,7 +50,7 @@ class PremiumView(TemplateView):
 @csrf_exempt
 def stripe_config(request):
     """
-    AJAX Get handler for stripe public key.
+    AJAX handler for returning stripe public key.
     """
     if request.method == 'GET':
         stripe_config = {'publicKey': settings.STRIPE_PUBLISHABLE_KEY}
@@ -37,14 +60,17 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     """
-    AJAX Checkout Session handler.
+    AJAX handler for returning Stripe Checkout Session.
+
+    If the user is already premium, or if an error has occured,
+    an error message is sent to the browser.
     """
     if request.method == 'GET':
         if request.user.is_authenticated:
             # Obtain active profile and ensure they are not already premium
             current_profile = Profile.objects.get(user=request.user)
             if not current_profile.paid:
-                # Create Stripe Checkout Session
+                # Create Stripe Checkout Session and
                 # Return the session JSON if successful
                 domain_url = settings.DOMAIN_URL
                 success_url = domain_url + 'premium/process/?session_id='
@@ -64,11 +90,11 @@ def create_checkout_session(request):
                         ],
                         customer_email=request.user.email
                     )
-                    # Places checkout bool in session cookie for verification
+                    # Places checkout token in session cookie for verification
                     request.session['CHECKOUT'] = True
                     return JsonResponse({'sessionId': checkout_session['id']})
-                except Exception as e:
-                    return JsonResponse({'error': str(e)})
+                except Exception as error:
+                    return JsonResponse({'error': str(error)})
             else:
                 return JsonResponse({'error': "Profile is already premium."})
         else:
@@ -79,6 +105,11 @@ def create_checkout_session(request):
 def stripe_webhook(request):
     """
     Webhook handling for stripe payment.
+
+    In the event of a successful payment,
+    Premium status is added to user Profile,
+    and email confirmation is sent to user.
+
     Returns 200 - on successful payment.
     Returns 400 - on unsuccessful payment.
     """
@@ -91,12 +122,12 @@ def stripe_webhook(request):
         event = stripe.Webhook.construct_event(
             payload, sig_header, endpoint_secret
         )
-    except ValueError as e:
+    except ValueError as error:
         # Invalid payload
-        return HttpResponse(e, status=400)
-    except stripe.error.SignatureVerificationError as e:
+        return HttpResponse(error, status=400)
+    except stripe.error.SignatureVerificationError as error:
         # Invalid signature
-        return HttpResponse(e, status=400)
+        return HttpResponse(error, status=400)
 
     if event['type'] == 'checkout.session.completed':
         # Extract Stripe Session Data
@@ -132,12 +163,20 @@ def stripe_webhook(request):
 class SuccessView(TemplateView):
     """
     Template View for Successful Payment
+
+    Checks the session for both checkout and success token,
+    otherwise redirects to premium page.
+
     """
     template_name = "premium/success.html"
 
-    # Checks to see whether checkout is in progress
-    # Remove checkout token
     def get(self, *args, **kwargs):
+        """
+        Session is checked to ensure user has navigated from the premium
+        screen, and that the processing payment has confirmed successful
+        payment. Removes both tokens before handling get request,
+        otherwise redirects user to Premium page.
+        """
         session = self.request.session
         if session.get('CHECKOUT') and session.get('SUCCESS_TOKEN'):
             self.request.session.pop('CHECKOUT')
@@ -149,7 +188,7 @@ class SuccessView(TemplateView):
 
 class AbortView(TemplateView):
     """
-    Template View for Aborted/Unsuccessful payment
+    Template View for Aborted/Unsuccessful payment.
     """
     template_name = "premium/abort.html"
 
@@ -157,8 +196,9 @@ class AbortView(TemplateView):
 @csrf_exempt
 def process_payment(request):
     """
-    A function for processing the payment and
-    redirecting based on checkout outcome.
+    A function for reading the payment status
+    of a user's current checkout session, and redirecting
+    the user based on the outcome.
     """
     # Ensures session ID is in get param
     if request.GET.get('session_id'):
