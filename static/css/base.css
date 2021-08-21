@@ -9,6 +9,7 @@
 @font-face {
     font-family: 'Mandhor';
     src: url('../fonts/Mandhor.otf') format("opentype");
+    font-display: swap;
 }
 
 /* latin-ext */
