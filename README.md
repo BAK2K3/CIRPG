@@ -1229,7 +1229,7 @@ of their applications:
     Code](https://github.com/BAK2K3/CIRPG/blob/5cfa9734f874ac8a6324aa9b2872b70b62d80a2a/codex/models.py#L123)]
 
 <details>
-  <summary>Enemy Stat Generation Flow Chart</summary>
+  <summary>Weapon Stat Generation Flow Chart</summary>
 
 ![Features - Weapon Stat Generation](https://res.cloudinary.com/bak2k3/image/upload/v1628878125/CIRPG/Features_-_Weapon_Stat_Generation_eizlco.jpg)
 </details>
