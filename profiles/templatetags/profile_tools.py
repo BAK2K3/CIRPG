@@ -1,3 +1,11 @@
+"""
+Profiles App - Profile Tools
+----------------
+
+Additional TemplateTags for Profiles App:
+    - calc_subtotal
+"""
+
 from django import template
 
 
@@ -5,7 +13,7 @@ register = template.Library()
 
 
 @register.simple_tag(name='percent')
-def calc_subtotal(value, min, max):
+def calc_subtotal(value, val_min, val_max):
     """
     Custom template tage for calulating
     user's XP progress to next level.
@@ -15,7 +23,9 @@ def calc_subtotal(value, min, max):
     obtain relative % progression to next level.
     """
     try:
-        percentage = ((int(value) - int(min)) / (int(max) - int(min))) * 100
+        percentage = (
+            ((int(value) - int(val_min)) / (int(val_max) - int(val_min))) * 100
+        )
         return percentage
     except (ValueError, ZeroDivisionError):
         return None
