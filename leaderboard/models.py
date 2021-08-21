@@ -8,6 +8,8 @@ Models for Leaderboard App.
     - Leaderboard
 """
 
+# pylint: disable=E5142
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
@@ -151,7 +153,7 @@ class Leaderboard(models.Model):
     objects = LeaderboardManager()
 
     def __str__(self):
-        return (f'{self.user.username} | Score {self.score } ')
+        return f'{self.user.username} | Score {self.score } '
 
     @classmethod
     def active_char_to_leaderboard(cls, active_char, score):
