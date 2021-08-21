@@ -62,30 +62,21 @@ below:
 
 -   [**Loot**](https://en.wikipedia.org/wiki/Loot_(video_games)): A term
     used to describe weapons that are generated after a successful battle.
-
 -   **Run**: A term used to describe user’s playthrough of the game, from
     starting a new character to losing that character.
-
 -   **User**: An individual playing the game.
-
 -   **Profile**: A user’s central hub, containing run statistics, their current
     character/loot (if applicable), and their corresponding stats.
-
 -   **Character**: The playable entity chosen by a user at the beginning of a
     run, displayed in a user’s profile.
-
 -   **Stats**: A character/enemy/weapon’s attributes (HP, Attack, Defence,
     Speed).
-
 -   **XP**: Experience Points. Represents progression between Character Levels.
-
 -   **Tier**: Weapons and Enemies are Tiered, which means they will only become
     available within the possible pool of content when a user reaches or exceeds
     that Tier.
-
 -   [**Codex**](https://en.wikipedia.org/wiki/Codex_(Warhammer_40,000)): This
     term is used to refer to a library-like list of all content within the game.
-
 -   [**Rarity**](https://en.wikipedia.org/wiki/Loot_(video_games)): This term is
     used to describe how ‘rare’ a weapon is. The higher the Rarity, the higher
     the item’s stats will be.
@@ -159,30 +150,20 @@ rewarding and easy to play.
 **User Needs:**
 
 -   To be able to navigate the site with ease.
-
 -   To be able to register, log in and log out.
-
 -   To be able to try the game without paying for it.
-
 -   To be able to pay for premium access for content not available to free
     users.
-
 -   To be able to play the game easily.
-
 -   To be able to compete with other players.
 
 **Project Objectives:**
 
 -   To create a game that is easy to play, addictive, and rewarding.
-
 -   To paywall content between free/premium users.
-
 -   To incentivise users to upgrade to premium.
-
 -   To add a degree of competition to encourage users to continue playing.
-
 -   To create a game where every run is unique.
-
 -   To allow the user to navigate and control the application with ease on all
     platforms and devices.
 
@@ -193,12 +174,9 @@ rewarding and easy to play.
 #### Simple, Intuitive, and Engaging Interface
 
 -   Users must be able to navigate, and interact with, the site with ease.
-
 -   Ensure Interactivity and Gameplay is simple and intuitive.
-
 -   Ensure users can obtain additional information on how to play, and that the
     instructions are easy to understand.
-
 -   Ensure layout and design is responsive to all media sizes.
 
 #### User Management
@@ -209,52 +187,38 @@ rewarding and easy to play.
 #### Premium Content
 
 -   Implement content which is available only to premium users.
-
 -   Create a paywall between free and premium content, preventing free users
     from accessing the premium content.
-
 -   Allow users to upgrade to a premium account through a one-off Stripe payment
     to obtain access to the premium content.
-
 -   Prevent users from upgrading to a premium account more than once.
 
 #### Codex Overview
 
 -   Allow users to see an overview of all possible content in the game via the
     Codex.
-
 -   Allow free users to see what Premium content is available within the Codex.
-
 -   Allow users to filter and sort content within the Codex.
-
 -   Allow Admins to create, update, and delete content from the Codex.
 
 #### Character Creation
 
 -   Allow a user to create a character if one does not already exist in their
     profile.
-
 -   Allow users to have a transparent view of the difference between available
     classes.
-
 -   Allow free users to create a character from the free characters available.
-
 -   Allow premium users to create a character from all available characters.
-
 -   Ensure that when a user creates a character, a random weapon of appropriate
     Tier, Premium Access, Level, and Rarity is created.
 
 #### Profile
 
 -   Allow users to visit their profile.
-
 -   Allow users to see their gameplay statistics from their profile.
-
 -   Allow users to create a character from their profile (if applicable).
-
 -   Allow users to see their current character and weapon from their profile (if
     applicable).
-
 -   Allow users to delete their current character from their profile (if
     applicable).
 
@@ -262,53 +226,37 @@ rewarding and easy to play.
 
 -   Allow users to engage in combat with a random enemy of a relative level and
     Tier.
-
 -   Allow real-time control of the battle through an [Active Time
     Battle](https://en.wikipedia.org/wiki/Turns,_rounds_and_time-keeping_systems_in_games#Active_Time_Battle)
     system.
-
 -   Allow users to attack or retreat on their turn.
-
 -   Allow users to understand the battle mechanics through an intuitive UI and a
     text-based battle log.
-
 -   Prevent free users from fighting enemies higher than Tier 2.
 
 #### Character Progression and Lifecycle
 
 -   Clearly communicate to a user if they have won or lost a battle.
-
 -   Generate random Loot for a user when they win a battle.
-
 -   Allow a user to choose whether to keep their existing weapon or take the new
     loot.
-
 -   Grant a character a relative amount of XP when they win a battle.
-
 -   If a character levels up when they win a battle, their character’s
     statistics are increased.
-
 -   If a character loses a battle, their character is removed from the database
     (akin to [permadeath](https://en.wikipedia.org/wiki/Permadeath)).
-
 -   When a character loses a battle, their score is presented to them.
-
 -   Prevent free users from exceeding Level 2.
-
 -   Prevent free users from obtaining loot higher than Tier 2, or Rarity higher
     than Uncommon.
 
 #### Leaderboard
 
 -   Allow all users to view the Leaderboard.
-
 -   Allow all users to view additional details regarding each individual
     Leaderboard entry.
-
 -   Ensure there are only ever 10 Leaderboard entries.
-
 -   Prevent free users from their score being added to the database.
-
 -   Allow paid users to have their score and stats published on their
     Leaderboard if their score his higher than any of the existing 10 entries.
 
@@ -343,37 +291,27 @@ associated Character’s/Enemy’s stats.
 #### Stats
 
 -   Each entry within the Codex will have 4 stats:
-
     -   **HP**: Hit Points, which represent health. When a Character or Enemy’s
         total HP is reduced to Zero, they will be defeated.
-
     -   **Attack:** This will represent the amount of damage one inflicts on
         their opponent’s **HP** in the event of a successful attack.
-
     -   **Defence:** This value will be used to calculate **Dodge Chance**.
-
         -   A Character/Enemy’s chance of dodging an attack will be calculated
             through the following formula: **Defence**/**HP** (capped at 75%).
-
         -   Each time an attack is attempted, the opposition will attempt to
             dodge the attack based on their own Defence and HP.
-
     -   **Speed:** This value will be used to calculated who attacks first, and
         when they attack.
-
 -   Each entry’s stats will be defined as **Base Stats**, as they are subject to
     modification.
-
     -   The higher the base stats, the bigger impact stat modification will
         have.
 
 #### Tiers
 
 -   Enemies and Weapons will have an associated Tier.
-
     -   Tiers represent what Level the Character must be in order for the entry
         to be available within the pool of content.
-
     -   Entries with a higher Tier will have higher **Base Stats**, which will
         make them substantially more powerful (on a logarithmic scale) based on
         how the stat modification intends to apply.
@@ -396,13 +334,9 @@ battle), it’s rarity will be randomly allocated based on the Character’s cur
 level:
 
 -   Uncommon (Character Level 1+)
-
 -   Common (Character Level 2+)
-
 -   Rare (Character Level 3+)
-
 -   Epic (Character Level 4+)
-
 -   Mythic (Character Level 5+)
 
 An item’s rarity affects how many times a stat modifier is applied to the
