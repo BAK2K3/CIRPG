@@ -510,6 +510,10 @@ hr.dropdown-divider {
     height: 50px;
 }
 
+fieldset legend {
+    font-size: 1rem;
+}
+
 /********************************** PROFILE */
 
 [type=button] {
