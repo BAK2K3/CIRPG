@@ -1462,3 +1462,200 @@ for data storage, and this is managed via
 
 ---
 
+# Deployment
+
+This project has two branches:
+
+-   `main` (Production Environment)
+-   `dev` (Development Environment)
+
+All development and testing takes place in the `dev` branch, prior to being
+merged with the `master` branch for deployment.
+
+## How this project was deployed
+
+This project was deployed to Heroku via the following steps:
+
+### Initial Deployment
+
+-   Navigate to [Heroku](https://www.heroku.com/).
+-   [Log in](https://id.heroku.com/login) or [Sign
+    Up](https://signup.heroku.com/) for an account.
+    -   If Creating an account, select **Python** as the Primary development
+        language.
+    -   Activate the account via the confirmation email.
+    -   Accept the Terms of Service.
+-   Click on **Create new app**.
+-   Enter a suitable **App Name** and **Region**.
+-   Click **Create App**.
+-   Under the **Deploy** tab, under the heading **Deployment Method**, click the
+    **GitHub** icon, and proceed to click the button which states **Connect to
+    GitHub**.
+-   Enter your credentials for **GitHub.**
+-   Search for the repository required (in this instance, **CIRPG**), and click
+    **Connect.**
+
+### Automatic Deployment
+
+This project was set up to automatically re-deploy with any changes made to the
+Master Branch. The following steps were taken to enable this.
+
+-   Navigate to the **Automatic deploys** section within the **Deploy** tab.
+-   Select the **branch** you would like to link to automatic deployment.
+    -   As stated above, the ‘master’ branch was chosen for automatic
+        deployment.
+-   Click **Enable Automatic Deploys**.
+
+### Database Setup Stage 1
+
+-   Within Heroku, navigate to **Resources.**
+-   Search for **Heroku Postrgres.**
+-   Ensure the plan name is **Hobby Dev – Free**.
+-   Click **Submit Order Form.**
+
+### Environment Variables
+
+The following environment variables must be set within your Heroku Server for
+the site to deploy and function correctly. Navigate to the **Settings** tab, and
+under the heading **Config Vars**, select **Reveal Config Vars,** and add the
+following variables:
+
+-   AWS_ACCESS_KEY_ID
+-   AWS_SECRET_ACCESS_KEY
+    -   These keys can be obtained by creating an [S3
+        Bucket](https://aws.amazon.com/s3/) on AWS.
+-   DATABASE_URL
+    -   This can be obtained by viewing your PostreSQL database within your
+        [Heroku Dashboard](https://dashboard.heroku.com/), and accessing the URI
+        under Settings Database Credentials.
+-   DJANGO_SECRET_KEY
+    -   A random sequence of characters, required for maintaining session
+        security in Flask. One method of obtaining a Secret Key is through
+        [RandomKeygen](https://randomkeygen.com/).
+-   DOMAIN_URL
+    -   The URL of the hosted project (i.e https://cirpg.herokuapp.com/)
+-   EMAIL_HOST_PASS
+-   EMAIL_HOST_USER
+    -   The email address and app password for designated email account.
+-   STRIPE_PRICE_ID
+-   STRIPE_PUBLISHABLE_KEY
+-   STRIPE_SECRET_KEY
+-   STRIPE_WH_SECRET
+    -   Create a [Stripe](https://stripe.com/en-gb) account.
+    -   Set up a one-off payment [Stripe
+        Product](https://stripe.com/docs/billing/prices-guide), and set the
+        resultant ID to the STRIPE_PRICE_ID.
+    -   In developer settings, under API Keys, obtain the Publishable and Secret
+        Key.
+    -   In developer settings, under Webhooks, add an endpoint as:
+        -   DOMAIN_URL+premium/webhook
+        -   Set the WH_SECRET as the Signing Secret generated as a result.
+-   USE_AWS
+    -   Set as True.
+
+### Database Setup Stage 2
+
+-   Once the PostreSQL add-on has been set up, environment variables have been
+    added and the project has been deployed, open the **Heroku Terminal** and
+    execute the following lines of code:
+
+> `heroku run python manage.py migrate`
+
+> `heroku run python manage.py loaddata codex.json`
+
+-   This will migrate the databases and pre-populate the Codex with the required
+    immutable gameplay content.
+
+## Running this project from locally
+
+### Running this project locally
+
+#### Cloning the Repository
+
+1.  Visit the project’s [GitHub Repository](https://github.com/BAK2K3/CIRPG).
+2.  Click the "Code" dropdown box above the repository's file explorer.
+3.  Under the "Clone" heading, click the "HTTPS" sub-heading.
+4.  Click the clipboard icon, or manually copy the text presented:
+    `https://github.com/BAK2K3/CIRPG.git`
+5.  Open your preferred IDE (VSCode, Atom, PyCharm, etc).
+6.  Ensure your IDE has support for Git, or has the relevant Git extension.
+7.  Open the terminal, and create a directory where you would like the
+    Repository to be stored.
+8.  Type git clone and paste the previously copied text
+    (`https://github.com/BAK2K3/CIRPG.git`) and press enter.
+    -   If you would like to clone only the dev branch, please type git clone -b
+        dev before the previously copied link to the repository.
+9.  The Repository will then be cloned to your selected directory.
+
+#### Manually Downloading the Repository
+
+1.  Visit the project’s [GitHub Repository](https://github.com/BAK2K3/CIRPG).
+    -   Ensure you have selected the appropriate branch.
+2.  Click the "Code" dropdown box above the repository's file explorer.
+3.  Click the "Download ZIP" option; this will download a copy of the selected
+    branch's repository as a zip file.
+4.  Locate the ZIP file downloaded to your computer, and extract the ZIP to a
+    designated folder which you would like the repository to be stored.
+
+#### Opening the Repository
+
+1.  Open your preferred IDE (VSCode, Atom, PyCharm, etc).
+2.  Navigate to the chosen directory where the Repository was Cloned/Extracted.
+3.  **Optional:** Create a new Python [Virtual
+    Environment](https://docs.python.org/3/tutorial/venv.html)
+4.  Type `pip install requirements.txt` to install all the required packages.
+    -   If you intend to further develop the project, please use
+        `requirements-dev.txt` as it includes additional packages specifically
+        intended for a development environment, however, please do not use this
+        for production.
+5.  Type ` python manage.py migrate` in the terminal to migrate the database.
+6.  Type `python manage.py loaddata codex.json` in the terminal to set up the
+    immutable Codex dictionary.
+7.  You will now be hosting the repository from your IDE.
+
+### Environment Variables
+
+-   When running this project locally, the **Environment Variables** must be set
+    in order for it to function as intended.
+-   If using VSCode, this can be done by creating a new file called
+    `launch.json` within the project’s `.vscode` folder, once the project
+    has been cloned/downloaded:
+
+```
+{
+"version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Django",
+            "type": "python",
+            "request": "launch",
+            "program": "\${workspaceFolder}\\manage.py",
+            "args": [
+                "runserver",
+                ],
+            "django": true,
+            "env": {
+            "DJANGO_SECRET_KEY": "\<variable\>",
+            "DEVELOPMENT": "Yes",
+            "STRIPE_PUBLISHABLE_KEY": "\<variable\>",
+            "STRIPE_SECRET_KEY": "\<variable\>",
+            "STRIPE_PRICE_ID": "\<variable\>",
+            "STRIPE_WH_SECRET": "\<variable\>",
+            "DOMAIN_URL": "\<variable\>",
+            },
+        }
+    ]
+}
+```
+
+-   Within this file, declare the environment variables described previously,
+    replacing the \<variable\> with the required variables.
+-   Please note that using a local/development environment may use:
+    -   `DEVELOPMENT: “Yes”`
+-   However, it’s important to note that in Development mode, Email/Key and
+    USE_AWS are not required.
+-   It’s important to note that in order to run the Django server utilising the
+    aforementioned Environment Variables, the program must be run in **debug
+    mode,** selecting the customised launch Json from the previous step:
+
+![Deployment - Debug](https://res.cloudinary.com/bak2k3/image/upload/v1628878123/CIRPG/Deployment_-_Debug_o0vttu.jpg)
