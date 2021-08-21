@@ -24,9 +24,10 @@ View the deployed site on [Heroku](https://cirpg.herokuapp.com/).
 > 6.  [Testing](#testing)
 > 7.  [Deployment](#deployment)
 > 8.  [Credits](#credits)
->     1.  [Content](#content)
->     2.  [Media](#media)
->     3.  [Code](#code)
+>     1.  [Readme](#readme)
+>     2.  [Content](#content)
+>     3.  [Media](#media)
+>     4.  [Code](#code)
 > 9.  [Acknowledgements](#acknowledgements)
 > 10.  [Disclaimer](#disclaimer)
 
@@ -1462,6 +1463,13 @@ for data storage, and this is managed via
 
 ---
 
+# Testing
+
+Testing documentation, processes, and outcomes can be found under
+[TESTING.md](TESTING.md).
+
+---
+
 # Deployment
 
 This project has two branches:
@@ -1659,3 +1667,162 @@ following variables:
     mode,** selecting the customised launch Json from the previous step:
 
 ![Deployment - Debug](https://res.cloudinary.com/bak2k3/image/upload/v1628878123/CIRPG/Deployment_-_Debug_o0vttu.jpg)
+
+---
+
+# Credits
+
+## Readme
+
+-   Additional Research was conducted via
+    [Invision](https://www.invisionapp.com/design-defined/interaction-design/)
+    with regards to Interaction Design.
+
+## Content
+
+-   All concepts were original, including gameplay logic.
+-   All instructional and navigational text on the site was self-written.
+-   The names of Codex Entries were self-written, heavily inspired by Dungeons
+    and Dragons [Races](https://www.dndbeyond.com/races),
+    [Equipment](https://www.dndbeyond.com/equipment), and
+    [Monsters](https://www.dndbeyond.com/monsters).
+-   All stats for Codex Entries were devised and calculated manually. The
+    original Excel file used to balance stats can be found here.
+
+## Media
+
+-   Codex Hero/Enemy Art was commissioned by
+    [REXARD](https://graphicriver.net/item/monsters-avatar-icons/19842922?s_rank=68).
+-   Codex Weapon Art was commissioned by
+    [combo21](https://graphicriver.net/item/weapons-icons-pack/19098995?s_rank=4).
+
+## Code
+
+-   CSS: Code Snipped taken from
+    [CSS-Tricks](https://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/)
+    which produces a “grow on hover” effect.
+-   CSS: [ColorSpace](https://mycolor.space/) was used to generate a background
+    colour gradient.
+-   HTML/CSS/JS: Code for Back to Top button was original devised from Code
+    Institute’s Boutique Ado project, with additional modifications inspired by
+    [moderncss](https://moderncss.dev/pure-css-smooth-scroll-back-to-top/), and
+    manual modifications to suit the style and content of the relevant pages.
+-   HTML/CSS/JS: The Bootstrap
+    [documentation](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+    was extensively utilised to implement various features of the framework.
+-   HTML/CSS: Border Shadows were generated from both
+    [html-css-js](https://html-css-js.com/css/generator/box-shadow/) and
+    [neomorphism](https://neumorphism.io/) before being manually modified to
+    suit the project’s style.
+-   HTML/CSS: Code extract taken from
+    [StackOverflow](https://stackoverflow.com/questions/23226888/horizontal-list-items-fit-to-100-with-even-spacing/23226961)
+    to evenly space horizontal list items, and modified to suit the positioning
+    and layout of the project accordingly.
+-   HTML/CSS: Code extract taken from [UI Snippets](https://ui-snippets.dev/)
+    for underline on hover effect used for links and buttons.
+-   HTML/CSS: Code extract taken from
+    [W3Bits](https://w3bits.com/animated-menu-icon-css/) and modified to create
+    an animated Nav Menu Icon.
+-   HTML/CSS: Code for creating a glowing effect around a container was inspired
+    by this
+    [StackOverflow](https://stackoverflow.com/questions/5670879/css-html-create-a-glowing-border-around-an-input-field)
+    post.
+-   HTML/CSS: Code for creating a pulsing button was inspired by [Florin
+    Pop](https://www.florin-pop.com/blog/2019/03/css-pulse-effect/).
+-   HTML/CSS: Code snippet taken from
+    [StackOverflow](https://stackoverflow.com/questions/12937470/twitter-bootstrap-center-text-on-progress-bar)
+    and modified to overlay and centre text on a Bootstrap 5 progress bar.
+-   HTML/CSS: General guidance on how to overlay test on an image/container was
+    obtained from [Tutorial
+    Republic](https://www.tutorialrepublic.com/faq/how-to-position-text-over-an-image-using-css.php).
+-   JavaScript: Code extract taken from
+    [StackOverflow](https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep)
+    to simulate a synchronous “sleep” function to pause scripts. Additional
+    general guidance on the concept of asynchronous/synchronous delays in
+    JavaScript was obtained from [Praveen Kumar Purushothaman’s
+    blog](https://blog.praveen.science/right-way-of-delaying-execution-synchronously-in-javascript-without-using-loops-or-timeouts/).
+-   JavaScript: Codex extract taken from
+    [StackOverflow](https://stackoverflow.com/questions/5629684/how-can-i-check-if-an-element-exists-in-the-visible-dom)
+    to programmatically determine whether a HTML element exists in the DOM.
+-   JavaScript: General guidance on JavaScript Syntax was obtained from [MDN Web
+    Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+-   Python/JS: Two tutorials from testdriven.io were followed to implement
+    Stripe Checkout with Django ([Tutorial
+    One](https://testdriven.io/blog/django-stripe-tutorial/) – [Tutorial
+    Two](https://testdriven.io/blog/django-stripe-subscriptions/)), along with
+    the [Official Stripe Checkout
+    Documentation](https://stripe.com/docs/payments/checkout) for additional
+    customisation.
+-   Python: Code extract taken from Code Institute’s Boutique-Ado project for
+    creating a
+    [CustomClearableFileInput](https://github.com/BAK2K3/CIRPG/blob/dbaf8c009d06451828d8c65d6baf7d7be919b029/codex/widgets.py#L5),
+    with the associated [custom
+    html](https://github.com/BAK2K3/CIRPG/blob/main/codex/templates/codex/custom_widget_templates/custom_clearable_file_input.html)
+    being heavily customised.
+-   Python: Code extract taken from
+    [StackOverflow](https://stackoverflow.com/questions/1107737/numeric-for-loop-in-django-templates)
+    to create a for-in-range loop based on a single integer.
+-   Python: General guidance on Django Class Based Views was obtained from
+    [CCBV](https://ccbv.co.uk/).
+-   Python: General guidance on how to create custom Querysets and Model
+    Managers obtained from
+    [Audiolion](https://audiolion.github.io/django/2016/12/03/models-and-managers-part-ii.html).
+-   Python: General guidance on how to effectively utilise UserPassesTestMixin
+    for Django’s DeleteView was obtained from
+    [StackOverflow](https://stackoverflow.com/questions/5531258/example-of-django-class-based-deleteview).
+-   Python: General guidance on how to efficiently obtain a random DB entry from
+    Django Models was obtained from
+    [StackOverflow](https://stackoverflow.com/questions/1731346/how-to-get-two-random-records-with-django/6405601#6405601).
+-   Python: General guidance on how to extract a pk from a hidden post form for
+    deleting a DB entry was obtained from
+    [StackOverflow](https://stackoverflow.com/questions/53825915/django-deleteview-without-slug-and-via-post).
+-   Python: General guidance on how to implement Choices within Django Models
+    was obtained from
+    [StackOverflow](https://stackoverflow.com/questions/6301741/django-integerfield-with-choice-options-how-to-create-0-10-integer-options)
+    and the [Django
+    Documentation](https://docs.djangoproject.com/en/3.2/ref/models/fields/).
+-   Python: General guidance on how to import font files into Django was
+    obtained from
+    [StackOverflow](https://stackoverflow.com/questions/21346045/django-new-fonts).
+-   Python: General guidance on how to Log in to Django-Allauth for Django Unit
+    Tests was obtained from
+    [StackOverflow](https://stackoverflow.com/questions/27841101/can-not-log-in-with-unit-test-in-django-allauth).
+-   Python: General guidance on how to Redirect using Class Based Views in
+    Django was obtained from
+    [StackOverflow](https://stackoverflow.com/questions/5433172/how-to-redirect-on-conditions-with-class-based-views-in-django-1-3).
+-   Python: General guidance on how to test AJAX/Json Views in Django was
+    obtained from
+    [StackOverflow](https://stackoverflow.com/questions/5531258/example-of-django-class-based-deleteview).
+    Guidance on how to decode the subsequent json responses was also obtained
+    from
+    [StackOverflow](https://stackoverflow.com/questions/27472663/how-to-use-djangos-assertjsonequal-to-verify-response-of-view-returning-jsonres).
+-   Python: Guidance on how to implement a custom template filter using multiple
+    parameters was obtained from
+    [StackOverflow](https://stackoverflow.com/questions/420703/how-do-i-add-multiple-arguments-to-my-custom-template-filter-in-a-django-templat).
+-   Python: The Django [documentation](https://docs.djangoproject.com/en/3.2/)
+    was extensively utilised to learn Class Based Views, and to implement
+    various other features of the framework.
+
+---
+
+# Acknowledgements
+
+-   The concept for this project was devised from my unapologetic, and
+    questionably unhealthy, obsession for games; the ultimate goal was to
+    produce a game that I would want to play myself. This has been a project
+    that has been in the back of my mind for many years, and I’m excited that
+    I’ve finally gained the knowledge and experience to allow this project to
+    finally come to fruition.
+-   Thank you to my wife, for her relentless patience and support.
+-   Thank you to my mentor, Dick Vlaanderen, for his encouragement and guidance.
+-   Thank you to [Daisy McGirr](https://github.com/Daisy-McG) for the sheer
+    amount of *testing* she undertook on the project.
+-   Thank you to [Naoise Gaffney](https://github.com/NaoiseGaffney) for the huge
+    amount of user testing he performed for me.
+
+---
+
+# Disclaimer
+
+This website is for educational purposes only; the project is not intended for
+profited and therefore the Stripe account will remain in Test mode.
