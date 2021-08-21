@@ -1,3 +1,13 @@
+"""
+Leaderboard App - Models
+----------------
+
+Models for Leaderboard App.
+    - LeaderboardQuerySet
+    - LeaderboardManager
+    - Leaderboard
+"""
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
@@ -9,16 +19,17 @@ class LeaderboardQuerySet(models.QuerySet):
     Leaderboard Query Set
     -----------
 
-    Codex Query Set for all variants
+    Leaderboard Query Set for all variants
     of queries and their associated business
     logic.
 
-    custom_filter:
-        Used for filtering the full codex for any search
-        parameters or filters requested by the user.
+    sort_leaderboard:
+        Used for sorting the Leaderboard entry in order
+        of descending score.
     """
 
     def sort_leaderboard(self):
+        """Sorts query by score in descending order."""
         return self.order_by("-score")
 
 
@@ -29,12 +40,25 @@ class LeaderboardManager(models.Manager):
 
     Leaderboard Manager for calling the custom
     Leaderboard Query Sets.
+
+    get_queryset:
+        Overrides the default Model Manager Get Queryset
+        to utilise the LeaderboardQuerySet.
+
+    sort_leaderboard:
+        Calls the sort_leaderboard queryset.
+
     """
 
     def get_queryset(self):
+        """
+        Overrides the default Model Manager Get Queryset
+        to utilise the LeaderboardQuerySet.
+        """
         return LeaderboardQuerySet(self.model, using=self._db)
 
     def sort_leaderboard(self):
+        """Calls the sort_leaderboard queryset."""
         return self.get_queryset().sort_leaderboard()
 
 
@@ -48,6 +72,9 @@ class Leaderboard(models.Model):
     Score is calculated as follows:
 
     All stats combined + level + number of runs + xp.
+
+    Attributes
+    ----------
 
     user:
         Associated User
@@ -71,6 +98,19 @@ class Leaderboard(models.Model):
         Level of current weapon
     weapon_rarity:
         Rarity of current weapon
+
+    Methods
+    -------
+
+    active_char_to_leaderboard:
+        Creates a leaderboard entry and saves it to the database
+
+    calculate_score:
+        Calculates the score of an active player.
+
+    leaderboard_check:
+        Checks whether active character has earned a place on the scoreboard
+
     """
 
     class Meta:
@@ -177,6 +217,8 @@ class Leaderboard(models.Model):
         entry in the DB. If so, or if there are less than 10
         entries in the DB, the method calls the active_char_to_leaderboard
         method to store the active character and their score to the DB.
+
+        Returns Bool to confirm if score has been entered, and players score.
         """
 
         current_leaderboard = cls.objects.sort_leaderboard()
