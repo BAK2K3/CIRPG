@@ -1,3 +1,10 @@
+"""
+Profiles App - Contexts
+----------------
+
+Context implementation for Profiles App.
+"""
+
 from profiles.models import Profile
 
 
