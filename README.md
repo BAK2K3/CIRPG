@@ -359,12 +359,10 @@ engaging and retaining their attention for longer periods of time.
 The Navbar will be a persistent element that will allows users to navigate to
 any logical page (i.e any route the user is permitted to access manually).
 
-**Applicable User Stories**
-
+Applicable User Stories:
 -   1b, 2a, 2b, 2e, 3a, 4a, 4b, 4c, 5a, 6a
 
-**Applicable Functional Requirements**
-
+Applicable Functional Requirements:
 -   Simple, Intuitive, and Engaging Interface
 -   User Management
 -   Premium Content
@@ -373,8 +371,7 @@ any logical page (i.e any route the user is permitted to access manually).
 -   Character Creation
 -   Leaderboard
 
-**Navigational Routes**
-
+Navigational Routes:
 -   All logical pages
 
 #### Home 
@@ -382,41 +379,33 @@ any logical page (i.e any route the user is permitted to access manually).
 The home page is the initial landing page, and provides a brief overview of the
 project’s concept and the appropriate CTAs.
 
-**Applicable User Stories**
-
+Applicable User Stories:
 -   1a, 1b, 1c, 2a, 2b, 2e, 6a, 6b
 
-**Applicable Functional Requirements**
-
+Applicable Functional Requirements:
 -   Simple, Intuitive, and Engaging Interface
 -   User Management
 -   Codex Overview
 
-**Navigational Routes**
-
+Navigational Routes:
 -   Codex (Pre-filtered)
 -   Log In (Logged Out)
 -   Register (Logged Out)
 -   Profile (Logged in)
-
-#### 
 
 #### Account Management
 
 Account Management will allow users to register, create an account, log in, log
 out, and reset their password.
 
-**Applicable User Stories**
-
+Applicable User Stories:
 -   1b, 2b, 2c
 
-**Applicable Functional Requirements**
-
+Applicable Functional Requirements:
 -   Simple, Intuitive, and Engaging Interface
 -   User Management
 
-**Navigational Routes**
-
+Navigational Routes:
 -   Non-logical account verification
 -   Profile
 -   Login Redirect
@@ -426,16 +415,13 @@ out, and reset their password.
 The help page will provide an in-depth breakdown of all content, gameplay
 mechanics, and guidance.
 
-**Applicable User Stories**
-
+Applicable User Stories:
 -   1b, 1c
 
-**Applicable Functional Requirements**
-
+Applicable Functional Requirements:
 -   Simple, Intuitive, and Engaging Interface
 
-**Navigational Routes**
-
+Navigational Routes:
 -   N/A
 
 #### Codex
@@ -444,17 +430,14 @@ The codex will allow free and paid users to view all content in the game, and
 sort/filter the content appropriately. Admins will be able to Create, Edit, and
 Delete content from this page.
 
-**Applicable User Stories**
-
+Applicable User Stories:
 -   1b, 6a, 6b, 6c, 6d, 6e
 
-**Applicable Functional Requirements**
-
+Applicable Functional Requirements:
 -   Simple, Intuitive, and Engaging Interface
 -   Codex
 
-**Navigational Routes**
-
+Navigational Routes:
 -   N/A
 
 #### Profile
@@ -465,12 +448,10 @@ their current character, proceed to a battle, or delete their current character.
 If a user does not have an activate character, they can create a new character
 from this page.
 
-**Applicable User Stories**
-
+Applicable User Stories:
 -   1b, 2e, 4a, 4b, 4c,
 
-**Applicable Functional Requirements**
-
+Applicable Functional Requirements:
 -   Simple, Intuitive, and Engaging Interface
 -   User Management
 -   Character Creation
@@ -478,8 +459,7 @@ from this page.
 -   Profile
 -   Character Progression and Lifecycle
 
-**Navigational Routes**
-
+Navigational Routes:
 -   Create
 -   Battle
 
@@ -487,22 +467,17 @@ from this page.
 
 The create page will allow users to create a new Character.
 
-**Applicable User Stories**
-
+Applicable User Stories:
 -   1b, 4a, 4b, 4g
 
-**Applicable Functional Requirements**
-
+Applicable Functional Requirements:
 -   Simple, Intuitive, and Engaging Interface
 -   Premium Content
 -   Character Creation
 -   Profile
 
-**Navigational Routes**
-
+Navigational Routes:
 -   Profile
-
-#### 
 
 #### Battle
 
@@ -513,20 +488,17 @@ the Post-Battle page, the content of which will change depending on multiple
 factors including whether the user won the battle, whether they are premium
 users, or whether their character levelled up.
 
-**Applicable User Stories**
-
+Applicable User Stories:
 -   1b, 2e, 3c, 4a, 4c, 4d, 4e, 4f, 4g, 5c, 5d
 
-**Applicable Functional Requirements**
-
+Applicable Functional Requirements:
 -   Simple, Intuitive, and Engaging Interface
 -   Premium Content
 -   Battle Mechanics
 -   Character Progression and Lifecycle
 -   Leaderboard
 
-**Navigational Routes**
-
+Navigational Routes:
 -   Profile
 -   Battle
 -   Create
@@ -539,18 +511,15 @@ The Leaderboard will show the top 10 scoring premium users. Contained within
 each entry will be detailed information surrounding that particular character’s
 run.
 
-**Applicable User Stories**
-
+Applicable User Stories:
 -   1b, 5a, 5b, 5c, 5d
 
-**Applicable Functional Requirements**
-
+Applicable Functional Requirements:
 -   Simple, Intuitive, and Engaging Interface
 -   Premium Content
 -   Leaderboard
 
-**Navigational Routes**
-
+Navigational Routes:
 -   N/A
 
 #### Premium
@@ -561,12 +530,10 @@ external Stripe website upon requesting to upgrade. The redirect back from the
 external page will change depending on whether the payment was successful or
 not.
 
-**Applicable User Stories**
-
+Applicable User Stories:
 -   1b, 3b, 3c
 
-**Applicable Functional Requirements**
-
+Applicable Functional Requirements:
 -   Simple, Intuitive, and Engaging Interface
 -   Premium Content
 -   Character Creation
@@ -575,11 +542,11 @@ not.
 -   Character Progression and Lifecycle
 -   Leaderboard
 
-**Navigational Routes**
-
+Navigational Routes:
 -   Non-logical Success/Abort routes.
 -   Profile
 -   Premium
+
 
 ### Interaction Design
 
