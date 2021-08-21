@@ -1,6 +1,15 @@
+"""
+Profiles App - Functions
+----------------
+
+Service layer functions for the Profile App:
+    - calculate_xp
+    - add_weapon
+"""
+
+from random import randint
 from codex.functions import stat_modifier
 from codex.models import Codex
-from random import randint
 
 
 def calculate_xp(character, enemy_level):
