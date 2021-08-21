@@ -1,4 +1,5 @@
 {% extends "account/base.html" %}
+{% load crispy_forms_tags %}
 
 {% load i18n %}
 
@@ -31,9 +32,9 @@
   {% endfor %}
 
 <div class="buttonHolder">
-      <button class="secondaryAction" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
-      <button class="secondaryAction" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
-      <button class="primaryAction" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
+      <button class="secondaryAction btn btn-dark custom-dark-btn" type="submit" name="action_primary" ><span class="button-effect">{% trans 'Make Primary' %}</span></button>
+      <button class="secondaryAction btn btn-dark custom-dark-btn" type="submit" name="action_send" ><span class="button-effect">{% trans 'Re-send Verification' %}</span></button>
+      <button class="primaryAction btn btn-dark custom-dark-btn" type="submit" name="action_remove" ><span class="button-effect">{% trans 'Remove' %}</span></button>
 </div>
 
 </fieldset>
@@ -49,8 +50,10 @@
 
     <form method="post" action="{% url 'account_email' %}" class="add_email">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button name="action_add" type="submit">{% trans "Add E-mail" %}</button>
+        {% for field in form %}
+        {{ field | as_crispy_field  }}
+        {% endfor %}
+        <button name="action_add" type="submit" class="btn btn-dark custom-dark-btn"><span class="button-effect">{% trans "Add E-mail" %}</span></button>
     </form>
   {% endif %}
 
