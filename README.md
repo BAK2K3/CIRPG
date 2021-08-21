@@ -951,3 +951,334 @@ The Attack button during battle when it is the user’s turn to act:
 Login and Register buttons on the Home page:
 
 ![Visual Effects – Pulse – Home](https://res.cloudinary.com/bak2k3/image/upload/v1628878125/CIRPG/Visual_Effects_-_Pulse_-_Home_ph8kme.jpg)
+
+---
+
+# Features
+
+## Existing Features
+
+### Profiles
+
+User management is handled through the external package
+[django-allauth](https://django-allauth.readthedocs.io/en/latest/), however when
+a user’s account is verified, a signal is sent to create a Profile for the
+associated user. Profiles act as a container for a user’s status, including
+information relating to premium access, active characters, and active battles.
+Profiles also accumulate a combination of informative statistics regarding a
+user’s overall time playing the game. Users can access a templated
+representation of their Profile at any time in order to view:
+
+-   The profile’s long-term statistics.
+-   Current character and weapon (If applicable)
+-   Current run progress (If applicable)
+
+### Codex
+
+The Codex, as described in the terminology, acts as a Library for all content
+within the game. The Codex’ Database stores the core information relating to
+each entry:
+
+-   Name
+-   Image
+-   Type (Enemy/Weapon/Hero)
+-   Tier (1-5)
+-   Base HP
+-   Base Attack
+-   Base Defence
+-   Base Speed
+-   Premium (Yes/No)
+
+Entries within the Codex Database are “Immutable” from a user’s perspective,
+however users with Superuser privileges are able to add, remove, and edit Codex
+entries.
+
+The Codex Database is utilised throughout nearly every feature, Django App, and
+Database model. However, the entries act as blueprints, whereby an instance’s
+base values are the foundation on which modifiers are applied before being
+stored in a separate database as active game content.
+
+For example, when a user enters a Battle, an appropriate enemy and random weapon
+is selected from the Codex. These entries are assigned levels, and rarity where
+appropriate, and the Base Stats of these Codex Entries are then modified (as
+discussed in a Character, Item, and Enemy Statistics), before being stored
+within the Active Enemy database in conjunction with their associated Foreign
+Keys:
+
+-   Weapon (Codex) Foreign Key
+-   Weapon Level
+-   Weapon Rarity
+-   Modified Weapon HP
+-   Modified Weapon Attack
+-   (…)
+-   Enemy Foreign Key
+-   Enemy Level
+-   Modified Enemy HP
+-   Modified Weapon Attack
+-   (…)
+
+
+<details>
+  <summary>View Codex Model Flow Diagram</summary>
+
+  
+![Features – Codex - Flow](https://res.cloudinary.com/bak2k3/image/upload/v1628878123/CIRPG/Features_-_Codex_-_Flow_eonjng.png)
+
+</details>
+
+
+Users can access a templated overview of all possible content in the game, and
+can filter and sort the content to meet their needs. This allows free users to
+see the potential content available as a premium user, and allows all players to
+see content available at later stages of progression.
+
+<details>
+  <summary>View Codex Template</summary>
+
+  
+![Features – Codex - Template](https://res.cloudinary.com/bak2k3/image/upload/v1628878124/CIRPG/Features_-_Codex_-_Template_djtmtc.png)
+
+</details>
+
+
+### Tiered Content
+
+Each item within the Codex has a Tier, between 1 and 5. This value is
+represented visually throughout the project as Stars, as per the Codex image
+above, or in the below image of the Battle view.
+
+<details>
+  <summary>View Tiers in Battle</summary>
+
+
+![Features – Tier - Battle](https://res.cloudinary.com/bak2k3/image/upload/v1628878124/CIRPG/Features_-_Tier_-_Battle_ugdfxq.png)
+
+</details>
+
+Tiers represent the level the user must be in order for that Tier of content to
+be available within any given run’s pool of content. Therefore, the pool of
+available content during a run will increase as the user’s level increases,
+rewarding users for progressing through the game.
+
+Higher Tiered entries have higher accumulative Base Stats than Lower Tiered
+entries, so as to logarithmically scale both progression and difficulty as a
+user progresses through the game.
+
+### Battle Mechanics
+
+The core gameplay element of the project surrounds the Battle Mechanics, whereby
+users engage in an [Active Time
+Battle](https://en.wikipedia.org/wiki/Turns,_rounds_and_time-keeping_systems_in_games#Active_Time_Battle)
+against a randomly generated enemy and weapon. The mechanics utilise the
+character’s and enemy’s respective combined stats as discussed in Content
+Requirements (Stats). The [gameplay
+loop](https://github.com/BAK2K3/CIRPG/blob/main/battle/static/battle/js/battle.js)
+was implemented through Object Oriented JavaScript.
+
+The battle progression is communicated through a HP Progress Bar and a Turn
+Meter Progress Bar:
+
+-   HP Bar: Shows respective Hit Points as a % within the progress bar.
+-   Turn Meter: Shows respective turn progress, as a % within the progress bar.
+
+In order to calculate turn progression, each turn the character’s and enemy’s
+speed (as a % of both speeds combined) is sequentially added to the Turn Meter.
+When either turn meter reaches or exceeds 100%, the respective unit takes a
+turn. Any excess % following a unit taking a turn is added back onto the Turn
+Meter.
+
+For example, the below illustration demonstrates how turn progression is
+calculated for a Character with 6 Speed, and an Enemy with 4 Speed:
+
+<details>
+  <summary>View Turn Progression Flow Chart</summary>
+
+![Features – Battle – Turn Progression](https://res.cloudinary.com/bak2k3/image/upload/v1628878124/CIRPG/Features_-_Battle_-_Turn_Progression_glcffd.jpg)
+
+</details>
+
+On a character’s turn, they have the ability to “Attack” or “Retreat”, giving
+users a simple interface to interact with. On the enemy’s turn, they
+automatically attack the character.
+
+-   Whether an attack hits or misses is determined by the opposing party’s
+    probability of evasion, calculated by the respective party’s defence divided
+    by their HP (capped at 75%).
+-   Players can retreat at any time, but will have to battle the same enemy
+    until the character or enemy loses. They can also retry the battle during
+    their turn, effectively resetting the battle.
+
+Each step of the battle is communicated to the user via text in the the Battle
+Log, which a user can scroll through at any time.
+
+### Character Progression and Lifecycle
+
+For each battle a character wins, they gain an amount of XP relative to their
+own level and their opponent’s level. If, following a character gaining XP, they
+level up, their stats will increase by a variable amount (see Statistics), and
+the next Tier of content will be made available within the pool of content.
+
+
+<details>
+  <summary>View Level Up Example</summary>
+
+![Features – Level Up](https://res.cloudinary.com/bak2k3/image/upload/v1628878124/CIRPG/Features_-_Level_Up_uqwr66.jpg)
+
+</details>
+
+The game will implement [permadeath](https://en.wikipedia.org/wiki/Permadeath),
+which means that when a character’s HP reduces to 0 during a battle, the
+character is removed from a user’s profile, all progression is lost, and a user
+must create a new character to play again. As such, when a user starts a new
+run, their character will start at level 1, and therefore the only content
+available in the pool of content will be Tier 1.
+
+### Post-Battle
+
+After each battle, the user is directed to a post-battle screen which displays
+the result of the battle. This screen dynamically presents content based on the
+following circumstances:
+
+-   **Win**: The user is presented with their current weapon, and a newly
+    generated weapon, which they can choose to keep or discard.
+-   **Win and Level Up:** Along with the new weapon, the user is presented with
+    their previous level stats and their new level stats.
+-   **Win and Max Level:** If a free user has reached the maximum level for free
+    users, they will be prompted to upgrade to Premium. A new item be presented
+    regardless.
+-   **Lose (free):** If the user is a free user, they will be prompted to
+    upgrade to premium to view their score and access the Leaderboard.
+-   **Lose and Unsuccessful Leaderboard:** If the user is a premium user, but
+    have not reached the Leaderboard, their score is presented, and they are
+    prompted to start again.
+-   **Lose and Successful Leaderboard:** If the user is a premium user, and has
+    reached the Leaderboard, their score is presented, and they are prompted to
+    view the Leaderboard.
+
+### Character, Item, and Enemy Statistics
+
+All content other than the user’s initial playable character choice is subject
+to randomisation; this includes:
+
+-   The weapon a character is first allocated on character creation.
+-   Enemy generation, including level and associated stats.
+-   Weapon generation, including level, rarity, and associated stats.
+-   Character stat progression on levelling up.
+
+This reduces repeated content, keeps said content exciting and dynamic, and
+contributes to making the game exciting, engaging, and enticing, and aims to
+make users want to return to the game.
+
+#### Rarity
+
+Every time a weapon is generated from the database, a rarity is calculated for
+the weapon. The rarity, as discussed in the below topic of stat modifiers,
+exponentially increases the stats of the associated weapon.
+
+There are 5 Rarities, and they are represented throughout the project through
+both text and colour. These rarities unlock progressively as a character’s level
+surpasses their numerical representation:
+
+1.  Common (White Outline)
+2.  Uncommon (White Fill)
+3.  Rare (Green)
+4.  Epic (Yellow)
+5.  Mythic (Red)
+
+Given the impact higher rarities have on weapons, the method of calculating a
+rarity is based on a multitude of factors, and is determined through a recursive
+algorithm which is demonstrated below:
+
+<details>
+  <summary>View Rarity Generator Flowchard</summary>
+
+![Features – Rarity Generator](https://res.cloudinary.com/bak2k3/image/upload/v1628878124/CIRPG/Features_-_Rarity_Generator_taxqb8.jpg)
+
+</details>
+
+#### Stat Modifiers
+
+Three main stat modifier algorithms have been implemented into the project, and
+while the in-depth analysis of these algorithms is beyond the scope of this
+documentation, a graphical overview has been provided to aid the understanding
+of their applications:
+
+1.  Character Stat Modification on Level Up [[Relevant
+    Code](https://github.com/BAK2K3/CIRPG/blob/5cfa9734f874ac8a6324aa9b2872b70b62d80a2a/profiles/functions.py#L6)]
+
+<details>
+  <summary>Character Level Up Flow Chart</summary>
+
+![Features - Character Stats - Level Up](https://res.cloudinary.com/bak2k3/image/upload/v1628878124/CIRPG/Features_-_Character_Stats_-_Level_Up_rb5mix.jpg)
+
+</details>
+
+2.  Enemy Stat Modification on Enemy Generation [[Relevant
+    Code](https://github.com/BAK2K3/CIRPG/blob/5cfa9734f874ac8a6324aa9b2872b70b62d80a2a/codex/models.py#L173)]
+
+
+<details>
+  <summary>Enemy Stat Generation Flow Chart</summary>
+
+![Features - Enemy Stats Generation](https://res.cloudinary.com/bak2k3/image/upload/v1628878124/CIRPG/Features_-_Enemy_Stats_Generation_ojnrub.jpg)
+
+</details>
+
+3.  Weapon Stat Modification on Weapon Generation [[Relevant
+    Code](https://github.com/BAK2K3/CIRPG/blob/5cfa9734f874ac8a6324aa9b2872b70b62d80a2a/codex/models.py#L123)]
+
+<details>
+  <summary>Enemy Stat Generation Flow Chart</summary>
+
+![Features - Weapon Stat Generation](https://res.cloudinary.com/bak2k3/image/upload/v1628878125/CIRPG/Features_-_Weapon_Stat_Generation_eizlco.jpg)
+</details>
+
+### Leaderboard
+
+When a premium user’s character is defeated, a [score is
+calculated](https://github.com/BAK2K3/CIRPG/blob/5cfa9734f874ac8a6324aa9b2872b70b62d80a2a/leaderboard/models.py#L147)
+based on their current level, number of enemies defeated, and combined
+associated stats. This score is presented to the user, and if in the top 10
+scores, will be added to the Leaderboard, replacing the lowest scoring entry.
+Information is stored regarding the character’s stats and weapon stats and the
+time of defeat, so other users can view these details amidst the Leaderboard
+entries. By having a competitively sized Leaderboard, with informative content,
+this gives users insight into other user’s progression, and entices them to
+compete to gain a space on the Leaderboard.
+
+
+<details>
+  <summary>View Leaderboard Example</summary>
+
+![Features – Leaderboard](https://res.cloudinary.com/bak2k3/image/upload/v1628878124/CIRPG/Features_-_Leaderboard_bhuk5g.jpg)
+
+</details>
+
+### Premium Content
+
+Content is paywalled for free users via various methods:
+
+-   Profiles and Codex entries contain a *paid* attribute, which is used as a
+    filtration method when generating content from the game. As such, free users
+    do not have access to content which has a *paid* flag, substantially
+    reducing the possible content within the game.
+-   Free user’s character levels are capped at Level 2; given character levels
+    are tied to Codex Tiers, this prevents free user’s from accessing content
+    higher than Tier 2, and as such reduces their accessible content by over
+    80%.
+-   In addition to the Tiered content, item rarity is also tied to user Level.
+    As such, free user’s will only be able to generate items of rarity Uncommon
+    or below. This reduces the potential power of free users’ weapon.
+-   While any user can view the Leaderboard, scores are not calculated (and
+    therefore checked against/submitted to the existing Leaderboard) unless
+    their profile contains the paid flag.
+
+### Responsive Layout and Design
+
+Using Bootstrap, the project has been designed to be fully responsive on all
+viewports, ensuring all functionality is maintained from [320px
+width](https://screensiz.es/) and up. The targeted media queries are based on
+Bootstrap’s [predefined
+widths](https://getbootstrap.com/docs/5.0/layout/breakpoints/). All features
+have been developed with all viewports in mind, therefore each page has had an
+adaptive and dynamic structure implemented.
