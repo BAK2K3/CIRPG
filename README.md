@@ -687,7 +687,7 @@ are downloaded to be viewed in the browser, rather than using GitHub’s native 
 -   How To Wireframe: [Link](documentation/how-to-wireframe.pdf)
 -   Login/Register Wireframe: [Link](documentation/login-register-wireframe.pdf)
 -   Codex Wireframe: [Link](documentation/codex-wireframe.pdf)
--   Upgrade Wireframe: [Link](documentation/upgrade-wireframe.pdf)
+-   Premium Wireframe: [Link](documentation/premium-wireframe.pdf)
 -   Create Wireframe: [Link](documentation/create-wireframe.pdf)
 -   Profile Wireframe: [Link](documentation/profile-wireframe.pdf)
 -   Battle Wireframe: [Link](documentation/battle-wireframe.pdf)
