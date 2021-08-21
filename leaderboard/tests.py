@@ -30,9 +30,9 @@ class TestViews(TestCase):
         """ Create test login user and create Profile entry"""
         username = "Ben"
         pswd = "Kavanagh" # noqa
-        User = get_user_model()
-        self.user = User.objects.create_user(username=username,
-                                             password=pswd)
+        user_model = get_user_model()
+        self.user = user_model.objects.create_user(username=username,
+                                                   password=pswd)
         logged_in = self.client.login(username=username, password=pswd)
 
         # Add User to Profile
