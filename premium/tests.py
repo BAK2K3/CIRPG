@@ -5,24 +5,37 @@ Premium App - Tests
 Test cases for Premium App Routing
 """
 
+import json
 from django.test import TestCase
 from django.conf import settings
-import json
-from profiles.models import Profile
 from django.contrib.auth import get_user_model
+from profiles.models import Profile
 
 
 class TestViews(TestCase):
+    """
+    Unit Tests for Premium App Views
+
+    setUp - Create test login user and create Profile entry
+
+    UT16 - Test premium page renders correct page
+    UT17 - Test AJAX config view returns stripe public key
+    UT18 - Test AJAX checkout session view returns sessionId
+    UT19 - Test AJAX checkout returns error for premium users
+    UT20 - Test successful payment page renders correct page
+    UT21 - Test process invalid session_id redirects to premium
+    UT22 - Test aborted payment page renders correct page
+    """
 
     def setUp(self):
         """ Create test login user and create Profile entry"""
         username = "Ben"
         pswd = "Kavanagh" # noqa
         email = "ben@ben.com"
-        User = get_user_model()
-        self.user = User.objects.create_user(username=username,
-                                             password=pswd,
-                                             email=email)
+        user_model = get_user_model()
+        self.user = user_model.objects.create_user(username=username,
+                                                   password=pswd,
+                                                   email=email)
         logged_in = self.client.login(username=username, password=pswd)
 
         # Add User to Profile
