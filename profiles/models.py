@@ -1,3 +1,14 @@
+"""
+Profiles App - Models
+----------------
+
+Models for Profile App.
+    - Profile
+    - Active Character
+"""
+
+# pylint: disable=E5142
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
@@ -9,14 +20,27 @@ class Profile(models.Model):
     Profile Model
     -----------
 
-    Model for all User Profiles:
+    Model for User Profiles.
 
-    user = Link to User model
-    paid = Bool to represent paid user
-    active_char = Bool to represent whether has an active char
-    active_battle = Bool to represent whether user is in a battle
-    total_runs = Int to represent total game attempts
-    longest_run = Int to represent single high score
+    Attributes:
+    -----------
+    user:
+        Link to User model
+    paid:
+        Bool to represent paid user
+    active_char:
+        Bool to represent whether has an active char
+    active_battle:
+        Bool to represent whether user is in a battle
+    total_runs:
+        Int to represent total game attempts
+    longest_run:
+        Int to represent single high score
+
+    Methods:
+    -------
+    remove_active_char:
+        Method for updating a profile to remove an active character.
 
     """
 
@@ -32,6 +56,10 @@ class Profile(models.Model):
 
     @classmethod
     def remove_active_char(cls, user):
+        """
+        Method for updating a profile to remove
+        an active character.
+        """
         current_user = cls.objects.get(user=user)
         current_user.active_char = False
         current_user.active_battle = False
@@ -48,6 +76,8 @@ class ActiveCharacter(models.Model):
     These can be removed by the user,
     or when a character dies.
 
+    Attributes:
+    -----------
     user:
         Associated User
     current_level:
@@ -69,12 +99,17 @@ class ActiveCharacter(models.Model):
     weapon_rarity:
         Rarity of current weapon
 
+    Methods
+    -------
+    create_character:
+        Class method for creating a new active character.
     """
 
     class Meta:
         verbose_name_plural = 'Active Characters'
 
     class Rarity(models.TextChoices):
+        """Verbose Rarity to integer Text Choices for model"""
         COMMON = 1, _('Common')
         UNCOMMON = 2, _('Uncommon')
         RARE = 3, _('Rare')
