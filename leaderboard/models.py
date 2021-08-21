@@ -119,6 +119,7 @@ class Leaderboard(models.Model):
         verbose_name_plural = 'Leaderboard'
 
     class Rarity(models.TextChoices):
+        """Rarity Text Choices for model Type field"""
         COMMON = 1, _('Common')
         UNCOMMON = 2, _('Uncommon')
         RARE = 3, _('Rare')
@@ -229,10 +230,8 @@ class Leaderboard(models.Model):
         if len(current_leaderboard) >= 10:
             if current_leaderboard[9].score > score:
                 return (False, score)
-            else:
-                current_leaderboard[9].delete()
-                cls.active_char_to_leaderboard(active_char, score)
-                return (True, score)
-        else:
+            current_leaderboard[9].delete()
             cls.active_char_to_leaderboard(active_char, score)
             return (True, score)
+        cls.active_char_to_leaderboard(active_char, score)
+        return (True, score)
