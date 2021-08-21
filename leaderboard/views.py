@@ -1,3 +1,13 @@
+"""
+Leaderboard App - Views
+----------------
+
+Views for Leaderboard App.
+    - LeaderboardView
+"""
+
+# pylint: disable=r0901
+
 from django.views.generic import ListView
 from .models import Leaderboard
 
@@ -12,7 +22,6 @@ class LeaderboardView(ListView):
     template_name = 'leaderboard/leaderboard.html'
     context_object_name = 'leaderboard'
 
-    # Override get_queryset
     def get_queryset(self):
-        # Obtain sorted leaderboard
+        """Override get_queryset to sort the leaderboard entries"""
         return self.model.objects.sort_leaderboard()
