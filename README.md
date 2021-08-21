@@ -1335,3 +1335,130 @@ sound design, a future content update would see the inclusion of atmospheric
 music sound effects. This was a “like-to-have” feature, but unfortunately was
 not considered further following the initial planning stages due to the scope of
 the project and limited timescales available.
+
+---
+
+
+# Technologies Used
+
+## Development
+
+-   The project was written and tested in
+    [VSCode](https://code.visualstudio.com/).
+-   The project was debugged using [Google
+    Chrome](https://www.google.com/intl/en_uk/chrome/) [Dev
+    Tools](https://developers.google.com/web/tools/chrome-devtools).
+-   The project uses [GitHub](https://github.com/) for hosting source code and
+    utilising git version control.
+
+## Design
+
+-   The project’s Logos were designed using [GIMP](https://www.gimp.org/).
+-   The project utilised [metatags.io](https://metatags.io/) for generating
+    Social Media previews.
+-   The project's wireframes were designed in
+    [Balsamiq](https://balsamiq.com/wireframes/).
+-   The project utilised [favicon.io](https://favicon.io/favicon-converter/) to
+    convert the Favicon to the appropriate format.
+-   The project’s images were compressed using [TinyPNG](https://tinypng.com/).
+-   The project’s Flowcharts within the documentation were created using [Lucid
+    App](https://lucid.app/).
+
+## HTML/CSS
+
+HTML5 and CSS3 are used throughout this project.
+
+-   The project uses [Bootstrap](https://getbootstrap.com/) 5, a 'Mobile First'
+    HTML/CSS Framework for simple and intuitive responsive web design.
+-   The project uses [FontAwesome](https://fontawesome.com/) v5.15.3, a free
+    icon-set/toolkit for web development.
+-   The project uses [Google Fonts](https://fonts.google.com/) for typography.
+-   The project's cross-browser compatibility was enhanced using
+    [Autoprefixer.io](https://autoprefixer.github.io/).
+
+## Python
+
+This project uses Python version 3.9.5 for back-end infrastructure and data
+pre-processing.
+
+**Packages**
+
+| **Name**                                                                            | **Purpose**                   | **Environment** |
+|-------------------------------------------------------------------------------------|-------------------------------|-----------------|
+| [Django](https://www.djangoproject.com/)                                            | Framework                     | Both            |
+| [Flake-8](https://flake8.pycqa.org/en/latest/)                                      | Syntax                        | Dev             |
+| [Bandit](https://pypi.org/project/bandit/)                                          | Syntax                        | Dev             |
+| [Pylint](https://pypi.org/project/pylint/)                                          | Syntax                        | Dev             |
+| [Pylint-django](https://pypi.org/project/pylint-django/)                            | Syntax                        | Dev             |
+| [Autopep8](https://pypi.org/project/autopep8/)                                      | Syntax                        | Dev             |
+| [Django-allauth](https://django-allauth.readthedocs.io/en/latest/installation.html) | Django Authentication         | Both            |
+| [Pillow](https://pillow.readthedocs.io/en/stable/)                                  | Image Tool                    | Both            |
+| [Stripe](https://pypi.org/project/stripe/)                                          | Payment Services              | Both            |
+| [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)         | AWS Management                | Both            |
+| [Django-storages](https://django-storages.readthedocs.io/en/latest/)                | Custom Storage Backends       | Both            |
+| [gunicorn](https://gunicorn.org/)                                                   | WSGI HTTP Server              | Both            |
+| [Django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/)        | Front End Bootstrap rendering | Both            |
+| [Crispy-bootstrap5](https://github.com/django-crispy-forms/crispy-bootstrap5)       | Bootstrap 5 Template Pack     | Both            |
+| [Dj-database-url](https://pypi.org/project/dj-database-url/)                        | Database Configuration        | Both            |
+| [Psycopg2-binary](https://pypi.org/project/psycopg2-binary/)                        | PostreSQL DB Adapter          | Both            |
+| [Coverage](https://pypi.org/project/coverage/)                                      | Test Coverage                 | Dev             |
+
+For a full list of these packages’ dependencies, please see:
+
+-   requirements.txt for the production dependencies.
+-   requirements-dev.txt for the development dependencies.
+
+## JavaScript
+
+This project uses JavaScript ES6.
+
+-   The project uses [jQuery](https://jquery.com/), a JavaScript library, for
+    DOM Traversal, HTML Manipulation, and Event Handling.
+-   The project uses the [Stripe.js](https://stripe.com/docs/js) library for
+    handling Stripe payment objects.
+
+## Testing
+
+-   The project's HTML was validated using [W3C HTML Markup
+    Validator](https://validator.w3.org/).
+-   The project's CSS was validated using [W3C Jigsaw CSS
+    Validator](https://jigsaw.w3.org/css-validator/).
+-   The project's JS was validated using [JSHint](https://jshint.com/).
+-   The project’s Python was validated using [Pylint](https://pylint.org/).
+-   The project's accessibility was assessed via WebAim's
+    [W.A.V.E](https://wave.webaim.org/) and [Contrast
+    Checker](https://webaim.org/resources/contrastchecker/) and Google Chrome's
+    [Lighthouse](https://developers.google.com/web/tools/lighthouse).
+-   The project used Toptal's
+    [Colorfilter](https://www.toptal.com/designers/colorfilter/) to assess how
+    colour-blind-friendly the site was.
+-   The project was Unit Tested using django’s [testing
+    tools.](https://docs.djangoproject.com/en/3.2/topics/testing/tools/)
+
+## Hosting
+
+-   The project uses [jsDelivr](https://www.jsdelivr.com/),
+    [Cloudflare](https://www.cloudflare.com/en-gb/) as various Content Delivery
+    Networks for packages and libraries.
+-   The images used in the project's README and TESTING documentation were
+    hosted and served through [Cloudinary](https://cloudinary.com/console).
+-   This project is hosted through [Heroku](https://www.heroku.com/what).
+-   This project’s images are hosted via [AWS S3](https://aws.amazon.com/s3/).
+
+## Database
+
+The project uses [PosteSQL](https://www.postgresql.org/), a relational Database,
+for data storage, and this is managed via
+[Heroku](https://www.heroku.com/postgres).
+
+-   The project’s Database Fixtures were initially designed in [Microsoft
+    Excel](https://www.microsoft.com/en-gb/microsoft-365/excel).
+-   The project’s Excel Fixtures were then provisionally re-formatted to Json
+    using [Mr Data Converter](https://thdoan.github.io/mr-data-converter/),
+    before manually adjusting them within the IDE.
+-   The project’s DB Schema were designed in [SQLDBM](https://sqldbm.com/Home/).
+-   The project’s Final DB Schema was generated using
+    [DBVisualizer](https://www.dbvis.com/).
+
+---
+
