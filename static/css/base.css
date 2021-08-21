@@ -8,8 +8,8 @@
 /* https://stackoverflow.com/questions/21346045/django-new-fonts */
 @font-face {
     font-family: 'Mandhor';
-    src: url('../fonts/Mandhor.otf') format("opentype");
     font-display: swap;
+    src: url('../fonts/Mandhor.otf') format("opentype");
 }
 
 /* latin-ext */
