@@ -38,7 +38,7 @@
 
                                     <!-- Premium -->
                                     <div class="col-10 offset-1 col-xl-4 offset-xl-0 text-center">
-                                        <label for="premiumFilter" class="text-secondary">Premium Content</label>
+                                        <label for="premiumFilter">Premium Content</label>
                                         <select class="form-select" id="premiumFilter" name='premium' aria-label="Premium Filter">
                                             <option value="both" {% if premium is empty %}selected{% endif %}>Both</option>
                                             <option value="1" {% if premium == 1 %}selected{% endif %}>Premium</option>
@@ -48,8 +48,8 @@
                                     
                                     <!-- Type -->
                                     <div class="col-10 offset-1 col-xl-4 offset-xl-0 text-center">
-                                    <label for="typeFilter" class="text-secondary">Type</label>
-                                    <select class="form-select" id="typeFilter" name='type' aria-label="Premium Filter">
+                                    <label for="typeFilter">Type Filter</label>
+                                    <select class="form-select" id="typeFilter" name='type' aria-label="Type Filter">
                                         <option value="all" {% if not entry_type %}selected{% endif %}>All</option>
                                         <option value="enemy" {% if entry_type == "enemy" %}selected{% endif %}>Enemy</option>
                                         <option value="weapon"{% if entry_type == "weapon" %}selected{% endif %}>Weapon</option>
@@ -59,29 +59,32 @@
 
                                     <!-- Availability -->
                                     <div class="col-10 offset-1 col-xl-4 offset-xl-0 text-center">
-                                        <label for="typeFilter" class="text-secondary">Tier <span class="fa fa-star checked"></span></label>
-                                        <div class="checkbox-group" id="minLevelFilter">
-                                            <div class="form-check form-check-inline text-center">
-                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel1" value="1" {% if not levels or 1 in levels %}checked{% endif %}>
-                                                <label class="form-check-label" for="minLevel1">1</label>
+                                        <!-- <label for="minLevelFilter"></label> -->
+                                        <fieldset>
+                                            <legend class="text-center">Tier <span class="fa fa-star checked"></span></legend>
+                                            <div class="checkbox-group" id="minLevelFilter">
+                                                <div class="form-check form-check-inline text-center">
+                                                    <input class="form-check-input" type="checkbox" name="min_level" id="minLevel1" value="1" {% if not levels or 1 in levels %}checked{% endif %}>
+                                                    <label class="form-check-label" for="minLevel1">1</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" name="min_level" id="minLevel2" value="2" {% if not levels or 2 in levels %}checked{% endif %}>
+                                                    <label class="form-check-label" for="minLevel2">2</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" name="min_level" id="minLevel3" value="3" {% if not levels or 3 in levels %}checked{% endif %}>
+                                                    <label class="form-check-label" for="minLevel3">3</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" name="min_level" id="minLevel4" value="4" {% if not levels or 4 in levels %}checked{% endif %}>
+                                                    <label class="form-check-label" for="minLevel4">4</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" name="min_level" id="minLevel5" value="5" {% if not levels or 5 in levels %}checked{% endif %}>
+                                                    <label class="form-check-label" for="minLevel5">5</label>
+                                                </div>
                                             </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel2" value="2" {% if not levels or 2 in levels %}checked{% endif %}>
-                                                <label class="form-check-label" for="minLevel2">2</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel3" value="3" {% if not levels or 3 in levels %}checked{% endif %}>
-                                                <label class="form-check-label" for="minLevel3">3</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel4" value="4" {% if not levels or 4 in levels %}checked{% endif %}>
-                                                <label class="form-check-label" for="minLevel4">4</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="min_level" id="minLevel5" value="5" {% if not levels or 5 in levels %}checked{% endif %}>
-                                                <label class="form-check-label" for="minLevel5">5</label>
-                                            </div>
-                                        </div>
+                                        </fieldset>
                                     </div>
 
                                     <!-- Hidden Availability -->
@@ -89,7 +92,7 @@
 
                                     <!-- Sort By -->
                                     <div class="col-10 offset-1 col-xl-4 offset-xl-0 text-center">
-                                        <label for="sortBy" class="text-secondary">Sort By</label>
+                                        <label for="sortBy">Sort By</label>
                                         <select class="form-select" id="sortBy" name='sort' aria-label="Sort By">
                                             <option value="default" {% if sort_by == 'pk' %}selected{% endif %}>Default</option>
                                             <option value="name" {% if sort_by == "name" %}selected{% endif %}>Name</option>
@@ -103,7 +106,7 @@
 
                                     <!-- Sort Direction -->
                                     <div class="col-10 offset-1 col-xl-4 offset-xl-0 text-center">
-                                        <label for="direction" class="text-secondary">Direction</label>
+                                        <label for="direction">Direction</label>
                                         <select class="form-select" id="direction" name='direction' aria-label="Sort Direction">
                                             <option value="asc" {% if not sort_dir %}selected{% endif %}>Ascending</option>
                                             <option value="desc" {% if sort_dir == 'desc' %}selected{% endif %}>Descending</option>
