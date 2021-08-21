@@ -681,18 +681,18 @@ excited by the content.
 **Due to the resolution of the wireframe documents, it is recommended that these PDFs 
 are downloaded to be viewed in the browser, rather than using GitHub’s native PDF viewer.**
 
--   All Wireframes: [Link](.documentation/all-wireframes.pdf)
--   Navbar Wireframe: [Link](.documentation/navbar-wireframes.pdf)
--   Home Wireframe: [Link](.documentation/home-wireframes.pdf)
--   How To Wireframe: [Link](.documentation/how-to-wireframes.pdf)
--   Login/Register Wireframe: [Link](.documentation/login-register-wireframes.pdf)
--   Codex Wireframe: [Link](.documentation/codex-wireframes.pdf)
--   Upgrade Wireframe: [Link](.documentation/upgrade-wireframes.pdf)
--   Create Wireframe: [Link](.documentation/create-wireframes.pdf)
--   Profile Wireframe: [Link](.documentation/profile-wireframes.pdf)
--   Battle Wireframe: [Link](.documentation/battle-wireframes.pdf)
--   Post-Battle Wireframe: [Link](.documentation/post-battle-wireframes.pdf)
--   Leaderboard Wireframe: [Link](.documentation/leaderboard-wireframes.pdf)
+-   All Wireframes: [Link](documentation/all-wireframes.pdf)
+-   Navbar Wireframe: [Link](documentation/navbar-wireframes.pdf)
+-   Home Wireframe: [Link](documentation/home-wireframes.pdf)
+-   How To Wireframe: [Link](documentation/how-to-wireframes.pdf)
+-   Login/Register Wireframe: [Link](documentation/login-register-wireframes.pdf)
+-   Codex Wireframe: [Link](documentation/codex-wireframes.pdf)
+-   Upgrade Wireframe: [Link](documentation/upgrade-wireframes.pdf)
+-   Create Wireframe: [Link](documentation/create-wireframes.pdf)
+-   Profile Wireframe: [Link](documentation/profile-wireframes.pdf)
+-   Battle Wireframe: [Link](documentation/battle-wireframes.pdf)
+-   Post-Battle Wireframe: [Link](documentation/post-battle-wireframes.pdf)
+-   Leaderboard Wireframe: [Link](documentation/leaderboard-wireframes.pdf)
 
 ### Database
 
@@ -1418,7 +1418,7 @@ This project uses JavaScript ES6.
 -   The project uses the [Stripe.js](https://stripe.com/docs/js) library for
     handling Stripe payment objects.
 
-## Testing
+## Testing Technologies
 
 -   The project's HTML was validated using [W3C HTML Markup
     Validator](https://validator.w3.org/).
