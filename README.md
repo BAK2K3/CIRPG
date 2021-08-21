@@ -682,17 +682,17 @@ excited by the content.
 are downloaded to be viewed in the browser, rather than using GitHub’s native PDF viewer.**
 
 -   All Wireframes: [Link](documentation/all-wireframes.pdf)
--   Navbar Wireframe: [Link](documentation/navbar-wireframes.pdf)
--   Home Wireframe: [Link](documentation/home-wireframes.pdf)
--   How To Wireframe: [Link](documentation/how-to-wireframes.pdf)
--   Login/Register Wireframe: [Link](documentation/login-register-wireframes.pdf)
--   Codex Wireframe: [Link](documentation/codex-wireframes.pdf)
--   Upgrade Wireframe: [Link](documentation/upgrade-wireframes.pdf)
--   Create Wireframe: [Link](documentation/create-wireframes.pdf)
--   Profile Wireframe: [Link](documentation/profile-wireframes.pdf)
--   Battle Wireframe: [Link](documentation/battle-wireframes.pdf)
--   Post-Battle Wireframe: [Link](documentation/post-battle-wireframes.pdf)
--   Leaderboard Wireframe: [Link](documentation/leaderboard-wireframes.pdf)
+-   Navbar Wireframe: [Link](documentation/navbar-wireframe.pdf)
+-   Home Wireframe: [Link](documentation/home-wireframe.pdf)
+-   How To Wireframe: [Link](documentation/how-to-wireframe.pdf)
+-   Login/Register Wireframe: [Link](documentation/login-register-wireframe.pdf)
+-   Codex Wireframe: [Link](documentation/codex-wireframe.pdf)
+-   Upgrade Wireframe: [Link](documentation/upgrade-wireframe.pdf)
+-   Create Wireframe: [Link](documentation/create-wireframe.pdf)
+-   Profile Wireframe: [Link](documentation/profile-wireframe.pdf)
+-   Battle Wireframe: [Link](documentation/battle-wireframe.pdf)
+-   Post-Battle Wireframe: [Link](documentation/post-battle-wireframe.pdf)
+-   Leaderboard Wireframe: [Link](documentation/leaderboard-wireframe.pdf)
 
 ### Database
 
