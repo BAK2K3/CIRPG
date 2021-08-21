@@ -563,10 +563,8 @@ excited by the content.
     communicated the user via text; all stats must be easily legible, and
     contained to their relative entry in the codex, allowing a user to clearly
     identify their relevance and relationship to the associated entry.
-
 -   All instructional content within the project will be colloquial, yet simple,
     easy to understand, and easy to follow.
-
 -   All text relating to navigation and authentication will be appropriately
     selected and positioned to allow a user to easily understand how to access
     and navigate the project.
@@ -576,14 +574,11 @@ excited by the content.
 -   Each entry within the Codex will contain an associated image; the name of
     each entry will relate to the image (i.e. the entry “Ape King” will have a
     picture that resembles an Ape).
-
 -   Each image will be appropriately sized and positioned, allowing a user to
     understand their relationship to the Codex entries, yet not overwhelm or
     misuse the available screen space.
-
 -   Interactive elements will have visual effects tied to them in order to
     communicate their interactivity.
-
 -   Visual effects will be applied to weapons, and relevant identifiers
     associated with weapons, in order to emphasise their rarity or the scale of
     their stats.
@@ -591,10 +586,8 @@ excited by the content.
 #### Physical
 
 -   All features will be available to all screen sizes and devices.
-
 -   Visual Effects on interactive elements will be adjusted whether the user is
     interacting with the site via a mouse or via touch.
-
 -   Users will be able to access and engage with this project anywhere with an
     internet connection.
 
@@ -602,14 +595,11 @@ excited by the content.
 
 -   One of the project’s objectives is to keep a user engaged for as long as
     possible, therefore it is important to respect a user’s time.
-
 -   Animations will be implemented in the Battle section, albeit short and
     informative, and intend not to disrupt the flow of gameplay.
-
 -   Each run will take anywhere between 5 seconds to over 5 minutes; this grants
     a user the choice as to whether they want to play once a day, or multiple
     times in a sitting.
-
 -   A user will be able to log out of website at any point, and log back in on
     any other device and resume where they left off.
 
@@ -618,7 +608,6 @@ excited by the content.
 -   The core gameplay loop will require simple and repetitive user interaction;
     given the above interaction considerations, this will allow users of any
     prior gaming experience to enjoy the project.
-
 -   Due to the random nature of the gameplay loop, users may be frustrated by
     the outcome of some battles, however this is an expected emotion. This is
     strongly counteracted by the excitement of progressing through the game,
