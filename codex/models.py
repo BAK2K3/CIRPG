@@ -97,7 +97,7 @@ class CodexManager(models.Manager):
 
     def get_queryset(self):
         """
-        Overrides the default Mode Manager Get Queryset
+        Overrides the default Model Manager Get Queryset
         to utilise the CodexQueryset.
         """
         return CodexQuerySet(self.model, using=self._db)
