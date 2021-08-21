@@ -92,3 +92,96 @@ below:
 </details>
 
 ---
+
+# UX
+
+## Strategy
+
+### Stakeholder Interview  
+
+What would your ideal browser-based RPG look like?
+
+*“I want a game that I can play in shorts bursts.”*
+
+*“I want a game that I can stop playing and come back to later.”*
+
+*“I want a game where I can compete with my friends.”*
+
+*“I want a game where each play through feels unique.”*
+
+*“I want a game where I can try it before I pay for it.”*
+
+### User Stories  
+
+| User Story ID                      | As A/An        | I want to be able to                                                                | So that I can                                                                                         |
+|------------------------------------|----------------|-------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| **Viewing and Navigation**         |                |                                                                                     |                                                                                                       |
+| 1a                                 | Site User      | Understand the purpose of the site immediately                                      | Decide whether I want to engage with it.                                                              |
+| 1b                                 | Site User      | Navigate and interact with the site with ease on all viewports                      | Play the game on any device.                                                                          |
+| 1c                                 | Site User      | Find out information about the game                                                 | Understand how to play.                                                                               |
+| **Registration and User Accounts** |                |                                                                                     |                                                                                                       |
+| 2a                                 | Site User      | Register for an account                                                             | Have a profile.                                                                                       |
+| 2b                                 | Site User      | Log In and logout                                                                   | Access my profile and play the game.                                                                  |
+| 2c                                 | Site User      | Recover my password                                                                 | Recover access to my account.                                                                         |
+| 2e                                 | Free/Paid User | Access my profile                                                                   | See my statistics and status.                                                                         |
+| **Premium**                        |                |                                                                                     |                                                                                                       |
+| 3a                                 | Free User      | Access the upgrade offer from any page                                              | Choose to upgrade easily from any location on the site.                                               |
+| 3b                                 | Free User      | Pay to upgrade to the full version                                                  | Have full access to premium features.                                                                 |
+| 3c                                 | Paid User      | Navigate the site without upgrade offers                                            | Avoid paying for the product twice.                                                                   |
+| **Game**                           |                |                                                                                     |                                                                                                       |
+| 4a                                 | Free User      | Have basic access to the game                                                       | Decide whether I want to pay for the full game.                                                       |
+| 4b                                 | Free/Paid User | Create a new character                                                              | Start playing the game.                                                                               |
+| 4c                                 | Free/Paid User | Enter and engage in a battle                                                        | Enjoy the basic gameplay loop of the game.                                                            |
+| 4d                                 | Free/Paid User | Level up my character                                                               | Make progress in the game.                                                                            |
+| 4e                                 | Free/Paid User | Be presented with a choice of a new weapon after each win                           | Customise my character.                                                                               |
+| 4f                                 | Free/Paid User | Leave a battle halfway through and return at a later time                           | Stop playing the game at any point without being penalised.                                           |
+| 4g                                 | Paid User      | Have access to higher levels, additional characters, and additional weapons/enemies | Enjoy the benefits of premium content.                                                                |
+| **Leaderboard**                    |                |                                                                                     |                                                                                                       |
+| 5a                                 | Site User      | View the Leaderboard                                                                | See the High Scores of paid players.                                                                  |
+| 5b                                 | Site User      | View individual Leaderboard entries                                                 | View the breakdown of a player's score.                                                               |
+| 5c                                 | Paid User      | Add my score to the Leaderboard                                                     | Compete with other paid players.                                                                      |
+| 5d                                 | Paid User      | See my score at the end of a game.                                                  | Find out where my position is on the Leaderboard, or see how close I was to reaching the Leaderboard. |
+| **Codex**                          |                |                                                                                     |                                                                                                       |
+| 6a                                 | Site User      | View the Codex                                                                      | See all available content in the game.                                                                |
+| 6b                                 | Site User      | Sort and Filter the Codex                                                           | Find specific entries in the codex, and find out what content is available as a premium user.         |
+| 6c                                 | Admin          | Add entries to the Codex                                                            | Add content to the game.                                                                              |
+| 6d                                 | Admin          | Update entries to the Codex                                                         | Update content in the game.                                                                           |
+| 6e                                 | Admin          | Delete entries in the Codex                                                         | Remove content to the game.                                                                           |
+
+### Project Strategy Summary
+
+**Ideal User:** An individual who likes Role-Playing Games, and wants a game
+that is easy to play, accessible, and can be plaid in short stints.
+
+**Project Goal:** Create a game that is intuitive, addictive, competitive, yet
+rewarding and easy to play.
+
+**User Needs:**
+
+-   To be able to navigate the site with ease.
+
+-   To be able to register, log in and log out.
+
+-   To be able to try the game without paying for it.
+
+-   To be able to pay for premium access for content not available to free
+    users.
+
+-   To be able to play the game easily.
+
+-   To be able to compete with other players.
+
+**Project Objectives:**
+
+-   To create a game that is easy to play, addictive, and rewarding.
+
+-   To paywall content between free/premium users.
+
+-   To incentivise users to upgrade to premium.
+
+-   To add a degree of competition to encourage users to continue playing.
+
+-   To create a game where every run is unique.
+
+-   To allow the user to navigate and control the application with ease on all
+    platforms and devices.
