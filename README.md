@@ -362,20 +362,20 @@ any logical page (i.e any route the user is permitted to access manually).
 <details>
   <summary>Show Details</summary>
 
-Applicable User Stories:
--   1b, 2a, 2b, 2e, 3a, 4a, 4b, 4c, 5a, 6a
-
-Applicable Functional Requirements:
--   Simple, Intuitive, and Engaging Interface
--   User Management
--   Premium Content
--   Codex Overview
--   Profile
--   Character Creation
--   Leaderboard
-
-Navigational Routes:
--   All logical pages
+>Applicable User Stories:
+>-   1b, 2a, 2b, 2e, 3a, 4a, 4b, 4c, 5a, 6a
+>
+>Applicable Functional Requirements:
+>-   Simple, Intuitive, and Engaging Interface
+>-   User Management
+>-   Premium Content
+>-   Codex Overview
+>-   Profile
+>-   Character Creation
+>-   Leaderboard
+>
+>Navigational Routes:
+>-   All logical pages
   
 </details>  
   
@@ -388,19 +388,19 @@ project’s concept and the appropriate CTAs.
 <details>
   <summary>Show Details</summary>
 
-Applicable User Stories:
--   1a, 1b, 1c, 2a, 2b, 2e, 6a, 6b
-
-Applicable Functional Requirements:
--   Simple, Intuitive, and Engaging Interface
--   User Management
--   Codex Overview
-
-Navigational Routes:
--   Codex (Pre-filtered)
--   Log In (Logged Out)
--   Register (Logged Out)
--   Profile (Logged in)
+>Applicable User Stories:
+>-   1a, 1b, 1c, 2a, 2b, 2e, 6a, 6b
+>
+>Applicable Functional Requirements:
+>-   Simple, Intuitive, and Engaging Interface
+>-   User Management
+>-   Codex Overview
+>
+>Navigational Routes:
+>-   Codex (Pre-filtered)
+>-   Log In (Logged Out)
+>-   Register (Logged Out)
+>-   Profile (Logged in)
 
 </details>  
   
@@ -413,17 +413,17 @@ out, and reset their password.
 <details>
   <summary>Show Details</summary>
 
-Applicable User Stories:
--   1b, 2b, 2c
-
-Applicable Functional Requirements:
--   Simple, Intuitive, and Engaging Interface
--   User Management
-
-Navigational Routes:
--   Non-logical account verification
--   Profile
--   Login Redirect
+>Applicable User Stories:
+>-   1b, 2b, 2c
+>
+>Applicable Functional Requirements:
+>-   Simple, Intuitive, and Engaging Interface
+>-   User Management
+>
+>Navigational Routes:
+>-   Non-logical account verification
+>-   Profile
+>-   Login Redirect
 
 </details>  
   
@@ -436,14 +436,14 @@ mechanics, and guidance.
 <details>
   <summary>Show Details</summary>
 
-Applicable User Stories:
--   1b, 1c
-
-Applicable Functional Requirements:
--   Simple, Intuitive, and Engaging Interface
-
-Navigational Routes:
--   N/A
+>Applicable User Stories:
+>-   1b, 1c
+>
+>Applicable Functional Requirements:
+>-   Simple, Intuitive, and Engaging Interface
+>
+>Navigational Routes:
+>-   N/A
 
 </details>  
   
@@ -457,15 +457,15 @@ Delete content from this page.
 <details>
   <summary>Show Details</summary>
 
-Applicable User Stories:
--   1b, 6a, 6b, 6c, 6d, 6e
-
-Applicable Functional Requirements:
--   Simple, Intuitive, and Engaging Interface
--   Codex
-
-Navigational Routes:
--   N/A 
+>Applicable User Stories:
+>-   1b, 6a, 6b, 6c, 6d, 6e
+>
+>Applicable Functional Requirements:
+>-   Simple, Intuitive, and Engaging Interface
+>-   Codex
+>
+>Navigational Routes:
+>-   N/A 
 
 </details>  
   
@@ -481,20 +481,20 @@ from this page.
 <details>
   <summary>Show Details</summary>
 
-Applicable User Stories:
--   1b, 2e, 4a, 4b, 4c,
-
-Applicable Functional Requirements:
--   Simple, Intuitive, and Engaging Interface
--   User Management
--   Character Creation
--   Premium Content
--   Profile
--   Character Progression and Lifecycle
-
-Navigational Routes:
--   Create
--   Battle 
+>Applicable User Stories:
+>-   1b, 2e, 4a, 4b, 4c,
+>
+>Applicable Functional Requirements:
+>-   Simple, Intuitive, and Engaging Interface
+>-   User Management
+>-   Character Creation
+>-   Premium Content
+>-   Profile
+>-   Character Progression and Lifecycle
+>
+>Navigational Routes:
+>-   Create
+>-   Battle 
 
 </details>  
   
@@ -506,17 +506,17 @@ The create page will allow users to create a new Character.
 <details>
   <summary>Show Details</summary>
 
-Applicable User Stories:
--   1b, 4a, 4b, 4g
-
-Applicable Functional Requirements:
--   Simple, Intuitive, and Engaging Interface
--   Premium Content
--   Character Creation
--   Profile
-
-Navigational Routes:
--   Profile
+>Applicable User Stories:
+>-   1b, 4a, 4b, 4g
+>
+>Applicable Functional Requirements:
+>-   Simple, Intuitive, and Engaging Interface
+>-   Premium Content
+>-   Character Creation
+>-   Profile
+>
+>Navigational Routes:
+>-   Profile
 
 </details>  
   
@@ -533,22 +533,22 @@ users, or whether their character levelled up.
 <details>
   <summary>Show Details</summary>
 
-Applicable User Stories:
--   1b, 2e, 3c, 4a, 4c, 4d, 4e, 4f, 4g, 5c, 5d
-
-Applicable Functional Requirements:
--   Simple, Intuitive, and Engaging Interface
--   Premium Content
--   Battle Mechanics
--   Character Progression and Lifecycle
--   Leaderboard
-
-Navigational Routes:
--   Profile
--   Battle
--   Create
--   Premium
--   Leaderboard
+>Applicable User Stories:
+>-   1b, 2e, 3c, 4a, 4c, 4d, 4e, 4f, 4g, 5c, 5d
+>
+>Applicable Functional Requirements:
+>-   Simple, Intuitive, and Engaging Interface
+>-   Premium Content
+>-   Battle Mechanics
+>-   Character Progression and Lifecycle
+>-   Leaderboard
+>
+>Navigational Routes:
+>-   Profile
+>-   Battle
+>-   Create
+>-   Premium
+>-   Leaderboard
 
 </details>  
   
@@ -562,16 +562,16 @@ run.
 <details>
   <summary>Show Details</summary>
 
-Applicable User Stories:
--   1b, 5a, 5b, 5c, 5d
-
-Applicable Functional Requirements:
--   Simple, Intuitive, and Engaging Interface
--   Premium Content
--   Leaderboard
-
-Navigational Routes:
--   N/A
+>Applicable User Stories:
+>-   1b, 5a, 5b, 5c, 5d
+>
+>Applicable Functional Requirements:
+>-   Simple, Intuitive, and Engaging Interface
+>-   Premium Content
+>-   Leaderboard
+>
+>Navigational Routes:
+>-   N/A
 
 </details>  
   
@@ -587,22 +587,22 @@ not.
 <details>
   <summary>Show Details</summary>
 
-  Applicable User Stories:
--   1b, 3b, 3c
-
-Applicable Functional Requirements:
--   Simple, Intuitive, and Engaging Interface
--   Premium Content
--   Character Creation
--   Profile
--   Battle Mechanics
--   Character Progression and Lifecycle
--   Leaderboard
-
-Navigational Routes:
--   Non-logical Success/Abort routes.
--   Profile
--   Premium
+>Applicable User Stories:
+>-   1b, 3b, 3c
+>
+>Applicable Functional Requirements:
+>-   Simple, Intuitive, and Engaging Interface
+>-   Premium Content
+>-   Character Creation
+>-   Profile
+>-   Battle Mechanics
+>-   Character Progression and Lifecycle
+>-   Leaderboard
+>
+>Navigational Routes:
+>-   Non-logical Success/Abort routes.
+>-   Profile
+>-   Premium
  
 </details>  
   
