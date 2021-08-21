@@ -1282,3 +1282,56 @@ Bootstrap’s [predefined
 widths](https://getbootstrap.com/docs/5.0/layout/breakpoints/). All features
 have been developed with all viewports in mind, therefore each page has had an
 adaptive and dynamic structure implemented.
+
+## Future Feature Considerations
+
+#### Additional Actions in Battle
+
+Currently during a battle, users have the choice of attacking or retreating.
+While the element of evasion (calculated by the opponents defence/HP) allows
+unpredictable gameplay, and keeps content exciting, future expansions to the
+project could see the inclusion of additional actions or features to the battle,
+including:
+
+-   Critical Hits (Attack rate multiplied by a random % under certain
+    conditions)
+-   Riposte (Character Defends, and attacks the next turn at a multiplied
+    value).
+
+Given how the battle script has been implemented, this would be a simple
+addition to both the interface and the script.
+
+#### Level Progression Transparency
+
+As it currently stands, users must visit their profile to see their progress
+between levels, unless they level up between battles. Future updates would see
+this progress being communicated to the user after every battle, including the
+amount XP earned for each win. This was not implemented to the post-battle
+screen due to time constraints, however I understand the importance of such
+gameplay mechanics being communicated to the user without a user trying to
+obtain this information.
+
+
+#### Enhanced Emails
+
+Currently, emails are sent to users (for account activation and premium upgrade
+confirmation) contain basic unformatted text. Future updates would see this
+content being created in html, so as to provide a better user experience for the
+user and to instil further trust in the brand.
+
+#### Transparent Statistics
+
+One of the primary mechanics of a battle is the probability of either a
+character or opponent evading an attack. While this information is available in
+the How To page, a future update would see this stat being added as an
+additional parameter within the battle view in order to contribute to
+transparency and aid a user’s understanding of the core gameplay mechanics
+without having to find this information out themselves.
+
+#### Sound Design
+
+Given the nature of the project, and the association games have with sound and
+sound design, a future content update would see the inclusion of atmospheric
+music sound effects. This was a “like-to-have” feature, but unfortunately was
+not considered further following the initial planning stages due to the scope of
+the project and limited timescales available.
