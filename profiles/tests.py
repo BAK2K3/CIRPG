@@ -12,6 +12,20 @@ from codex.models import Codex
 
 
 class TestViews(TestCase):
+    """
+    Unit Tests for Profiles App Views
+
+    setUp - Create test login user and create Profile entry
+
+    UT03 - Test Current Profile Context being passed to any page
+    UT04 - Test Active Character is rendered to Profile page
+    UT05 - Test Hero list Context being passed to Create page
+    UT06 - Test Create page redirects if user has active character
+    UT07 - Test Create route filtering paid from current profile
+    UT08 - Test Create Character post submission route
+    UT09 - Test Delete Character route deletes active Char
+
+    """
 
     # Load fixtures into test DB
     fixtures = ['codex.json']
@@ -20,9 +34,9 @@ class TestViews(TestCase):
         """ Create test login user and create Profile entry"""
         username = "Ben"
         pswd = "Kavanagh" # noqa
-        User = get_user_model()
-        self.user = User.objects.create_user(username=username,
-                                             password=pswd)
+        user_model = get_user_model()
+        self.user = user_model.objects.create_user(username=username,
+                                                   password=pswd)
         logged_in = self.client.login(username=username, password=pswd)
 
         # Add User to Profile
