@@ -743,3 +743,211 @@ is an actual representation of the deployed database.
 ![Final DB Schema](https://res.cloudinary.com/bak2k3/image/upload/v1628878124/CIRPG/DB_Version_Final_rxptcv.jpg)
 
 </details>
+
+## Surface
+
+This project utilises a
+pseudo-[monochromatic](https://en.wikipedia.org/wiki/Monochromatic_color) colour
+scheme, in order to align with the
+[Fantasy](https://en.wikipedia.org/wiki/Fantasy) aesthetic and theme. By
+implemented dark tonal colours, this prevents the colour scheme of the webpages
+themselves from clashing with the vibrant image content utilised for the Codex
+entries.
+
+### Colour Scheme
+
+The primary colour scheme, utilised for the layout, framework, and text of the
+website, focuses on a white to black pseudo-monochromatic colour scheme.
+
+![Primary Colour Scheme](https://res.cloudinary.com/bak2k3/image/upload/v1628878125/CIRPG/Primary_Colour_Scheme_id0qx0.jpg)
+
+The variations of white were implemented in various aspects of the website
+depending on the context, whether it is representing the Chalk style text, or
+whether being used for outlines and glowing effects (see Typography).
+
+The shades of black were used to differentiate between content layers, and
+priority within the informational hierarchy of each individual page.
+
+Regardless of which shade of white was used with which shade of black, all
+combinations produced ideal contrast ratios.
+
+<details>
+  <summary>Contrast Results</summary>
+
+**Chalk on Raisin**  
+
+![Contrast – Chalk on Raisin](https://res.cloudinary.com/bak2k3/image/upload/v1628878126/CIRPG/Contrast_-_Chalk_on_Raisin_bejrgd.jpg)
+
+
+**Chalk on Rich**  
+
+![Contrast – Chalk on Rich](https://res.cloudinary.com/bak2k3/image/upload/v1628878126/CIRPG/Contrast_-_Chalk_on_Rich_bqfoal.jpg)
+
+</details>
+
+The [secondary colour scheme](https://coolors.co/fff8f0-208b3a-ffd100-e5383b),
+implemented to represent Loot Rarity, was based on colour schemes synonymous for
+[Color-Coded Loot](https://www.giantbomb.com/color-coded-loot/3015-4702/), and
+therefore would be familiar to regular gamers.
+
+![Secondary Colour Scheme](https://res.cloudinary.com/bak2k3/image/upload/v1628878125/CIRPG/Secondary_Colour_Scheme_vhr4bv.jpg)
+
+The images utilised throughout the project for the Codex entries are vibrant and
+colourful. Given the primary colour scheme is simple, monochromatic, and dark,
+the allows the images to stand out and ultimately compliment the overall
+aesthetic.
+
+### Typography
+
+#### Heading Font
+
+The font [Mandhor](https://www.fontspace.com/mandhor-font-f57186) was used for
+all headings within the project, intended to represent handwritten chalkboard
+text. The use of a handwritten style font was chosen as this would complement
+the theme of the project, given it handwritten text is synonymous with [Tabletop
+RPGs](https://en.wikipedia.org/wiki/Tabletop_role-playing_game).
+
+![Typography – Mandhor](https://res.cloudinary.com/bak2k3/image/upload/v1628878125/CIRPG/Typography_-_Mandhor_uz2iy3.jpg)
+
+#### Body Font
+
+The font [Titillium Web](https://fonts.google.com/specimen/Titillium+Web) was
+chosen as the website’s body text as it is clear, legible, and strong. All text
+is easy to read, identify, and given it has similarities with the sans-serif
+font, would be easily recognisable by any user.
+
+![Typography – Titillium Web](https://res.cloudinary.com/bak2k3/image/upload/v1628878125/CIRPG/Typography_-_Titillium_Web_v9gcmq.jpg)
+
+### Visual Effects
+
+Given the primary colour scheme is simple, and utilises a very limited colour
+range, various visual effects were implemented in order to create an engaging,
+interesting, and visually appealing aesthetic.
+
+#### Box Shadows
+
+Box shadows are heavily utilised throughout the project to ‘lift’ content off
+the background. Whilst initially influenced by <https://neumorphism.io/>, custom
+border shadows were created for the Navbar, Card Elements, Buttons, and the
+Leaderboard/Help table.
+
+#### Colour Gradients
+
+In order to add a degree of texture to the colour filled elements, and to
+prevent the overall aesthetic being stale, colour gradients were utilised. The
+body’s background content utilises a diagonal colour gradient, while the
+majority of Card elements use the same gradient reversed. The below example
+demonstrates both the cohesion of using inverted gradients, and the
+implementation of the aforementioned box shadows.
+
+<details>
+  <summary>View Gradient Effect</summary>
+
+![Visual Effects – Gradients](https://res.cloudinary.com/bak2k3/image/upload/v1628878125/CIRPG/Visual_Effects_-_Gradients_nbnfc5.jpg)
+</details>
+
+
+#### Underlined Links
+
+All links and buttons within the project produce an underlined effect when
+hovered (desktop) or pressed (mobile). This helps communicate that the elements
+are interactive, and produces appropriate user feedback when a user engages with
+these elements.
+
+![Visual Effects – Underline](https://res.cloudinary.com/bak2k3/image/upload/v1628878126/CIRPG/Visual_Effects_-_Underline_zf2m2p.jpg)
+
+#### Button Effect 
+
+All buttons are custom designed with a border radius, box shadow, and solid
+colour fill. When a user hovers (desktop) or pressed (mobile) buttons, an
+animation is produced which removes the button entirely, and evokes the
+underlined effect discussed above.
+
+![Visual Effects – Buttons](https://res.cloudinary.com/bak2k3/image/upload/v1628878125/CIRPG/Visual_Effects_-_Buttons_dioubt.jpg)
+
+#### Character Select
+
+When a user is creating a character, visual effects have been implemented in
+order to produce responsive feedback to a user’s inputs, and to aid a user’s
+understanding of how to interact with this page.
+
+When a user hovers over a character, the container produces a “hover” effect,
+lifting the highlighted content off the page.
+
+When a user clicks (Desktop) or presses (Mobile) on a character, a green glow
+effect is set to the selected element.
+
+
+<details>
+  <summary>View Character Select Animation</summary>
+
+![Visual Effects – Char Select Selected](https://res.cloudinary.com/bak2k3/image/upload/v1628878124/CIRPG/Features_-_Char_Select_sthqy4.gif)
+
+</details>
+
+#### Rarity Effects
+
+If, when a user wins a battle, they are presented with a new piece of Loot which
+is of rarity “Uncommon” or higher, a glow effect will be presented on the new
+piece of loot. The colour of the glow changes depending on the Rarity.
+
+<details>
+  <summary>View Rarity Glow</summary>
+
+![Visual Effects – Rarity Glow](https://res.cloudinary.com/bak2k3/image/upload/v1628878126/CIRPG/Visual_Effects_-_Rarity_Glow_hkud1q.jpg)
+</details>
+
+
+
+In the above example, the weapon currently equipped is of “common” rarity, and
+therefore does not have a glow effect. The new weapon awarded is of “rare”
+rarity, and is therefore accompanied by a green glow effect.
+
+This visual effect enhances the user experience by emphasising the value and
+strength of the new Loot pulled. This helps build excitement and present a sense
+of being rewarded as they progress through the game.
+
+When in battle, the rarity of the weapon is communicated by the colour of the
+weapon’s Tier rating (stars). This allows the communication of information
+through the use of colour, without visually overloading the user.
+
+<details>
+  <summary>View Battle Rarity</summary>
+
+  
+![Visual Effects – Rarity Battle](https://res.cloudinary.com/bak2k3/image/upload/v1628878126/CIRPG/Visual_Effects_-_Rarity_Battle_sp3qf0.jpg)
+
+</details>
+
+
+The Rarity scope, and their associated colours, are explained within the game’s
+How To section:
+
+
+<details>
+  <summary>View Rarity Scale</summary>
+
+  
+![Visual Effects – Rarity Scale](https://res.cloudinary.com/bak2k3/image/upload/v1628878126/CIRPG/Visual_Effects_-_Rarity_Scale_tbckf3.jpg)
+
+</details>
+
+
+##### Pulse Effect
+
+Certain CTAs throughout the project have a pulse effect tied to them. As you
+would assume, the CTAs are either important actions, or have the intention of
+drawing the user’s attention. As such, specific aspects of the site implement
+this pulse effect to help communicate importance. Examples of this include:
+
+The Upgrade Now button on the Premium Page:
+
+![Visual Effects – Pulse – Premium](https://res.cloudinary.com/bak2k3/image/upload/v1628878126/CIRPG/Visual_Effects_-_Pulse_-_Premium_oe9tb0.jpg)
+
+The Attack button during battle when it is the user’s turn to act:
+
+![Visual Effects – Pulse – Attack](https://res.cloudinary.com/bak2k3/image/upload/v1628878125/CIRPG/Visual_Effects_-_Pulse_-_Attack_wzrofb.jpg)
+
+Login and Register buttons on the Home page:
+
+![Visual Effects – Pulse – Home](https://res.cloudinary.com/bak2k3/image/upload/v1628878125/CIRPG/Visual_Effects_-_Pulse_-_Home_ph8kme.jpg)
