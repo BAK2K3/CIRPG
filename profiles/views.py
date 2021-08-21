@@ -1,3 +1,16 @@
+"""
+Profiles App - Views
+----------------
+
+Views for Profiles App.
+    - ProfileDetailView
+    - CreateHeroDetailView
+    - CreateHeroFormView
+    - HeroDeleteView
+"""
+
+# pylint: disable=r0901
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
