@@ -1,8 +1,14 @@
+"""
+Leaderboard App - Admin
+----------------
+
+Admin Configuration for Leaderboard App.
+"""
+
 from django.contrib import admin
 from .models import Leaderboard
 
 
-# Admin class for Profile
 class LeaderboardAdmin(admin.ModelAdmin):
     """
     Leaderboard Admin settings for list display and ordering.
