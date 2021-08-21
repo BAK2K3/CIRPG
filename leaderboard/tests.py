@@ -5,14 +5,23 @@ Leaderboard App - Tests
 Test cases for Leaderboard App Routing
 """
 
-from django.test import TestCase
-from profiles.models import Profile
-from .models import Leaderboard
-from profiles.models import ActiveCharacter
 from django.contrib.auth import get_user_model
+from django.test import TestCase
+from profiles.models import Profile, ActiveCharacter
+from .models import Leaderboard
 
 
 class TestViews(TestCase):
+    """
+    Unit Tests for Leaderboard App Views
+
+    setUp - Create test login user and create Profile entry
+
+    UT13 - Test leaderboard view renders correct page
+    UT14 - Test empty leaderboard context in page rendering
+    UT15 -  Test single leaderboard context entry in page rendering
+
+    """
 
     # Load fixtures into test DB
     fixtures = ['codex.json']
