@@ -1,11 +1,10 @@
-from django.shortcuts import redirect
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import redirect, get_object_or_404
+from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic import FormView, DetailView, DeleteView
-from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import get_object_or_404
-from .models import Profile, ActiveCharacter
 from codex.models import Codex
+from .models import Profile, ActiveCharacter
 from .forms import HiddenForm
 
 
@@ -14,9 +13,14 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
     context_object_name = 'character'
     template_name = "profiles/profile.html"
 
-    def get_object(self):
+    def get_object(self, *args, **kwargs):
+        """
+        Override get_object to return active character
+        if it exists, otherwise return None.
+        """
         if Profile.objects.get(user=self.request.user).active_char:
             return ActiveCharacter.objects.get(user=self.request.user)
+        return None
 
 
 class CreateHeroDetailView(LoginRequiredMixin, ListView):
