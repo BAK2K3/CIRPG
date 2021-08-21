@@ -1,1 +1,1 @@
-web: gunicorn CIRPG.wsgi:application
+web: gunicorn cirpg.wsgi:application
