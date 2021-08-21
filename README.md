@@ -341,3 +341,319 @@ level:
 
 An item’s rarity affects how many times a stat modifier is applied to the
 weapon’s stats.
+
+## Structure
+
+### Informational Architecture
+
+In order to create a simple interface for the user, each of the project’s core
+functions will be isolated into different pages. In an attempt to implement an
+intuitive navigation system, a persistent Navigation Bar will be utilised, along
+with carefully selected navigational aids on each page in an attempt to pre-empt
+the user’s subsequent destination. This will allow a user to navigate the
+project with ease, spending minimal time finding the next destination, hopefully
+engaging and retaining their attention for longer periods of time.
+
+#### Navbar
+
+The Navbar will be a persistent element that will allows users to navigate to
+any logical page (i.e any route the user is permitted to access manually).
+
+**Applicable User Stories**
+
+-   1b, 2a, 2b, 2e, 3a, 4a, 4b, 4c, 5a, 6a
+
+**Applicable Functional Requirements**
+
+-   Simple, Intuitive, and Engaging Interface
+-   User Management
+-   Premium Content
+-   Codex Overview
+-   Profile
+-   Character Creation
+-   Leaderboard
+
+**Navigational Routes**
+
+-   All logical pages
+
+#### Home 
+
+The home page is the initial landing page, and provides a brief overview of the
+project’s concept and the appropriate CTAs.
+
+**Applicable User Stories**
+
+-   1a, 1b, 1c, 2a, 2b, 2e, 6a, 6b
+
+**Applicable Functional Requirements**
+
+-   Simple, Intuitive, and Engaging Interface
+-   User Management
+-   Codex Overview
+
+**Navigational Routes**
+
+-   Codex (Pre-filtered)
+-   Log In (Logged Out)
+-   Register (Logged Out)
+-   Profile (Logged in)
+
+#### 
+
+#### Account Management
+
+Account Management will allow users to register, create an account, log in, log
+out, and reset their password.
+
+**Applicable User Stories**
+
+-   1b, 2b, 2c
+
+**Applicable Functional Requirements**
+
+-   Simple, Intuitive, and Engaging Interface
+-   User Management
+
+**Navigational Routes**
+
+-   Non-logical account verification
+-   Profile
+-   Login Redirect
+
+#### Help 
+
+The help page will provide an in-depth breakdown of all content, gameplay
+mechanics, and guidance.
+
+**Applicable User Stories**
+
+-   1b, 1c
+
+**Applicable Functional Requirements**
+
+-   Simple, Intuitive, and Engaging Interface
+
+**Navigational Routes**
+
+-   N/A
+
+#### Codex
+
+The codex will allow free and paid users to view all content in the game, and
+sort/filter the content appropriately. Admins will be able to Create, Edit, and
+Delete content from this page.
+
+**Applicable User Stories**
+
+-   1b, 6a, 6b, 6c, 6d, 6e
+
+**Applicable Functional Requirements**
+
+-   Simple, Intuitive, and Engaging Interface
+-   Codex
+
+**Navigational Routes**
+
+-   N/A
+
+#### Profile
+
+The profile will allow users to see an overview of their long-term progress. If
+the user has a current active character, this page will allow a user to see
+their current character, proceed to a battle, or delete their current character.
+If a user does not have an activate character, they can create a new character
+from this page.
+
+**Applicable User Stories**
+
+-   1b, 2e, 4a, 4b, 4c,
+
+**Applicable Functional Requirements**
+
+-   Simple, Intuitive, and Engaging Interface
+-   User Management
+-   Character Creation
+-   Premium Content
+-   Profile
+-   Character Progression and Lifecycle
+
+**Navigational Routes**
+
+-   Create
+-   Battle
+
+#### Create
+
+The create page will allow users to create a new Character.
+
+**Applicable User Stories**
+
+-   1b, 4a, 4b, 4g
+
+**Applicable Functional Requirements**
+
+-   Simple, Intuitive, and Engaging Interface
+-   Premium Content
+-   Character Creation
+-   Profile
+
+**Navigational Routes**
+
+-   Profile
+
+#### 
+
+#### Battle
+
+Battle will consist of a logical route (Battle) and non-logical route
+(Post-Battle). Users will manually navigate to the Battle page to engage in the
+project’s main gameplay loop. Once a battle is finished, they will be routed to
+the Post-Battle page, the content of which will change depending on multiple
+factors including whether the user won the battle, whether they are premium
+users, or whether their character levelled up.
+
+**Applicable User Stories**
+
+-   1b, 2e, 3c, 4a, 4c, 4d, 4e, 4f, 4g, 5c, 5d
+
+**Applicable Functional Requirements**
+
+-   Simple, Intuitive, and Engaging Interface
+-   Premium Content
+-   Battle Mechanics
+-   Character Progression and Lifecycle
+-   Leaderboard
+
+**Navigational Routes**
+
+-   Profile
+-   Battle
+-   Create
+-   Premium
+-   Leaderboard
+
+#### Leaderboard
+
+The Leaderboard will show the top 10 scoring premium users. Contained within
+each entry will be detailed information surrounding that particular character’s
+run.
+
+**Applicable User Stories**
+
+-   1b, 5a, 5b, 5c, 5d
+
+**Applicable Functional Requirements**
+
+-   Simple, Intuitive, and Engaging Interface
+-   Premium Content
+-   Leaderboard
+
+**Navigational Routes**
+
+-   N/A
+
+#### Premium
+
+The Premium page will allow users to upgrade their account from Free to Premium.
+This page will display the benefits of upgrading, and will direct the user to an
+external Stripe website upon requesting to upgrade. The redirect back from the
+external page will change depending on whether the payment was successful or
+not.
+
+**Applicable User Stories**
+
+-   1b, 3b, 3c
+
+**Applicable Functional Requirements**
+
+-   Simple, Intuitive, and Engaging Interface
+-   Premium Content
+-   Character Creation
+-   Profile
+-   Battle Mechanics
+-   Character Progression and Lifecycle
+-   Leaderboard
+
+**Navigational Routes**
+
+-   Non-logical Success/Abort routes.
+-   Profile
+-   Premium
+
+### Interaction Design
+
+The following considerations were made when planning the project’s Interaction
+Design. Given this project is a game, is intended to entice a user to upgrade to
+a premium account, the interaction design aims to keep a user engaged and
+excited by the content.
+
+#### Words
+
+-   The main game mechanics focus on stats, whether they are individual stats of
+    a new piece of loot, or whether they are the combined stats of a Character
+    or their Enemy. Therefore, this information intends to be clearly
+    communicated the user via text; all stats must be easily legible, and
+    contained to their relative entry in the codex, allowing a user to clearly
+    identify their relevance and relationship to the associated entry.
+
+-   All instructional content within the project will be colloquial, yet simple,
+    easy to understand, and easy to follow.
+
+-   All text relating to navigation and authentication will be appropriately
+    selected and positioned to allow a user to easily understand how to access
+    and navigate the project.
+
+#### Visual 
+
+-   Each entry within the Codex will contain an associated image; the name of
+    each entry will relate to the image (i.e. the entry “Ape King” will have a
+    picture that resembles an Ape).
+
+-   Each image will be appropriately sized and positioned, allowing a user to
+    understand their relationship to the Codex entries, yet not overwhelm or
+    misuse the available screen space.
+
+-   Interactive elements will have visual effects tied to them in order to
+    communicate their interactivity.
+
+-   Visual effects will be applied to weapons, and relevant identifiers
+    associated with weapons, in order to emphasise their rarity or the scale of
+    their stats.
+
+#### Physical
+
+-   All features will be available to all screen sizes and devices.
+
+-   Visual Effects on interactive elements will be adjusted whether the user is
+    interacting with the site via a mouse or via touch.
+
+-   Users will be able to access and engage with this project anywhere with an
+    internet connection.
+
+#### Time
+
+-   One of the project’s objectives is to keep a user engaged for as long as
+    possible, therefore it is important to respect a user’s time.
+
+-   Animations will be implemented in the Battle section, albeit short and
+    informative, and intend not to disrupt the flow of gameplay.
+
+-   Each run will take anywhere between 5 seconds to over 5 minutes; this grants
+    a user the choice as to whether they want to play once a day, or multiple
+    times in a sitting.
+
+-   A user will be able to log out of website at any point, and log back in on
+    any other device and resume where they left off.
+
+#### Behaviour
+
+-   The core gameplay loop will require simple and repetitive user interaction;
+    given the above interaction considerations, this will allow users of any
+    prior gaming experience to enjoy the project.
+
+-   Due to the random nature of the gameplay loop, users may be frustrated by
+    the outcome of some battles, however this is an expected emotion. This is
+    strongly counteracted by the excitement of progressing through the game,
+    complimented by the combined interaction design discussed above, designed to
+    invoke engagement and excitement.
