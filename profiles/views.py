@@ -41,21 +41,20 @@ class CreateHeroDetailView(LoginRequiredMixin, ListView):
     context_object_name = 'heroes'
     template_name = "profiles/create.html"
 
-    # Override dispatch for CBV/Redirect
     def dispatch(self, request, *args, **kwargs):
+        """Override dispatch for redirect if active_char exists for user"""
         current_profile = get_object_or_404(Profile, user=self.request.user)
         if current_profile.active_char:
             return redirect('profile')
-        else:
-            return super(CreateHeroDetailView, self).get(request,
-                                                         *args,
-                                                         **kwargs)
+        return super().get(request, *args, **kwargs)
 
     def get_queryset(self):
+        """Override Queryset to obtain characters available to user"""
         current_profile = get_object_or_404(Profile, user=self.request.user)
         return Codex.objects.hero_select(current_profile.paid)
 
     def get_context_data(self, **kwargs):
+        """Override get_context_data to add hidden form to context"""
         context = super().get_context_data(**kwargs)
         context['form'] = HiddenForm()
         return context
@@ -65,8 +64,8 @@ class CreateHeroFormView(LoginRequiredMixin, FormView):
     """A view for hero submission"""
     form_class = HiddenForm
 
-    # On valid form, create an Active Character
     def form_valid(self, form):
+        """On valid form submission, create an Active Character"""
         paid = self.request.session['user_paid']
         hero_name = form.cleaned_data['user_selection']
         ActiveCharacter.create_character(user=self.request.user,
@@ -79,23 +78,22 @@ class HeroDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """A view for deleting an Active Character"""
     model = ActiveCharacter
 
-    # Obtain the user's active character
     def get_object(self, queryset=None):
-        pk = self.request.POST.get('pk')
-        return self.get_queryset().filter(pk=pk).get()
+        """Obtain the user's active character"""
+        user_pk = self.request.POST.get('pk')
+        return self.get_queryset().filter(pk=user_pk).get()
 
-    # Ensure user is owner of object on POST
     def test_func(self):
+        """Ensure user is owner of object on POST"""
         if self.request.method == "POST":
             return self.get_object().user == self.request.user
-        else:
-            return self.get(self.request)
+        return self.get(self.request)
 
-    # Amend Active Char attribute before redirect
     def get_success_url(self):
+        """Amend Active Char attribute before redirect"""
         Profile.remove_active_char(user=self.request.user)
         return reverse_lazy('profile')
 
-    # Redirect User to profile regardless for get req
-    def get(self, request=None):
+    def get(self, *args, **kwargs):
+        """Redirect User to profile regardless for get req"""
         return redirect('profile')
