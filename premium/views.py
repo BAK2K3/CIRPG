@@ -53,8 +53,8 @@ def stripe_config(request):
     AJAX handler for returning stripe public key.
     """
     if request.method == 'GET':
-        stripe_config = {'publicKey': settings.STRIPE_PUBLISHABLE_KEY}
-        return JsonResponse(stripe_config, safe=False)
+        stripe_config_data = {'publicKey': settings.STRIPE_PUBLISHABLE_KEY}
+        return JsonResponse(stripe_config_data, safe=False)
 
 
 @csrf_exempt
