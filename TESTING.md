@@ -1318,6 +1318,8 @@ to resort to applying this function to all buttons/links across the site.
 
 ## No Profile for Superusers
 
+**Fixed: Yes**
+
 When initially implementing Profiles for users, the decision was made to listen
 to allauth `email_confirmed` signals, and subsequently trigger the creation of
 a Profile for users who had validated their account. This functioned as
