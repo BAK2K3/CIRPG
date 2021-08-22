@@ -912,3 +912,123 @@ without relying on the Django admin interface.
 **Links**
 
 -   Ensure the external link within the **How To** opens up in a new tab.
+
+# Automated View Testing  
+
+
+This project was developed using **Test Driven Development.** As such, Unit
+Tests were written for the majority of views within Django before the respective
+view was written.
+
+
+## Testing Overview
+
+| **Django App**                                                                    | Unit Test Number | Unit Test Summary                                          | Related User Stories                                   | Outcome |
+|-----------------------------------------------------------------------------------|------------------|------------------------------------------------------------|--------------------------------------------------------|---------|
+| [**Home**](https://github.com/BAK2K3/CIRPG/blob/main/home/tests.py)               | UT01             | Test home page renders correct page.                       | 1a                                                     | Pass    |
+|                                                                                   | UT02             | Test help page renders correct page.                       | 1c                                                     | Pass    |
+| [**Profiles**](https://github.com/BAK2K3/CIRPG/blob/main/profiles/tests.py)       | UT03             | Test Current Profile Context being passed to any page.     | 2b, 2e, 3a, 3b, 3c, 4a, 4b, 4c, 4d, 4e, 4f, 4g, 5c, 5d | Pass    |
+|                                                                                   | UT04             | Test Active Character is rendered to Profile page.         | 2e, 4d, 4f                                             | Pass    |
+|                                                                                   | UT05             | Test Hero list Context being passed to Create page.        | 4a, 4b                                                 | Pass    |
+|                                                                                   | UT06             | Test Create page redirects if user has active character.   | 2e, 4a, 4b                                             | Pass    |
+|                                                                                   | UT07             | Test Create route filtering paid from current profile.     | 4a, 4b, 4g                                             | Pass    |
+|                                                                                   | UT08             | Test Create Character post submission route.               | 2e, 4a, 4b                                             | Pass    |
+|                                                                                   | UT09             | Test Delete Character route deletes active Char.           | 2e, 4a                                                 | Pass    |
+| [**Battle**](https://github.com/BAK2K3/CIRPG/blob/main/battle/tests.py)           | UT10             | Tests battle route is rendered with correct context.       | 4a, 4c, 4g                                             | Pass    |
+|                                                                                   | UT11             | Tests context for successful post-battle route.            | 4a, 4d, 4e, 5d                                         | Pass    |
+|                                                                                   | UT12             | Tests whether Ajax Loot route updates active character.    | 2e, 4a, 4e                                             | Pass    |
+| [**Leaderboard**](https://github.com/BAK2K3/CIRPG/blob/main/leaderboard/tests.py) | UT13             | Test Leaderboard view renders correct page.                | 5a                                                     | Pass    |
+|                                                                                   | UT14             | Test empty Leaderboard context in page rendering.          | 5a                                                     | Pass    |
+|                                                                                   | UT15             | Test single Leaderboard context entry in page rendering.   | 5b, 5c                                                 | Pass    |
+| [**Premium**](https://github.com/BAK2K3/CIRPG/blob/main/premium/tests.py)         | UT16             | Test premium page renders correct page.                    | 3a                                                     | Pass    |
+|                                                                                   | UT17             | Test AJAX config view returns stripe public key.           | 3a, 3b                                                 | Pass    |
+|                                                                                   | UT18             | Test AJAX checkout session view returns sessionId.         | 3b                                                     | Pass    |
+|                                                                                   | UT19             | UT19 - Test AJAX checkout returns error for premium users. | 3c                                                     | Pass    |
+|                                                                                   | UT20             | Test successful payment page renders correct page.         | 3b                                                     | Pass    |
+|                                                                                   | UT21             | Test process invalid session_id redirects to premium.      | 3b                                                     | Pass    |
+|                                                                                   | UT22             | Test aborted payment page renders correct page             | 3b                                                     | Pass    |
+| [**Codex**](https://github.com/BAK2K3/CIRPG/blob/main/codex/tests.py)             | UT23             | Test codex route renders correct page.                     | 6a                                                     | Pass    |
+|                                                                                   | UT24             | Test codex route queries DB.                               | 6a                                                     | Pass    |
+|                                                                                   | UT25             | Test codex DB entry structure.                             | 6a                                                     | Pass    |
+|                                                                                   | UT26             | Test codex filtering for premium products.                 | 6b                                                     | Pass    |
+|                                                                                   | UT27             | Test codex filtering for free products.                    | 6b                                                     | Pass    |
+|                                                                                   | UT28             | Test codex filtering for weapons.                          | 6b                                                     | Pass    |
+|                                                                                   | UT29             | Test codex filtering for enemies.                          | 6b                                                     | Pass    |
+|                                                                                   | UT30             | Test codex filtering for heroes.                           | 6b                                                     | Pass    |
+|                                                                                   | UT31             | Test codex filtering for rating.                           | 6b                                                     | Pass    |
+|                                                                                   | UT32             | Test codex filtering for multiple ratings.                 | 6b                                                     | Pass    |
+|                                                                                   | UT33             | Test codex filtering for multiple parameters.              | 6b                                                     | Pass    |
+|                                                                                   | UT34             | Test codex sorting direction params.                       | 6b                                                     | Pass    |
+|                                                                                   | UT35             | Test codex sort by parameters.                             | 6b                                                     | Pass    |
+|                                                                                   | UT36             | Test codex Edit view.                                      | 6c                                                     | Pass    |
+|                                                                                   | UT37             | Test codex Create view.                                    | 6d                                                     | Pass    |
+|                                                                                   | UT38             | Test codex Delete view                                     | 6e                                                     | Pass    |
+
+## Test Coverage
+
+In order to assess **Test Coverage,**
+[Coverage](https://coverage.readthedocs.io/en/coverage-5.5/) was used. The test
+coverage resulted in an **89%** coverage (also taking into consideration the
+default Django files). For full results, please see the **Coverage Results.**
+
+The following steps were taken to generate the above report:
+
+-   Enter `pip install coverage`
+-   Create a Coverage Debug launch file:
+
+```
+
+{
+
+    "name": "Python: Django Coverage",
+
+    "type": "python",
+
+    "request": "launch",
+
+    "module": "coverage",
+
+    "args": [
+
+        "run",
+
+        "--source='.'",
+
+        "manage.py",
+
+        "test"
+
+        ],
+
+    "django": true,
+
+    "env": {
+
+        "DJANGO_SECRET_KEY": "<variable>",
+
+        "DEVELOPMENT": "Yes",
+
+        "STRIPE_PUBLISHABLE_KEY": "<variable>",
+
+        "STRIPE_SECRET_KEY": "<variable>",
+
+        "STRIPE_PRICE_ID": "<variable>",
+
+        "STRIPE_WH_SECRET": "<variable>",
+
+        "DOMAIN_URL": "<variable>",
+
+    }
+}
+```
+
+-   Launch Python: Django Coverage debug (`F5`).
+    -   This runs the script: `coverage run --source=’,’ manage.py test` with
+        environment variables.
+-   Enter `coverage report`
+-   Enter `coverage html`
+-   From within the produced `htmlcov` folder, open `index.html`.
+-   Copy and paste the values into an Excel spreadsheet, and format accordingly.
+
+Please note that the test coverage files (`htmlcov`) have **not** been
+included in the GitHub repository.
