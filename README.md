@@ -1406,8 +1406,8 @@ pre-processing.
 
 For a full list of these packages’ dependencies, please see:
 
--   requirements.txt for the production dependencies.
--   requirements-dev.txt for the development dependencies.
+-   [requirements.txt](requirements.txt) for the production dependencies.
+-   [requirements-dev.txt](requirements-dev.txt) for the development dependencies.
 
 ## JavaScript
 
@@ -1688,6 +1688,7 @@ following variables:
     [Monsters](https://www.dndbeyond.com/monsters).
 -   All stats for Codex Entries were devised and calculated manually. The
     original Excel file used to balance stats can be found [here](documentation/Stats.xlsx).
+    The subsequent JSON fixtures file can be found [here](https://github.com/BAK2K3/CIRPG/blob/main/codex/fixtures/codex.json).
 
 ## Media
 
