@@ -1643,13 +1643,13 @@ following variables:
                 ],
             "django": true,
             "env": {
-            "DJANGO_SECRET_KEY": "\<variable\>",
-            "DEVELOPMENT": "Yes",
-            "STRIPE_PUBLISHABLE_KEY": "\<variable\>",
-            "STRIPE_SECRET_KEY": "\<variable\>",
-            "STRIPE_PRICE_ID": "\<variable\>",
-            "STRIPE_WH_SECRET": "\<variable\>",
-            "DOMAIN_URL": "\<variable\>",
+                "DJANGO_SECRET_KEY": "<variable>",
+                "DEVELOPMENT": "Yes",
+                "STRIPE_PUBLISHABLE_KEY": "<variable>",
+                "STRIPE_SECRET_KEY": "<variable>",
+                "STRIPE_PRICE_ID": "<variable>",
+                "STRIPE_WH_SECRET": "<variable>",
+                "DOMAIN_URL": "<variable>",
             },
         }
     ]
@@ -1657,7 +1657,7 @@ following variables:
 ```
 
 -   Within this file, declare the environment variables described previously,
-    replacing the \<variable\> with the required variables.
+    replacing the `<variable>` with the required variables.
 -   Please note that using a local/development environment may use:
     -   `DEVELOPMENT: “Yes”`
 -   However, it’s important to note that in Development mode, Email/Key and
