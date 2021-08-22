@@ -1046,3 +1046,209 @@ All functionality worked as intended.
 
 As this project uses JavaScript ES6, support for Internet Explorer 11 has not
 been considered or tested.
+
+# Code Validation
+
+## HTML
+
+-   The project's HTML was validated using the automated [W3 Markup
+    Validator](https://validator.w3.org/) at intervals throughout the
+    development process.
+-   Minor errors and warning were presented throughout development, mainly
+    concerned:
+    -   Attributing a `<button>` element with `role=“button”` and
+        incorrectly adding `type="button"` to `<a>` elements.
+    -   Missing closing element tags, which was caused by complicated Django
+        templating logic.
+-   At the time of final deployment, no errors or warnings are present on the
+    following pages:
+    -   Index
+    -   Log In/Log Out/Register/Validation
+    -   Profile (with and without Active Character)
+    -   Create (Free/Premium)
+    -   Battle (Pre-battle/During Battle)
+    -   Post Battle
+        -   **Free** – Loot Only, Level Up, Max Level, Lose
+        -   **Premium** – Loot only, Level up, Lose
+    -   Leaderboard
+    -   Codex (Full, Filtered, Create, Edit)
+    -   Premium (Premium/Success/Abort)
+    -   Help
+
+## CSS
+
+-   The project's CSS was validated using the automated [W3 Jigsaw
+    Validator](https://jigsaw.w3.org/css-validator/) at intervals throughout the
+    development process.
+-   At time of deployment, there are 233 warnings:
+    -   230: \<extension\> `is an unknown vendor extension`.
+        -   Satisfied these can be dismissed.
+    -   3: Same color for background-color and border-color.
+        -   Satisfied these can be dismissed.
+
+## JavaScript
+
+-   The project's JavaScript was validated using the open-source automated
+    service, [JSHint](https://jshint.com/), at intervals throughout the
+    development process.
+-   Warnings are currently present; however, these are regarding ES
+    Compatibility, or regarding “unused/undefined variables”; I'm aware of these
+    and am satisfied these can be dismissed.
+-   At the time of deployment, no errors are present in the following files:
+    -   **Battle** App:
+        -   battle.js
+        -   loot.js
+    -   **Codex** App:
+        -   filter_form_validation.js
+        -   to_top.js
+    -   **Premium** App:
+        -   premium.js
+    -   **Profiles** App:
+        -   hero_select.js
+    -   **Project Level**:
+        -   doublepress.js
+        -   tooltips.js
+
+## Python
+
+-   The project's Python was validated for PEP8 compliance using
+    [Pylint](https://pypi.org/project/pylint/), and the additional package
+    [pylint-django](https://pypi.org/project/pylint-django/), via the terminal.
+    The following code was used per app:
+
+    `pylint --load-plugins=pylint_django --django-settings-module=cirpg <app-name>`
+
+-   Following PEP8 validation, minor amendments were made such as import
+    arrangement, variable naming conventions, and method override adjustments.
+-   The following warnings were presented in codex\\functions.py:
+    -   codex\\functions.py:77:8: `C0103: Variable name "e" doesn't conform to
+        snake_case naming style (invalid-name)`
+    -   codex\\functions.py:83:0: `C0103: Argument name "n" doesn't conform to
+        snake_case naming style (invalid-name)`
+    -   codex\\functions.py:83:0: `C0103: Argument name "t" doesn't conform to
+        snake_case naming style (invalid-name)`
+        -   These warnings have been considered, however `e` relates to
+            exception catching, and `n` and `t` relate to
+            arguments/parameters within a particularly mathematical function,
+            and thus I’m satisfied more verbose variable names are not required
+            as their usage is documented in the docstring.
+        -   These warnings have been disabled using pylint’s `disable` comment
+            feature.
+-   The following warnings were presented in codex\\views.py:
+    -   codex\\views.py:22:0: R0901: Too many ancestors (8/7)
+        (too-many-ancestors)
+    -   This warning is generated due to the [class inheritance of using
+        ListView](https://github.com/PyCQA/pylint-django/issues/261). As such,
+        it is unavoidable when using Class Based Views and has been disabled
+        using pylint’s `disable` comment feature.
+-   The following warnings were presented in profiles\\__init__.py:
+    -   profiles\\__init__.py:1:0: C0103: Constant name "default_app_config"
+        doesn't conform to UPPER_CASE naming style (invalid-name)
+    -   This warning is generated due to the constant being named in lower case,
+        however this is required for Django, and therefore has been disabled
+        using pylint’s `disable` comment feature.
+-   The following warnings were presented in profiles\\apps.py:
+    -   profiles\\apps.py:18:8: C0415: Import outside toplevel
+        (profiles.signals) (import-outside-toplevel)
+    -   profiles\\apps.py:18:8: W0611: Unused import profiles.signals
+        (unused-import)
+    -   This warning is generated due to an import being defined within a
+        function, however this is required in order to import signals into the
+        relevant app. As such, these have been disabled using pylint’s
+        `disable` comment feature.
+-   The following warnings were presented in profiles\\models.py:
+    -   profiles\\models.py:11:0: E5142: User model imported from
+        django.contrib.auth.models (imported-auth-user)
+    -   This warning is generated to avoid circular imports, as users may
+        sometimes create their own User model. However, given this isn’t the
+        case for this project, I’m satisfied this can be dismissed, and the
+        warning has been disabled using pylint’s `disable` comment feature.
+-   The following warnings were presented in profiles\\views.py:
+    -   profiles\\views.py:26:0: R0901: Too many ancestors (10/7)
+        (too-many-ancestors)
+    -   This warning is generated due to the [class inheritance of using
+        ListView](https://github.com/PyCQA/pylint-django/issues/261). As such,
+        it is unavoidable when using Class Based Views and has been disabled
+        using pylint’s `disable` comment feature.
+-   The following warnings were presented in leaderboard\\models.py:
+    -   leaderboard\\models.py:12:0: E5142: User model imported from
+        django.contrib.auth.models (imported-auth-user)
+    -   This warning is generated to avoid circular imports, as users may
+        sometimes create their own User model. However, given this isn’t the
+        case for this project, I’m satisfied this can be dismissed, and the
+        warning has been disabled using pylint’s `disable` comment feature.
+-   The following warnings were presented in leaderboard\\views.py:
+    -   leaderboard\\views.py:5:0: R0901: Too many ancestors (8/7)
+        (too-many-ancestors)
+    -   This warning is generated due to the [class inheritance of using
+        ListView](https://github.com/PyCQA/pylint-django/issues/261). As such,
+        it is unavoidable when using Class Based Views and has been disabled
+        using pylint’s `disable` comment feature.
+-   The following warnings were presented in manage.py:
+    -   manage.py:11:8: C0415: Import outside toplevel
+        (django.core.management.execute_from_command_line)
+        (import-outside-toplevel)
+    -   This warning is generated due to execute_from_commandline being imported
+        from within an if/else block. As this is a core Django file, the
+        decision has been made to disable this warning using pylint’s
+        `disable` comment feature.
+-   The following warnings were presented in custom_storages.py:
+    -   custom_storages.py:14:0: W0223: Method 'get_accessed_time' is abstract
+        in class 'Storage' but is not overridden (abstract-method)
+    -   custom_storages.py:14:0: W0223: Method 'get_created_time' is abstract in
+        class 'Storage' but is not overridden (abstract-method)
+    -   custom_storages.py:14:0: W0223: Method 'path' is abstract in class
+        'Storage' but is not overridden (abstract-method)
+    -   custom_storages.py:19:0: W0223: Method 'get_accessed_time' is abstract
+        in class 'Storage' but is not overridden (abstract-method)
+    -   custom_storages.py:19:0: W0223: Method 'get_created_time' is abstract in
+        class 'Storage' but is not overridden (abstract-method)
+    -   custom_storages.py:19:0: W0223: Method 'path' is abstract in class
+        'Storage' but is not overridden (abstract-method)
+    -   Given this is from a third party library, and has been [raised as an
+        issue](https://github.com/jschneier/django-storages/issues/985) in
+        February 2021, I’m unable to assess the impact this has, but do not
+        believe this requires any further consideration, and as such the
+        decision has been made to disable this warning using pylint’s
+        `disable` comment feature.
+-   At the time of deployment, there are currently no validation errors in the
+    project’s python files:
+
+<details>
+  <summary>Show Pylint Output</summary>
+
+![Testing – Pylint Output](https://res.cloudinary.com/bak2k3/image/upload/v1629570501/CIRPG/Testing_-_Pylint_Output_eq3edw.jpg)
+
+</details>
+
+## Accessibility, Performance, and Best Practice
+
+-   All pages of the project were assessed for accessibility through WAVE. The
+    only warning apparent in some of the pages is with regard to *“Skipped
+    Heading Level”.* I’m aware of this, due to time constraints, and considering
+    this is only a warning, have decided not to amend the text accordingly due
+    to the impact this would have on other text throughout the website.
+-   The project’s Accessibility, Performance, and Best Practices audit was
+    undertaken with [Google
+    Lighthouse](https://developers.google.com/web/tools/lighthouse).
+
+### Desktop
+
+<details>
+  <summary>Show Desktop Lighthouse Results</summary>
+
+![Testing – Desktop – Lighthouse](https://res.cloudinary.com/bak2k3/image/upload/v1629570500/CIRPG/Testing_-_Lighthouse_-_Desktop_izrbsz.jpg)
+
+</details>
+
+### Mobile
+
+<details>
+  <summary>Show Mobile Lighthouse Results</summary>
+
+![Testing – Mobile – Lighthouse](https://res.cloudinary.com/bak2k3/image/upload/v1629570501/CIRPG/Testing_-_Lighthouse_-_Mobile_x3f4ze.jpg)
+
+</details>
+
+It appears the Mobile Performance was reduced due to the throttling imposed on
+the mobile testing for the Lighthouse assessment.
