@@ -19,8 +19,6 @@ testing of the features associated with the User Story Testing.
 
 ## Viewing and Navigation
 
-## 
-
 **User Story:** 1a – As a Site User, I want to be able to understand the purpose
 of the site immediately, so that I can decide whether I want to engage with it.
 
@@ -95,8 +93,6 @@ How To section from any location within the project.
 **Outcome: Pass**
 
 ## Registration and User Accounts
-
-## 
 
 **User Story:** 2a – As a Site User, I want to be able to Register for an
 account, so that I can have a profile.
@@ -209,8 +205,6 @@ from any page to view stats and interact with the profile.
 
 ## Premium
 
-## 
-
 **User Story:** 3a – As a Free User, I want to be able to access the upgrade
 offers from any page, so that I can choose to upgrade easily from any location
 on the site.
@@ -286,8 +280,6 @@ not be able to access the **Stripe Checkout** page.
     premium.
 
 **Outcome: Pass**
-
-## 
 
 ## Game
 
@@ -484,8 +476,6 @@ of their previous level and current level.
 
 **Outcome: Pass**
 
-## 
-
 **User Story:** 4e – As a Free/Paid User, I want to be presented with a choice
 of a new weapon after each win, so that I can customize my character.
 
@@ -615,8 +605,6 @@ this level.
 **Outcome: Pass**
 
 ## Leaderboard
-
-## 
 
 **User Story:** 5a – As a Site User, I want to be able to view the Leaderboard,
 so that I can see the High Scores of paid players.
@@ -864,8 +852,6 @@ relying on the Django admin interface.
     and the image uploaded correctly display (if amended).
 
 **Outcome: Pass**
-
-## 
 
 **User Story:** 6e – As an Admin, I want to be able to delete entries in the
 Codex, so that I can remove content from the game.
