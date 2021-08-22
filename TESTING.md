@@ -1076,76 +1076,76 @@ been considered or tested.
         -   These warnings have been disabled using pylint’s `disable` comment
             feature.
 -   The following warnings were presented in [codex\\views.py](codex/views.py):
-    -   codex\\views.py:22:0: R0901: Too many ancestors (8/7)
-        (too-many-ancestors)
+    -   codex\\views.py:22:0: `R0901: Too many ancestors (8/7)
+        (too-many-ancestors)`
     -   This warning is generated due to the [class inheritance of using
         ListView](https://github.com/PyCQA/pylint-django/issues/261). As such,
         it is unavoidable when using Class Based Views and has been disabled
         using pylint’s `disable` comment feature.
--   The following warnings were presented in [profiles\\__init__.py](profiles/__init__.py):
-    -   profiles\\__init__.py:1:0: C0103: Constant name "default_app_config"
-        doesn't conform to UPPER_CASE naming style (invalid-name)
+-   The following warnings were presented in [profiles\\\_\_init\_\_.py](profiles/__init__.py):
+    -   profiles\\__init__.py:1:0: `C0103: Constant name "default_app_config"
+        doesn't conform to UPPER_CASE naming style (invalid-name)`
     -   This warning is generated due to the constant being named in lower case,
         however this is required for Django, and therefore has been disabled
         using pylint’s `disable` comment feature.
 -   The following warnings were presented in [profiles\\apps.py](profiles/apps.py):
-    -   profiles\\apps.py:18:8: C0415: Import outside toplevel
-        (profiles.signals) (import-outside-toplevel)
-    -   profiles\\apps.py:18:8: W0611: Unused import profiles.signals
-        (unused-import)
+    -   profiles\\apps.py:18:8: `C0415: Import outside toplevel
+        (profiles.signals) (import-outside-toplevel)`
+    -   profiles\\apps.py:18:8: `W0611: Unused import profiles.signals
+        (unused-import)`
     -   This warning is generated due to an import being defined within a
         function, however this is required in order to import signals into the
         relevant app. As such, these have been disabled using pylint’s
         `disable` comment feature.
 -   The following warnings were presented in [profiles\\models.py](profiles/models.py):
-    -   profiles\\models.py:11:0: E5142: User model imported from
-        django.contrib.auth.models (imported-auth-user)
+    -   profiles\\models.py:11:0: `E5142: User model imported from
+        django.contrib.auth.models (imported-auth-user)`
     -   This warning is generated to avoid circular imports, as users may
         sometimes create their own User model. However, given this isn’t the
         case for this project, I’m satisfied this can be dismissed, and the
         warning has been disabled using pylint’s `disable` comment feature.
 -   The following warnings were presented in [profiles\\views.py](profiles/views.py):
-    -   profiles\\views.py:26:0: R0901: Too many ancestors (10/7)
-        (too-many-ancestors)
+    -   profiles\\views.py:26:0: `R0901: Too many ancestors (10/7)
+        (too-many-ancestors)`
     -   This warning is generated due to the [class inheritance of using
         ListView](https://github.com/PyCQA/pylint-django/issues/261). As such,
         it is unavoidable when using Class Based Views and has been disabled
         using pylint’s `disable` comment feature.
 -   The following warnings were presented in [leaderboard\\models.py](leaderboard/models.py):
-    -   leaderboard\\models.py:12:0: E5142: User model imported from
-        django.contrib.auth.models (imported-auth-user)
+    -   leaderboard\\models.py:12:0: `E5142: User model imported from
+        django.contrib.auth.models (imported-auth-user)`
     -   This warning is generated to avoid circular imports, as users may
         sometimes create their own User model. However, given this isn’t the
         case for this project, I’m satisfied this can be dismissed, and the
         warning has been disabled using pylint’s `disable` comment feature.
 -   The following warnings were presented in [leaderboard\\views.py](leaderboard/views.py):
-    -   leaderboard\\views.py:5:0: R0901: Too many ancestors (8/7)
-        (too-many-ancestors)
+    -   leaderboard\\views.py:5:0: `R0901: Too many ancestors (8/7)
+        (too-many-ancestors)`
     -   This warning is generated due to the [class inheritance of using
         ListView](https://github.com/PyCQA/pylint-django/issues/261). As such,
         it is unavoidable when using Class Based Views and has been disabled
         using pylint’s `disable` comment feature.
 -   The following warnings were presented in [manage.py](manage.py):
-    -   manage.py:11:8: C0415: Import outside toplevel
+    -   manage.py:11:8: `C0415: Import outside toplevel
         (django.core.management.execute_from_command_line)
-        (import-outside-toplevel)
+        (import-outside-toplevel)`
     -   This warning is generated due to execute_from_commandline being imported
         from within an if/else block. As this is a core Django file, the
         decision has been made to disable this warning using pylint’s
         `disable` comment feature.
 -   The following warnings were presented in [custom_storages.py](custom_storages.py):
-    -   custom_storages.py:14:0: W0223: Method 'get_accessed_time' is abstract
-        in class 'Storage' but is not overridden (abstract-method)
-    -   custom_storages.py:14:0: W0223: Method 'get_created_time' is abstract in
-        class 'Storage' but is not overridden (abstract-method)
-    -   custom_storages.py:14:0: W0223: Method 'path' is abstract in class
-        'Storage' but is not overridden (abstract-method)
-    -   custom_storages.py:19:0: W0223: Method 'get_accessed_time' is abstract
-        in class 'Storage' but is not overridden (abstract-method)
-    -   custom_storages.py:19:0: W0223: Method 'get_created_time' is abstract in
-        class 'Storage' but is not overridden (abstract-method)
-    -   custom_storages.py:19:0: W0223: Method 'path' is abstract in class
-        'Storage' but is not overridden (abstract-method)
+    -   custom_storages.py:14:0: `W0223: Method 'get_accessed_time' is abstract
+        in class 'Storage' but is not overridden (abstract-method)`
+    -   custom_storages.py:14:0: `W0223: Method 'get_created_time' is abstract in
+        class 'Storage' but is not overridden (abstract-method)`
+    -   custom_storages.py:14:0: `W0223: Method 'path' is abstract in class
+        'Storage' but is not overridden (abstract-method)`
+    -   custom_storages.py:19:0: `W0223: Method 'get_accessed_time' is abstract
+        in class 'Storage' but is not overridden (abstract-method)`
+    -   custom_storages.py:19:0: `W0223: Method 'get_created_time' is abstract in
+        class 'Storage' but is not overridden (abstract-method)`
+    -   custom_storages.py:19:0: `W0223: Method 'path' is abstract in class
+        'Storage' but is not overridden (abstract-method)`
     -   Given this is from a third party library, and has been [raised as an
         issue](https://github.com/jschneier/django-storages/issues/985) in
         February 2021, I’m unable to assess the impact this has, but do not
