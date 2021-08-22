@@ -1187,8 +1187,8 @@ surpasses their numerical representation:
 5.  Mythic (Red)
 
 Given the impact higher rarities have on weapons, the method of calculating a
-rarity is based on a multitude of factors, and is determined through a recursive
-algorithm which is demonstrated below:
+rarity is based on a multitude of factors, and is determined through a [recursive
+algorithm](https://github.com/BAK2K3/CIRPG/blob/53612db4ad33d219ac0ee4c449d2bce058155383/codex/functions.py#L83) which is demonstrated below:
 
 <details>
   <summary>View Rarity Generator Flow Chart</summary>
@@ -1205,7 +1205,7 @@ documentation, a graphical overview has been provided to aid the understanding
 of their applications:
 
 1.  Character Stat Modification on Level Up [[Relevant
-    Code](https://github.com/BAK2K3/CIRPG/blob/5cfa9734f874ac8a6324aa9b2872b70b62d80a2a/profiles/functions.py#L6)]
+    Code](https://github.com/BAK2K3/CIRPG/blob/53612db4ad33d219ac0ee4c449d2bce058155383/profiles/functions.py#L15)]
 
 <details>
   <summary>Character Level Up Flow Chart</summary>
@@ -1215,7 +1215,7 @@ of their applications:
 </details>
 
 2.  Enemy Stat Modification on Enemy Generation [[Relevant
-    Code](https://github.com/BAK2K3/CIRPG/blob/5cfa9734f874ac8a6324aa9b2872b70b62d80a2a/codex/models.py#L173)]
+    Code](https://github.com/BAK2K3/CIRPG/blob/53612db4ad33d219ac0ee4c449d2bce058155383/codex/models.py#L249)]
 
 
 <details>
@@ -1226,7 +1226,7 @@ of their applications:
 </details>
 
 3.  Weapon Stat Modification on Weapon Generation [[Relevant
-    Code](https://github.com/BAK2K3/CIRPG/blob/5cfa9734f874ac8a6324aa9b2872b70b62d80a2a/codex/models.py#L123)]
+    Code](https://github.com/BAK2K3/CIRPG/blob/53612db4ad33d219ac0ee4c449d2bce058155383/codex/models.py#L198)]
 
 <details>
   <summary>Weapon Stat Generation Flow Chart</summary>
@@ -1237,7 +1237,7 @@ of their applications:
 ### Leaderboard
 
 When a premium user’s character is defeated, a [score is
-calculated](https://github.com/BAK2K3/CIRPG/blob/5cfa9734f874ac8a6324aa9b2872b70b62d80a2a/leaderboard/models.py#L147)
+calculated](https://github.com/BAK2K3/CIRPG/blob/53612db4ad33d219ac0ee4c449d2bce058155383/leaderboard/models.py#L190)
 based on their current level, number of enemies defeated, and combined
 associated stats. This score is presented to the user, and if in the top 10
 scores, will be added to the Leaderboard, replacing the lowest scoring entry.
@@ -1687,7 +1687,7 @@ following variables:
     [Equipment](https://www.dndbeyond.com/equipment), and
     [Monsters](https://www.dndbeyond.com/monsters).
 -   All stats for Codex Entries were devised and calculated manually. The
-    original Excel file used to balance stats can be found here.
+    original Excel file used to balance stats can be found [here](documentation/Stats.xlsx).
 
 ## Media
 
