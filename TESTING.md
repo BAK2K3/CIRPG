@@ -913,6 +913,8 @@ without relying on the Django admin interface.
 
 -   Ensure the external link within the **How To** opens up in a new tab.
 
+---
+
 # Automated View Testing  
 
 
@@ -977,47 +979,26 @@ The following steps were taken to generate the above report:
 -   Create a Coverage Debug launch file:
 
 ```
-
 {
-
     "name": "Python: Django Coverage",
-
     "type": "python",
-
     "request": "launch",
-
     "module": "coverage",
-
     "args": [
-
         "run",
-
         "--source='.'",
-
         "manage.py",
-
         "test"
-
         ],
-
     "django": true,
-
     "env": {
-
         "DJANGO_SECRET_KEY": "<variable>",
-
         "DEVELOPMENT": "Yes",
-
         "STRIPE_PUBLISHABLE_KEY": "<variable>",
-
         "STRIPE_SECRET_KEY": "<variable>",
-
         "STRIPE_PRICE_ID": "<variable>",
-
         "STRIPE_WH_SECRET": "<variable>",
-
         "DOMAIN_URL": "<variable>",
-
     }
 }
 ```
@@ -1033,6 +1014,9 @@ The following steps were taken to generate the above report:
 Please note that the test coverage files (`htmlcov`) have **not** been
 included in the GitHub repository.
 
+---
+
+
 # Browser Testing
 
 Cross-Browser compatibility was tested via applying the methodology described in
@@ -1046,6 +1030,9 @@ All functionality worked as intended.
 
 As this project uses JavaScript ES6, support for Internet Explorer 11 has not
 been considered or tested.
+
+---
+
 
 # Code Validation
 
@@ -1252,3 +1239,162 @@ been considered or tested.
 
 It appears the Mobile Performance was reduced due to the throttling imposed on
 the mobile testing for the Lighthouse assessment.
+
+---
+
+
+# Significant Bugs
+
+## Passing Unserializable fields into a JSON file from Django
+
+**Fixed: Yes**
+
+Many of the views within the project heavily rely on statistical information
+being passed to and from a template. When initially implementing some features
+of the project, it was clear that data needed to be passed directly into the JS
+files, as opposed to depending on the raw HTML displayed to the user, as
+malicious attempts to manipulate data could have seen users over-ride aspects of
+the HTML in order to affect the outcome of battles, new weapons, etc. As such,
+data needed to be duplicated and sent as both an ordinary `QueryDict` (to be
+viewed by the user), and as a serializable set of data (which can be handles by
+JS).
+
+However, multiple aspects of Model Instances were **not** serializable, mainly
+the `_state` attribute and `imageFileField` attribute. As such, these
+aspects of the instances had to be removed for the data that needed to be
+serialised. This was accomplished through the following code:
+
+```
+context['weapon_json'].pop('_state')
+context['weapon_json']['image'] = str(context['new_weapon'].image)
+```
+
+This removed the unrequired `_state` field, and converted the
+`imageFileField` into a verbose string of the image.
+
+## Multiple instances of QueryDicts in context
+
+**Fixed: Yes**
+
+As described above, some views required multiple instances of the same
+`QueryDict` to be assigned to different dictionary values within the context.
+This would allow two versions of the same model instance to be sent to the
+browser, one which has been unaltered (`QueryDict`), and one which has been
+altered (to become serializable). For example:
+
+```
+context['new_weapon'] = Codex.new_weapon(current_profile.paid, character.current_level)
+context['weapon_json'] = context['new_weapon'].__dict__
+context['weapon_json'].pop('_state')
+```
+
+However, when reviewing the data being passed to the context, it was clear the
+memory location of the `QueryDict` was being saved within the dictionary, as
+opposed to the `QueryDict` itself. As such, amending one of these entries
+affected both.
+
+The workaround to this was to either manually build a new context dictionary
+containing the values required, or to create a `deepcopy` of the
+`QueryDict`:
+
+```
+context['weapon_json'] = copy.deepcopy(context['new_weapon'].__dict__)
+context['weapon_json'].pop('_state')
+```
+
+This allowed me to create a duplicated instance of the `QueryDict` in a single
+line of code, and allowed free modification of the duplicated instance.
+
+## Manual Navigation to the Success Page
+
+**Fixed: Yes**
+
+The **Success** page, following a user upgrading to a premium account, was
+designed to only be accessed by users who had made a successful payment.
+
+Initially, a session cookie was created when the Stripe Checkout instance was
+created, and the Success Route validated the session against this. However, a
+user could manually navigate to the success page once they had visited the
+premium page, or once they had navigated to the external stripe website.
+
+The second implementation of this saw a meta check within the request from a
+user, to ensure the user had navigated to the site from an external page (along
+with the session cookie previously mentioned):
+
+```
+if self.request.META.get('HTTP_SEC_FETCH_SITE') == "cross-site":
+```
+
+While this initially proved successful, preventing users from manually
+navigating from *any* other site or page, it was quickly discovered that this is
+[not compatible with all modern
+browsers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site#browser_compatibility).
+This meant that Safari users were unable to navigate to the success page under
+any circumstances.
+
+The final solution saw the validation of the payment being assessed through the
+Stripe Checkout session; the **success_url** of the Stripe Checkout Session
+redirects the user to a new **Processing** route, appending the Session ID to
+the Get request. This Route then queries the Stripe API to validate that a
+payment had been made; if the payment had been successful, the user was then
+redirected to the Success page, with a secondary cookie which the Success route
+validates the request against. This now functions as intended on all browsers.
+
+## Double Link Triggers
+
+**Fixed: Yes**
+
+During user testing, it was brought to light that the various buttons and links
+throughout the site could be “double pressed”. This resulted in duplicate
+submissions to routes, subsequently resulting in 500 errors. This is due to the
+nature of how much the information stored within the various databases is
+impacted each time a route is accessed.
+
+After researching a [potential
+workaround](https://www.bram.us/2020/11/04/preventing-double-form-submissions/)
+to this, I implemented an **anti-double-click** class, which I attached to
+specified buttons and links. Each time a button or link is pressed which
+contains the aforementioned class, the element is checked for an **in-progress**
+class via a custom JavaScript function; if the element does not contain this
+class, it is added to the element, otherwise the event is prevented. This allows
+the initial submission of these buttons and links, but prevents any subsequent
+attempts to interact with the elements. This solution also allowed me to
+specifically target buttons and links which would cause 500 routes, and not have
+to resort to applying this function to all buttons/links across the site.
+
+## No Profile for Superusers
+
+When initially implementing Profiles for users, the decision was made to listen
+to allauth `email_confirmed` signals, and subsequently trigger the creation of
+a Profile for users who had validated their account. This functioned as
+intended, until the project was deployed and a new Superuser was created via the
+command line. As the superuser was created without email validation, a Profile
+did not exist for the user, and as such the superuser was unable to access any
+page of the site once logged in (due to the context rendering profile
+information).
+
+My initial attempt to solve this issue was to override the existing
+`createsuperuser` command through `manage.py`, however I was unable to
+achieve the intended results.
+
+The solution to this was to listen to all Post Save signals coming from the
+allauth Model; this signal is checked to see if it is as a result of an entry
+creation, and whether the created entry was a superuser. In these instances,
+this triggers the creation of a Profile for the associated superuser whose
+account was created:
+
+```
+@receiver(post_save, sender=USER_MODEL)
+def admin_profile(instance, created, **kwargs):
+    """ Create a Profile when a Superuser is created """
+    if created and instance.is_superuser:
+        Profile.objects.create(user=instance)
+```
+
+This solution allows both ordinary users who validate their account to receive a
+profile, but also sets up a profile for Superusers when they are created via the
+command line.
+
+---
+
+[Click here](README.md) to return to the main README.md.
