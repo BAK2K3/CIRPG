@@ -469,7 +469,7 @@ weapon or keep their existing weapon.
 **Summary:**
 
 -   For any user, at the end of each successful **Battle**, a random weapon is
-    generated (subject to Stat, Tier, and Rarity randomisation).
+    generated (subject to [Stat, Tier, and Rarity randomisation](https://github.com/BAK2K3/CIRPG/blob/main/README.md#character-item-and-enemy-statistics)).
 -   The user is presented with their existing weapon, along with the newly
     generated weapon.
 -   Each weapon is clearly separated within their isolated container, and
@@ -925,7 +925,7 @@ view was written.
 In order to assess **Test Coverage,**
 [Coverage](https://coverage.readthedocs.io/en/coverage-5.5/) was used. The test
 coverage resulted in an **89%** coverage (also taking into consideration the
-default Django files). For full results, please see the **Coverage Results.**
+default Django files). For full results, please see the [**Coverage Results**](documentation/test-coverage.xlsx).
 
 The following steps were taken to generate the above report:
 
@@ -1061,7 +1061,7 @@ been considered or tested.
 
 -   Following PEP8 validation, minor amendments were made such as import
     arrangement, variable naming conventions, and method override adjustments.
--   The following warnings were presented in codex\\functions.py:
+-   The following warnings were presented in [codex\\functions.py](codex/functions.py):
     -   codex\\functions.py:77:8: `C0103: Variable name "e" doesn't conform to
         snake_case naming style (invalid-name)`
     -   codex\\functions.py:83:0: `C0103: Argument name "n" doesn't conform to
@@ -1075,20 +1075,20 @@ been considered or tested.
             as their usage is documented in the docstring.
         -   These warnings have been disabled using pylint’s `disable` comment
             feature.
--   The following warnings were presented in codex\\views.py:
+-   The following warnings were presented in [codex\\views.py](codex/views.py):
     -   codex\\views.py:22:0: R0901: Too many ancestors (8/7)
         (too-many-ancestors)
     -   This warning is generated due to the [class inheritance of using
         ListView](https://github.com/PyCQA/pylint-django/issues/261). As such,
         it is unavoidable when using Class Based Views and has been disabled
         using pylint’s `disable` comment feature.
--   The following warnings were presented in profiles\\__init__.py:
+-   The following warnings were presented in [profiles\\__init__.py](profiles/__init__.py):
     -   profiles\\__init__.py:1:0: C0103: Constant name "default_app_config"
         doesn't conform to UPPER_CASE naming style (invalid-name)
     -   This warning is generated due to the constant being named in lower case,
         however this is required for Django, and therefore has been disabled
         using pylint’s `disable` comment feature.
--   The following warnings were presented in profiles\\apps.py:
+-   The following warnings were presented in [profiles\\apps.py](profiles/apps.py):
     -   profiles\\apps.py:18:8: C0415: Import outside toplevel
         (profiles.signals) (import-outside-toplevel)
     -   profiles\\apps.py:18:8: W0611: Unused import profiles.signals
@@ -1097,35 +1097,35 @@ been considered or tested.
         function, however this is required in order to import signals into the
         relevant app. As such, these have been disabled using pylint’s
         `disable` comment feature.
--   The following warnings were presented in profiles\\models.py:
+-   The following warnings were presented in [profiles\\models.py](profiles/models.py):
     -   profiles\\models.py:11:0: E5142: User model imported from
         django.contrib.auth.models (imported-auth-user)
     -   This warning is generated to avoid circular imports, as users may
         sometimes create their own User model. However, given this isn’t the
         case for this project, I’m satisfied this can be dismissed, and the
         warning has been disabled using pylint’s `disable` comment feature.
--   The following warnings were presented in profiles\\views.py:
+-   The following warnings were presented in [profiles\\views.py](profiles/views.py):
     -   profiles\\views.py:26:0: R0901: Too many ancestors (10/7)
         (too-many-ancestors)
     -   This warning is generated due to the [class inheritance of using
         ListView](https://github.com/PyCQA/pylint-django/issues/261). As such,
         it is unavoidable when using Class Based Views and has been disabled
         using pylint’s `disable` comment feature.
--   The following warnings were presented in leaderboard\\models.py:
+-   The following warnings were presented in [leaderboard\\models.py](leaderboard/models.py):
     -   leaderboard\\models.py:12:0: E5142: User model imported from
         django.contrib.auth.models (imported-auth-user)
     -   This warning is generated to avoid circular imports, as users may
         sometimes create their own User model. However, given this isn’t the
         case for this project, I’m satisfied this can be dismissed, and the
         warning has been disabled using pylint’s `disable` comment feature.
--   The following warnings were presented in leaderboard\\views.py:
+-   The following warnings were presented in [leaderboard\\views.py](leaderboard/views.py):
     -   leaderboard\\views.py:5:0: R0901: Too many ancestors (8/7)
         (too-many-ancestors)
     -   This warning is generated due to the [class inheritance of using
         ListView](https://github.com/PyCQA/pylint-django/issues/261). As such,
         it is unavoidable when using Class Based Views and has been disabled
         using pylint’s `disable` comment feature.
--   The following warnings were presented in manage.py:
+-   The following warnings were presented in [manage.py](manage.py):
     -   manage.py:11:8: C0415: Import outside toplevel
         (django.core.management.execute_from_command_line)
         (import-outside-toplevel)
@@ -1133,7 +1133,7 @@ been considered or tested.
         from within an if/else block. As this is a core Django file, the
         decision has been made to disable this warning using pylint’s
         `disable` comment feature.
--   The following warnings were presented in custom_storages.py:
+-   The following warnings were presented in [custom_storages.py](custom_storages.py):
     -   custom_storages.py:14:0: W0223: Method 'get_accessed_time' is abstract
         in class 'Storage' but is not overridden (abstract-method)
     -   custom_storages.py:14:0: W0223: Method 'get_created_time' is abstract in
@@ -1324,8 +1324,8 @@ a Profile for users who had validated their account. This functioned as
 intended, until the project was deployed and a new Superuser was created via the
 command line. As the superuser was created without email validation, a Profile
 did not exist for the user, and as such the superuser was unable to access any
-page of the site once logged in (due to the context rendering profile
-information).
+page of the site once logged in (due to the [context rendering profile
+information](profiles/contexts.py)).
 
 My initial attempt to solve this issue was to override the existing
 `createsuperuser` command through `manage.py`, however I was unable to
