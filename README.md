@@ -1825,4 +1825,4 @@ following variables:
 # Disclaimer
 
 This website is for educational purposes only; the project is not intended for
-profited and therefore the Stripe account will remain in Test mode.
+profit and therefore the Stripe account will remain in Test mode.
