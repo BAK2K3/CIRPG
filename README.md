@@ -1002,7 +1002,7 @@ stored in a separate database as active game content.
 For example, when a user enters a Battle, an appropriate enemy and random weapon
 is selected from the Codex. These entries are assigned levels, and rarity where
 appropriate, and the Base Stats of these Codex Entries are then modified (as
-discussed in a Character, Item, and Enemy Statistics), before being stored
+discussed in a [Character, Item, and Enemy Statistics](#character-item-and-enemy-statistics)), before being stored
 within the Active Enemy database in conjunction with their associated Foreign
 Keys:
 
@@ -1071,8 +1071,8 @@ The core gameplay element of the project surrounds the Battle Mechanics, whereby
 users engage in an [Active Time
 Battle](https://en.wikipedia.org/wiki/Turns,_rounds_and_time-keeping_systems_in_games#Active_Time_Battle)
 against a randomly generated enemy and weapon. The mechanics utilise the
-character’s and enemy’s respective combined stats as discussed in Content
-Requirements (Stats). The [gameplay
+character’s and enemy’s respective combined stats as discussed in [Content
+Requirements](#content-requirements). The [gameplay
 loop](https://github.com/BAK2K3/CIRPG/blob/main/battle/static/battle/js/battle.js)
 was implemented through Object Oriented JavaScript.
 
@@ -1116,7 +1116,7 @@ Log, which a user can scroll through at any time.
 
 For each battle a character wins, they gain an amount of XP relative to their
 own level and their opponent’s level. If, following a character gaining XP, they
-level up, their stats will increase by a variable amount (see Statistics), and
+level up, their stats will increase by a variable amount (see [Statistics]((#character-item-and-enemy-statistics))), and
 the next Tier of content will be made available within the pool of content.
 
 
