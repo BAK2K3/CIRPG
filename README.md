@@ -1687,7 +1687,7 @@ following variables:
     [Equipment](https://www.dndbeyond.com/equipment), and
     [Monsters](https://www.dndbeyond.com/monsters).
 -   All stats for Codex Entries were devised and calculated manually. The
-    original Excel file used to balance stats can be found [here](documentation/Stats.xlsx).
+    original Excel file used to balance stats can be found [here](documentation/stats.xlsx).
     The subsequent JSON fixtures file can be found [here](https://github.com/BAK2K3/CIRPG/blob/main/codex/fixtures/codex.json).
 
 ## Media
