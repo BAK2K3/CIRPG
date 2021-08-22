@@ -19,8 +19,7 @@ testing of the features associated with the User Story Testing.
 
 ## Viewing and Navigation
 
-**User Story:** 1a – As a Site User, I want to be able to understand the purpose
-of the site immediately, so that I can decide whether I want to engage with it.
+### User Story 1a: As a Site User, I want to be able to understand the purpose of the site immediately, so that I can decide whether I want to engage with it.
 
 **Acceptance Criteria:** A site user must be able to identify the website's name
 and understand its purpose on first visit.
@@ -46,9 +45,7 @@ and understand its purpose on first visit.
 
 **Outcome: Pass**
 
-**User Story:** 1b – As a Site User, I want to be able to navigate and interact
-with the site with ease on all viewports, so that I can play the game on any
-device.
+### User Story 1b: As a Site User, I want to be able to navigate and interact with the site with ease on all viewports, so that I can play the game on any device.
 
 **Acceptance Criteria:** A site user should be able to benefit from all features
 on the website, regardless of viewport.
@@ -70,8 +67,7 @@ on the website, regardless of viewport.
 
 **Outcome: Pass**
 
-**User Story:** 1c – As a Site User, I want to be able to find out information
-about the game, so that I can understand how to play.
+### User Story 1c: As a Site User, I want to be able to find out information about the game, so that I can understand how to play.
 
 **Acceptance Criteria:** A site user must be able to navigate to and utilise the
 How To section from any location within the project.
@@ -94,8 +90,7 @@ How To section from any location within the project.
 
 ## Registration and User Accounts
 
-**User Story:** 2a – As a Site User, I want to be able to Register for an
-account, so that I can have a profile.
+### User Story 2a: As a Site User, I want to be able to Register for an account, so that I can have a profile.
 
 **Acceptance Criteria:** A site user must be able to successful register for an
 account.
@@ -117,8 +112,7 @@ account.
 
 **Outcome: Pass**
 
-**User Story:** 2b – As a Site User, I want to be able to log In and log out, so
-that I can access my profile and play the game.
+### User Story 2b: As a Site User, I want to be able to log In and log out, so that I can access my profile and play the game.
 
 **Acceptance Criteria:** A site user who has validated their account must be
 about to log in and log out of the site.
@@ -149,8 +143,7 @@ about to log in and log out of the site.
 
 **Outcome: Pass**
 
-**User Story:** 2c – As a Site User, I want to be able to recover my password,
-so that I can recover access to my account.
+### User Story 2c: As a Site User, I want to be able to recover my password, so that I can recover access to my account.
 
 **Acceptance Criteria:** A site user should be able to reset their password
 using their email address.
@@ -169,8 +162,7 @@ using their email address.
 
 **Outcome: Pass**
 
-**User Story:** 2d – As a Free/User, I want to be able to access my profile, so
-that I can see my statistics and status.
+### User Story 2d: As a Free/User, I want to be able to access my profile, so that I can see my statistics and status.
 
 **Acceptance Criteria:** A logged in user must be able to access their profile
 from any page to view stats and interact with the profile.
@@ -205,9 +197,7 @@ from any page to view stats and interact with the profile.
 
 ## Premium
 
-**User Story:** 3a – As a Free User, I want to be able to access the upgrade
-offers from any page, so that I can choose to upgrade easily from any location
-on the site.
+### User Story 3a: As a Free User, I want to be able to access the upgrade offers from any page, so that I can choose to upgrade easily from any location on the site.
 
 **Acceptance Criteria:** A free user should be able to access the premium page
 and be presented with the option to upgrade.
@@ -226,8 +216,7 @@ and be presented with the option to upgrade.
 
 **Outcome: Pass**
 
-**User Story:** 3b – As a Free User, I want to be able to pay to upgrade to the
-full version, so that I can have full access to premium features
+### User Story 3b: As a Free User, I want to be able to pay to upgrade to the full version, so that I can have full access to premium features
 
 **Acceptance Criteria:** A free user should be able to make a one-off payment to
 permanently add the paid status to their profile, unlocking the benefits of
@@ -265,8 +254,7 @@ premium.
 
 **Outcome: Pass**
 
-**User Story:** 3c – As a Paid User, I want to be able to navigate the site
-without any upgrade offers, so that I can avoid paying for the product twice.
+### User Story 3c: As a Paid User, I want to be able to navigate the site without any upgrade offers, so that I can avoid paying for the product twice.
 
 **Acceptance Criteria:** Paid users must not be prompted to upgrade, and must
 not be able to access the **Stripe Checkout** page.
@@ -283,8 +271,7 @@ not be able to access the **Stripe Checkout** page.
 
 ## Game
 
-**User Story:** 4a – As a Free User, I want to be able to have basic access to
-the game, so that I can decide whether I want to pay for the full game.
+### User Story 4a: As a Free User, I want to be able to have basic access to the game, so that I can decide whether I want to pay for the full game.
 
 **Acceptance Criteria:** A free user must be able to have limited access to all
 features of the game.
@@ -309,8 +296,7 @@ features of the game.
 
 **Outcome: Pass**
 
-**User Story:** 4b – As a Free/Paid User, I want to be able to create a new
-character, so that I can start playing the game.
+### User Story 4b: As a Free/Paid User, I want to be able to create a new character, so that I can start playing the game.
 
 **Acceptance Criteria:** A user must be able to create a new character, and
 access features associated with a profile having an Active Character**.**
@@ -356,8 +342,7 @@ access features associated with a profile having an Active Character**.**
 
 **Outcome: Pass**
 
-**User Story:** 4c – As a Free/Paid User, I want to be able to enter and engage
-in a battle, so that I can enjoy the basic gameplay loop of the game.
+### User Story 4c: As a Free/Paid User, I want to be able to enter and engage in a battle, so that I can enjoy the basic gameplay loop of the game.
 
 **Acceptance Criteria:** Any user with an Active Character must be able to
 participate in a Battle.
@@ -434,8 +419,7 @@ participate in a Battle.
 
 **Outcome: Pass**
 
-**User Story:** 4d – As a Free/Paid User, I want to be able to level up my
-character, so that I can make progress in the game.
+### User Story 4d: As a Free/Paid User, I want to be able to level up my character, so that I can make progress in the game.
 
 **Acceptance Criteria:** A user must be able to level up, and compare statistics
 of their previous level and current level.
@@ -476,8 +460,7 @@ of their previous level and current level.
 
 **Outcome: Pass**
 
-**User Story:** 4e – As a Free/Paid User, I want to be presented with a choice
-of a new weapon after each win, so that I can customize my character.
+### User Story 4e: As a Free/Paid User, I want to be presented with a choice of a new weapon after each win, so that I can customize my character.
 
 **Acceptance Criteria:** Users must be presented with a new weapon after every
 successful battle, and they must be provided with the choice to take the new
@@ -515,9 +498,7 @@ weapon or keep their existing weapon.
 
 **Outcome: Pass**
 
-**User Story:** 4f – As a Free/Paid User, I want to be able to leave a battle
-halfway through and return at a later time, so that I can stop playing the game
-at any point without being penalised.
+### User Story 4f: As a Free/Paid User, I want to be able to leave a battle halfway through and return at a later time, so that I can stop playing the game at any point without being penalised.
 
 **Acceptance Criteria:** Users should be able to retreat or retry a battle with
 no consequence, and and/or subsequently return to the battle at a later time.
@@ -552,9 +533,7 @@ no consequence, and and/or subsequently return to the battle at a later time.
 
 **Outcome: Pass**
 
-**User Story:** 4g – As a Paid User, I want to have access to higher levels,
-additional characters, and additional weapons/enemies, so that I can enjoy the
-benefits of premium content.
+### User Story 4g: As a Paid User, I want to have access to higher levels, additional characters, and additional weapons/enemies, so that I can enjoy the benefits of premium content.
 
 **Acceptance Criteria:** A paid user must be able to access premium content, and
 be able to exceed level 2 in order to access content which is paywalled from
@@ -606,8 +585,7 @@ this level.
 
 ## Leaderboard
 
-**User Story:** 5a – As a Site User, I want to be able to view the Leaderboard,
-so that I can see the High Scores of paid players.
+### User Story 5a: As a Site User, I want to be able to view the Leaderboard, so that I can see the High Scores of paid players.
 
 **Acceptance Criteria:** Site users should be able to access the Leaderboard
 page from any page, in order to a summary of the Leaderboard.
@@ -629,8 +607,7 @@ page from any page, in order to a summary of the Leaderboard.
 
 **Outcome: Pass**
 
-**User Story:** 5b – As a Site User, I want to be able to view individual
-Leaderboard entries, so that I can view the breakdown of a player’s score.
+### User Story 5b: As a Site User, I want to be able to view individual Leaderboard entries, so that I can view the breakdown of a player’s score.
 
 **Acceptance Criteria:** Site users should be able to interact with each
 Leaderboard entry to obtain more information on each entry.
@@ -670,8 +647,7 @@ Leaderboard entry to obtain more information on each entry.
 
 **Outcome: Pass**
 
-**User Story:** 5c – As a Paid User, I want to be able to add my score to the
-Leaderboard, so that I can compete with other paid players.
+### User Story 5c: As a Paid User, I want to be able to add my score to the Leaderboard, so that I can compete with other paid players.
 
 **Acceptance Criteria:** If a Paid User’s score is high enough, following a
 battle loss, it is added to the Leaderboard and the user is informed of this.
@@ -698,9 +674,7 @@ battle loss, it is added to the Leaderboard and the user is informed of this.
 
 **Outcome: Pass**
 
-**User Story:** 5d – As a Paid User, I want to be able to see my score at the
-end of a game, so that I can find out where my position is on the Leaderboard,
-or see how close I was to reaching the Leaderboard.
+### User Story 5d: As a Paid User, I want to be able to see my score at the end of a game, so that I can find out where my position is on the Leaderboard, or see how close I was to reaching the Leaderboard.
 
 **Acceptance Criteria:** Paid users must be presented with their score on the
 Post-Battle screen, and this must match the score on the Leaderboard if
@@ -728,8 +702,7 @@ successful.
 
 ## Codex
 
-**User Story:** 6a – As a Site User, I want to be able to view the Codex, so
-that I can see all available content in the game.
+### User Story 6a: As a Site User, I want to be able to view the Codex, so that I can see all available content in the game.
 
 **Acceptance Criteria:** Site Users must be able to access the Codex from any
 page, and navigate through all content available.
@@ -760,9 +733,7 @@ page, and navigate through all content available.
 
 **Outcome: Pass**
 
-**User Story:** 6b – As a Site User, I want to be able to sort and filter the
-Codex, so that I can find specified entries in the codex, and find out what
-content is available as a paid user.
+### User Story 6b: As a Site User, I want to be able to sort and filter the Codex, so that I can find specified entries in the codex, and find out what content is available as a paid user.
 
 **Acceptance Criteria:** Site Users must be able to filter and sort the Codex
 entries.
@@ -796,8 +767,7 @@ entries.
 
 **Outcome: Pass**
 
-**User Story:** 6c – As an Admin, I want to be able to add entries to the Codex,
-so that I can add content to the game.
+### User Story 6c: As an Admin, I want to be able to add entries to the Codex, so that I can add content to the game.
 
 **Acceptance Criteria:** Admins must be able to add full Codex entries without
 relying on the Django admin interface.
@@ -824,8 +794,7 @@ relying on the Django admin interface.
 
 **Outcome: Pass**
 
-**User Story:** 6d – As an Admin, I want to be able to update entries to the
-Codex, so that I can update content in the game.
+### User Story 6d: As an Admin, I want to be able to update entries to the Codex, so that I can update content in the game.
 
 **Acceptance Criteria:** Admins must be able to edit full Codex entries without
 relying on the Django admin interface.
@@ -853,8 +822,7 @@ relying on the Django admin interface.
 
 **Outcome: Pass**
 
-**User Story:** 6e – As an Admin, I want to be able to delete entries in the
-Codex, so that I can remove content from the game.
+### User Story 6e: As an Admin, I want to be able to delete entries in the Codex, so that I can remove content from the game.
 
 **Acceptance Criteria:** Admins must be able to delete full Codex entries
 without relying on the Django admin interface.
@@ -875,7 +843,7 @@ without relying on the Django admin interface.
 
 ## Additional Manual Testing
 
-**Error Handling**
+### Error Handling
 
 -   Ensure that **404 HTTP** errors are appropriately routed to the custom
     404.html.
@@ -885,7 +853,7 @@ without relying on the Django admin interface.
     -   **Stress Test:** Set debug to disabled, and intentionally break a route
         before attempting to access it.
 
-**Interface Interaction**
+### Interface Interaction
 
 -   Ensure all interactive elements respond appropriately:
     -   **Desktop:**
@@ -895,9 +863,9 @@ without relying on the Django admin interface.
         -   All navigational links correctly respond to touch.
         -   All buttons correctly respond to touch.
 
-**Links**
+### Links
 
--   Ensure the external link within the **How To** opens up in a new tab.
+-   Ensure the external link to Github within the **How To** opens up in a new tab.
 
 ---
 
