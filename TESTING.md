@@ -1032,3 +1032,17 @@ The following steps were taken to generate the above report:
 
 Please note that the test coverage files (`htmlcov`) have **not** been
 included in the GitHub repository.
+
+# Browser Testing
+
+Cross-Browser compatibility was tested via applying the methodology described in
+the **User Story and Feature Testing** within each browser detailed below.
+
+## Chrome/Firefox/Edge/Safari (iOS)
+
+All functionality worked as intended.
+
+## Internet Explorer 11
+
+As this project uses JavaScript ES6, support for Internet Explorer 11 has not
+been considered or tested.
