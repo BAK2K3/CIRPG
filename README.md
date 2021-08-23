@@ -63,7 +63,7 @@ below:
 
 -   [**Loot**](https://en.wikipedia.org/wiki/Loot_(video_games)): A term
     used to describe weapons that are generated after a successful battle.
--   **Run**: A term used to describe user’s playthrough of the game, from
+-   **Run**: A term used to describe a user’s playthrough of the game, from
     starting a new character to losing that character.
 -   **User**: An individual playing the game.
 -   **Profile**: A user’s central hub, containing run statistics, their current
@@ -74,13 +74,13 @@ below:
     Speed).
 -   **XP**: Experience Points. Represents progression between Character Levels.
 -   **Tier**: Weapons and Enemies are Tiered, which means they will only become
-    available within the possible pool of content when a user reaches or exceeds
+    available within the possible pool of content when a user's level reaches or exceeds
     that Tier.
 -   [**Codex**](https://en.wikipedia.org/wiki/Codex_(Warhammer_40,000)): This
     term is used to refer to a library-like list of all content within the game.
 -   [**Rarity**](https://en.wikipedia.org/wiki/Loot_(video_games)): This term is
     used to describe how ‘rare’ a weapon is. The higher the Rarity, the higher
-    the item’s stats will be.
+    the item’s base stats will be.
 </details>
 
 ---
@@ -115,7 +115,7 @@ What would your ideal browser-based RPG look like?
 | 2a                                 | Site User      | Register for an account                                                             | Have a profile.                                                                                       |
 | 2b                                 | Site User      | Log In and logout                                                                   | Access my profile and play the game.                                                                  |
 | 2c                                 | Site User      | Recover my password                                                                 | Recover access to my account.                                                                         |
-| 2e                                 | Free/Paid User | Access my profile                                                                   | See my statistics and status.                                                                         |
+| 2d                                 | Free/Paid User | Access my profile                                                                   | See my statistics and status.                                                                         |
 | **Premium**                        |                |                                                                                     |                                                                                                       |
 | 3a                                 | Free User      | Access the upgrade offer from any page                                              | Choose to upgrade easily from any location on the site.                                               |
 | 3b                                 | Free User      | Pay to upgrade to the full version                                                  | Have full access to premium features.                                                                 |
@@ -143,7 +143,7 @@ What would your ideal browser-based RPG look like?
 ### Project Strategy Summary
 
 **Ideal User:** An individual who likes Role-Playing Games, and wants a game
-that is easy to play, accessible, and can be plaid in short stints.
+that is easy to play, accessible, and can be played in short stints.
 
 **Project Goal:** Create a game that is intuitive, addictive, competitive, yet
 rewarding and easy to play.
@@ -182,7 +182,7 @@ rewarding and easy to play.
 
 #### User Management
 
--   Allow a user to create an account, confirm their email address, change their
+-   Allow users to create an account, confirm their email address, change their
     password, log in, and log out.
 
 #### Premium Content
@@ -204,10 +204,10 @@ rewarding and easy to play.
 
 #### Character Creation
 
--   Allow a user to create a character if one does not already exist in their
+-   Allow users to create a character if one does not already exist in their
     profile.
 -   Allow users to have a transparent view of the difference between available
-    classes.
+    characters.
 -   Allow free users to create a character from the free characters available.
 -   Allow premium users to create a character from all available characters.
 -   Ensure that when a user creates a character, a random weapon of appropriate
@@ -263,8 +263,8 @@ rewarding and easy to play.
 
 ### Content Requirements
 
-The “content” within this project relates to the entries within the Codex. Each
-entry will either be a Character, and Enemy, or a Weapon, and will have a name,
+The **content** within this project relates to the entries within the Codex. Each
+entry will either be a Character, an Enemy, or a Weapon, and will have a name,
 and image, a unique set of stats, and an associated Tier. All game mechanics are
 centred around these Codex entries and their associated stats.
 
@@ -276,7 +276,7 @@ Dragons](https://en.wikipedia.org/wiki/Dungeons_%26_Dragons).
 
 #### Characters
 
-Characters will be entries within the Codex that only the User can select.
+Characters will be entries within the Codex that only the User can play the game with.
 
 #### Enemies 
 
@@ -349,7 +349,7 @@ weapon’s stats.
 
 In order to create a simple interface for the user, each of the project’s core
 functions will be isolated into different pages. In an attempt to implement an
-intuitive navigation system, a persistent Navigation Bar will be utilised, along
+intuitive navigation system, a persistent Navigation Bar (Navbar) will be utilised, along
 with carefully selected navigational aids on each page in an attempt to pre-empt
 the user’s subsequent destination. This will allow a user to navigate the
 project with ease, spending minimal time finding the next destination, hopefully
@@ -364,7 +364,7 @@ any logical page (i.e any route the user is permitted to access manually).
   <summary>Show Details</summary>
 
 >Applicable User Stories:
->-   1b, 2a, 2b, 2e, 3a, 4a, 4b, 4c, 5a, 6a
+>-   1b, 2a, 2b, 2d, 3a, 4a, 4b, 4c, 5a, 6a
 >
 >Applicable Functional Requirements:
 >-   Simple, Intuitive, and Engaging Interface
@@ -390,7 +390,7 @@ project’s concept and the appropriate CTAs.
   <summary>Show Details</summary>
 
 >Applicable User Stories:
->-   1a, 1b, 1c, 2a, 2b, 2e, 6a, 6b
+>-   1a, 1b, 1c, 2a, 2b, 2d, 6a, 6b
 >
 >Applicable Functional Requirements:
 >-   Simple, Intuitive, and Engaging Interface
@@ -466,7 +466,7 @@ Delete content from this page.
 >-   Codex
 >
 >Navigational Routes:
->-   N/A 
+>-   Create/Edit/Delete Codex Entries (Admin Only)
 
 </details>  
   
@@ -483,7 +483,7 @@ from this page.
   <summary>Show Details</summary>
 
 >Applicable User Stories:
->-   1b, 2e, 4a, 4b, 4c,
+>-   1b, 2d, 4a, 4b, 4c,
 >
 >Applicable Functional Requirements:
 >-   Simple, Intuitive, and Engaging Interface
@@ -535,7 +535,7 @@ users, or whether their character levelled up.
   <summary>Show Details</summary>
 
 >Applicable User Stories:
->-   1b, 2e, 3c, 4a, 4c, 4d, 4e, 4f, 4g, 5c, 5d
+>-   1b, 2d, 3c, 4a, 4c, 4d, 4e, 4f, 4g, 5c, 5d
 >
 >Applicable Functional Requirements:
 >-   Simple, Intuitive, and Engaging Interface
@@ -601,7 +601,7 @@ not.
 >-   Leaderboard
 >
 >Navigational Routes:
->-   Non-logical Success/Abort routes.
+>-   Success/Abort (Non-Logical)
 >-   Profile
 >-   Premium
  
@@ -611,7 +611,7 @@ not.
 ### Interaction Design
 
 The following considerations were made when planning the project’s Interaction
-Design. Given this project is a game, is intended to entice a user to upgrade to
+Design. Given this project is a game, and is intended to entice a user to upgrade to
 a premium account, the interaction design aims to keep a user engaged and
 excited by the content.
 
@@ -751,7 +751,7 @@ This project utilises a
 pseudo-[monochromatic](https://en.wikipedia.org/wiki/Monochromatic_color) colour
 scheme, in order to align with the
 [Fantasy](https://en.wikipedia.org/wiki/Fantasy) aesthetic and theme. By
-implemented dark tonal colours, this prevents the colour scheme of the webpages
+implementing dark tonal colours, this prevents the colour scheme of the webpages
 themselves from clashing with the vibrant image content utilised for the Codex
 entries.
 
@@ -763,8 +763,8 @@ website, focuses on a white to black pseudo-monochromatic colour scheme.
 ![Primary Colour Scheme](https://res.cloudinary.com/bak2k3/image/upload/v1628878125/CIRPG/Primary_Colour_Scheme_id0qx0.jpg)
 
 The variations of white were implemented in various aspects of the website
-depending on the context, whether it is representing the Chalk style text, or
-whether being used for outlines and glowing effects (see Typography).
+depending on the context, whether it is representing the Chalk style text (see [Typography](#typography)), or
+whether being used for outlines and glowing effects.
 
 The shades of black were used to differentiate between content layers, and
 priority within the informational hierarchy of each individual page.
@@ -795,7 +795,7 @@ therefore would be familiar to regular gamers.
 
 The images utilised throughout the project for the Codex entries are vibrant and
 colourful. Given the primary colour scheme is simple, monochromatic, and dark,
-the allows the images to stand out and ultimately compliment the overall
+this allows the images to stand out and ultimately compliment the overall
 aesthetic.
 
 ### Typography
@@ -805,7 +805,7 @@ aesthetic.
 The font [Mandhor](https://www.fontspace.com/mandhor-font-f57186) was used for
 all headings within the project, intended to represent handwritten chalkboard
 text. The use of a handwritten style font was chosen as this would complement
-the theme of the project, given it handwritten text is synonymous with [Tabletop
+the theme of the project, given handwritten text is synonymous with [Tabletop
 RPGs](https://en.wikipedia.org/wiki/Tabletop_role-playing_game).
 
 ![Typography – Mandhor](https://res.cloudinary.com/bak2k3/image/upload/v1628878125/CIRPG/Typography_-_Mandhor_uz2iy3.jpg)
@@ -868,7 +868,7 @@ underlined effect discussed above.
 
 #### Character Select
 
-When a user is creating a character, visual effects have been implemented in
+When a user is selecting a character, visual effects have been implemented in
 order to produce responsive feedback to a user’s inputs, and to aid a user’s
 understanding of how to interact with this page.
 
