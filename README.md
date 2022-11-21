@@ -5,7 +5,7 @@
 This project is a Full Stack online Role-Playing Game. Users can sign up and
 play for free, or upgrade to a premium account to access premium content.
 
-View the deployed site on [Heroku](https://cirpg.herokuapp.com/).
+View the deployed site on [Render](https://cirpg.onrender.com/).
 
 # Table of contents
 
