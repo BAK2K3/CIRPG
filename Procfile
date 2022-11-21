@@ -1,1 +1,0 @@
-web: gunicorn cirpg.wsgi:application
